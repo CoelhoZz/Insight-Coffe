@@ -8,18 +8,23 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Threading;
+using InsightCoffe.Entity;
+using System.Runtime.InteropServices.WindowsRuntime;
+using System.Windows.Documents;
 
 namespace InsightCoffe
 {
     public partial class Form1 : Form
     {
-
+        public List<Usuarios> usuarios = new List<Usuarios>();
         public Form1()
         {
             InitializeComponent();
+            usuarios.Add(new Usuarios() { ID = 1, Usuario = "Ger", Senha = "Ger", Acesso = "Total"});
+            usuarios.Add(new Usuarios() { ID = 2, Usuario = "Func", Senha = "Func", Acesso = "Parcial" });
         }
 
-        //Mover formulario
+        //----------------------------------Mover formulario-----------------------------------------------
         Point DragCursor;
         Point DragForm;
         bool Dragging;
@@ -43,21 +48,21 @@ namespace InsightCoffe
             DragCursor = Cursor.Position;
             DragForm = this.Location;
         }
-        //end-Mover formulario
+        //------------------------------------------end-Mover formulario----------------------------------
 
-        //Fechar aplicação
+        //-------------------------------------------Fechar aplicação-------------------------------------
         private void picBExit_Click(object sender, EventArgs e)
         {
             this.Close();
         }
 
-        //Minimizar aplicação
+        //-----------------------------------------Minimizar aplicação------------------------------------
         private void picBMinimize_Click(object sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Minimized;
         }
 
-        //Conectar ao SISTEMA
+        //---------------------------------------Conectar ao SISTEMA--------------------------------------
         private void btnConectar_Click(object sender, EventArgs e)
         {
             if ((tbUsername.Text == "Username" || tbUsername.Text == "") && (tbPassword.Text == "Password" || tbPassword.Text == ""))
@@ -65,78 +70,66 @@ namespace InsightCoffe
                 MessageBox.Show("Insira o Usuario e Senha para prosseguir");
                 return;
             }
-            else if (tbUsername.Text == "adm" && tbPassword.Text == "adm")
-            {
-                MessageBox.Show("Bem vindo Administrador");
-                Iniciar();
-            }
-            else if (tbUsername.Text == "func" && tbPassword.Text == "func")
-            {
-                MessageBox.Show("Bem vindo Funcionario");
-                Iniciar();
-            }
             else
             {
+                foreach(Usuarios usuarios in usuarios)
+                {
+                    if (usuarios.Usuario == tbUsername.Text && usuarios.Senha == tbPassword.Text)
+                    {
+                        Iniciar();
+                    } 
+                }
                 MessageBox.Show("Usuario ou senha incorretos", "Erro!");
             }
         }
 
-
-        //Start atualiza campos USUARIO e SENHA
-        private void Form_click(object sender, EventArgs e)
-        {
-            if ((tbUsername.Text != "Username" && tbUsername.Text != "") && (tbPassword.Text != "Password" && tbPassword.Text != ""))
-                return;
-
-            if (tbUsername.Text == "")
-            {
-                tbUsername.Text = "Username";
-                tbUsername.ForeColor = Color.Silver;
-            }
-
-            if (tbPassword.Text == "")
-            {
-                tbPassword.Text = "Password";
-                tbPassword.PasswordChar = '\0';
-                tbPassword.ForeColor = Color.Silver;
-            }
-        }
-
+        //-----------------------------------Start atualiza campos USUARIO, SENHA e MOSTRAR----------------
         private void Click_user(object sender, EventArgs e)
         {
-            if(tbUsername.Text != "Username" && tbUsername.Text != "")
+            tbUsername.ForeColor = Color.Black;
+            if (tbUsername.Text != "" && tbUsername.Text != "Username")
                 return;
-            if (tbUsername.Text == "Username")
-            {
-                tbUsername.Text = "";
-                tbUsername.ForeColor = Color.Black;
-            }
+            tbUsername.Text = "";
+        }
 
-            if (tbPassword.Text == "")
+        private void Leave_user(object sender, EventArgs e)
+        {
+            if (tbUsername.Text == "" || tbUsername.Text == "Username")
             {
-                tbPassword.PasswordChar = '\0';
-                tbPassword.Text = "Password";
+                tbUsername.Text = "Username";
+                tbUsername.ForeColor = Color.Gray;
             }
         }
 
         private void Click_pass(object sender, EventArgs e)
         {
-            if (tbPassword.Text != "Password" && tbPassword.Text != "")
+            tbPassword.ForeColor = Color.Black;
+            if (tbPassword.Text != "" && tbPassword.Text != "Password")
                 return;
-            if(tbPassword.Text == "Password")
+            tbPassword.Text = "";
+            tbPassword.PasswordChar = Convert.ToChar("*");
+        }
+
+        private void Leave_pass(object sender, EventArgs e)
+        {
+            if(tbPassword.Text == "" || tbPassword.Text == "Password")
             {
-                tbPassword.Text = "";
-                tbPassword.PasswordChar = Convert.ToChar("*");
-                tbPassword.ForeColor = Color.Black;
-            }
-            if(tbUsername.Text == "")
-            {
-                tbUsername.Text = "Username";
+                tbPassword.Text = "Password";
+                tbPassword.PasswordChar = Convert.ToChar("\0");
+                tbPassword.ForeColor = Color.Gray;
             }
         }
-        //End atualiza campos USUARIO e SENHA
 
-        //Iniciar outras APLICAÇÕES
+        private void Click_mostar(object sender, EventArgs e)
+        {
+            if (chkMostrar.Checked == true)
+                tbPassword.PasswordChar = Convert.ToChar("\0");
+            else
+                tbPassword.PasswordChar = Convert.ToChar("*");
+        }
+        //--------------------------------End atualiza campos USUARIO, SENHA e MOSTRAR-------------------
+
+        //--------------------------------------Iniciar outras APLICAÇÕES--------------------------------
         Thread Iniciar_aplicação;
 
         private void Iniciar()
@@ -149,8 +142,9 @@ namespace InsightCoffe
 
         private void Aplicativo()
         {
-            Application.Run(new Utilidades.StartAPS());
+            Application.Run(new Utilidades.StartAPS(this, usuarios));
         }
-        //End outras APLICAÇÕES
+
+        //--------------------------------------End outras APLICAÇÕES------------------------------------
     }
 }

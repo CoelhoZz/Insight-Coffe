@@ -1,4 +1,5 @@
-﻿using System;
+﻿using InsightCoffe.Entity;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -13,12 +14,12 @@ namespace InsightCoffe.Utilidades
 {
     public partial class StartAPS : Form
     {
-        public StartAPS()
+        public StartAPS(Form1 form1, List<Usuarios> usuarios)
         {
             InitializeComponent();
         }
 
-        //Mover formulario
+        //----------------------------------Mover formulario-----------------------------------------------
         Point DragCursor;
         Point DragForm;
         bool Dragging;
@@ -42,9 +43,9 @@ namespace InsightCoffe.Utilidades
             DragCursor = Cursor.Position;
             DragForm = this.Location;
         }
-        //end-Mover formulario
+        //------------------------------------------end-Mover formulario----------------------------------
 
-        //Fechar aplicação
+        //-------------------------------------------Fechar aplicação-------------------------------------
         private void picBExit_Click_1(object sender, EventArgs e)
         {
 
@@ -52,61 +53,31 @@ namespace InsightCoffe.Utilidades
                 Application.Exit();
         }
 
-        //Minimizar aplicação
+        //-----------------------------------------Minimizar aplicação------------------------------------
         private void picBMinimize_Click(object sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Minimized;
         }
 
-        //Start Sequencia de EVENTOS abertura das outras Telas
+        //---------------------------start Sequencia de EVENTOS abertura das outras Telas-----------------
         private void bntVendas_Click_1(object sender, EventArgs e)
         {
-            vendas = true;
-            pagamento = false;
-            produtos = false;
-            Iniciar();
+            APSvendas apsPagamento = new APSvendas();
+            apsPagamento.Show();
         }
 
         private void bntPagamento_Click_1(object sender, EventArgs e)
         {
-            pagamento = true;
-            vendas = false;
-            produtos = false;
-            Iniciar();
+            APSpagamento apsPagamento = new APSpagamento();
+            apsPagamento.Show();
         }
 
         private void bntProdutos_Click_1(object sender, EventArgs e)
         {
-            produtos = true;
-            pagamento = false;
-            vendas = false;
-            Iniciar();
+            APSprodutos apsProdutos = new APSprodutos();
+            apsProdutos.Show();
         }
-        //End Sequencia de EVENTOS abertura das outras Telas
-
-        //Iniciar outras APLICAÇÕES
-        Thread Iniciar_aplicação;
-
-        bool vendas = false;
-        bool pagamento = false;
-        bool produtos = false;
-
-        private void Iniciar()
-        {
-            Iniciar_aplicação = new Thread(Aplicativo);
-            Iniciar_aplicação.SetApartmentState(ApartmentState.STA);
-            Iniciar_aplicação.Start();
-        }
-
-        private void Aplicativo()
-        {
-            if (vendas == true)
-                Application.Run(new Utilidades.APSvendas());
-            else if (produtos == true)
-                Application.Run(new Utilidades.APSprodutos());
-            else if (pagamento == true)
-                Application.Run(new Utilidades.APSpagamento());
-        }
-        //End outras APLICAÇÕES
+        //-------------------------End Sequencia de EVENTOS abertura das outras Telas---------------------
     }
 }
+

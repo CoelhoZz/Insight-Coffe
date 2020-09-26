@@ -16,9 +16,9 @@ namespace InsightCoffe
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            //Application.Run(new Form1());
+            Application.Run(new Form1());
             //Application.Run(new Utilidades.APSpagamento());
-            Application.Run(new Utilidades.APSprodutos());
+            //Application.Run(new Utilidades.APSprodutos());
             //Application.Run(new Utilidades.APSvendas());
         }
 

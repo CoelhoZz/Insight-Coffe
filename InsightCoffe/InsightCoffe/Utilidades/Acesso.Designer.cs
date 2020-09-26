@@ -38,6 +38,7 @@
             this.picBBarra = new System.Windows.Forms.PictureBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
+            this.chkMostrar = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.picBMinimize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picBExit)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picBBarra)).BeginInit();
@@ -51,7 +52,7 @@
             this.btnConectar.Location = new System.Drawing.Point(22, 185);
             this.btnConectar.Name = "btnConectar";
             this.btnConectar.Size = new System.Drawing.Size(184, 59);
-            this.btnConectar.TabIndex = 5;
+            this.btnConectar.TabIndex = 3;
             this.btnConectar.Text = "Entrar";
             this.btnConectar.UseVisualStyleBackColor = false;
             this.btnConectar.Click += new System.EventHandler(this.btnConectar_Click);
@@ -65,10 +66,11 @@
             this.tbPassword.Location = new System.Drawing.Point(33, 126);
             this.tbPassword.Name = "tbPassword";
             this.tbPassword.Size = new System.Drawing.Size(160, 25);
-            this.tbPassword.TabIndex = 4;
+            this.tbPassword.TabIndex = 5;
             this.tbPassword.Text = "Password";
             this.tbPassword.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.tbPassword.Click += new System.EventHandler(this.Click_pass);
+            this.tbPassword.Leave += new System.EventHandler(this.Leave_pass);
             // 
             // tbUsername
             // 
@@ -79,10 +81,11 @@
             this.tbUsername.Location = new System.Drawing.Point(33, 78);
             this.tbUsername.Name = "tbUsername";
             this.tbUsername.Size = new System.Drawing.Size(160, 25);
-            this.tbUsername.TabIndex = 3;
+            this.tbUsername.TabIndex = 4;
             this.tbUsername.Text = "Username";
             this.tbUsername.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.tbUsername.Click += new System.EventHandler(this.Click_user);
+            this.tbUsername.Leave += new System.EventHandler(this.Leave_user);
             // 
             // label1
             // 
@@ -131,7 +134,6 @@
             this.picBBarra.Size = new System.Drawing.Size(229, 54);
             this.picBBarra.TabIndex = 6;
             this.picBBarra.TabStop = false;
-            this.picBBarra.Click += new System.EventHandler(this.Form_click);
             this.picBBarra.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Form_MouseDown);
             this.picBBarra.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Form_MouseMove);
             this.picBBarra.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Form_MouseUp);
@@ -154,11 +156,24 @@
             this.label3.TabIndex = 12;
             this.label3.Text = "__________________________";
             // 
+            // chkMostrar
+            // 
+            this.chkMostrar.AutoSize = true;
+            this.chkMostrar.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.chkMostrar.Location = new System.Drawing.Point(132, 157);
+            this.chkMostrar.Name = "chkMostrar";
+            this.chkMostrar.Size = new System.Drawing.Size(61, 17);
+            this.chkMostrar.TabIndex = 6;
+            this.chkMostrar.Text = "Mostrar";
+            this.chkMostrar.UseVisualStyleBackColor = true;
+            this.chkMostrar.Click += new System.EventHandler(this.Click_mostar);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(228, 271);
+            this.Controls.Add(this.chkMostrar);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.picBMinimize);
             this.Controls.Add(this.picBExit);
@@ -172,7 +187,6 @@
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
-            this.Click += new System.EventHandler(this.Form_click);
             ((System.ComponentModel.ISupportInitialize)(this.picBMinimize)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picBExit)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picBBarra)).EndInit();
@@ -192,6 +206,7 @@
         private System.Windows.Forms.PictureBox picBBarra;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.CheckBox chkMostrar;
     }
 }
 
