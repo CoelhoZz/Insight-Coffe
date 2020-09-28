@@ -17,11 +17,14 @@ namespace InsightCoffe
     public partial class Form1 : Form
     {
         public List<Usuarios> usuarios = new List<Usuarios>();
+
         public Form1()
         {
             InitializeComponent();
-            usuarios.Add(new Usuarios() { ID = 1, Usuario = "Ger", Senha = "Ger", Acesso = "Total"});
-            usuarios.Add(new Usuarios() { ID = 2, Usuario = "Func", Senha = "Func", Acesso = "Parcial" });
+            usuarios.Add(new Usuarios() { ID = 0, Usuario = "q", Senha = "q", Acesso = "Total"});
+            usuarios.Add(new Usuarios() { ID = 1, Usuario = "Gerente", Senha = "Gerente", Acesso = "Total"});
+            usuarios.Add(new Usuarios() { ID = 2, Usuario = "Thyago", Senha = "Thyago", Acesso = "Parcial" });
+            usuarios.Add(new Usuarios() { ID = 3, Usuario = "Leonam", Senha = "Leonam", Acesso = "Parcial" });
         }
 
         //----------------------------------Mover formulario-----------------------------------------------
@@ -55,14 +58,17 @@ namespace InsightCoffe
         {
             this.Close();
         }
+        //------------------------------------------------------------------------------------------------
 
         //-----------------------------------------Minimizar aplicação------------------------------------
         private void picBMinimize_Click(object sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Minimized;
         }
+        //------------------------------------------------------------------------------------------------
 
         //---------------------------------------Conectar ao SISTEMA--------------------------------------
+        public string user, acess;
         private void btnConectar_Click(object sender, EventArgs e)
         {
             if ((tbUsername.Text == "Username" || tbUsername.Text == "") && (tbPassword.Text == "Password" || tbPassword.Text == ""))
@@ -76,6 +82,9 @@ namespace InsightCoffe
                 {
                     if (usuarios.Usuario == tbUsername.Text && usuarios.Senha == tbPassword.Text)
                     {
+                        user = usuarios.Usuario;
+                        acess = usuarios.Acesso;
+
                         Iniciar();
                     } 
                 }
@@ -83,7 +92,17 @@ namespace InsightCoffe
             }
         }
 
-        //-----------------------------------Start atualiza campos USUARIO, SENHA e MOSTRAR----------------
+        public string userLogado()
+        {
+            return user;
+        }
+        public string userAcessLogado()
+        {
+            return acess;
+        }
+        //-------------------------------------end Conectar ao Sistema-------------------------------------
+
+        //--------------------------Start atualiza campos USUARIO, SENHA e MOSTRAR-------------------------
         private void Click_user(object sender, EventArgs e)
         {
             tbUsername.ForeColor = Color.Black;
@@ -127,7 +146,7 @@ namespace InsightCoffe
             else
                 tbPassword.PasswordChar = Convert.ToChar("*");
         }
-        //--------------------------------End atualiza campos USUARIO, SENHA e MOSTRAR-------------------
+        //----------------------------End atualiza campos USUARIO, SENHA e MOSTRAR-----------------------
 
         //--------------------------------------Iniciar outras APLICAÇÕES--------------------------------
         Thread Iniciar_aplicação;
@@ -144,7 +163,6 @@ namespace InsightCoffe
         {
             Application.Run(new Utilidades.StartAPS(this, usuarios));
         }
-
         //--------------------------------------End outras APLICAÇÕES------------------------------------
     }
 }

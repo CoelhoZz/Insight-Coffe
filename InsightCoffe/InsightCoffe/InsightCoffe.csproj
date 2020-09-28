@@ -95,7 +95,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Entity\Usuarios.cs" />
-    <Compile Include="Repositorios\AddProduto.cs" />
     <Compile Include="Repositorios\AdicionarPedido.cs" />
     <Compile Include="Repositorios\CadCodigoBarras.cs" />
     <Compile Include="Repositorios\Produto.cs" />

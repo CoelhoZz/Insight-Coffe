@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(APSprodutos));
             this.bntCadastrar = new System.Windows.Forms.Button();
             this.txbCodigo = new System.Windows.Forms.TextBox();
@@ -41,15 +40,18 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.picBMinimize = new System.Windows.Forms.PictureBox();
             this.picBExit = new System.Windows.Forms.PictureBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btnAdicionar = new System.Windows.Forms.Button();
+            this.btnEditar = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
+            this.dtGridView = new System.Windows.Forms.DataGridView();
+            this.btnPesquisar = new System.Windows.Forms.Button();
+            this.btnCancelar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.picBBarra)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picBMinimize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picBExit)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtGridView)).BeginInit();
             this.SuspendLayout();
             // 
             // bntCadastrar
@@ -57,7 +59,7 @@
             this.bntCadastrar.Enabled = false;
             this.bntCadastrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.bntCadastrar.Font = new System.Drawing.Font("Warsaw", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bntCadastrar.Location = new System.Drawing.Point(167, 237);
+            this.bntCadastrar.Location = new System.Drawing.Point(167, 226);
             this.bntCadastrar.Name = "bntCadastrar";
             this.bntCadastrar.Size = new System.Drawing.Size(278, 69);
             this.bntCadastrar.TabIndex = 0;
@@ -67,7 +69,6 @@
             // 
             // txbCodigo
             // 
-            this.txbCodigo.Enabled = false;
             this.txbCodigo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txbCodigo.Location = new System.Drawing.Point(297, 65);
             this.txbCodigo.Name = "txbCodigo";
@@ -131,6 +132,9 @@
             this.picBBarra.Size = new System.Drawing.Size(464, 50);
             this.picBBarra.TabIndex = 31;
             this.picBBarra.TabStop = false;
+            this.picBBarra.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Form_MouseDown);
+            this.picBBarra.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Form_MouseMove);
+            this.picBBarra.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Form_MouseUp);
             // 
             // label1
             // 
@@ -162,17 +166,6 @@
             this.label5.TabIndex = 40;
             this.label5.Text = "Valor:";
             // 
-            // dataGridView1
-            // 
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft YaHei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black;
-            this.dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle3;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(19, 326);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(426, 144);
-            this.dataGridView1.TabIndex = 41;
-            // 
             // picBMinimize
             // 
             this.picBMinimize.BackColor = System.Drawing.SystemColors.ButtonShadow;
@@ -198,35 +191,79 @@
             this.picBExit.TabStop = false;
             this.picBExit.Click += new System.EventHandler(this.picBExit_Click_1);
             // 
-            // button1
+            // btnAdicionar
             // 
-            this.button1.Location = new System.Drawing.Point(19, 69);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(106, 23);
-            this.button1.TabIndex = 44;
-            this.button1.Text = "ADICIONAR";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.btnAdicionar.Location = new System.Drawing.Point(19, 69);
+            this.btnAdicionar.Name = "btnAdicionar";
+            this.btnAdicionar.Size = new System.Drawing.Size(106, 23);
+            this.btnAdicionar.TabIndex = 44;
+            this.btnAdicionar.Text = "ADICIONAR";
+            this.btnAdicionar.UseVisualStyleBackColor = true;
+            this.btnAdicionar.Click += new System.EventHandler(this.button1_Click);
             // 
-            // button2
+            // btnEditar
             // 
-            this.button2.Location = new System.Drawing.Point(19, 98);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(106, 23);
-            this.button2.TabIndex = 45;
-            this.button2.Text = "EDITAR";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btnEditar.Enabled = false;
+            this.btnEditar.Location = new System.Drawing.Point(19, 127);
+            this.btnEditar.Name = "btnEditar";
+            this.btnEditar.Size = new System.Drawing.Size(106, 23);
+            this.btnEditar.TabIndex = 45;
+            this.btnEditar.Text = "EDITAR";
+            this.btnEditar.UseVisualStyleBackColor = true;
+            this.btnEditar.Click += new System.EventHandler(this.btnEditar_Click);
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(19, 272);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(106, 23);
+            this.button3.TabIndex = 46;
+            this.button3.Text = "ATUALIZAR";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
+            // dtGridView
+            // 
+            this.dtGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dtGridView.Location = new System.Drawing.Point(19, 300);
+            this.dtGridView.Name = "dtGridView";
+            this.dtGridView.Size = new System.Drawing.Size(426, 180);
+            this.dtGridView.TabIndex = 48;
+            // 
+            // btnPesquisar
+            // 
+            this.btnPesquisar.Location = new System.Drawing.Point(19, 98);
+            this.btnPesquisar.Name = "btnPesquisar";
+            this.btnPesquisar.Size = new System.Drawing.Size(106, 23);
+            this.btnPesquisar.TabIndex = 49;
+            this.btnPesquisar.Text = "PESQUISAR";
+            this.btnPesquisar.UseVisualStyleBackColor = true;
+            this.btnPesquisar.Click += new System.EventHandler(this.btnPesquisar_Click);
+            // 
+            // btnCancelar
+            // 
+            this.btnCancelar.Enabled = false;
+            this.btnCancelar.Location = new System.Drawing.Point(19, 156);
+            this.btnCancelar.Name = "btnCancelar";
+            this.btnCancelar.Size = new System.Drawing.Size(106, 23);
+            this.btnCancelar.TabIndex = 50;
+            this.btnCancelar.Text = "CANCELAR";
+            this.btnCancelar.UseVisualStyleBackColor = true;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
             // APSprodutos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(464, 492);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnCancelar);
+            this.Controls.Add(this.btnPesquisar);
+            this.Controls.Add(this.dtGridView);
+            this.Controls.Add(this.button3);
+            this.Controls.Add(this.btnEditar);
+            this.Controls.Add(this.btnAdicionar);
             this.Controls.Add(this.picBMinimize);
             this.Controls.Add(this.picBExit);
-            this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.picBBarra);
             this.Controls.Add(this.txbValor);
@@ -244,9 +281,9 @@
             this.Text = "APSprodutos";
             this.Load += new System.EventHandler(this.APSprodutos_Load);
             ((System.ComponentModel.ISupportInitialize)(this.picBBarra)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picBMinimize)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picBExit)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtGridView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -265,10 +302,13 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.PictureBox picBMinimize;
         private System.Windows.Forms.PictureBox picBExit;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnAdicionar;
+        private System.Windows.Forms.Button btnEditar;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.DataGridView dtGridView;
+        private System.Windows.Forms.Button btnPesquisar;
+        private System.Windows.Forms.Button btnCancelar;
     }
 }

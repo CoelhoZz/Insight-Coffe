@@ -36,6 +36,7 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.picBMinimize = new System.Windows.Forms.PictureBox();
             this.picBExit = new System.Windows.Forms.PictureBox();
+            this.lblUsuarioLogado = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picBMinimize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picBExit)).BeginInit();
@@ -47,7 +48,7 @@
             this.bntProdutos.FlatAppearance.BorderSize = 2;
             this.bntProdutos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.bntProdutos.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bntProdutos.Location = new System.Drawing.Point(277, 76);
+            this.bntProdutos.Location = new System.Drawing.Point(277, 90);
             this.bntProdutos.Name = "bntProdutos";
             this.bntProdutos.Size = new System.Drawing.Size(116, 73);
             this.bntProdutos.TabIndex = 5;
@@ -61,7 +62,7 @@
             this.bntPagamento.FlatAppearance.BorderSize = 2;
             this.bntPagamento.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.bntPagamento.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bntPagamento.Location = new System.Drawing.Point(149, 76);
+            this.bntPagamento.Location = new System.Drawing.Point(149, 90);
             this.bntPagamento.Name = "bntPagamento";
             this.bntPagamento.Size = new System.Drawing.Size(120, 73);
             this.bntPagamento.TabIndex = 4;
@@ -75,7 +76,7 @@
             this.bntVendas.FlatAppearance.BorderSize = 2;
             this.bntVendas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.bntVendas.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bntVendas.Location = new System.Drawing.Point(23, 76);
+            this.bntVendas.Location = new System.Drawing.Point(23, 90);
             this.bntVendas.Name = "bntVendas";
             this.bntVendas.Size = new System.Drawing.Size(116, 73);
             this.bntVendas.TabIndex = 3;
@@ -134,11 +135,22 @@
             this.picBExit.TabStop = false;
             this.picBExit.Click += new System.EventHandler(this.picBExit_Click_1);
             // 
+            // lblUsuarioLogado
+            // 
+            this.lblUsuarioLogado.AutoSize = true;
+            this.lblUsuarioLogado.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblUsuarioLogado.Location = new System.Drawing.Point(26, 57);
+            this.lblUsuarioLogado.Name = "lblUsuarioLogado";
+            this.lblUsuarioLogado.Size = new System.Drawing.Size(119, 21);
+            this.lblUsuarioLogado.TabIndex = 17;
+            this.lblUsuarioLogado.Text = "Usuario logado:";
+            // 
             // StartAPS
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(416, 175);
+            this.ClientSize = new System.Drawing.Size(416, 191);
+            this.Controls.Add(this.lblUsuarioLogado);
             this.Controls.Add(this.picBMinimize);
             this.Controls.Add(this.picBExit);
             this.Controls.Add(this.label1);
@@ -150,6 +162,7 @@
             this.Name = "StartAPS";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Verificação";
+            this.Load += new System.EventHandler(this.StartAPS_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picBMinimize)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picBExit)).EndInit();
@@ -167,5 +180,6 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.PictureBox picBMinimize;
         private System.Windows.Forms.PictureBox picBExit;
+        private System.Windows.Forms.Label lblUsuarioLogado;
     }
 }

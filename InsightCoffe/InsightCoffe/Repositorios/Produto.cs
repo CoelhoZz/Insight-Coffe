@@ -8,20 +8,28 @@ namespace InsightCoffe.Repositorios
 {
     public class Produto
     {
-        public int Identifier { get; set; }
+        public int ID { get; set; }
         public string Descricao { get; set; }
         public string Quantidade { get; set; }
         public double Valor { get; set; }
 
-        public Produto(){}
-
-        public Produto(int codigo, string descricao, string quantidade, double valor)
+        public override int GetHashCode()
         {
+            return ID;
+        }
 
-            Identifier = codigo;
-            Descricao = descricao;
-            Quantidade = quantidade;
-            Valor = valor;
+        public override bool Equals(object obj)
+        {
+            if (obj == null) return false;
+            Produto objAsProduto = obj as Produto;
+            if (objAsProduto == null) return false;
+            else return Equals(objAsProduto);
+        }
+
+        public bool Equals(Produto other)
+        {
+            if (other == null) return false;
+            return (this.ID.Equals(other.ID));
         }
     }
 }

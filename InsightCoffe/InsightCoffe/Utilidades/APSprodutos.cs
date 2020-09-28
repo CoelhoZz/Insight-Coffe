@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.InteropServices.WindowsRuntime;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -13,209 +14,44 @@ namespace InsightCoffe.Utilidades
 {
     public partial class APSprodutos : Form
     {
-        public List<AddProduto> produtos = new List<AddProduto>();
+        public StartAPS Start { get; set; }
 
-        public APSprodutos()
+        public APSprodutos(StartAPS start, List<Produto> produtos)
         {
             InitializeComponent();
-
-            produtos.Add(new AddProduto()
-            {
-                Identifier = 1,
-                Descricao = "Café",
-                Quantidade = "100ml",
-                Valor = 2
-            });
-            produtos.Add(new AddProduto()
-            {
-                Identifier = 2,
-                Descricao = "Café",
-                Quantidade = "180ml",
-                Valor = 2.50
-            });
-            produtos.Add(new AddProduto()
-            {
-                Identifier = 3,
-                Descricao = "Café",
-                Quantidade = "280ml",
-                Valor = 3
-            });
-            produtos.Add(new AddProduto()
-            {
-                Identifier = 4,
-                Descricao = "Café c/ Leite",
-                Quantidade = "180ml",
-                Valor = 2.75
-            });
-            produtos.Add(new AddProduto()
-            {
-                Identifier = 5,
-                Descricao = "Café c/ Leite",
-                Quantidade = "280ml",
-                Valor = 3.25
-            });
-            produtos.Add(new AddProduto()
-            {
-                Identifier = 6,
-                Descricao = "Capuccino",
-                Quantidade = "180ml",
-                Valor = 3.50
-            });
-            produtos.Add(new AddProduto()
-            {
-                Identifier = 8,
-                Descricao = "Capuccino",
-                Quantidade = "280ml",
-                Valor = 5
-            });
-            produtos.Add(new AddProduto()
-            {
-                Identifier = 9,
-                Descricao = "Macchiato",
-                Quantidade = "180ml",
-                Valor = 4
-            });
-            produtos.Add(new AddProduto()
-            {
-                Identifier = 10,
-                Descricao = "Macchiato",
-                Quantidade = "280ml",
-                Valor = 5.50
-            });
-            produtos.Add(new AddProduto()
-            {
-                Identifier = 11,
-                Descricao = "Café latte",
-                Quantidade = "180ml",
-                Valor = 4.25
-            });
-            produtos.Add(new AddProduto()
-            {
-                Identifier = 12,
-                Descricao = "Café latte",
-                Quantidade = "280ml",
-                Valor = 5.75
-            });
-            produtos.Add(new AddProduto()
-            {
-                Identifier = 13,
-                Descricao = "Mocha",
-                Quantidade = "180ml",
-                Valor = 4
-            });
-            produtos.Add(new AddProduto()
-            {
-                Identifier = 14,
-                Descricao = "Mocha",
-                Quantidade = "280ml",
-                Valor = 5
-            });
-            produtos.Add(new AddProduto()
-            {
-                Identifier = 15,
-                Descricao = "Naked",
-                Quantidade = "180ml",
-                Valor = 4.50
-            });
-            produtos.Add(new AddProduto()
-            {
-                Identifier = 16,
-                Descricao = "Naked",
-                Quantidade = "280ml",
-                Valor = 5.50
-            });
-            produtos.Add(new AddProduto()
-            {
-                Identifier = 17,
-                Descricao = "Bomba de chocolate",
-                Quantidade = "Media",
-                Valor = 4.50
-            });
-            produtos.Add(new AddProduto()
-            {
-                Identifier = 18,
-                Descricao = "Donuts",
-                Quantidade = "Grande",
-                Valor = 3
-            });
-            produtos.Add(new AddProduto()
-            {
-                Identifier = 19,
-                Descricao = "Cookie",
-                Quantidade = "Pequeno",
-                Valor = 2.50
-            });
-            produtos.Add(new AddProduto()
-            {
-                Identifier = 20,
-                Descricao = "Torta d/ Limão",
-                Quantidade = "Pedaço Mediano",
-                Valor = 4
-            });
-            produtos.Add(new AddProduto()
-            {
-                Identifier = 21,
-                Descricao = "Torta d/ Chocolate",
-                Quantidade = "Pedaço Mediano",
-                Valor = 4
-            });
-            produtos.Add(new AddProduto()
-            {
-                Identifier = 22,
-                Descricao = "Esfirras Carne",
-                Quantidade = "Media",
-                Valor = 3.50
-            });
-            produtos.Add(new AddProduto()
-            {
-                Identifier = 23,
-                Descricao = "Esfirras Frango",
-                Quantidade = "Grande",
-                Valor = 3.50
-            });
-            produtos.Add(new AddProduto()
-            {
-                Identifier = 24,
-                Descricao = "Coxinha Frango",
-                Quantidade = "Media",
-                Valor = 3.50
-            });
-            produtos.Add(new AddProduto()
-            {
-                Identifier = 25,
-                Descricao = "Coxinha c/ Catupiry",
-                Quantidade = "Media",
-                Valor = 3.50
-            });
-            produtos.Add(new AddProduto()
-            {
-                Identifier = 26,
-                Descricao = "Coxinha Carne",
-                Quantidade = "Media",
-                Valor = 3.50
-            });
-            produtos.Add(new AddProduto()
-            {
-                Identifier = 27,
-                Descricao = "Quibes",
-                Quantidade = "Pequenos",
-                Valor = 0.75
-            });
-            produtos.Add(new AddProduto()
-            {
-                Identifier = 28,
-                Descricao = "Quibes",
-                Quantidade = "Medio",
-                Valor = 1.50
-            });
-            produtos.Add(new AddProduto()
-            {
-                Identifier = 29,
-                Descricao = "Quibes",
-                Quantidade = "Grande",
-                Valor = 2.25
-            });
+            this.Start = start;
         }
+
+        //--------------------------------------Mover formulario--------------------------------------------
+        Point DragCursor;
+        Point DragForm;
+        bool Dragging;
+        private void Form_MouseUp(object sender, MouseEventArgs e)
+        {
+            Dragging = false;
+        }
+
+        private void Form_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (Dragging == true)
+            {
+                Point dif = Point.Subtract(Cursor.Position, new Size(DragCursor));
+                this.Location = Point.Add(DragForm, new Size(dif));
+            }
+        }
+
+        private void Form_MouseDown(object sender, MouseEventArgs e)
+        {
+            Dragging = true;
+            DragCursor = Cursor.Position;
+            DragForm = this.Location;
+        }
+        //-------------------------------------end-Mover formulario---------------------------------------
+
+        //-----------------------------start-Adicionar Pesquisar e Editar  PRODUTOS-------------------------
+        public int codigo;
+        public string descricao, quantidade;
+        public double valor;
 
         private void bntCadastrar_Click(object sender, EventArgs e)
         {
@@ -224,38 +60,161 @@ namespace InsightCoffe.Utilidades
                 MessageBox.Show("Insira todos os campos necessarios para o cadastro", "Aviso!");
             else
             {
-
-                int codigo = Convert.ToInt32(txbCodigo.Text);
-                string descricao = txbDescricao.Text;
-                string quantidade = txbQuantidade.Text;
-                double valor = Convert.ToDouble(txbValor.Text);
-                produtos.Add(new AddProduto()
-                {
-                    Identifier = codigo,
-                    Descricao = descricao,
-                    Quantidade = quantidade,
-                    Valor = valor
-                });
+                codigo = Convert.ToInt32(txbCodigo.Text);
+                descricao = txbDescricao.Text;
+                quantidade = txbQuantidade.Text;
+                valor = Convert.ToDouble(txbValor.Text);
+                Start.Adicionar_produto(valor, quantidade, descricao, codigo);
+                alterarCamposPara_origin();
             }
         }
 
-        private void APSprodutos_Load(object sender, EventArgs e)
-        {
-            dataGridView1.DataSource = produtos;
-        }
-
+        //--------------------------------------------------------Adicionar
         private void button1_Click(object sender, EventArgs e)
         {
-            txbCodigo.Enabled = true;
-            txbValor.Enabled = true;
-            txbQuantidade.Enabled = true;
-            txbDescricao.Enabled = true;
-            bntCadastrar.Enabled = true;
+            //Habilitando Botão
+            btnCancelar.Enabled = true;
+
+            //Desabilitando Botão
+            btnPesquisar.Enabled = false;
+            btnAdicionar.Enabled = false;
+
+            //Desabilitando Campos
+            txbCodigo.Enabled = false;
+
+            int i = 1;
+            foreach(Produto produto in Start.produtos)
+            {
+                if (i == produto.ID)
+                    i++;
+                else
+                {
+                    txbCodigo.Text = i.ToString();
+                    alterarCamposEmFuncao_btnAdicionar();
+                    return;
+                }
+            }
+            txbCodigo.Text = (i++).ToString();
+            alterarCamposEmFuncao_btnAdicionar();
         }
 
         private void picBExit_Click_1(object sender, EventArgs e)
         {
             this.Close();
         }
+
+
+        //---------------------------------------------------------------Pesquisar
+        private void btnPesquisar_Click(object sender, EventArgs e)
+        {
+            if(txbCodigo.Text == "" || txbCodigo.Text == "0")
+            {
+                MessageBox.Show("Digite um numero valido para pesquisar");
+            }
+            else
+            {
+                foreach(Produto produto in Start.produtos)
+                {
+                    if((codigo = Convert.ToInt32(txbCodigo.Text)) == produto.ID)
+                    {
+                        alterarCamposEmFunca_btnPesquisar();
+                        //Escreve os dados nos campos
+                        txbDescricao.Text = produto.Descricao;
+                        txbQuantidade.Text = produto.Quantidade;
+                        txbValor.Text = produto.Valor.ToString();
+                        return;
+                    }
+                }
+                MessageBox.Show("Numero de ID não existe");
+            }
+        }
+
+        //------------------------------------------------------Editar
+        private void btnEditar_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Deseja mesmo editar esse registro?", "Atenção", MessageBoxButtons.YesNo) == DialogResult.No)
+                return;
+            codigo = Convert.ToInt32(txbCodigo.Text);
+            descricao = txbDescricao.Text;
+            quantidade = txbQuantidade.Text;
+            valor = Convert.ToDouble(txbValor.Text);
+            Start.Editar_produto(valor, quantidade, descricao, codigo);
+            alterarCamposPara_origin();
+        }
+
+        //---------------------------------------------------------Cancelar
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            alterarCamposPara_origin();
+        }
+        //----------------------------------end-Adicionar Pesquisar e Editar  PRODUTOS---------------------------------
+
+        //-------------------------------------------Metodos utilizaveis-----------------------------------------------
+        void alterarCamposPara_origin()
+        {
+            //Habilitando Botões 
+            btnAdicionar.Enabled = true;
+            btnPesquisar.Enabled = true;
+
+            //Desabilitando Botões
+            btnEditar.Enabled = false;
+            bntCadastrar.Enabled = false;
+            btnCancelar.Enabled = false;
+
+            //Habilitando campos
+            txbCodigo.Enabled = true;
+
+            //Desabilitando campos
+            txbDescricao.Enabled = false;
+            txbQuantidade.Enabled = false;
+            txbValor.Enabled = false;
+
+            //Limpando campos
+            txbCodigo.Clear();
+            txbDescricao.Clear();
+            txbQuantidade.Clear();
+            txbValor.Clear();
+        }
+
+        void alterarCamposEmFunca_btnPesquisar()
+        {
+            //Habilita botão
+            btnEditar.Enabled = true;
+            btnCancelar.Enabled = true;
+
+            //Desabilita botão
+            btnAdicionar.Enabled = false;
+
+            //Habilita Campos
+            txbDescricao.Enabled = true;
+            txbQuantidade.Enabled = true;
+            txbValor.Enabled = true;
+
+            //Desabilita Campos
+            txbCodigo.Enabled = false;
+        }
+
+        void alterarCamposEmFuncao_btnAdicionar()
+        {
+            txbValor.Enabled = true;
+            txbQuantidade.Enabled = true;
+            txbDescricao.Enabled = true;
+            bntCadastrar.Enabled = true;
+        }
+
+        //--------------------------------------------------------------------------------------------------------------
+
+        //--------------------------------------------start Exibição de Produtos----------------------------------------
+        private void APSprodutos_Load(object sender, EventArgs e)
+        {
+            dtGridView.DataSource = Start.produtos;
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            dtGridView.DataSource = null;
+            dtGridView.DataSource = Start.produtos;
+        }
+        //---------------------------------------------end Exibição de Produtos------------------------------------------
     }
 }
