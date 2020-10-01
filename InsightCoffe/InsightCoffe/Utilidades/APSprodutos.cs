@@ -14,9 +14,9 @@ namespace InsightCoffe.Utilidades
 {
     public partial class APSprodutos : Form
     {
-        public StartAPS Start { get; set; }
+        public PainelInicial Start { get; set; }
 
-        public APSprodutos(StartAPS start, List<Produto> produtos)
+        public APSprodutos(PainelInicial start, List<Produto> produtos)
         {
             InitializeComponent();
             this.Start = start;
@@ -118,6 +118,7 @@ namespace InsightCoffe.Utilidades
                     if((codigo = Convert.ToInt32(txbCodigo.Text)) == produto.ID)
                     {
                         alterarCamposEmFunca_btnPesquisar();
+
                         //Escreve os dados nos campos
                         txbDescricao.Text = produto.Descricao;
                         txbQuantidade.Text = produto.Quantidade;

@@ -129,6 +129,17 @@ namespace InsightCoffe
             tbPassword.PasswordChar = Convert.ToChar("*");
         }
 
+        private void Enter_pass(object sender, EventArgs e)
+        {
+
+        }
+
+        private void TxtChanged(object sender, EventArgs e)
+        {
+             tbPassword.PasswordChar = Convert.ToChar("*");
+             tbPassword.ForeColor = Color.Black;
+        }
+
         private void Leave_pass(object sender, EventArgs e)
         {
             if(tbPassword.Text == "" || tbPassword.Text == "Password")
@@ -161,7 +172,7 @@ namespace InsightCoffe
 
         private void Aplicativo()
         {
-            Application.Run(new Utilidades.StartAPS(this, usuarios));
+            Application.Run(new Utilidades.PainelInicial(this, usuarios));
         }
         //--------------------------------------End outras APLICAÇÕES------------------------------------
     }

@@ -5,20 +5,22 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Imaging;
 using System.Linq;
 using System.Text;
-using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace InsightCoffe.Utilidades
 {
-    public partial class StartAPS : Form
+    public partial class PainelInicial : Form
     {
+        private int childFormNumber = 0;
+
         public List<Produto> produtos = new List<Produto>();
 
         private Form1 Form1;
-        public StartAPS(Form1 form1, List<Usuarios> usuarios)
+        public PainelInicial(Form1 form1, List<Usuarios> usuarios)
         {
             InitializeComponent();
             this.Form1 = form1;
@@ -227,6 +229,24 @@ namespace InsightCoffe.Utilidades
                 Valor = 2.25
             });
         }
+        //---------------------------------Informações personalizadas---------------------------------------
+        public string user;
+        public string acesso;
+
+        private void PainelInicial_Load(object sender, EventArgs e)
+        {
+            //-------------------------------------Salvando o acesso-----------------------------------------
+            user = Form1.user;
+            acesso = Form1.acess;
+
+            //-----------------------------------Codigo de acesso restrito------------------------------------
+            lblUsuarioLogado.Text = Form1.user;
+            toolStrip_lblusuario.Text = "Usuario logado: " + Form1.user;
+            if (Form1.acess != "Total")
+            {
+                bntProdutos.Visible = false;
+            }
+        }
 
         //--------------------------------------Mover formulario--------------------------------------------
         Point DragCursor;
@@ -254,53 +274,118 @@ namespace InsightCoffe.Utilidades
         }
         //-------------------------------------end-Mover formulario---------------------------------------
 
-        //-------------------------------------------Fechar aplicação-------------------------------------
-        private void picBExit_Click_1(object sender, EventArgs e)
+        //-------------------------------------------Minimizar, Maximizar e Fechar aplicação--------------
+        private void ExitToolsStripMenuItem_Click(object sender, EventArgs e)
         {
-
             if (MessageBox.Show("Deseja fechar todo o Sistema, incuindo todas as telas abertas neste momento?", "Atenção", MessageBoxButtons.YesNo) == DialogResult.Yes)
                 Application.Exit();
         }
-        //-----------------------------------------------------------------------------------------------
 
-        //-----------------------------------------Minimizar aplicação------------------------------------
-        private void picBMinimize_Click(object sender, EventArgs e)
+        private void btnFechar_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Deseja fechar todo o Sistema, incuindo todas as telas abertas neste momento?", "Atenção", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                Application.Exit();
+        }
+
+        private void bntMaximizar_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Maximized;
+            bntMaximizar.Visible = false;
+            btnNormal.Visible = true;
+        }
+
+        private void btnMinimizar_Click(object sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Minimized;
         }
-        //------------------------------------------------------------------------------------------------
+
+        private void btnNormal_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Normal;
+            bntMaximizar.Visible = true;
+            btnNormal.Visible = false;
+        }
+
+        //Leave
+        private void LeaveMinimizar(object sender, EventArgs e)
+        {
+            btnMinimizar.FlatAppearance.BorderColor = Color.DimGray;
+        }
+        private void LeaveMaximizar(object sender, EventArgs e)
+        {
+            bntMaximizar.FlatAppearance.BorderColor = Color.DimGray;
+        }
+        private void LeaveFechar(object sender, EventArgs e)
+        {
+            btnFechar.FlatAppearance.BorderColor = Color.DimGray;
+        }
+        private void LeaveNormal(object sender, EventArgs e)
+        {
+            btnNormal.FlatAppearance.BorderColor = Color.DimGray;
+        }
+        //Control
+        private void controlFechar(object sender, MouseEventArgs e)
+        {
+            btnFechar.FlatAppearance.BorderColor = Color.Gray;
+        }
+        private void controlMaximizar(object sender, MouseEventArgs e)
+        {
+            bntMaximizar.FlatAppearance.BorderColor = Color.Gray;
+        }
+        private void controlMinimizar(object sender, MouseEventArgs e)
+        {
+            btnMinimizar.FlatAppearance.BorderColor = Color.Gray;
+        }
+        private void controlNormal(object sender, MouseEventArgs e)
+        {
+            btnNormal.FlatAppearance.BorderColor = Color.Gray;
+        }
+
+
+        //-----------------------------------------------------------------------------------------------
 
         //---------------------------start Sequencia de EVENTOS abertura das outras Telas-----------------
-        private void bntVendas_Click_1(object sender, EventArgs e)
+        private void bntVendas_Click(object sender, EventArgs e)
         {
-            APSvendas apsPagamento = new APSvendas();
-            apsPagamento.Show();
+            Tela_de_Vendas();
         }
 
         private void bntPagamento_Click_1(object sender, EventArgs e)
         {
-            APSpagamento apsPagamento = new APSpagamento();
+            Tela_de_Pagamentos();
+        }
+
+        private void bntProdutos_Click(object sender, EventArgs e)
+        {
+            Tela_de_Produtos();
+        }
+        //-------------------------End Sequencia de EVENTOS abertura das outras Telas---------------------
+
+        //---------------------------start Sequencia de EVENTOS abertura das outras Telas-----------------
+        private void Tela_de_Vendas()
+        {
+            APSvendas apsPagamento = new APSvendas(this, produtos);
+            apsPagamento.MdiParent = this;
             apsPagamento.Show();
         }
 
-        private void bntProdutos_Click_1(object sender, EventArgs e)
+        private void Tela_de_Pagamentos()
+        {
+            APSpagamento apsPagamento = new APSpagamento();
+            apsPagamento.MdiParent = this;
+            apsPagamento.Show();
+        }
+
+        private void Tela_de_Produtos()
         {
             APSprodutos apsProdutos = new APSprodutos(this, produtos);
+            apsProdutos.MdiParent = this;
             apsProdutos.Start = this;
             apsProdutos.Show();
         }
         //-------------------------End Sequencia de EVENTOS abertura das outras Telas---------------------
 
-        //-----------------------------------Codigo de acesso restrito------------------------------------
-        private void StartAPS_Load(object sender, EventArgs e)
-        {
-            lblUsuarioLogado.Text = "Usuario logado: " + Form1.user;
-            if(Form1.acess != "Total")
-            {
-                bntProdutos.Enabled = false;
-            }
-        }
-        //--------------------------------end Codigo de acesso restrito------------------------------------       
+        //-----------------------------start APSprodutos LISTA de PRODUTOS---------------------------------       
         public void Adicionar_produto(double valor, string quantidade, string descricao, int codigo)
         {
             produtos.Add(new Produto()
@@ -311,12 +396,12 @@ namespace InsightCoffe.Utilidades
                 Valor = valor
             });
         }
-        
+
         public void Editar_produto(double valor, string quantidade, string descricao, int codigo)
         {
-            foreach(Produto produto in produtos)
+            foreach (Produto produto in produtos)
             {
-                if(codigo == produto.ID)
+                if (codigo == produto.ID)
                 {
                     produto.Descricao = descricao;
                     produto.Quantidade = quantidade;
@@ -324,7 +409,101 @@ namespace InsightCoffe.Utilidades
                 }
             }
         }
-        //--------------------------------end Codigo de acesso restrito------------------------------------
+        //------------------------------end APSprodutos LISTA de PRODUTOS----------------------------------
+
+        private void ShowNewForm(object sender, EventArgs e)
+        {
+            Form childForm = new Form();
+            childForm.MdiParent = this;
+            childForm.Text = "Janela " + childFormNumber++;
+            childForm.Show();
+        }
+
+        private void OpenFile(object sender, EventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
+            openFileDialog.Filter = "Arquivos de texto (*.txt)|*.txt|Todos os arquivos (*.*)|*.*";
+            if (openFileDialog.ShowDialog(this) == DialogResult.OK)
+            {
+                string FileName = openFileDialog.FileName;
+            }
+        }
+
+        private void SaveAsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            saveFileDialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
+            saveFileDialog.Filter = "Arquivos de texto (*.txt)|*.txt|Todos os arquivos (*.*)|*.*";
+            if (saveFileDialog.ShowDialog(this) == DialogResult.OK)
+            {
+                string FileName = saveFileDialog.FileName;
+            }
+        }
+
+        private void CutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+        }
+
+        private void CopyToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+        }
+
+        private void PasteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+        }
+
+        private void ToolBarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void StatusBarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void CascadeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            LayoutMdi(MdiLayout.Cascade);
+        }
+
+        private void TileVerticalToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            LayoutMdi(MdiLayout.TileVertical);
+        }
+
+        private void TileHorizontalToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            LayoutMdi(MdiLayout.TileHorizontal);
+        }
+
+        private void ArrangeIconsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            LayoutMdi(MdiLayout.ArrangeIcons);
+        }
+
+        private void CloseAllToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            foreach (Form childForm in MdiChildren)
+            {
+                childForm.Close();
+            }
+        }
+
+
+
+
+        private void menuStrip_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+
+        }
+
+        private void panel2_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+
     }
 }
-

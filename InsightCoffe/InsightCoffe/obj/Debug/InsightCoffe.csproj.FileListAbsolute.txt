@@ -51,9 +51,9 @@ C:\InsightCoffeVersions\InsightCoffe\InsightCoffe\obj\Debug\InsightCoffe.Utilida
 C:\InsightCoffeVersions\InsightCoffe\InsightCoffe\obj\Debug\InsightCoffe.Utilidades.APSvendas.resources
 C:\InsightCoffeVersions\InsightCoffe\InsightCoffe\obj\Debug\InsightCoffe.Form1.resources
 C:\InsightCoffeVersions\InsightCoffe\InsightCoffe\obj\Debug\InsightCoffe.Properties.Resources.resources
-C:\InsightCoffeVersions\InsightCoffe\InsightCoffe\obj\Debug\InsightCoffe.Utilidades.StartAPS.resources
 C:\InsightCoffeVersions\InsightCoffe\InsightCoffe\obj\Debug\InsightCoffe.csproj.GenerateResource.cache
 C:\InsightCoffeVersions\InsightCoffe\InsightCoffe\obj\Debug\InsightCoffe.csproj.CoreCompileInputs.cache
 C:\InsightCoffeVersions\InsightCoffe\InsightCoffe\obj\Debug\InsightCoffe.csproj.CopyComplete
 C:\InsightCoffeVersions\InsightCoffe\InsightCoffe\obj\Debug\InsightCoffe.exe
 C:\InsightCoffeVersions\InsightCoffe\InsightCoffe\obj\Debug\InsightCoffe.pdb
+C:\InsightCoffeVersions\InsightCoffe\InsightCoffe\obj\Debug\InsightCoffe.Utilidades.PainelInicial.resources

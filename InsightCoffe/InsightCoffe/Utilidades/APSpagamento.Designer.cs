@@ -57,6 +57,7 @@
             this.button3.TabIndex = 29;
             this.button3.Text = "Imprimir";
             this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // button2
             // 
@@ -171,6 +172,9 @@
             this.picBBarra.Size = new System.Drawing.Size(456, 50);
             this.picBBarra.TabIndex = 15;
             this.picBBarra.TabStop = false;
+            this.picBBarra.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Form_MouseDown);
+            this.picBBarra.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Form_MouseMove);
+            this.picBBarra.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Form_MouseUp);
             // 
             // button1
             // 
