@@ -78,14 +78,14 @@
             this.bntPagamento = new System.Windows.Forms.Button();
             this.bntVendas = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.lblUsuarioLogado = new System.Windows.Forms.Label();
-            this.btnPedidos = new System.Windows.Forms.Button();
-            this.btnNormal = new System.Windows.Forms.Button();
-            this.bntMaximizar = new System.Windows.Forms.Button();
-            this.btnMinimizar = new System.Windows.Forms.Button();
             this.btnFechar = new System.Windows.Forms.Button();
+            this.btnMinimizar = new System.Windows.Forms.Button();
+            this.bntMaximizar = new System.Windows.Forms.Button();
+            this.btnNormal = new System.Windows.Forms.Button();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.btnPedidos = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.lblUsuarioLogado = new System.Windows.Forms.Label();
             this.menuStrip.SuspendLayout();
             this.statusStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -535,78 +535,26 @@
             this.panel2.TabIndex = 52;
             this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
             // 
-            // pictureBox2
+            // btnFechar
             // 
-            this.pictureBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBox2.Location = new System.Drawing.Point(1088, 31);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(46, 35);
-            this.pictureBox2.TabIndex = 50;
-            this.pictureBox2.TabStop = false;
-            // 
-            // lblUsuarioLogado
-            // 
-            this.lblUsuarioLogado.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblUsuarioLogado.AutoSize = true;
-            this.lblUsuarioLogado.Font = new System.Drawing.Font("MS Reference Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblUsuarioLogado.Location = new System.Drawing.Point(6, 6);
-            this.lblUsuarioLogado.Name = "lblUsuarioLogado";
-            this.lblUsuarioLogado.Size = new System.Drawing.Size(74, 20);
-            this.lblUsuarioLogado.TabIndex = 49;
-            this.lblUsuarioLogado.Text = "Gerente";
-            // 
-            // btnPedidos
-            // 
-            this.btnPedidos.FlatAppearance.BorderColor = System.Drawing.Color.DimGray;
-            this.btnPedidos.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver;
-            this.btnPedidos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnPedidos.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPedidos.Location = new System.Drawing.Point(345, 35);
-            this.btnPedidos.Name = "btnPedidos";
-            this.btnPedidos.Size = new System.Drawing.Size(146, 44);
-            this.btnPedidos.TabIndex = 6;
-            this.btnPedidos.Text = "Pedidos";
-            this.btnPedidos.UseVisualStyleBackColor = true;
-            // 
-            // btnNormal
-            // 
-            this.btnNormal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnNormal.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.btnNormal.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnNormal.BackgroundImage")));
-            this.btnNormal.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnNormal.FlatAppearance.BorderColor = System.Drawing.Color.DimGray;
-            this.btnNormal.FlatAppearance.BorderSize = 7;
-            this.btnNormal.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Gray;
-            this.btnNormal.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gray;
-            this.btnNormal.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnNormal.Location = new System.Drawing.Point(1094, 0);
-            this.btnNormal.Name = "btnNormal";
-            this.btnNormal.Size = new System.Drawing.Size(26, 26);
-            this.btnNormal.TabIndex = 54;
-            this.btnNormal.UseVisualStyleBackColor = false;
-            this.btnNormal.Click += new System.EventHandler(this.btnNormal_Click);
-            this.btnNormal.MouseLeave += new System.EventHandler(this.LeaveNormal);
-            this.btnNormal.MouseMove += new System.Windows.Forms.MouseEventHandler(this.controlNormal);
-            // 
-            // bntMaximizar
-            // 
-            this.bntMaximizar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.bntMaximizar.BackColor = System.Drawing.Color.DimGray;
-            this.bntMaximizar.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("bntMaximizar.BackgroundImage")));
-            this.bntMaximizar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.bntMaximizar.FlatAppearance.BorderColor = System.Drawing.Color.DimGray;
-            this.bntMaximizar.FlatAppearance.BorderSize = 7;
-            this.bntMaximizar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Gray;
-            this.bntMaximizar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gray;
-            this.bntMaximizar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.bntMaximizar.Location = new System.Drawing.Point(1094, 0);
-            this.bntMaximizar.Name = "bntMaximizar";
-            this.bntMaximizar.Size = new System.Drawing.Size(26, 26);
-            this.bntMaximizar.TabIndex = 55;
-            this.bntMaximizar.UseVisualStyleBackColor = false;
-            this.bntMaximizar.Click += new System.EventHandler(this.bntMaximizar_Click);
-            this.bntMaximizar.MouseLeave += new System.EventHandler(this.LeaveMaximizar);
-            this.bntMaximizar.MouseMove += new System.Windows.Forms.MouseEventHandler(this.controlMaximizar);
+            this.btnFechar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnFechar.BackColor = System.Drawing.Color.DimGray;
+            this.btnFechar.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnFechar.BackgroundImage")));
+            this.btnFechar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnFechar.FlatAppearance.BorderColor = System.Drawing.Color.DimGray;
+            this.btnFechar.FlatAppearance.BorderSize = 5;
+            this.btnFechar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Gray;
+            this.btnFechar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gray;
+            this.btnFechar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnFechar.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnFechar.Location = new System.Drawing.Point(1121, 0);
+            this.btnFechar.Name = "btnFechar";
+            this.btnFechar.Size = new System.Drawing.Size(26, 26);
+            this.btnFechar.TabIndex = 57;
+            this.btnFechar.UseVisualStyleBackColor = false;
+            this.btnFechar.Click += new System.EventHandler(this.btnFechar_Click);
+            this.btnFechar.MouseLeave += new System.EventHandler(this.LeaveFechar);
+            this.btnFechar.MouseMove += new System.Windows.Forms.MouseEventHandler(this.controlFechar);
             // 
             // btnMinimizar
             // 
@@ -629,26 +577,67 @@
             this.btnMinimizar.MouseLeave += new System.EventHandler(this.LeaveMinimizar);
             this.btnMinimizar.MouseMove += new System.Windows.Forms.MouseEventHandler(this.controlMinimizar);
             // 
-            // btnFechar
+            // bntMaximizar
             // 
-            this.btnFechar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnFechar.BackColor = System.Drawing.Color.DimGray;
-            this.btnFechar.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnFechar.BackgroundImage")));
-            this.btnFechar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btnFechar.FlatAppearance.BorderColor = System.Drawing.Color.DimGray;
-            this.btnFechar.FlatAppearance.BorderSize = 5;
-            this.btnFechar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Gray;
-            this.btnFechar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gray;
-            this.btnFechar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnFechar.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnFechar.Location = new System.Drawing.Point(1121, 0);
-            this.btnFechar.Name = "btnFechar";
-            this.btnFechar.Size = new System.Drawing.Size(26, 26);
-            this.btnFechar.TabIndex = 57;
-            this.btnFechar.UseVisualStyleBackColor = false;
-            this.btnFechar.Click += new System.EventHandler(this.btnFechar_Click);
-            this.btnFechar.MouseLeave += new System.EventHandler(this.LeaveFechar);
-            this.btnFechar.MouseMove += new System.Windows.Forms.MouseEventHandler(this.controlFechar);
+            this.bntMaximizar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.bntMaximizar.BackColor = System.Drawing.Color.DimGray;
+            this.bntMaximizar.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("bntMaximizar.BackgroundImage")));
+            this.bntMaximizar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.bntMaximizar.FlatAppearance.BorderColor = System.Drawing.Color.DimGray;
+            this.bntMaximizar.FlatAppearance.BorderSize = 7;
+            this.bntMaximizar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Gray;
+            this.bntMaximizar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gray;
+            this.bntMaximizar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.bntMaximizar.Location = new System.Drawing.Point(1094, 0);
+            this.bntMaximizar.Name = "bntMaximizar";
+            this.bntMaximizar.Size = new System.Drawing.Size(26, 26);
+            this.bntMaximizar.TabIndex = 55;
+            this.bntMaximizar.UseVisualStyleBackColor = false;
+            this.bntMaximizar.Click += new System.EventHandler(this.bntMaximizar_Click);
+            this.bntMaximizar.MouseLeave += new System.EventHandler(this.LeaveMaximizar);
+            this.bntMaximizar.MouseMove += new System.Windows.Forms.MouseEventHandler(this.controlMaximizar);
+            // 
+            // btnNormal
+            // 
+            this.btnNormal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnNormal.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.btnNormal.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnNormal.BackgroundImage")));
+            this.btnNormal.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnNormal.FlatAppearance.BorderColor = System.Drawing.Color.DimGray;
+            this.btnNormal.FlatAppearance.BorderSize = 7;
+            this.btnNormal.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Gray;
+            this.btnNormal.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gray;
+            this.btnNormal.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnNormal.Location = new System.Drawing.Point(1094, 0);
+            this.btnNormal.Name = "btnNormal";
+            this.btnNormal.Size = new System.Drawing.Size(26, 26);
+            this.btnNormal.TabIndex = 54;
+            this.btnNormal.UseVisualStyleBackColor = false;
+            this.btnNormal.Click += new System.EventHandler(this.btnNormal_Click);
+            this.btnNormal.MouseLeave += new System.EventHandler(this.LeaveNormal);
+            this.btnNormal.MouseMove += new System.Windows.Forms.MouseEventHandler(this.controlNormal);
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBox2.Location = new System.Drawing.Point(1088, 31);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(46, 35);
+            this.pictureBox2.TabIndex = 50;
+            this.pictureBox2.TabStop = false;
+            // 
+            // btnPedidos
+            // 
+            this.btnPedidos.FlatAppearance.BorderColor = System.Drawing.Color.DimGray;
+            this.btnPedidos.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver;
+            this.btnPedidos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPedidos.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPedidos.Location = new System.Drawing.Point(345, 35);
+            this.btnPedidos.Name = "btnPedidos";
+            this.btnPedidos.Size = new System.Drawing.Size(146, 44);
+            this.btnPedidos.TabIndex = 6;
+            this.btnPedidos.Text = "Pedidos";
+            this.btnPedidos.UseVisualStyleBackColor = true;
             // 
             // panel1
             // 
@@ -659,6 +648,17 @@
             this.panel1.Size = new System.Drawing.Size(136, 40);
             this.panel1.TabIndex = 58;
             // 
+            // lblUsuarioLogado
+            // 
+            this.lblUsuarioLogado.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblUsuarioLogado.AutoSize = true;
+            this.lblUsuarioLogado.Font = new System.Drawing.Font("MS Reference Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblUsuarioLogado.Location = new System.Drawing.Point(6, 6);
+            this.lblUsuarioLogado.Name = "lblUsuarioLogado";
+            this.lblUsuarioLogado.Size = new System.Drawing.Size(74, 20);
+            this.lblUsuarioLogado.TabIndex = 49;
+            this.lblUsuarioLogado.Text = "Gerente";
+            // 
             // PainelInicial
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -668,6 +668,7 @@
             this.Controls.Add(this.statusStrip);
             this.Controls.Add(this.panel2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.IsMdiContainer = true;
             this.MainMenuStrip = this.menuStrip;
             this.Name = "PainelInicial";

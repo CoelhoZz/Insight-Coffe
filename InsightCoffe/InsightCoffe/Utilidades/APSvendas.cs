@@ -124,6 +124,9 @@ namespace InsightCoffe.Utilidades
 
         }
 
+        private void APSvendas_Load(object sender, EventArgs e)
+        {
 
+        }
     }
 }

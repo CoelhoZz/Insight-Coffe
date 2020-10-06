@@ -206,6 +206,7 @@
             this.Controls.Add(this.picBExit);
             this.Controls.Add(this.picBBarra);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "APSpagamento";
             this.Text = "APSpagamento";
             this.Load += new System.EventHandler(this.APSpagamento_Load);
