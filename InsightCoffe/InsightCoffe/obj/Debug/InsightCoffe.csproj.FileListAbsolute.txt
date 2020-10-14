@@ -45,7 +45,6 @@ C:\InsightCoffeVersions\InsightCoffe\InsightCoffe\bin\Debug\EntityFramework.xml
 C:\InsightCoffeVersions\InsightCoffe\InsightCoffe\bin\Debug\EntityFramework.SqlServer.xml
 C:\InsightCoffeVersions\InsightCoffe\InsightCoffe\bin\Debug\Newtonsoft.Json.xml
 C:\InsightCoffeVersions\InsightCoffe\InsightCoffe\bin\Debug\System.Reflection.TypeExtensions.xml
-C:\InsightCoffeVersions\InsightCoffe\InsightCoffe\obj\Debug\InsightCoffe.csprojAssemblyReference.cache
 C:\InsightCoffeVersions\InsightCoffe\InsightCoffe\obj\Debug\InsightCoffe.Utilidades.APSpagamento.resources
 C:\InsightCoffeVersions\InsightCoffe\InsightCoffe\obj\Debug\InsightCoffe.Utilidades.APSprodutos.resources
 C:\InsightCoffeVersions\InsightCoffe\InsightCoffe\obj\Debug\InsightCoffe.Utilidades.APSvendas.resources
@@ -57,3 +56,5 @@ C:\InsightCoffeVersions\InsightCoffe\InsightCoffe\obj\Debug\InsightCoffe.csproj.
 C:\InsightCoffeVersions\InsightCoffe\InsightCoffe\obj\Debug\InsightCoffe.exe
 C:\InsightCoffeVersions\InsightCoffe\InsightCoffe\obj\Debug\InsightCoffe.pdb
 C:\InsightCoffeVersions\InsightCoffe\InsightCoffe\obj\Debug\InsightCoffe.Utilidades.PainelInicial.resources
+C:\InsightCoffeVersions\InsightCoffe\InsightCoffe\bin\Debug\XanderUI.dll
+C:\InsightCoffeVersions\InsightCoffe\InsightCoffe\obj\Debug\InsightCoffe.csprojAssemblyReference.cache

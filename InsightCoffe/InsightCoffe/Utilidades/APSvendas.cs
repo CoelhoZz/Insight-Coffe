@@ -44,13 +44,17 @@ namespace InsightCoffe.Utilidades
             DragCursor = Cursor.Position;
             DragForm = this.Location;
         }
-        //-------------------------------------end-Mover formulario---------------------------------------
+        //-------------------------------------end-Mover formulario---------------------------------------        
 
         //-------------------------------------------Minimizar, Maximizar e Fechar aplicação--------------
         private void btnFechar_Click(object sender, EventArgs e)
         {
             if (MessageBox.Show("Deseja fechar todo o Sistema, incuindo todas as telas abertas neste momento?", "Atenção", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            {
+                inicial1.TelaVend = false;
                 this.Close();
+            }
+                
         }
 
         private void bntMaximizar_Click(object sender, EventArgs e)
@@ -125,6 +129,11 @@ namespace InsightCoffe.Utilidades
         }
 
         private void APSvendas_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
         {
 
         }

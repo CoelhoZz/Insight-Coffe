@@ -179,6 +179,7 @@
             this.button2.TabIndex = 13;
             this.button2.Text = "Salvar Pedido";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // label5
             // 
@@ -466,9 +467,8 @@
             // 
             // APSvendas
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.AutoScroll = true;
+            this.AllowDrop = true;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(674, 896);
             this.Controls.Add(this.btnFechar);
@@ -486,9 +486,11 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.picBBarra);
             this.Controls.Add(this.panel2);
+            this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "APSvendas";
+            this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Show;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Registrar Pedidos";
             this.Load += new System.EventHandler(this.APSvendas_Load);

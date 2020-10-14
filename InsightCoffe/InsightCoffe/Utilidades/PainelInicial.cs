@@ -238,14 +238,19 @@ namespace InsightCoffe.Utilidades
             //-------------------------------------Salvando o acesso-----------------------------------------
             user = Form1.user;
             acesso = Form1.acess;
-
+            lblRelogio.Text = DateTime.Now.ToShortTimeString();
             //-----------------------------------Codigo de acesso restrito------------------------------------
             lblUsuarioLogado.Text = Form1.user;
-            toolStrip_lblusuario.Text = "Usuario logado: " + Form1.user;
+            toolStrip_lblusuario.Text = "Usuario logado: " + user;
             if (Form1.acess != "Total")
             {
                 bntProdutos.Visible = false;
             }
+        }
+        // Descrição de botões
+        private void timerTempoReal_Tick(object sender, EventArgs e)
+        {
+            lblRelogio.Text = DateTime.Now.ToShortTimeString();
         }
 
         //--------------------------------------Mover formulario--------------------------------------------
@@ -309,55 +314,80 @@ namespace InsightCoffe.Utilidades
         //Leave
         private void LeaveMinimizar(object sender, EventArgs e)
         {
-            btnMinimizar.FlatAppearance.BorderColor = Color.DimGray;
+            btnMinimizar.FlatAppearance.BorderColor = Color.SaddleBrown;
         }
         private void LeaveMaximizar(object sender, EventArgs e)
         {
-            bntMaximizar.FlatAppearance.BorderColor = Color.DimGray;
+            bntMaximizar.FlatAppearance.BorderColor = Color.SaddleBrown;
         }
         private void LeaveFechar(object sender, EventArgs e)
         {
-            btnFechar.FlatAppearance.BorderColor = Color.DimGray;
+            btnFechar.FlatAppearance.BorderColor = Color.SaddleBrown;
         }
         private void LeaveNormal(object sender, EventArgs e)
         {
-            btnNormal.FlatAppearance.BorderColor = Color.DimGray;
+            btnNormal.FlatAppearance.BorderColor = Color.SaddleBrown;
         }
         //Control
         private void controlFechar(object sender, MouseEventArgs e)
         {
-            btnFechar.FlatAppearance.BorderColor = Color.Gray;
+            btnFechar.FlatAppearance.BorderColor = Color.Red;
         }
         private void controlMaximizar(object sender, MouseEventArgs e)
         {
-            bntMaximizar.FlatAppearance.BorderColor = Color.Gray;
+            bntMaximizar.FlatAppearance.BorderColor = Color.Gainsboro;
+            
         }
         private void controlMinimizar(object sender, MouseEventArgs e)
         {
-            btnMinimizar.FlatAppearance.BorderColor = Color.Gray;
+            btnMinimizar.FlatAppearance.BorderColor = Color.Gainsboro;
+            
         }
         private void controlNormal(object sender, MouseEventArgs e)
         {
-            btnNormal.FlatAppearance.BorderColor = Color.Gray;
+            btnNormal.FlatAppearance.BorderColor = Color.Gainsboro;
         }
 
 
         //-----------------------------------------------------------------------------------------------
 
+        //-------------------------------Mostrar painel com botões de Aplicativos-------------------------
+        private void bntMostrarAplicativos_Click(object sender, EventArgs e)
+        {
+            if(!panelAplicações.Visible)
+            {
+                panelAplicações.Visible = true;
+                return;
+            }
+            panelAplicações.Visible = false;
+        }
         //---------------------------start Sequencia de EVENTOS abertura das outras Telas-----------------
+        public bool TelaVend = false, TelaPag = false, TelaProd = false;
+
+        private void bntPagamento_Click(object sender, EventArgs e)
+        {
+            if (TelaPag == false)
+            {
+                Tela_de_Pagamentos();
+                TelaPag = true;
+            }
+        }
         private void bntVendas_Click(object sender, EventArgs e)
         {
-            Tela_de_Vendas();
+            if (TelaVend == false)
+            {
+                Tela_de_Vendas();
+                TelaVend = true;
+            }
         }
 
-        private void bntPagamento_Click_1(object sender, EventArgs e)
+        private void bntProdutos_Click_1(object sender, EventArgs e)
         {
-            Tela_de_Pagamentos();
-        }
-
-        private void bntProdutos_Click(object sender, EventArgs e)
-        {
-            Tela_de_Produtos();
+            if (TelaProd == false)
+            {
+                Tela_de_Produtos();
+                TelaProd = true;
+            }
         }
         //-------------------------End Sequencia de EVENTOS abertura das outras Telas---------------------
 
@@ -490,7 +520,6 @@ namespace InsightCoffe.Utilidades
                 childForm.Close();
             }
         }
-
 
 
 
