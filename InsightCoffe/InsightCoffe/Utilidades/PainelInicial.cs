@@ -10,6 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using XanderUI;
 
 namespace InsightCoffe.Utilidades
 {
@@ -18,6 +19,7 @@ namespace InsightCoffe.Utilidades
         private int childFormNumber = 0;
 
         public List<Produto> produtos = new List<Produto>();
+        public List<Pedido> pedido = new List<Pedido>(3);
 
         private Form1 Form1;
         public PainelInicial(Form1 form1, List<Usuarios> usuarios)
@@ -25,6 +27,17 @@ namespace InsightCoffe.Utilidades
             InitializeComponent();
             this.Form1 = form1;
 
+            MetodosProdutos();
+            MetodosPedidos();
+
+        }
+        //-------------------------------------Banco de Dados interno--------------------------------------
+
+        /// Produtos
+        /// Lista de Produtos
+        /// Metodo VOID
+        void MetodosProdutos()
+        {
             produtos.Add(new Produto()
             {
                 ID = 1,
@@ -229,9 +242,32 @@ namespace InsightCoffe.Utilidades
                 Valor = 2.25
             });
         }
+
+        /// Pedidos
+        /// Lista de Pedidos
+        /// Metodo VOID
+        void MetodosPedidos()
+        {
+            pedido.Add(new Pedido()
+            {
+                CodigoDeBarras = (long)1679435689426
+            });            
+            pedido.Add(new Pedido()
+            {
+                CodigoDeBarras = (long)1679435689440
+            });            
+            pedido.Add(new Pedido()
+            {
+                CodigoDeBarras = (long)1679435689433
+            });
+        }
+        //----------------------------------------------END-------------------------------------------------
+
+
         //---------------------------------Informações personalizadas---------------------------------------
         public string user;
         public string acesso;
+        public string time;
 
         private void PainelInicial_Load(object sender, EventArgs e)
         {
@@ -250,7 +286,7 @@ namespace InsightCoffe.Utilidades
         // Descrição de botões
         private void timerTempoReal_Tick(object sender, EventArgs e)
         {
-            lblRelogio.Text = DateTime.Now.ToShortTimeString();
+            lblRelogio.Text = (time = DateTime.Now.ToShortTimeString());
         }
 
         //--------------------------------------Mover formulario--------------------------------------------
@@ -328,7 +364,7 @@ namespace InsightCoffe.Utilidades
         {
             btnNormal.FlatAppearance.BorderColor = Color.SaddleBrown;
         }
-        //Control
+        //Mouse move em cima
         private void controlFechar(object sender, MouseEventArgs e)
         {
             btnFechar.FlatAppearance.BorderColor = Color.Red;
@@ -347,14 +383,12 @@ namespace InsightCoffe.Utilidades
         {
             btnNormal.FlatAppearance.BorderColor = Color.Gainsboro;
         }
-
-
         //-----------------------------------------------------------------------------------------------
 
         //-------------------------------Mostrar painel com botões de Aplicativos-------------------------
-        private void bntMostrarAplicativos_Click(object sender, EventArgs e)
+        private void bntMostrarAplicações_Click(object sender, EventArgs e)
         {
-            if(!panelAplicações.Visible)
+            if (!panelAplicações.Visible)
             {
                 panelAplicações.Visible = true;
                 return;
@@ -364,7 +398,7 @@ namespace InsightCoffe.Utilidades
         //---------------------------start Sequencia de EVENTOS abertura das outras Telas-----------------
         public bool TelaVend = false, TelaPag = false, TelaProd = false;
 
-        private void bntPagamento_Click(object sender, EventArgs e)
+        private void bntPagamento_Click_1(object sender, EventArgs e)
         {
             if (TelaPag == false)
             {
@@ -372,7 +406,7 @@ namespace InsightCoffe.Utilidades
                 TelaPag = true;
             }
         }
-        private void bntVendas_Click(object sender, EventArgs e)
+        private void bntVendas_Click_1(object sender, EventArgs e)
         {
             if (TelaVend == false)
             {
@@ -381,7 +415,7 @@ namespace InsightCoffe.Utilidades
             }
         }
 
-        private void bntProdutos_Click_1(object sender, EventArgs e)
+        private void bntProdutos_Click(object sender, EventArgs e)
         {
             if (TelaProd == false)
             {
@@ -392,11 +426,13 @@ namespace InsightCoffe.Utilidades
         //-------------------------End Sequencia de EVENTOS abertura das outras Telas---------------------
 
         //---------------------------start Sequencia de EVENTOS abertura das outras Telas-----------------
+        public System.Windows.Thickness BorderThickness { get; set; }
+
         private void Tela_de_Vendas()
         {
-            APSvendas apsPagamento = new APSvendas(this, produtos);
-            apsPagamento.MdiParent = this;
-            apsPagamento.Show();
+            APSvendas apsVendas = new APSvendas(this, produtos);
+            apsVendas.MdiParent = this;
+            apsVendas.Show();
         }
 
         private void Tela_de_Pagamentos()
@@ -441,6 +477,11 @@ namespace InsightCoffe.Utilidades
         }
         //------------------------------end APSprodutos LISTA de PRODUTOS----------------------------------
 
+        //-------------------------------start APSvendas LISTA de PEDIDOS----------------------------------       
+        public void Adicionar_Pedido(double)
+        //--------------------------------end APSvendas LISTA de PEDIDOS-----------------------------------
+
+        //---------------------------------start Tool Strip EVENTOS----------------------------------------
         private void ShowNewForm(object sender, EventArgs e)
         {
             Form childForm = new Form();
@@ -493,21 +534,6 @@ namespace InsightCoffe.Utilidades
 
         }
 
-        private void CascadeToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            LayoutMdi(MdiLayout.Cascade);
-        }
-
-        private void TileVerticalToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            LayoutMdi(MdiLayout.TileVertical);
-        }
-
-        private void TileHorizontalToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            LayoutMdi(MdiLayout.TileHorizontal);
-        }
-
         private void ArrangeIconsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             LayoutMdi(MdiLayout.ArrangeIcons);
@@ -519,20 +545,16 @@ namespace InsightCoffe.Utilidades
             {
                 childForm.Close();
             }
+            TelaPag = false;
+            TelaVend = false;
+            TelaProd = false;
         }
-
-
 
         private void menuStrip_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
 
         }
-
-        private void panel2_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
+        //-----------------------------------end Tool Strip EVENTOS----------------------------------------
 
     }
 }

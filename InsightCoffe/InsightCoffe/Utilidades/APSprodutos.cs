@@ -48,6 +48,42 @@ namespace InsightCoffe.Utilidades
         }
         //-------------------------------------end-Mover formulario---------------------------------------
 
+        //------------------------------Minimizar, Maximizar e Fechar aplicação---------------------------
+        private void btnFechar_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Deseja fechar todo o Sistema, incuindo todas as telas abertas neste momento?", "Atenção", MessageBoxButtons.YesNo) == DialogResult.No)
+                return;
+
+            this.Close();
+            Start.TelaProd = false;
+        }
+
+        private void btnMinimizar_Click_1(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
+        }
+
+        //Leave
+        private void LeaveFechar(object sender, EventArgs e)
+        {
+            btnFechar.FlatAppearance.BorderColor = Color.SaddleBrown;
+        }
+        private void LeaveMinimizar(object sender, EventArgs e)
+        {
+            btnMinimizar.FlatAppearance.BorderColor = Color.SaddleBrown;
+        }
+        //Control
+        private void controlFechar(object sender, MouseEventArgs e)
+        {
+            btnFechar.FlatAppearance.BorderColor = Color.Red;
+        }
+        private void controlMinimizar(object sender, MouseEventArgs e)
+        {
+            btnMinimizar.FlatAppearance.BorderColor = Color.Gainsboro;
+
+        }
+
+        //----------------------------------------------------------------------------------------------
         //-----------------------------start-Adicionar Pesquisar e Editar  PRODUTOS-------------------------
         public int codigo;
         public string descricao, quantidade;

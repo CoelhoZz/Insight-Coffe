@@ -48,7 +48,7 @@
             // 
             // btnConectar
             // 
-            this.btnConectar.BackColor = System.Drawing.Color.Gainsboro;
+            this.btnConectar.BackColor = System.Drawing.Color.Sienna;
             this.btnConectar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnConectar.Font = new System.Drawing.Font("MS Reference Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnConectar.Location = new System.Drawing.Point(22, 196);
@@ -64,7 +64,7 @@
             this.tbPassword.BackColor = System.Drawing.SystemColors.Control;
             this.tbPassword.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.tbPassword.Font = new System.Drawing.Font("Microsoft Yi Baiti", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbPassword.ForeColor = System.Drawing.Color.Silver;
+            this.tbPassword.ForeColor = System.Drawing.Color.SandyBrown;
             this.tbPassword.Location = new System.Drawing.Point(33, 136);
             this.tbPassword.Name = "tbPassword";
             this.tbPassword.Size = new System.Drawing.Size(160, 25);
@@ -73,7 +73,6 @@
             this.tbPassword.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.tbPassword.Click += new System.EventHandler(this.Click_pass);
             this.tbPassword.TextChanged += new System.EventHandler(this.TxtChanged);
-            this.tbPassword.Enter += new System.EventHandler(this.Enter_pass);
             this.tbPassword.Leave += new System.EventHandler(this.Leave_pass);
             // 
             // tbUsername
@@ -81,7 +80,7 @@
             this.tbUsername.BackColor = System.Drawing.SystemColors.Control;
             this.tbUsername.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.tbUsername.Font = new System.Drawing.Font("Microsoft Yi Baiti", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbUsername.ForeColor = System.Drawing.Color.Silver;
+            this.tbUsername.ForeColor = System.Drawing.Color.SandyBrown;
             this.tbUsername.Location = new System.Drawing.Point(33, 88);
             this.tbUsername.Name = "tbUsername";
             this.tbUsername.Size = new System.Drawing.Size(160, 25);
@@ -94,13 +93,12 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.SystemColors.GrayText;
-            this.label1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label1.BackColor = System.Drawing.Color.Sienna;
             this.label1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.label1.Font = new System.Drawing.Font("Palatino Linotype", 20.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(11, 11);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(87, 37);
+            this.label1.Size = new System.Drawing.Size(85, 35);
             this.label1.TabIndex = 10;
             this.label1.Text = "Login";
             this.label1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Form_MouseDown);
@@ -109,7 +107,7 @@
             // 
             // picBMinimize
             // 
-            this.picBMinimize.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.picBMinimize.BackColor = System.Drawing.Color.SaddleBrown;
             this.picBMinimize.Cursor = System.Windows.Forms.Cursors.Hand;
             this.picBMinimize.Image = ((System.Drawing.Image)(resources.GetObject("picBMinimize.Image")));
             this.picBMinimize.Location = new System.Drawing.Point(179, 2);
@@ -122,7 +120,7 @@
             // 
             // picBExit
             // 
-            this.picBExit.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.picBExit.BackColor = System.Drawing.Color.SaddleBrown;
             this.picBExit.Cursor = System.Windows.Forms.Cursors.Hand;
             this.picBExit.Image = ((System.Drawing.Image)(resources.GetObject("picBExit.Image")));
             this.picBExit.Location = new System.Drawing.Point(203, 2);
@@ -135,8 +133,7 @@
             // 
             // picBBarra
             // 
-            this.picBBarra.BackColor = System.Drawing.SystemColors.ButtonShadow;
-            this.picBBarra.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.picBBarra.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(223)))), ((int)(((byte)(150)))), ((int)(((byte)(64)))));
             this.picBBarra.Dock = System.Windows.Forms.DockStyle.Top;
             this.picBBarra.Location = new System.Drawing.Point(0, 24);
             this.picBBarra.Name = "picBBarra";
@@ -165,8 +162,8 @@
             // chkMostrar
             // 
             this.chkMostrar.AutoSize = true;
-            this.chkMostrar.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.chkMostrar.Location = new System.Drawing.Point(132, 167);
+            this.chkMostrar.ForeColor = System.Drawing.Color.SandyBrown;
+            this.chkMostrar.Location = new System.Drawing.Point(145, 167);
             this.chkMostrar.Name = "chkMostrar";
             this.chkMostrar.Size = new System.Drawing.Size(61, 17);
             this.chkMostrar.TabIndex = 6;
@@ -176,8 +173,7 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pictureBox1.BackColor = System.Drawing.Color.SaddleBrown;
             this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Top;
             this.pictureBox1.Location = new System.Drawing.Point(0, 0);
             this.pictureBox1.Name = "pictureBox1";

@@ -98,9 +98,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Entity\Cliente.cs" />
     <Compile Include="Entity\Usuarios.cs" />
     <Compile Include="Repositorios\AdicionarPedido.cs" />
     <Compile Include="Repositorios\CadCodigoBarras.cs" />
+    <Compile Include="Repositorios\Pedido.cs" />
     <Compile Include="Repositorios\Produto.cs" />
     <Compile Include="Utilidades\APSpagamento.cs">
       <SubType>Form</SubType>

@@ -14,6 +14,7 @@ namespace InsightCoffe.Utilidades
     public partial class APSvendas : Form
     {
         PainelInicial inicial1;
+
         public APSvendas(PainelInicial inicial, List<Produto> produtos)
         {
             InitializeComponent();
@@ -24,6 +25,7 @@ namespace InsightCoffe.Utilidades
         Point DragCursor;
         Point DragForm;
         bool Dragging;
+
         private void Form_MouseUp(object sender, MouseEventArgs e)
         {
             Dragging = false;
@@ -46,96 +48,89 @@ namespace InsightCoffe.Utilidades
         }
         //-------------------------------------end-Mover formulario---------------------------------------        
 
-        //-------------------------------------------Minimizar, Maximizar e Fechar aplicação--------------
+        //------------------------------Minimizar, Maximizar e Fechar aplicação---------------------------
         private void btnFechar_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Deseja fechar todo o Sistema, incuindo todas as telas abertas neste momento?", "Atenção", MessageBoxButtons.YesNo) == DialogResult.Yes)
-            {
-                inicial1.TelaVend = false;
-                this.Close();
-            }
-                
+            if (MessageBox.Show("Deseja fechar todo o Sistema, incuindo todas as telas abertas neste momento?", "Atenção", MessageBoxButtons.YesNo) == DialogResult.No)
+                return;
+
+            this.Close();
+            inicial1.TelaVend = false;
         }
 
         private void bntMaximizar_Click(object sender, EventArgs e)
         {
-            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.WindowState = FormWindowState.Maximized;
             bntMaximizar.Visible = false;
             btnNormal.Visible = true;
         }
 
-        private void btnNormal_Click(object sender, EventArgs e)
+        private void btnMinimizar_Click_1(object sender, EventArgs e)
         {
-            this.WindowState = System.Windows.Forms.FormWindowState.Normal;
-            bntMaximizar.Visible = true;
-            btnNormal.Visible = false;
+            this.WindowState = FormWindowState.Minimized;
         }
 
-        private void btnMinimizar_Click(object sender, EventArgs e)
+        private void btnNormal_Click(object sender, EventArgs e)
         {
-            this.WindowState = System.Windows.Forms.FormWindowState.Minimized;
+            this.WindowState = FormWindowState.Normal;
+            bntMaximizar.Visible = true;
+            btnNormal.Visible = false;
         }
 
         //Leave
         private void LeaveMinimizar(object sender, EventArgs e)
         {
-            btnMinimizar.FlatAppearance.BorderColor = Color.DimGray;
+            btnMinimizar.FlatAppearance.BorderColor = Color.SaddleBrown;
         }
         private void LeaveMaximizar(object sender, EventArgs e)
         {
-            bntMaximizar.FlatAppearance.BorderColor = Color.DimGray;
+            bntMaximizar.FlatAppearance.BorderColor = Color.SaddleBrown;
         }
         private void LeaveFechar(object sender, EventArgs e)
         {
-            btnFechar.FlatAppearance.BorderColor = Color.DimGray;
+            btnFechar.FlatAppearance.BorderColor = Color.SaddleBrown;
         }
         private void LeaveNormal(object sender, EventArgs e)
         {
-            btnNormal.FlatAppearance.BorderColor = Color.DimGray;
+            btnNormal.FlatAppearance.BorderColor = Color.SaddleBrown;
         }
         //Control
         private void controlFechar(object sender, MouseEventArgs e)
         {
-            btnFechar.FlatAppearance.BorderColor = Color.Gray;
+            btnFechar.FlatAppearance.BorderColor = Color.Red;
         }
         private void controlMaximizar(object sender, MouseEventArgs e)
         {
-            bntMaximizar.FlatAppearance.BorderColor = Color.Gray;
+            bntMaximizar.FlatAppearance.BorderColor = Color.Gainsboro;
+
         }
         private void controlMinimizar(object sender, MouseEventArgs e)
         {
-            btnMinimizar.FlatAppearance.BorderColor = Color.Gray;
+            btnMinimizar.FlatAppearance.BorderColor = Color.Gainsboro;
+
         }
         private void controlNormal(object sender, MouseEventArgs e)
         {
-            btnNormal.FlatAppearance.BorderColor = Color.Gray;
+            btnNormal.FlatAppearance.BorderColor = Color.Gainsboro;
         }
-        //-----------------------------------------------------------------------------------------------
 
-
-        private void button3_Click(object sender, EventArgs e)
+        //----------------------------------------------------------------------------------------------
+        //----------------------------start: Codigos de ativação de pedido------------------------------
+        private void KeyPress_CodigoBar(object sender, KeyPressEventArgs e)
         {
-
+            if (char.IsControl(e.KeyChar))
+                return;
+            if (!char.IsDigit(e.KeyChar))
+                e.Handled = true;
         }
 
-        private void label7_Click(object sender, EventArgs e)
+        private void KeyDown_CodigoBar(object sender, KeyEventArgs e)
         {
+            if(e.KeyCode == Keys.Enter)
+            {
 
+            }
         }
-
-        private void listView1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void APSvendas_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-
-        }
+        //------------------------------end: Codigos de ativação de pedido------------------------------
     }
 }

@@ -70,27 +70,26 @@
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.toolStrip_lblusuario = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripProgressBar1 = new System.Windows.Forms.ToolStripProgressBar();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
-            this.bntMostrarAplicativos = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.bntMostrarAplicações = new System.Windows.Forms.Button();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.btnFechar = new System.Windows.Forms.Button();
             this.btnMinimizar = new System.Windows.Forms.Button();
             this.lblUsuarioLogado = new System.Windows.Forms.Label();
-            this.bntMaximizar = new System.Windows.Forms.Button();
             this.btnNormal = new System.Windows.Forms.Button();
+            this.bntMaximizar = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.lblRelogio = new System.Windows.Forms.Label();
             this.timerTempoReal = new System.Windows.Forms.Timer(this.components);
             this.panelAplicações = new System.Windows.Forms.Panel();
-            this.bntPagamento = new XanderUI.XUIButton();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.bntVendas = new XanderUI.XUIButton();
             this.bntProdutos = new XanderUI.XUIButton();
+            this.bntVendas = new XanderUI.XUIButton();
+            this.bntPagamento = new XanderUI.XUIButton();
             this.menuStrip.SuspendLayout();
             this.statusStrip.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -114,10 +113,10 @@
             this.editMenu,
             this.viewMenu,
             this.helpMenu});
-            this.menuStrip.Location = new System.Drawing.Point(167, 47);
+            this.menuStrip.Location = new System.Drawing.Point(199, 97);
             this.menuStrip.MdiWindowListItem = this.windowsMenu;
             this.menuStrip.Name = "menuStrip";
-            this.menuStrip.Size = new System.Drawing.Size(564, 33);
+            this.menuStrip.Size = new System.Drawing.Size(684, 33);
             this.menuStrip.TabIndex = 0;
             this.menuStrip.Text = "MenuStrip";
             this.menuStrip.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.menuStrip_ItemClicked);
@@ -135,14 +134,14 @@
             // newWindowToolStripMenuItem
             // 
             this.newWindowToolStripMenuItem.Name = "newWindowToolStripMenuItem";
-            this.newWindowToolStripMenuItem.Size = new System.Drawing.Size(195, 30);
+            this.newWindowToolStripMenuItem.Size = new System.Drawing.Size(298, 30);
             this.newWindowToolStripMenuItem.Text = "&Nova Janela";
             this.newWindowToolStripMenuItem.Click += new System.EventHandler(this.ShowNewForm);
             // 
             // closeAllToolStripMenuItem
             // 
             this.closeAllToolStripMenuItem.Name = "closeAllToolStripMenuItem";
-            this.closeAllToolStripMenuItem.Size = new System.Drawing.Size(195, 30);
+            this.closeAllToolStripMenuItem.Size = new System.Drawing.Size(298, 30);
             this.closeAllToolStripMenuItem.Text = "Fec&har todos";
             this.closeAllToolStripMenuItem.Click += new System.EventHandler(this.CloseAllToolStripMenuItem_Click);
             // 
@@ -433,7 +432,9 @@
             // 
             this.statusStrip.BackColor = System.Drawing.Color.SaddleBrown;
             this.statusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStrip_lblusuario});
+            this.toolStrip_lblusuario,
+            this.toolStripStatusLabel1,
+            this.toolStripProgressBar1});
             this.statusStrip.Location = new System.Drawing.Point(0, 670);
             this.statusStrip.Name = "statusStrip";
             this.statusStrip.Size = new System.Drawing.Size(1252, 22);
@@ -445,53 +446,57 @@
             this.toolStrip_lblusuario.BackColor = System.Drawing.SystemColors.Control;
             this.toolStrip_lblusuario.ForeColor = System.Drawing.Color.Goldenrod;
             this.toolStrip_lblusuario.Name = "toolStrip_lblusuario";
-            this.toolStrip_lblusuario.Size = new System.Drawing.Size(39, 17);
-            this.toolStrip_lblusuario.Text = "Status";
+            this.toolStrip_lblusuario.Size = new System.Drawing.Size(53, 17);
+            this.toolStrip_lblusuario.Text = "Usuario: ";
             // 
-            // bntMostrarAplicativos
+            // toolStripStatusLabel1
             // 
-            this.bntMostrarAplicativos.AutoSize = true;
-            this.bntMostrarAplicativos.BackColor = System.Drawing.Color.Sienna;
-            this.bntMostrarAplicativos.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("bntMostrarAplicativos.BackgroundImage")));
-            this.bntMostrarAplicativos.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.bntMostrarAplicativos.FlatAppearance.BorderColor = System.Drawing.Color.DimGray;
-            this.bntMostrarAplicativos.FlatAppearance.BorderSize = 0;
-            this.bntMostrarAplicativos.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver;
-            this.bntMostrarAplicativos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.bntMostrarAplicativos.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bntMostrarAplicativos.Location = new System.Drawing.Point(22, 7);
-            this.bntMostrarAplicativos.Name = "bntMostrarAplicativos";
-            this.bntMostrarAplicativos.Size = new System.Drawing.Size(121, 73);
-            this.bntMostrarAplicativos.TabIndex = 63;
-            this.bntMostrarAplicativos.TextAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.toolTip.SetToolTip(this.bntMostrarAplicativos, "jkhkjjhkj");
-            this.bntMostrarAplicativos.UseVisualStyleBackColor = false;
-            this.bntMostrarAplicativos.Click += new System.EventHandler(this.bntMostrarAplicativos_Click);
+            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
+            this.toolStripStatusLabel1.Size = new System.Drawing.Size(0, 17);
+            // 
+            // toolStripProgressBar1
+            // 
+            this.toolStripProgressBar1.Name = "toolStripProgressBar1";
+            this.toolStripProgressBar1.Size = new System.Drawing.Size(100, 16);
             // 
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(223)))), ((int)(((byte)(150)))), ((int)(((byte)(64)))));
-            this.panel2.Controls.Add(this.bntMostrarAplicativos);
+            this.panel2.Controls.Add(this.bntMostrarAplicações);
             this.panel2.Controls.Add(this.pictureBox2);
             this.panel2.Controls.Add(this.btnFechar);
             this.panel2.Controls.Add(this.btnMinimizar);
             this.panel2.Controls.Add(this.lblUsuarioLogado);
             this.panel2.Controls.Add(this.menuStrip);
-            this.panel2.Controls.Add(this.bntMaximizar);
             this.panel2.Controls.Add(this.btnNormal);
+            this.panel2.Controls.Add(this.bntMaximizar);
             this.panel2.Controls.Add(this.pictureBox1);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1252, 93);
+            this.panel2.Size = new System.Drawing.Size(1252, 140);
             this.panel2.TabIndex = 52;
             this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
+            // 
+            // bntMostrarAplicações
+            // 
+            this.bntMostrarAplicações.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(223)))), ((int)(((byte)(150)))), ((int)(((byte)(64)))));
+            this.bntMostrarAplicações.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("bntMostrarAplicações.BackgroundImage")));
+            this.bntMostrarAplicações.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.bntMostrarAplicações.FlatAppearance.BorderSize = 0;
+            this.bntMostrarAplicações.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.bntMostrarAplicações.Location = new System.Drawing.Point(0, 26);
+            this.bntMostrarAplicações.Name = "bntMostrarAplicações";
+            this.bntMostrarAplicações.Size = new System.Drawing.Size(204, 114);
+            this.bntMostrarAplicações.TabIndex = 75;
+            this.bntMostrarAplicações.UseVisualStyleBackColor = false;
+            this.bntMostrarAplicações.Click += new System.EventHandler(this.bntMostrarAplicações_Click);
             // 
             // pictureBox2
             // 
             this.pictureBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(1175, 32);
+            this.pictureBox2.Location = new System.Drawing.Point(1165, 44);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(64, 50);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -500,8 +505,7 @@
             // 
             // btnFechar
             // 
-            this.btnFechar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnFechar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnFechar.BackColor = System.Drawing.Color.SaddleBrown;
             this.btnFechar.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnFechar.BackgroundImage")));
             this.btnFechar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
@@ -511,9 +515,9 @@
             this.btnFechar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Red;
             this.btnFechar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnFechar.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnFechar.Location = new System.Drawing.Point(1228, -1);
+            this.btnFechar.Location = new System.Drawing.Point(1230, -1);
             this.btnFechar.Name = "btnFechar";
-            this.btnFechar.Size = new System.Drawing.Size(22, 25);
+            this.btnFechar.Size = new System.Drawing.Size(22, 26);
             this.btnFechar.TabIndex = 57;
             this.btnFechar.UseVisualStyleBackColor = false;
             this.btnFechar.Click += new System.EventHandler(this.btnFechar_Click);
@@ -522,8 +526,7 @@
             // 
             // btnMinimizar
             // 
-            this.btnMinimizar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnMinimizar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnMinimizar.BackColor = System.Drawing.Color.SaddleBrown;
             this.btnMinimizar.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnMinimizar.BackgroundImage")));
             this.btnMinimizar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
@@ -533,7 +536,7 @@
             this.btnMinimizar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gainsboro;
             this.btnMinimizar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnMinimizar.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnMinimizar.Location = new System.Drawing.Point(1178, -1);
+            this.btnMinimizar.Location = new System.Drawing.Point(1180, 0);
             this.btnMinimizar.Name = "btnMinimizar";
             this.btnMinimizar.Size = new System.Drawing.Size(24, 25);
             this.btnMinimizar.TabIndex = 56;
@@ -547,32 +550,12 @@
             this.lblUsuarioLogado.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblUsuarioLogado.AutoSize = true;
             this.lblUsuarioLogado.Font = new System.Drawing.Font("MS Reference Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblUsuarioLogado.Location = new System.Drawing.Point(1096, 55);
+            this.lblUsuarioLogado.Location = new System.Drawing.Point(1161, 97);
             this.lblUsuarioLogado.Name = "lblUsuarioLogado";
             this.lblUsuarioLogado.Size = new System.Drawing.Size(74, 20);
             this.lblUsuarioLogado.TabIndex = 49;
             this.lblUsuarioLogado.Text = "Gerente";
-            // 
-            // bntMaximizar
-            // 
-            this.bntMaximizar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.bntMaximizar.BackColor = System.Drawing.Color.SaddleBrown;
-            this.bntMaximizar.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("bntMaximizar.BackgroundImage")));
-            this.bntMaximizar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.bntMaximizar.FlatAppearance.BorderColor = System.Drawing.Color.SaddleBrown;
-            this.bntMaximizar.FlatAppearance.BorderSize = 6;
-            this.bntMaximizar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Gainsboro;
-            this.bntMaximizar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gainsboro;
-            this.bntMaximizar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.bntMaximizar.Location = new System.Drawing.Point(1203, -1);
-            this.bntMaximizar.Name = "bntMaximizar";
-            this.bntMaximizar.Size = new System.Drawing.Size(24, 25);
-            this.bntMaximizar.TabIndex = 55;
-            this.bntMaximizar.UseVisualStyleBackColor = false;
-            this.bntMaximizar.Click += new System.EventHandler(this.bntMaximizar_Click);
-            this.bntMaximizar.MouseLeave += new System.EventHandler(this.LeaveMaximizar);
-            this.bntMaximizar.MouseMove += new System.Windows.Forms.MouseEventHandler(this.controlMaximizar);
+            this.lblUsuarioLogado.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // btnNormal
             // 
@@ -585,15 +568,35 @@
             this.btnNormal.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Gainsboro;
             this.btnNormal.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gainsboro;
             this.btnNormal.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnNormal.Location = new System.Drawing.Point(1203, -1);
+            this.btnNormal.Location = new System.Drawing.Point(1205, 0);
             this.btnNormal.Name = "btnNormal";
             this.btnNormal.Size = new System.Drawing.Size(24, 25);
             this.btnNormal.TabIndex = 54;
             this.btnNormal.UseVisualStyleBackColor = false;
-            this.btnNormal.Visible = false;
             this.btnNormal.Click += new System.EventHandler(this.btnNormal_Click);
             this.btnNormal.MouseLeave += new System.EventHandler(this.LeaveNormal);
             this.btnNormal.MouseMove += new System.Windows.Forms.MouseEventHandler(this.controlNormal);
+            // 
+            // bntMaximizar
+            // 
+            this.bntMaximizar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.bntMaximizar.BackColor = System.Drawing.Color.SaddleBrown;
+            this.bntMaximizar.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("bntMaximizar.BackgroundImage")));
+            this.bntMaximizar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.bntMaximizar.FlatAppearance.BorderColor = System.Drawing.Color.SaddleBrown;
+            this.bntMaximizar.FlatAppearance.BorderSize = 6;
+            this.bntMaximizar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Gainsboro;
+            this.bntMaximizar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gainsboro;
+            this.bntMaximizar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.bntMaximizar.Location = new System.Drawing.Point(1205, 0);
+            this.bntMaximizar.Name = "bntMaximizar";
+            this.bntMaximizar.Size = new System.Drawing.Size(24, 25);
+            this.bntMaximizar.TabIndex = 55;
+            this.bntMaximizar.UseVisualStyleBackColor = false;
+            this.bntMaximizar.Visible = false;
+            this.bntMaximizar.Click += new System.EventHandler(this.bntMaximizar_Click);
+            this.bntMaximizar.MouseLeave += new System.EventHandler(this.LeaveMaximizar);
+            this.bntMaximizar.MouseMove += new System.Windows.Forms.MouseEventHandler(this.controlMaximizar);
             // 
             // pictureBox1
             // 
@@ -611,11 +614,11 @@
             // panel1
             // 
             this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.panel1.BackColor = System.Drawing.Color.LightGray;
+            this.panel1.BackColor = System.Drawing.Color.SaddleBrown;
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel1.Controls.Add(this.pictureBox3);
             this.panel1.Controls.Add(this.lblRelogio);
-            this.panel1.Location = new System.Drawing.Point(12, 473);
+            this.panel1.Location = new System.Drawing.Point(31, 461);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(135, 55);
             this.panel1.TabIndex = 58;
@@ -651,123 +654,97 @@
             // 
             // panelAplicações
             // 
-            this.panelAplicações.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(223)))), ((int)(((byte)(150)))), ((int)(((byte)(64)))));
+            this.panelAplicações.BackColor = System.Drawing.Color.DimGray;
+            this.panelAplicações.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panelAplicações.Controls.Add(this.bntProdutos);
+            this.panelAplicações.Controls.Add(this.panel1);
             this.panelAplicações.Controls.Add(this.bntVendas);
             this.panelAplicações.Controls.Add(this.bntPagamento);
-            this.panelAplicações.Controls.Add(this.panel1);
-            this.panelAplicações.Controls.Add(this.label3);
-            this.panelAplicações.Controls.Add(this.label2);
-            this.panelAplicações.Controls.Add(this.label1);
             this.panelAplicações.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panelAplicações.Location = new System.Drawing.Point(0, 93);
+            this.panelAplicações.Location = new System.Drawing.Point(0, 140);
             this.panelAplicações.Name = "panelAplicações";
-            this.panelAplicações.Size = new System.Drawing.Size(164, 577);
+            this.panelAplicações.Size = new System.Drawing.Size(204, 530);
             this.panelAplicações.TabIndex = 54;
             this.panelAplicações.Visible = false;
             // 
-            // bntPagamento
+            // bntProdutos
             // 
-            this.bntPagamento.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(223)))), ((int)(((byte)(150)))), ((int)(((byte)(64)))));
-            this.bntPagamento.ButtonImage = ((System.Drawing.Image)(resources.GetObject("bntPagamento.ButtonImage")));
-            this.bntPagamento.ButtonStyle = XanderUI.XUIButton.Style.MaterialRounded;
-            this.bntPagamento.ButtonText = "Pagamentos";
-            this.bntPagamento.ClickBackColor = System.Drawing.Color.PaleGoldenrod;
-            this.bntPagamento.ClickTextColor = System.Drawing.Color.Goldenrod;
-            this.bntPagamento.CornerRadius = 5;
-            this.bntPagamento.Horizontal_Alignment = System.Drawing.StringAlignment.Center;
-            this.bntPagamento.HoverBackgroundColor = System.Drawing.Color.Orange;
-            this.bntPagamento.HoverTextColor = System.Drawing.Color.DarkGoldenrod;
-            this.bntPagamento.ImagePosition = XanderUI.XUIButton.imgPosition.Left;
-            this.bntPagamento.Location = new System.Drawing.Point(3, 25);
-            this.bntPagamento.Name = "bntPagamento";
-            this.bntPagamento.Size = new System.Drawing.Size(158, 46);
-            this.bntPagamento.TabIndex = 66;
-            this.bntPagamento.TextColor = System.Drawing.Color.Khaki;
-            this.bntPagamento.Vertical_Alignment = System.Drawing.StringAlignment.Center;
-            this.bntPagamento.Click += new System.EventHandler(this.bntPagamento_Click);
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(5, 112);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(154, 15);
-            this.label3.TabIndex = 65;
-            this.label3.Text = "_____________________";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(6, 165);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(154, 15);
-            this.label2.TabIndex = 64;
-            this.label2.Text = "_____________________";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(5, 60);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(154, 15);
-            this.label1.TabIndex = 63;
-            this.label1.Text = "_____________________";
+            this.bntProdutos.BackgroundColor = System.Drawing.Color.DimGray;
+            this.bntProdutos.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.bntProdutos.ButtonImage = ((System.Drawing.Image)(resources.GetObject("bntProdutos.ButtonImage")));
+            this.bntProdutos.ButtonStyle = XanderUI.XUIButton.Style.Material;
+            this.bntProdutos.ButtonText = "Produtos";
+            this.bntProdutos.ClickBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(75)))), ((int)(((byte)(80)))));
+            this.bntProdutos.ClickTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(130)))), ((int)(((byte)(140)))));
+            this.bntProdutos.CornerRadius = 5;
+            this.bntProdutos.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.bntProdutos.Horizontal_Alignment = System.Drawing.StringAlignment.Center;
+            this.bntProdutos.HoverBackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(80)))), ((int)(((byte)(90)))));
+            this.bntProdutos.HoverTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(235)))), ((int)(((byte)(215)))));
+            this.bntProdutos.ImagePosition = XanderUI.XUIButton.imgPosition.Left;
+            this.bntProdutos.Location = new System.Drawing.Point(6, 182);
+            this.bntProdutos.Name = "bntProdutos";
+            this.bntProdutos.Size = new System.Drawing.Size(186, 69);
+            this.bntProdutos.TabIndex = 74;
+            this.bntProdutos.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(200)))), ((int)(((byte)(185)))));
+            this.bntProdutos.Vertical_Alignment = System.Drawing.StringAlignment.Center;
+            this.bntProdutos.Click += new System.EventHandler(this.bntProdutos_Click);
             // 
             // bntVendas
             // 
-            this.bntVendas.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(223)))), ((int)(((byte)(150)))), ((int)(((byte)(64)))));
+            this.bntVendas.BackgroundColor = System.Drawing.Color.DimGray;
             this.bntVendas.ButtonImage = ((System.Drawing.Image)(resources.GetObject("bntVendas.ButtonImage")));
-            this.bntVendas.ButtonStyle = XanderUI.XUIButton.Style.MaterialRounded;
+            this.bntVendas.ButtonStyle = XanderUI.XUIButton.Style.Material;
             this.bntVendas.ButtonText = "Pedidos";
-            this.bntVendas.ClickBackColor = System.Drawing.Color.PaleGoldenrod;
-            this.bntVendas.ClickTextColor = System.Drawing.Color.Goldenrod;
+            this.bntVendas.ClickBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(200)))), ((int)(((byte)(185)))));
+            this.bntVendas.ClickTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(200)))), ((int)(((byte)(185)))));
             this.bntVendas.CornerRadius = 5;
+            this.bntVendas.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
             this.bntVendas.Horizontal_Alignment = System.Drawing.StringAlignment.Center;
-            this.bntVendas.HoverBackgroundColor = System.Drawing.Color.Orange;
-            this.bntVendas.HoverTextColor = System.Drawing.Color.DarkGoldenrod;
+            this.bntVendas.HoverBackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(200)))), ((int)(((byte)(185)))));
+            this.bntVendas.HoverTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(70)))), ((int)(((byte)(75)))));
             this.bntVendas.ImagePosition = XanderUI.XUIButton.imgPosition.Left;
-            this.bntVendas.Location = new System.Drawing.Point(1, 78);
+            this.bntVendas.Location = new System.Drawing.Point(6, 106);
             this.bntVendas.Name = "bntVendas";
-            this.bntVendas.Size = new System.Drawing.Size(158, 46);
-            this.bntVendas.TabIndex = 67;
-            this.bntVendas.TextColor = System.Drawing.Color.Khaki;
+            this.bntVendas.Size = new System.Drawing.Size(186, 69);
+            this.bntVendas.TabIndex = 73;
+            this.bntVendas.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(200)))), ((int)(((byte)(185)))));
             this.bntVendas.Vertical_Alignment = System.Drawing.StringAlignment.Center;
-            this.bntVendas.Click += new System.EventHandler(this.bntVendas_Click);
+            this.bntVendas.Click += new System.EventHandler(this.bntVendas_Click_1);
             // 
-            // bntProdutos
+            // bntPagamento
             // 
-            this.bntProdutos.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(223)))), ((int)(((byte)(150)))), ((int)(((byte)(64)))));
-            this.bntProdutos.ButtonImage = ((System.Drawing.Image)(resources.GetObject("bntProdutos.ButtonImage")));
-            this.bntProdutos.ButtonStyle = XanderUI.XUIButton.Style.MaterialRounded;
-            this.bntProdutos.ButtonText = "Produtos";
-            this.bntProdutos.ClickBackColor = System.Drawing.Color.PaleGoldenrod;
-            this.bntProdutos.ClickTextColor = System.Drawing.Color.Goldenrod;
-            this.bntProdutos.CornerRadius = 5;
-            this.bntProdutos.Horizontal_Alignment = System.Drawing.StringAlignment.Center;
-            this.bntProdutos.HoverBackgroundColor = System.Drawing.Color.Orange;
-            this.bntProdutos.HoverTextColor = System.Drawing.Color.DarkGoldenrod;
-            this.bntProdutos.ImagePosition = XanderUI.XUIButton.imgPosition.Left;
-            this.bntProdutos.Location = new System.Drawing.Point(3, 130);
-            this.bntProdutos.Name = "bntProdutos";
-            this.bntProdutos.Size = new System.Drawing.Size(158, 46);
-            this.bntProdutos.TabIndex = 68;
-            this.bntProdutos.TextColor = System.Drawing.Color.Khaki;
-            this.bntProdutos.Vertical_Alignment = System.Drawing.StringAlignment.Center;
-            this.bntProdutos.Click += new System.EventHandler(this.bntProdutos_Click_1);
+            this.bntPagamento.BackgroundColor = System.Drawing.Color.DimGray;
+            this.bntPagamento.ButtonImage = ((System.Drawing.Image)(resources.GetObject("bntPagamento.ButtonImage")));
+            this.bntPagamento.ButtonStyle = XanderUI.XUIButton.Style.Material;
+            this.bntPagamento.ButtonText = "Pagamentos";
+            this.bntPagamento.ClickBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(75)))), ((int)(((byte)(80)))));
+            this.bntPagamento.ClickTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(130)))), ((int)(((byte)(140)))));
+            this.bntPagamento.CornerRadius = 5;
+            this.bntPagamento.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.bntPagamento.Horizontal_Alignment = System.Drawing.StringAlignment.Center;
+            this.bntPagamento.HoverBackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(80)))), ((int)(((byte)(90)))));
+            this.bntPagamento.HoverTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(235)))), ((int)(((byte)(215)))));
+            this.bntPagamento.ImagePosition = XanderUI.XUIButton.imgPosition.Left;
+            this.bntPagamento.Location = new System.Drawing.Point(6, 29);
+            this.bntPagamento.Name = "bntPagamento";
+            this.bntPagamento.Size = new System.Drawing.Size(186, 69);
+            this.bntPagamento.TabIndex = 72;
+            this.bntPagamento.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(200)))), ((int)(((byte)(185)))));
+            this.bntPagamento.Vertical_Alignment = System.Drawing.StringAlignment.Center;
+            this.bntPagamento.Click += new System.EventHandler(this.bntPagamento_Click_1);
             // 
             // PainelInicial
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.AutoSize = true;
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1252, 692);
             this.Controls.Add(this.panelAplicações);
             this.Controls.Add(this.statusStrip);
             this.Controls.Add(this.panel2);
+            this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.IsMdiContainer = true;
@@ -776,6 +753,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "PainelInicial";
             this.TransparencyKey = System.Drawing.Color.Transparent;
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.PainelInicial_Load);
             this.menuStrip.ResumeLayout(false);
             this.menuStrip.PerformLayout();
@@ -789,7 +767,6 @@
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             this.panelAplicações.ResumeLayout(false);
-            this.panelAplicações.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -846,18 +823,17 @@
         private System.Windows.Forms.Timer timerTempoReal;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Panel panelAplicações;
-        private System.Windows.Forms.Button bntMostrarAplicativos;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnFechar;
         private System.Windows.Forms.Button btnMinimizar;
         private System.Windows.Forms.Button bntMaximizar;
         private System.Windows.Forms.Button btnNormal;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private XanderUI.XUIButton bntPagamento;
         private XanderUI.XUIButton bntProdutos;
         private XanderUI.XUIButton bntVendas;
+        private XanderUI.XUIButton bntPagamento;
+        private System.Windows.Forms.Button bntMostrarAplicações;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
+        private System.Windows.Forms.ToolStripProgressBar toolStripProgressBar1;
     }
 }
 

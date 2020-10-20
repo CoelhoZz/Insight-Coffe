@@ -116,7 +116,7 @@ namespace InsightCoffe
             if (tbUsername.Text == "" || tbUsername.Text == "Username")
             {
                 tbUsername.Text = "Username";
-                tbUsername.ForeColor = Color.Gray;
+                tbUsername.ForeColor = Color.SandyBrown;
             }
         }
 
@@ -127,11 +127,6 @@ namespace InsightCoffe
                 return;
             tbPassword.Text = "";
             tbPassword.PasswordChar = Convert.ToChar("*");
-        }
-
-        private void Enter_pass(object sender, EventArgs e)
-        {
-
         }
 
         private void TxtChanged(object sender, EventArgs e)
@@ -146,7 +141,7 @@ namespace InsightCoffe
             {
                 tbPassword.Text = "Password";
                 tbPassword.PasswordChar = Convert.ToChar("\0");
-                tbPassword.ForeColor = Color.Gray;
+                tbPassword.ForeColor = Color.SandyBrown;
             }
         }
 
