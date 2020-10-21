@@ -20,6 +20,7 @@ namespace InsightCoffe.Utilidades
 
         public List<Produto> produtos = new List<Produto>();
         public List<Pedido> pedido = new List<Pedido>(3);
+        public List<Cliente> clientes = new List<Cliente>();
 
         private Form1 Form1;
         public PainelInicial(Form1 form1, List<Usuarios> usuarios)
@@ -250,15 +251,31 @@ namespace InsightCoffe.Utilidades
         {
             pedido.Add(new Pedido()
             {
-                CodigoDeBarras = (long)1679435689426
+                CodigoDeBarras = (UInt64)1679435689426
             });            
             pedido.Add(new Pedido()
             {
-                CodigoDeBarras = (long)1679435689440
+                CodigoDeBarras = (UInt64)1679435689440
             });            
             pedido.Add(new Pedido()
             {
-                CodigoDeBarras = (long)1679435689433
+                CodigoDeBarras = (UInt64)1679435689433
+            });
+        }
+
+        /// Clientes
+        /// Lista de Clientes
+        /// Metodo void
+        void MetodosCliente()
+        {
+            clientes.Add(new Cliente
+            {
+
+                ID = 1,
+                Nome = "Pedro Devolve o Macaco",
+                DataNascimento = "16/05/2002",
+                CPF = "21012022002"
+
             });
         }
         //----------------------------------------------END-------------------------------------------------
@@ -430,7 +447,7 @@ namespace InsightCoffe.Utilidades
 
         private void Tela_de_Vendas()
         {
-            APSvendas apsVendas = new APSvendas(this, produtos);
+            APSvendas apsVendas = new APSvendas(this, produtos, pedido, clientes);
             apsVendas.MdiParent = this;
             apsVendas.Show();
         }
@@ -478,7 +495,7 @@ namespace InsightCoffe.Utilidades
         //------------------------------end APSprodutos LISTA de PRODUTOS----------------------------------
 
         //-------------------------------start APSvendas LISTA de PEDIDOS----------------------------------       
-        public void Adicionar_Pedido(double)
+        //public void Adicionar_Pedido(double)
         //--------------------------------end APSvendas LISTA de PEDIDOS-----------------------------------
 
         //---------------------------------start Tool Strip EVENTOS----------------------------------------

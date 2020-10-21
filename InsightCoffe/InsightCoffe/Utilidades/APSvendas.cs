@@ -1,4 +1,5 @@
-﻿using InsightCoffe.Repositorios;
+﻿using InsightCoffe.Entity;
+using InsightCoffe.Repositorios;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -15,7 +16,7 @@ namespace InsightCoffe.Utilidades
     {
         PainelInicial inicial1;
 
-        public APSvendas(PainelInicial inicial, List<Produto> produtos)
+        public APSvendas(PainelInicial inicial, List<Produto> produtos, List<Pedido> pedido, List<Cliente> clientes)
         {
             InitializeComponent();
             this.inicial1 = inicial;
@@ -128,9 +129,100 @@ namespace InsightCoffe.Utilidades
         {
             if(e.KeyCode == Keys.Enter)
             {
-
+                adicionarPedido();
             }
         }
         //------------------------------end: Codigos de ativação de pedido------------------------------
+        //------------------------------Start: Methods -------------------------------------------------
+        private void adicionarPedido()
+        {
+            try
+            {
+                UInt64 codigoBarra = Convert.ToUInt64(maskedBCodeBar.Text);
+                foreach (Pedido pedido in inicial1.pedido)
+                {
+                    if (codigoBarra == pedido.CodigoDeBarras)
+                    {
+                        habilitarCliente();
+                        return;
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Insira um codigo de barras válido!!", "Atenção!");
+            }
+        }
+
+        bool novoCliente = false;
+
+        private void habilitarCliente()
+        {
+            btnNovoCliente.Enabled = true;
+
+            btnExistente.Enabled = true;
+        }
+        
+        private void habilitarCarrinho()
+        {
+            maskedBRetirarItem.Enabled = true;
+
+            numUDQtdItem.Enabled = true;
+
+            maskedBValorItem.Enabled = true;
+
+            maskTBCodigoDeBarras.Enabled = true;
+
+            maskedBQtdCode.Enabled = true;
+
+            maskedBValorCode.Enabled = true;
+        }
+
+        private void btnNovoCliente_Click(object sender, EventArgs e)
+        {
+            maskedBNome.Enabled = true;
+
+            maskedBCPF.Enabled = true;
+
+            maskedBNascimento.Enabled = true;
+
+            novoCliente = true;
+        }
+
+        private void btnExistente_Click(object sender, EventArgs e)
+        {
+            maskedBCPF.Enabled = true;
+        }
+
+        private void KeyDown_CPF(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {        
+                    clienteSearch();
+            }
+        }
+        
+        private void clienteSearch()
+        {
+            try
+            {
+                string clienteCPF = (maskedBCPF.Text).ToString();
+                foreach (Cliente cliente in inicial1.clientes)
+                {
+                    if (clienteCPF == cliente.CPF)
+                    {
+                        maskedBNome.Text = cliente.Nome;
+                        maskedBNascimento.Text = cliente.DataNascimento;
+                        return;
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Insira um CPF válido!!", "Atenção!");
+            }
+        }
+
+        //------------------------------end: Methods ---------------------------------------------------
     }
 }

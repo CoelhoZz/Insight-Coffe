@@ -30,48 +30,48 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(APSvendas));
             this.label1 = new System.Windows.Forms.Label();
-            this.maskedTextBox1 = new System.Windows.Forms.MaskedTextBox();
+            this.maskedBCodeBar = new System.Windows.Forms.MaskedTextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.maskTBCodigoDeBarras = new System.Windows.Forms.MaskedTextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.maskedTextBox2 = new System.Windows.Forms.MaskedTextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.maskedTextBox4 = new System.Windows.Forms.MaskedTextBox();
-            this.maskedTextBox5 = new System.Windows.Forms.MaskedTextBox();
+            this.maskedBNome = new System.Windows.Forms.MaskedTextBox();
+            this.maskedBCPF = new System.Windows.Forms.MaskedTextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
-            this.maskedTextBox6 = new System.Windows.Forms.MaskedTextBox();
+            this.maskedBNascimento = new System.Windows.Forms.MaskedTextBox();
             this.listView1 = new System.Windows.Forms.ListView();
             this.label9 = new System.Windows.Forms.Label();
-            this.maskedTextBox7 = new System.Windows.Forms.MaskedTextBox();
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.maskedBRetirarItem = new System.Windows.Forms.MaskedTextBox();
+            this.panelNCN = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.button6 = new System.Windows.Forms.Button();
             this.label11 = new System.Windows.Forms.Label();
-            this.maskedTextBox3 = new System.Windows.Forms.MaskedTextBox();
+            this.maskedBValorItem = new System.Windows.Forms.MaskedTextBox();
             this.button1 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.button7 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.label12 = new System.Windows.Forms.Label();
-            this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
+            this.numUDQtdItem = new System.Windows.Forms.NumericUpDown();
             this.label10 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
-            this.maskedTextBox8 = new System.Windows.Forms.MaskedTextBox();
-            this.button2 = new System.Windows.Forms.Button();
+            this.maskedBQtdCode = new System.Windows.Forms.NumericUpDown();
+            this.maskedBValorCode = new System.Windows.Forms.MaskedTextBox();
+            this.btnExistente = new System.Windows.Forms.Button();
             this.btnNovoCliente = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btnFechar = new System.Windows.Forms.Button();
             this.btnMinimizar = new System.Windows.Forms.Button();
             this.bntMaximizar = new System.Windows.Forms.Button();
             this.btnNormal = new System.Windows.Forms.Button();
-            this.panel1.SuspendLayout();
+            this.panelNCN.SuspendLayout();
             this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numUDQtdItem)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.maskedBQtdCode)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -86,17 +86,17 @@
             this.label1.TabIndex = 4;
             this.label1.Text = "Registrar Pedidos";
             // 
-            // maskedTextBox1
+            // maskedBCodeBar
             // 
-            this.maskedTextBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.maskedBCodeBar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.maskedTextBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.maskedTextBox1.Location = new System.Drawing.Point(342, 53);
-            this.maskedTextBox1.Name = "maskedTextBox1";
-            this.maskedTextBox1.Size = new System.Drawing.Size(517, 26);
-            this.maskedTextBox1.TabIndex = 5;
-            this.maskedTextBox1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.KeyDown_CodigoBar);
-            this.maskedTextBox1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.KeyPress_CodigoBar);
+            this.maskedBCodeBar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.maskedBCodeBar.Location = new System.Drawing.Point(342, 53);
+            this.maskedBCodeBar.Name = "maskedBCodeBar";
+            this.maskedBCodeBar.Size = new System.Drawing.Size(517, 26);
+            this.maskedBCodeBar.TabIndex = 5;
+            this.maskedBCodeBar.KeyDown += new System.Windows.Forms.KeyEventHandler(this.KeyDown_CodigoBar);
+            this.maskedBCodeBar.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.KeyPress_CodigoBar);
             // 
             // label2
             // 
@@ -168,25 +168,28 @@
             this.label5.TabIndex = 15;
             this.label5.Text = "Nome:";
             // 
-            // maskedTextBox4
+            // maskedBNome
             // 
-            this.maskedTextBox4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.maskedTextBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.maskedTextBox4.Location = new System.Drawing.Point(108, 18);
-            this.maskedTextBox4.Name = "maskedTextBox4";
-            this.maskedTextBox4.Size = new System.Drawing.Size(385, 29);
-            this.maskedTextBox4.TabIndex = 18;
+            this.maskedBNome.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.maskedBNome.Enabled = false;
+            this.maskedBNome.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.maskedBNome.Location = new System.Drawing.Point(108, 18);
+            this.maskedBNome.Name = "maskedBNome";
+            this.maskedBNome.Size = new System.Drawing.Size(385, 29);
+            this.maskedBNome.TabIndex = 18;
             // 
-            // maskedTextBox5
+            // maskedBCPF
             // 
-            this.maskedTextBox5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.maskedTextBox5.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.maskedTextBox5.Location = new System.Drawing.Point(108, 54);
-            this.maskedTextBox5.Mask = "000.000.000-00";
-            this.maskedTextBox5.Name = "maskedTextBox5";
-            this.maskedTextBox5.Size = new System.Drawing.Size(144, 29);
-            this.maskedTextBox5.TabIndex = 20;
-            this.maskedTextBox5.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.maskedBCPF.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.maskedBCPF.Enabled = false;
+            this.maskedBCPF.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.maskedBCPF.Location = new System.Drawing.Point(108, 54);
+            this.maskedBCPF.Mask = "000.000.000-00";
+            this.maskedBCPF.Name = "maskedBCPF";
+            this.maskedBCPF.Size = new System.Drawing.Size(144, 29);
+            this.maskedBCPF.TabIndex = 20;
+            this.maskedBCPF.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.maskedBCPF.KeyDown += new System.Windows.Forms.KeyEventHandler(this.KeyDown_CPF);
             // 
             // label7
             // 
@@ -210,17 +213,18 @@
             this.label8.TabIndex = 21;
             this.label8.Text = "Nascimento:";
             // 
-            // maskedTextBox6
+            // maskedBNascimento
             // 
-            this.maskedTextBox6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.maskedTextBox6.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.maskedTextBox6.Location = new System.Drawing.Point(385, 54);
-            this.maskedTextBox6.Mask = "00/00/0000";
-            this.maskedTextBox6.Name = "maskedTextBox6";
-            this.maskedTextBox6.Size = new System.Drawing.Size(108, 29);
-            this.maskedTextBox6.TabIndex = 22;
-            this.maskedTextBox6.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.maskedTextBox6.ValidatingType = typeof(System.DateTime);
+            this.maskedBNascimento.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.maskedBNascimento.Enabled = false;
+            this.maskedBNascimento.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.maskedBNascimento.Location = new System.Drawing.Point(385, 54);
+            this.maskedBNascimento.Mask = "00/00/0000";
+            this.maskedBNascimento.Name = "maskedBNascimento";
+            this.maskedBNascimento.Size = new System.Drawing.Size(108, 29);
+            this.maskedBNascimento.TabIndex = 22;
+            this.maskedBNascimento.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.maskedBNascimento.ValidatingType = typeof(System.DateTime);
             // 
             // listView1
             // 
@@ -247,32 +251,31 @@
             this.label9.TabIndex = 50;
             this.label9.Text = "Retirar item";
             // 
-            // maskedTextBox7
+            // maskedBRetirarItem
             // 
-            this.maskedTextBox7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.maskedTextBox7.Enabled = false;
-            this.maskedTextBox7.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.maskedTextBox7.Location = new System.Drawing.Point(500, 172);
-            this.maskedTextBox7.Name = "maskedTextBox7";
-            this.maskedTextBox7.Size = new System.Drawing.Size(181, 35);
-            this.maskedTextBox7.TabIndex = 49;
+            this.maskedBRetirarItem.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.maskedBRetirarItem.Enabled = false;
+            this.maskedBRetirarItem.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.maskedBRetirarItem.Location = new System.Drawing.Point(500, 172);
+            this.maskedBRetirarItem.Name = "maskedBRetirarItem";
+            this.maskedBRetirarItem.Size = new System.Drawing.Size(181, 35);
+            this.maskedBRetirarItem.TabIndex = 49;
             // 
-            // panel1
+            // panelNCN
             // 
-            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel1.AutoSize = true;
-            this.panel1.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.panel1.Controls.Add(this.maskedTextBox6);
-            this.panel1.Controls.Add(this.maskedTextBox4);
-            this.panel1.Controls.Add(this.label8);
-            this.panel1.Controls.Add(this.maskedTextBox5);
-            this.panel1.Controls.Add(this.label5);
-            this.panel1.Controls.Add(this.label7);
-            this.panel1.Enabled = false;
-            this.panel1.Location = new System.Drawing.Point(443, 27);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(501, 104);
-            this.panel1.TabIndex = 52;
+            this.panelNCN.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.panelNCN.AutoSize = true;
+            this.panelNCN.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.panelNCN.Controls.Add(this.maskedBNascimento);
+            this.panelNCN.Controls.Add(this.maskedBNome);
+            this.panelNCN.Controls.Add(this.label8);
+            this.panelNCN.Controls.Add(this.maskedBCPF);
+            this.panelNCN.Controls.Add(this.label5);
+            this.panelNCN.Controls.Add(this.label7);
+            this.panelNCN.Location = new System.Drawing.Point(443, 27);
+            this.panelNCN.Name = "panelNCN";
+            this.panelNCN.Size = new System.Drawing.Size(501, 104);
+            this.panelNCN.TabIndex = 52;
             // 
             // panel2
             // 
@@ -282,28 +285,28 @@
             this.panel2.BackColor = System.Drawing.Color.Chocolate;
             this.panel2.Controls.Add(this.button6);
             this.panel2.Controls.Add(this.label11);
-            this.panel2.Controls.Add(this.maskedTextBox3);
+            this.panel2.Controls.Add(this.maskedBValorItem);
             this.panel2.Controls.Add(this.button1);
             this.panel2.Controls.Add(this.button4);
             this.panel2.Controls.Add(this.button7);
             this.panel2.Controls.Add(this.button3);
             this.panel2.Controls.Add(this.button5);
             this.panel2.Controls.Add(this.label12);
-            this.panel2.Controls.Add(this.numericUpDown2);
+            this.panel2.Controls.Add(this.numUDQtdItem);
             this.panel2.Controls.Add(this.label10);
             this.panel2.Controls.Add(this.label6);
-            this.panel2.Controls.Add(this.numericUpDown1);
-            this.panel2.Controls.Add(this.maskedTextBox8);
-            this.panel2.Controls.Add(this.button2);
+            this.panel2.Controls.Add(this.maskedBQtdCode);
+            this.panel2.Controls.Add(this.maskedBValorCode);
+            this.panel2.Controls.Add(this.btnExistente);
             this.panel2.Controls.Add(this.btnNovoCliente);
             this.panel2.Controls.Add(this.listView1);
-            this.panel2.Controls.Add(this.maskedTextBox7);
+            this.panel2.Controls.Add(this.maskedBRetirarItem);
             this.panel2.Controls.Add(this.label9);
             this.panel2.Controls.Add(this.maskTBCodigoDeBarras);
             this.panel2.Controls.Add(this.label3);
             this.panel2.Controls.Add(this.maskedTextBox2);
             this.panel2.Controls.Add(this.label4);
-            this.panel2.Controls.Add(this.panel1);
+            this.panel2.Controls.Add(this.panelNCN);
             this.panel2.Location = new System.Drawing.Point(18, 94);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(960, 545);
@@ -334,16 +337,16 @@
             this.label11.TabIndex = 74;
             this.label11.Text = "Valor";
             // 
-            // maskedTextBox3
+            // maskedBValorItem
             // 
-            this.maskedTextBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.maskedTextBox3.Enabled = false;
-            this.maskedTextBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.maskedTextBox3.Location = new System.Drawing.Point(763, 171);
-            this.maskedTextBox3.Mask = "$";
-            this.maskedTextBox3.Name = "maskedTextBox3";
-            this.maskedTextBox3.Size = new System.Drawing.Size(132, 35);
-            this.maskedTextBox3.TabIndex = 73;
+            this.maskedBValorItem.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.maskedBValorItem.Enabled = false;
+            this.maskedBValorItem.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.maskedBValorItem.Location = new System.Drawing.Point(763, 171);
+            this.maskedBValorItem.Mask = "$";
+            this.maskedBValorItem.Name = "maskedBValorItem";
+            this.maskedBValorItem.Size = new System.Drawing.Size(132, 35);
+            this.maskedBValorItem.TabIndex = 73;
             // 
             // button1
             // 
@@ -418,22 +421,22 @@
             this.label12.TabIndex = 70;
             this.label12.Text = "Qtd.";
             // 
-            // numericUpDown2
+            // numUDQtdItem
             // 
-            this.numericUpDown2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.numericUpDown2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.numericUpDown2.Enabled = false;
-            this.numericUpDown2.Font = new System.Drawing.Font("Microsoft Sans Serif", 17.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numericUpDown2.Location = new System.Drawing.Point(687, 172);
-            this.numericUpDown2.Minimum = new decimal(new int[] {
+            this.numUDQtdItem.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.numUDQtdItem.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.numUDQtdItem.Enabled = false;
+            this.numUDQtdItem.Font = new System.Drawing.Font("Microsoft Sans Serif", 17.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.numUDQtdItem.Location = new System.Drawing.Point(687, 172);
+            this.numUDQtdItem.Minimum = new decimal(new int[] {
             1,
             0,
             0,
             0});
-            this.numericUpDown2.Name = "numericUpDown2";
-            this.numericUpDown2.Size = new System.Drawing.Size(70, 34);
-            this.numericUpDown2.TabIndex = 69;
-            this.numericUpDown2.Value = new decimal(new int[] {
+            this.numUDQtdItem.Name = "numUDQtdItem";
+            this.numUDQtdItem.Size = new System.Drawing.Size(70, 34);
+            this.numUDQtdItem.TabIndex = 69;
+            this.numUDQtdItem.Value = new decimal(new int[] {
             1,
             0,
             0,
@@ -465,49 +468,50 @@
             this.label6.TabIndex = 66;
             this.label6.Text = "Qtd.";
             // 
-            // numericUpDown1
+            // maskedBQtdCode
             // 
-            this.numericUpDown1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.numericUpDown1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.numericUpDown1.Enabled = false;
-            this.numericUpDown1.Font = new System.Drawing.Font("Microsoft Sans Serif", 17.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numericUpDown1.Location = new System.Drawing.Point(687, 283);
-            this.numericUpDown1.Minimum = new decimal(new int[] {
+            this.maskedBQtdCode.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.maskedBQtdCode.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.maskedBQtdCode.Enabled = false;
+            this.maskedBQtdCode.Font = new System.Drawing.Font("Microsoft Sans Serif", 17.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.maskedBQtdCode.Location = new System.Drawing.Point(687, 283);
+            this.maskedBQtdCode.Minimum = new decimal(new int[] {
             1,
             0,
             0,
             0});
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(70, 34);
-            this.numericUpDown1.TabIndex = 65;
-            this.numericUpDown1.Value = new decimal(new int[] {
+            this.maskedBQtdCode.Name = "maskedBQtdCode";
+            this.maskedBQtdCode.Size = new System.Drawing.Size(70, 34);
+            this.maskedBQtdCode.TabIndex = 65;
+            this.maskedBQtdCode.Value = new decimal(new int[] {
             1,
             0,
             0,
             0});
             // 
-            // maskedTextBox8
+            // maskedBValorCode
             // 
-            this.maskedTextBox8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.maskedTextBox8.Enabled = false;
-            this.maskedTextBox8.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.maskedTextBox8.Location = new System.Drawing.Point(763, 282);
-            this.maskedTextBox8.Mask = "$";
-            this.maskedTextBox8.Name = "maskedTextBox8";
-            this.maskedTextBox8.Size = new System.Drawing.Size(132, 35);
-            this.maskedTextBox8.TabIndex = 64;
+            this.maskedBValorCode.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.maskedBValorCode.Enabled = false;
+            this.maskedBValorCode.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.maskedBValorCode.Location = new System.Drawing.Point(763, 282);
+            this.maskedBValorCode.Mask = "$";
+            this.maskedBValorCode.Name = "maskedBValorCode";
+            this.maskedBValorCode.Size = new System.Drawing.Size(132, 35);
+            this.maskedBValorCode.TabIndex = 64;
             // 
-            // button2
+            // btnExistente
             // 
-            this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button2.Enabled = false;
-            this.button2.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(563, 10);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 25);
-            this.button2.TabIndex = 63;
-            this.button2.Text = "Existente";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btnExistente.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnExistente.Enabled = false;
+            this.btnExistente.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnExistente.Location = new System.Drawing.Point(563, 10);
+            this.btnExistente.Name = "btnExistente";
+            this.btnExistente.Size = new System.Drawing.Size(75, 25);
+            this.btnExistente.TabIndex = 63;
+            this.btnExistente.Text = "Existente";
+            this.btnExistente.UseVisualStyleBackColor = true;
+            this.btnExistente.Click += new System.EventHandler(this.btnExistente_Click);
             // 
             // btnNovoCliente
             // 
@@ -520,6 +524,7 @@
             this.btnNovoCliente.TabIndex = 62;
             this.btnNovoCliente.Text = "Novo";
             this.btnNovoCliente.UseVisualStyleBackColor = true;
+            this.btnNovoCliente.Click += new System.EventHandler(this.btnNovoCliente_Click);
             // 
             // pictureBox1
             // 
@@ -629,7 +634,7 @@
             this.Controls.Add(this.btnMinimizar);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.maskedTextBox1);
+            this.Controls.Add(this.maskedBCodeBar);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.bntMaximizar);
             this.Controls.Add(this.btnNormal);
@@ -639,12 +644,12 @@
             this.Name = "APSvendas";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Registrar Pedidos";
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
+            this.panelNCN.ResumeLayout(false);
+            this.panelNCN.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numUDQtdItem)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.maskedBQtdCode)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -653,38 +658,38 @@
 
         #endregion
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.MaskedTextBox maskedTextBox1;
+        private System.Windows.Forms.MaskedTextBox maskedBCodeBar;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.MaskedTextBox maskTBCodigoDeBarras;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.MaskedTextBox maskedTextBox2;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.MaskedTextBox maskedTextBox4;
-        private System.Windows.Forms.MaskedTextBox maskedTextBox5;
+        private System.Windows.Forms.MaskedTextBox maskedBNome;
+        private System.Windows.Forms.MaskedTextBox maskedBCPF;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.MaskedTextBox maskedTextBox6;
+        private System.Windows.Forms.MaskedTextBox maskedBNascimento;
         private System.Windows.Forms.ListView listView1;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.MaskedTextBox maskedTextBox7;
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.MaskedTextBox maskedBRetirarItem;
+        private System.Windows.Forms.Panel panelNCN;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Button button7;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.MaskedTextBox maskedTextBox3;
+        private System.Windows.Forms.MaskedTextBox maskedBValorItem;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.NumericUpDown numericUpDown2;
+        private System.Windows.Forms.NumericUpDown numUDQtdItem;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.NumericUpDown numericUpDown1;
-        private System.Windows.Forms.MaskedTextBox maskedTextBox8;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.NumericUpDown maskedBQtdCode;
+        private System.Windows.Forms.MaskedTextBox maskedBValorCode;
+        private System.Windows.Forms.Button btnExistente;
         private System.Windows.Forms.Button btnNovoCliente;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Button btnFechar;

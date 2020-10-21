@@ -9,7 +9,7 @@ namespace InsightCoffe.Repositorios
 {
     public class Pedido
     {
-        public long CodigoDeBarras { get; set; }
+        public UInt64 CodigoDeBarras { get; set; }
         
         public List<Cliente> NewCliente { get; set; }
 
