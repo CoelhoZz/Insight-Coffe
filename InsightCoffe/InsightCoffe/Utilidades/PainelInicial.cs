@@ -1,5 +1,6 @@
 ﻿using InsightCoffe.Entity;
 using InsightCoffe.Repositorios;
+using InsightCoffe.Utilidades.Consultas;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -30,6 +31,7 @@ namespace InsightCoffe.Utilidades
 
             MetodosProdutos();
             MetodosPedidos();
+            MetodosCliente();
 
         }
         //-------------------------------------Banco de Dados interno--------------------------------------
@@ -259,8 +261,9 @@ namespace InsightCoffe.Utilidades
             });            
             pedido.Add(new Pedido()
             {
-                CodigoDeBarras = (UInt64)1679435689433
+                CodigoDeBarras = (UInt64)1
             });
+            //1679435689433
         }
 
         /// Clientes
@@ -274,7 +277,7 @@ namespace InsightCoffe.Utilidades
                 ID = 1,
                 Nome = "Pedro Devolve o Macaco",
                 DataNascimento = "16/05/2002",
-                CPF = "21012022002"
+                CPF = "108.634.709-98"
 
             });
         }
@@ -301,10 +304,10 @@ namespace InsightCoffe.Utilidades
             }
         }
         // Descrição de botões
-        private void timerTempoReal_Tick(object sender, EventArgs e)
-        {
-            lblRelogio.Text = (time = DateTime.Now.ToShortTimeString());
-        }
+        //private void timerTempoReal_Tick(object sender, EventArgs e)
+        //{
+        //    lblRelogio.Text = (time = DateTime.Now.ToShortTimeString());
+        //}
 
         //--------------------------------------Mover formulario--------------------------------------------
         Point DragCursor;
@@ -413,43 +416,111 @@ namespace InsightCoffe.Utilidades
             panelAplicações.Visible = false;
         }
         //---------------------------start Sequencia de EVENTOS abertura das outras Telas-----------------
-        public bool TelaVend = false, TelaPag = false, TelaProd = false;
-
         private void bntPagamento_Click_1(object sender, EventArgs e)
         {
             if (TelaPag == false)
-            {
                 Tela_de_Pagamentos();
-                TelaPag = true;
-            }
         }
         private void bntVendas_Click_1(object sender, EventArgs e)
         {
             if (TelaVend == false)
-            {
                 Tela_de_Vendas();
-                TelaVend = true;
-            }
         }
 
         private void bntProdutos_Click(object sender, EventArgs e)
         {
             if (TelaProd == false)
-            {
                 Tela_de_Produtos();
-                TelaProd = true;
+        }
+
+        ////           Ferramentas
+        /// Lista de feramentas do Tool Strip
+        // 
+        // Pagamento
+        private void pagamentosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (TelaPag == false)
+                Tela_de_Pagamentos();
+        }
+        //
+        //Pedidos
+        private void pedidosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (TelaVend == false)
+                Tela_de_Vendas();
+        }
+        //
+        //Produtos
+        private void produtosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (TelaProd == false)
+                Tela_de_Produtos();
+        }
+        //
+        //Bloco de Notas
+        private void BlocoAnotaçõestoolStripMenuItem4_Click(object sender, EventArgs e)
+        {
+
+        }
+        //
+        //Fechar todas as Abas
+        private void CloseAllToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            foreach (Form childForm in MdiChildren)
+            {
+                childForm.Close();
             }
+            TelaPag = false;
+            TelaVend = false;
+            TelaProd = false;
+            TelaRegPagamento = false;
+            TelaRegPedidos = false;
+            TelaRegProdutos = false;
+            TelaRegClientes = false;
+        }
+
+        ////            Consultas
+        /// Lista de feramentas para consultas
+        //
+        //Registro de Pagamentos
+        private void RegPagamentosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+        //
+        //Registro de Pedidos 
+        private void RegPedidostoolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+
+        }
+        //
+        //Registros de Produtos 
+        private void RegProdutostoolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            if (TelaRegProdutos == false)
+                Tela_de_RegistrosProdutos();
+        }
+        //
+        //Registro de Clientes
+        private void RegClientestoolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            if (TelaRegClientes == false)
+                Tela_de_RegistrosClientes();
         }
         //-------------------------End Sequencia de EVENTOS abertura das outras Telas---------------------
 
         //---------------------------start Sequencia de EVENTOS abertura das outras Telas-----------------
-        public System.Windows.Thickness BorderThickness { get; set; }
+        public bool TelaVend = false, TelaPag = false, TelaProd = false,
+                    TelaRegPagamento = false, TelaRegPedidos = false, TelaRegProdutos = false,
+                    TelaRegClientes = false;
 
         private void Tela_de_Vendas()
         {
             APSvendas apsVendas = new APSvendas(this, produtos, pedido, clientes);
+            apsVendas.inicial1 = this;
             apsVendas.MdiParent = this;
             apsVendas.Show();
+            TelaVend = true;
         }
 
         private void Tela_de_Pagamentos()
@@ -457,6 +528,7 @@ namespace InsightCoffe.Utilidades
             APSpagamento apsPagamento = new APSpagamento();
             apsPagamento.MdiParent = this;
             apsPagamento.Show();
+            TelaPag = true;
         }
 
         private void Tela_de_Produtos()
@@ -465,7 +537,41 @@ namespace InsightCoffe.Utilidades
             apsProdutos.MdiParent = this;
             apsProdutos.Start = this;
             apsProdutos.Show();
+            TelaProd = true;
         }
+
+        //private void Tela_de_RegistrosPagamentos()
+        //{
+        //    RegClientes registro = new RegClientes(this, clientes);
+        //    registro.MdiParent = this;
+        //    registro.Show();
+        //    TelaRegPagamento = true;
+        //}
+
+        //private void Tela_de_RegistrosPedidos()
+        //{
+        //    RegClientes registro = new RegClientes(this, clientes);
+        //    registro.MdiParent = this;
+        //    registro.Show();
+        //    TelaRegPedidos= true;
+        //}
+
+        private void Tela_de_RegistrosProdutos()
+        {
+            RegProdutos registro = new RegProdutos(this, produtos);
+            registro.MdiParent = this;
+            registro.Show();
+            TelaRegProdutos = true;
+        }
+
+        private void Tela_de_RegistrosClientes() 
+        {
+            RegClientes registro = new RegClientes(this, clientes);
+            registro.MdiParent = this;
+            registro.Show();
+            TelaRegClientes = true;
+        }
+
         //-------------------------End Sequencia de EVENTOS abertura das outras Telas---------------------
 
         //-----------------------------start APSprodutos LISTA de PRODUTOS---------------------------------       
@@ -495,17 +601,41 @@ namespace InsightCoffe.Utilidades
         //------------------------------end APSprodutos LISTA de PRODUTOS----------------------------------
 
         //-------------------------------start APSvendas LISTA de PEDIDOS----------------------------------       
-        //public void Adicionar_Pedido(double)
+        public void Adicionar_Cliente(string nome, string datadenascimento, string cpf)
+        {
+            int Id = 0; 
+            
+            clientes.Add(new Cliente()
+            { 
+                ID = identify(Id),
+                Nome = nome,
+                DataNascimento = datadenascimento,
+                CPF = cpf
+            });
+        }
+
+        public int identify(int id)
+        {
+            id = 0;
+            int i = 1;
+            foreach (Cliente cliente in clientes)
+            {
+                if (i != cliente.ID)
+                {
+                    id = i;
+                    return id;
+                }
+                i++;
+            }
+            id = i++;
+            return id;
+            
+        }
         //--------------------------------end APSvendas LISTA de PEDIDOS-----------------------------------
 
         //---------------------------------start Tool Strip EVENTOS----------------------------------------
-        private void ShowNewForm(object sender, EventArgs e)
-        {
-            Form childForm = new Form();
-            childForm.MdiParent = this;
-            childForm.Text = "Janela " + childFormNumber++;
-            childForm.Show();
-        }
+         
+        
 
         private void OpenFile(object sender, EventArgs e)
         {
@@ -516,6 +646,12 @@ namespace InsightCoffe.Utilidades
             {
                 string FileName = openFileDialog.FileName;
             }
+        }
+
+        string AreaDeTrabalho;
+        private void copyToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Clipboard.SetText(string.Empty);
         }
 
         private void SaveAsToolStripMenuItem_Click(object sender, EventArgs e)
@@ -529,17 +665,7 @@ namespace InsightCoffe.Utilidades
             }
         }
 
-        private void CutToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-        }
-
-        private void CopyToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-        }
-
-        private void PasteToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-        }
+        
 
         private void ToolBarToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -556,16 +682,12 @@ namespace InsightCoffe.Utilidades
             LayoutMdi(MdiLayout.ArrangeIcons);
         }
 
-        private void CloseAllToolStripMenuItem_Click(object sender, EventArgs e)
+        private void toolStripMenuItem2_Click(object sender, EventArgs e)
         {
-            foreach (Form childForm in MdiChildren)
-            {
-                childForm.Close();
-            }
-            TelaPag = false;
-            TelaVend = false;
-            TelaProd = false;
+
         }
+
+
 
         private void menuStrip_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {

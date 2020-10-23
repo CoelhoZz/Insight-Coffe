@@ -1,4 +1,5 @@
-﻿using InsightCoffe.Entity;
+﻿using InsightCoffe.Classes;
+using InsightCoffe.Entity;
 using InsightCoffe.Repositorios;
 using System;
 using System.Collections.Generic;
@@ -14,7 +15,7 @@ namespace InsightCoffe.Utilidades
 {
     public partial class APSvendas : Form
     {
-        PainelInicial inicial1;
+        public PainelInicial inicial1 { get; set; }
 
         public APSvendas(PainelInicial inicial, List<Produto> produtos, List<Pedido> pedido, List<Cliente> clientes)
         {
@@ -52,7 +53,7 @@ namespace InsightCoffe.Utilidades
         //------------------------------Minimizar, Maximizar e Fechar aplicação---------------------------
         private void btnFechar_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Deseja fechar todo o Sistema, incuindo todas as telas abertas neste momento?", "Atenção", MessageBoxButtons.YesNo) == DialogResult.No)
+            if (MessageBox.Show("Certifique-se de que salvou o pedido" + "\n" + "Deseja fechar a janela atual?", "Atenção", MessageBoxButtons.YesNo) == DialogResult.No)
                 return;
 
             this.Close();
@@ -130,6 +131,7 @@ namespace InsightCoffe.Utilidades
             if(e.KeyCode == Keys.Enter)
             {
                 adicionarPedido();
+                maskedBCodeBar.Enabled = false;
             }
         }
         //------------------------------end: Codigos de ativação de pedido------------------------------
@@ -154,7 +156,7 @@ namespace InsightCoffe.Utilidades
             }
         }
 
-        bool novoCliente = false;
+        bool novoCliente;
 
         private void habilitarCliente()
         {
@@ -177,30 +179,6 @@ namespace InsightCoffe.Utilidades
 
             maskedBValorCode.Enabled = true;
         }
-
-        private void btnNovoCliente_Click(object sender, EventArgs e)
-        {
-            maskedBNome.Enabled = true;
-
-            maskedBCPF.Enabled = true;
-
-            maskedBNascimento.Enabled = true;
-
-            novoCliente = true;
-        }
-
-        private void btnExistente_Click(object sender, EventArgs e)
-        {
-            maskedBCPF.Enabled = true;
-        }
-
-        private void KeyDown_CPF(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-            {        
-                    clienteSearch();
-            }
-        }
         
         private void clienteSearch()
         {
@@ -219,10 +197,133 @@ namespace InsightCoffe.Utilidades
             }
             catch (Exception)
             {
-                MessageBox.Show("Insira um CPF válido!!", "Atenção!");
+                MessageBox.Show("Esse CPF não esta cadastrado!", "Atenção!");
+                return;
+            }
+            btnExistente.Enabled = false;
+            btnProcurar.Enabled = false;
+            maskedBCPF.Enabled = false;
+        }
+
+        public void filtroNascimento()
+        {
+            try
+            {
+                Nascimento = Convert.ToDateTime(maskedBNascimento.Text);
+                ValidoData = true;
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Data de nascimento inválida!", "Atenção!");
+                ValidoData = false;
+                return;
             }
         }
 
+        public void filtroCPF()
+        {
+            Cpf = maskedBCPF.Text;
+            if (ValidaCPF.IsCpf(Cpf))
+            {
+                ValidoCPF = true;
+            }
+            else
+            {
+                MessageBox.Show("CPF inválido!", "Atenção!");
+                ValidoCPF = false;
+                return;
+                
+            }
+        }
+
+        public void filtroNome()
+        {
+            if(maskedBNome.Text == "")
+            {
+                MessageBox.Show("Nome inválido!", "Atenção!");
+                ValidoNome = false;
+                return;
+            }
+            else
+            {
+                ValidoNome = true;
+                Nome = maskedBNome.Text;
+            }
+            
+        }
+
         //------------------------------end: Methods ---------------------------------------------------
+
+        //------------------------------Start: Codigo ativação Cliente----------------------------------
+        public DateTime Nascimento;
+        public string Cpf;
+        public string Nome;
+        public bool ValidoNome, ValidoCPF, ValidoData; 
+
+        private void btnNovoCliente_Click(object sender, EventArgs e)
+        {
+            //Campos Cliente
+            maskedBNome.Enabled = true;
+            maskedBCPF.Enabled = true;
+            maskedBNascimento.Enabled = true;
+
+            //Variavel
+            novoCliente = true;
+
+            //Botão
+            btnExistente.Enabled = false;
+            btnSalvar.Enabled = true;
+        }
+
+        private void btnExistente_Click(object sender, EventArgs e)
+        {
+            //Campo Cliente
+            maskedBCPF.Enabled = true;
+
+            //Botão
+            btnNovoCliente.Enabled = false;
+            btnProcurar.Enabled = true;
+
+            //Variavel
+            novoCliente = false;
+        }
+
+        private void KeyPress_CPF(object sender, KeyPressEventArgs e)
+        {
+            if (novoCliente == false) return;
+            else
+            {
+                if (e.KeyChar == (char)Keys.Enter)
+                {
+                    clienteSearch();
+                    return;
+                }
+            }
+            if (char.IsControl(e.KeyChar))
+                return;
+            if (!char.IsDigit(e.KeyChar))
+                e.Handled = true;
+
+        }
+
+        private void btnProcurar_Click(object sender, EventArgs e)
+        {
+            clienteSearch();
+        }
+        
+        private void btnSalvar_Click(object sender, EventArgs e)
+        {
+            filtroNascimento();
+            filtroNome();
+            filtroCPF();
+
+            if (ValidoData == false || ValidoNome == false || ValidoCPF == false) return;
+
+
+            inicial1.Adicionar_Cliente(Nome, Nascimento.ToString("dd/MM/yyyy"), Cpf);
+        }
+
+
+        //------------------------------end: Codigo ativação Cliente------------------------------------
     }
 }

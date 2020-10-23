@@ -47,6 +47,8 @@
             this.maskedBRetirarItem = new System.Windows.Forms.MaskedTextBox();
             this.panelNCN = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.btnProcurar = new System.Windows.Forms.Button();
+            this.btnSalvar = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
             this.label11 = new System.Windows.Forms.Label();
             this.maskedBValorItem = new System.Windows.Forms.MaskedTextBox();
@@ -88,6 +90,7 @@
             // 
             // maskedBCodeBar
             // 
+            this.maskedBCodeBar.AllowDrop = true;
             this.maskedBCodeBar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.maskedBCodeBar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -184,12 +187,12 @@
             this.maskedBCPF.Enabled = false;
             this.maskedBCPF.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.maskedBCPF.Location = new System.Drawing.Point(108, 54);
-            this.maskedBCPF.Mask = "000.000.000-00";
+            this.maskedBCPF.Mask = "000,000,000-00";
             this.maskedBCPF.Name = "maskedBCPF";
             this.maskedBCPF.Size = new System.Drawing.Size(144, 29);
             this.maskedBCPF.TabIndex = 20;
             this.maskedBCPF.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.maskedBCPF.KeyDown += new System.Windows.Forms.KeyEventHandler(this.KeyDown_CPF);
+            this.maskedBCPF.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.KeyPress_CPF);
             // 
             // label7
             // 
@@ -274,7 +277,7 @@
             this.panelNCN.Controls.Add(this.label7);
             this.panelNCN.Location = new System.Drawing.Point(443, 27);
             this.panelNCN.Name = "panelNCN";
-            this.panelNCN.Size = new System.Drawing.Size(501, 104);
+            this.panelNCN.Size = new System.Drawing.Size(501, 100);
             this.panelNCN.TabIndex = 52;
             // 
             // panel2
@@ -283,6 +286,8 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel2.BackColor = System.Drawing.Color.Chocolate;
+            this.panel2.Controls.Add(this.btnProcurar);
+            this.panel2.Controls.Add(this.btnSalvar);
             this.panel2.Controls.Add(this.button6);
             this.panel2.Controls.Add(this.label11);
             this.panel2.Controls.Add(this.maskedBValorItem);
@@ -311,6 +316,32 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(960, 545);
             this.panel2.TabIndex = 53;
+            // 
+            // btnProcurar
+            // 
+            this.btnProcurar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnProcurar.Enabled = false;
+            this.btnProcurar.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnProcurar.Location = new System.Drawing.Point(849, 116);
+            this.btnProcurar.Name = "btnProcurar";
+            this.btnProcurar.Size = new System.Drawing.Size(84, 25);
+            this.btnProcurar.TabIndex = 77;
+            this.btnProcurar.Text = "Procurar";
+            this.btnProcurar.UseVisualStyleBackColor = true;
+            this.btnProcurar.Click += new System.EventHandler(this.btnProcurar_Click);
+            // 
+            // btnSalvar
+            // 
+            this.btnSalvar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSalvar.Enabled = false;
+            this.btnSalvar.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSalvar.Location = new System.Drawing.Point(776, 116);
+            this.btnSalvar.Name = "btnSalvar";
+            this.btnSalvar.Size = new System.Drawing.Size(67, 25);
+            this.btnSalvar.TabIndex = 76;
+            this.btnSalvar.Text = "Salvar";
+            this.btnSalvar.UseVisualStyleBackColor = true;
+            this.btnSalvar.Click += new System.EventHandler(this.btnSalvar_Click);
             // 
             // button6
             // 
@@ -696,5 +727,7 @@
         private System.Windows.Forms.Button btnMinimizar;
         private System.Windows.Forms.Button bntMaximizar;
         private System.Windows.Forms.Button btnNormal;
+        private System.Windows.Forms.Button btnProcurar;
+        private System.Windows.Forms.Button btnSalvar;
     }
 }

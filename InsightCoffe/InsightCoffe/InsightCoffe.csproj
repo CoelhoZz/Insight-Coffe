@@ -98,12 +98,19 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Classes\ValidaCPF.cs" />
     <Compile Include="Entity\Cliente.cs" />
     <Compile Include="Entity\Usuarios.cs" />
     <Compile Include="Repositorios\AdicionarPedido.cs" />
     <Compile Include="Repositorios\CadCodigoBarras.cs" />
     <Compile Include="Repositorios\Pedido.cs" />
     <Compile Include="Repositorios\Produto.cs" />
+    <Compile Include="Utilidades\Consultas\RegClientes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Utilidades\Consultas\RegClientes.Designer.cs">
+      <DependentUpon>RegClientes.cs</DependentUpon>
+    </Compile>
     <Compile Include="Utilidades\APSpagamento.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -130,12 +137,21 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utilidades\Consultas\RegProdutos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Utilidades\Consultas\RegProdutos.Designer.cs">
+      <DependentUpon>RegProdutos.cs</DependentUpon>
+    </Compile>
     <Compile Include="Utilidades\PainelInicial.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Utilidades\PainelInicial.Designer.cs">
       <DependentUpon>PainelInicial.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Utilidades\Consultas\RegClientes.resx">
+      <DependentUpon>RegClientes.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Utilidades\APSpagamento.resx">
       <DependentUpon>APSpagamento.cs</DependentUpon>
     </EmbeddedResource>
@@ -157,6 +173,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Utilidades\Consultas\RegProdutos.resx">
+      <DependentUpon>RegProdutos.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Utilidades\PainelInicial.resx">
       <DependentUpon>PainelInicial.cs</DependentUpon>
     </EmbeddedResource>
