@@ -15,6 +15,10 @@ namespace InsightCoffe.Utilidades
 {
     public partial class APSvendas : Form
     {
+        List<Produto> carrinho = new List<Produto>();
+        List<Cliente> clientePedido = new List<Cliente>(1);
+
+        
         public PainelInicial inicial1 { get; set; }
 
         public APSvendas(PainelInicial inicial, List<Produto> produtos, List<Pedido> pedido, List<Cliente> clientes)
@@ -117,6 +121,7 @@ namespace InsightCoffe.Utilidades
         }
 
         //----------------------------------------------------------------------------------------------
+
         //----------------------------start: Codigos de ativação de pedido------------------------------
         private void KeyPress_CodigoBar(object sender, KeyPressEventArgs e)
         {
@@ -131,21 +136,81 @@ namespace InsightCoffe.Utilidades
             if(e.KeyCode == Keys.Enter)
             {
                 adicionarPedido();
-                maskedBCodeBar.Enabled = false;
+                mskBCodeBar.Enabled = false;
             }
         }
         //------------------------------end: Codigos de ativação de pedido------------------------------
+
+        //------------------------------Start: Classes -------------------------------------------------
+        private bool checkCliente(string cpf)
+        {
+            foreach (Cliente cliente in inicial1.clientes)
+            {
+                if (cpf == cliente.CPF)
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
+        public bool filtroNascimento()
+        {
+            try
+            {
+                Nascimento = Convert.ToDateTime(mskBNascimento.Text);
+                return true;
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Data de nascimento inválida!", "Atenção!");
+                return false;
+            }
+        }
+
+        public bool filtroCPF()
+        {
+            Cpf = mskBCPF.Text;
+            if (ValidaCPF.IsCpf(Cpf))
+            {
+                return true;
+            }
+            else
+            {
+                MessageBox.Show("CPF inválido!", "Atenção!");
+                return false;
+            }
+        }
+
+        public bool filtroNome()
+        {
+            if (mskBNome.Text == "")
+            {
+                MessageBox.Show("Nome inválido!", "Atenção!");
+                return false;
+            }
+            else
+            {
+                Nome = mskBNome.Text;
+                return true;
+
+            }
+
+        }
+        //------------------------------end: Classes -------------------------------------------------
+
         //------------------------------Start: Methods -------------------------------------------------
         private void adicionarPedido()
         {
             try
             {
-                UInt64 codigoBarra = Convert.ToUInt64(maskedBCodeBar.Text);
+                UInt64 codigoBarra = Convert.ToUInt64(mskBCodeBar.Text);
                 foreach (Pedido pedido in inicial1.pedido)
                 {
                     if (codigoBarra == pedido.CodigoDeBarras)
                     {
-                        habilitarCliente();
+                        habilitar_BotõesCliente();
                         return;
                     }
                 }
@@ -155,150 +220,167 @@ namespace InsightCoffe.Utilidades
                 MessageBox.Show("Insira um codigo de barras válido!!", "Atenção!");
             }
         }
-
-        bool novoCliente;
-
-        private void habilitarCliente()
-        {
-            btnNovoCliente.Enabled = true;
-
-            btnExistente.Enabled = true;
-        }
         
         private void habilitarCarrinho()
         {
-            maskedBRetirarItem.Enabled = true;
-
-            numUDQtdItem.Enabled = true;
-
-            maskedBValorItem.Enabled = true;
-
-            maskTBCodigoDeBarras.Enabled = true;
-
-            maskedBQtdCode.Enabled = true;
-
-            maskedBValorCode.Enabled = true;
+            mskBRetirarItem.Enabled = true;
+            numUDQtdItemRetirar.Enabled = true;
+            mskBValorItemRetirado.Enabled = true;
+            numUDQtdItemAdicionar.Enabled = true;
+            mskBValorAdicionar.Enabled = true;
         }
+
+
+        //--------------------------------------Client
+        private void habilitar_BotõesCliente()
+        {
+            btnIncluirCampoCliente.Enabled = true;
+            btnPular.Enabled = true;
+        }        
+
+        private void desabilitar_BotõesCliente()
+        {
+            btnIncluirCampoCliente.Enabled = false;
+            btnPular.Enabled = false;
+        }
+
+        private void habilita_CamposCliente()
+        {
+            btnSalvar.Enabled = true;
+            btnProcurar.Enabled = true;
+            btnLimparClient .Enabled = true;
+
+            mskBNome.Enabled = true;
+            mskBNascimento.Enabled = true;
+            mskBCPF.Enabled = true;
+        }        
         
+        private void desabilita_CamposCliente()
+        {
+            btnSalvar.Enabled = false;
+            btnProcurar.Enabled = false;
+            btnLimparClient.Enabled = false;
+
+            mskBNome.Enabled = false;
+            mskBNascimento.Enabled = false;
+            mskBCPF.Enabled = false;
+        }
+
         private void clienteSearch()
         {
             try
             {
-                string clienteCPF = (maskedBCPF.Text).ToString();
+                string clienteCPF = (mskBCPF.Text).ToString();
+                string clienteNome = (mskBNome.Text).ToString();
                 foreach (Cliente cliente in inicial1.clientes)
                 {
-                    if (clienteCPF == cliente.CPF)
+                    if (clienteCPF == cliente.CPF || clienteNome == cliente.Nome)
                     {
-                        maskedBNome.Text = cliente.Nome;
-                        maskedBNascimento.Text = cliente.DataNascimento;
+                        mskBNome.Text = cliente.Nome;
+                        mskBCPF.Text = cliente.CPF;
+                        mskBNascimento.Text = cliente.DataNascimento;
                         return;
                     }
                 }
             }
             catch (Exception)
             {
-                MessageBox.Show("Esse CPF não esta cadastrado!", "Atenção!");
-                return;
-            }
-            btnExistente.Enabled = false;
-            btnProcurar.Enabled = false;
-            maskedBCPF.Enabled = false;
-        }
-
-        public void filtroNascimento()
-        {
-            try
-            {
-                Nascimento = Convert.ToDateTime(maskedBNascimento.Text);
-                ValidoData = true;
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("Data de nascimento inválida!", "Atenção!");
-                ValidoData = false;
+                MessageBox.Show("Cliente não encontrado, certifique-se que pesquisou corrtamente. Pesquisas são feitas aparir do \"Nome\" ou \"Cpf\" ", "Atenção!");
                 return;
             }
         }
-
-        public void filtroCPF()
+        
+        private void confirmarCliente()
         {
-            Cpf = maskedBCPF.Text;
-            if (ValidaCPF.IsCpf(Cpf))
-            {
-                ValidoCPF = true;
-            }
-            else
-            {
-                MessageBox.Show("CPF inválido!", "Atenção!");
-                ValidoCPF = false;
-                return;
-                
-            }
-        }
+            Nome = mskBNome.Text;
+            Cpf = mskBCPF.Text;
+            Nascimento = Convert.ToDateTime(mskBNascimento.Text);
 
-        public void filtroNome()
-        {
-            if(maskedBNome.Text == "")
+            clientePedido.Add(new Cliente()
             {
-                MessageBox.Show("Nome inválido!", "Atenção!");
-                ValidoNome = false;
-                return;
-            }
-            else
-            {
-                ValidoNome = true;
-                Nome = maskedBNome.Text;
-            }
-            
+                Nome = Nome,
+                DataNascimento = Nascimento.ToString("dd/MM/yyyy"),
+                CPF = Cpf
+
+            });
         }
 
         //------------------------------end: Methods ---------------------------------------------------
 
         //------------------------------Start: Codigo ativação Cliente----------------------------------
-        public DateTime Nascimento;
-        public string Cpf;
         public string Nome;
-        public bool ValidoNome, ValidoCPF, ValidoData; 
+        public string Cpf;
+        public DateTime Nascimento;
 
-        private void btnNovoCliente_Click(object sender, EventArgs e)
+        private void btnIncluirPedido_Click(object sender, EventArgs e)
         {
-            //Campos Cliente
-            maskedBNome.Enabled = true;
-            maskedBCPF.Enabled = true;
-            maskedBNascimento.Enabled = true;
-
-            //Variavel
-            novoCliente = true;
-
-            //Botão
-            btnExistente.Enabled = false;
-            btnSalvar.Enabled = true;
+            desabilitar_BotõesCliente();
+            habilita_CamposCliente();
         }
 
-        private void btnExistente_Click(object sender, EventArgs e)
+        private void btnPular_Click(object sender, EventArgs e)
         {
-            //Campo Cliente
-            maskedBCPF.Enabled = true;
+            desabilitar_BotõesCliente();
+            clientePedido.Add(new Cliente()
+            {
+                Nome = "Desconhecido(a)",
+                DataNascimento = "Null",
+                CPF = "Null"
+            });
 
-            //Botão
-            btnNovoCliente.Enabled = false;
-            btnProcurar.Enabled = true;
+            habilitarCarrinho();
+        }
 
-            //Variavel
-            novoCliente = false;
+        private void btnProcurar_Click(object sender, EventArgs e)
+        {
+            clienteSearch();
+
+            if (mskBNome.Text != "" && mskBNascimento.Text != "  /  /")
+            {
+                desabilitar_BotõesCliente();
+                desabilita_CamposCliente();
+
+                confirmarCliente();
+                habilitarCarrinho();
+            }
+            else
+            {
+                return;
+            }
+        }
+
+        private void btnSalvar_Click(object sender, EventArgs e)
+        {
+            //Checagem de campos preenchidos corretamente
+            if (filtroNascimento() == false || filtroNome() == false || filtroCPF() == false) return;
+
+            //Checagem para Cpf ja salvo no sistema
+            if(checkCliente(Cpf) == true)
+            {
+                MessageBox.Show("Cliente já esta registrado no sistema, tente outro CPF", "Alerta");
+                mskBCPF.Clear();
+                return;
+            }
+
+            //Adicionando as Listas nescessarias
+            inicial1.Adicionar_Cliente(Nome, Nascimento.ToString("dd/MM/yyyy"), Cpf);
+            confirmarCliente();
+
+            desabilitar_BotõesCliente();
+            desabilita_CamposCliente();
+
+            habilitarCarrinho();
+        }
+
+        private void btnLimparClient_Click(object sender, EventArgs e)
+        {
+            mskBNome.Clear();
+            mskBCPF.Clear();
+            mskBNascimento.Clear();
         }
 
         private void KeyPress_CPF(object sender, KeyPressEventArgs e)
         {
-            if (novoCliente == false) return;
-            else
-            {
-                if (e.KeyChar == (char)Keys.Enter)
-                {
-                    clienteSearch();
-                    return;
-                }
-            }
             if (char.IsControl(e.KeyChar))
                 return;
             if (!char.IsDigit(e.KeyChar))
@@ -306,22 +388,71 @@ namespace InsightCoffe.Utilidades
 
         }
 
-        private void btnProcurar_Click(object sender, EventArgs e)
+        private void KeyPress_Nascimeto(object sender, KeyPressEventArgs e)
         {
-            clienteSearch();
+            if (char.IsControl(e.KeyChar))
+                return;
+            if (!char.IsDigit(e.KeyChar))
+                e.Handled = true;
         }
-        
-        private void btnSalvar_Click(object sender, EventArgs e)
+
+        //---------------------------------End: Codigo ativação Cliente----------------------------------
+
+        //------------------------------Start: Codigo ativação Carrinho----------------------------------
+        List<string> descricao = new List<string>();
+        private void listadepesquisa()
         {
-            filtroNascimento();
-            filtroNome();
-            filtroCPF();
-
-            if (ValidoData == false || ValidoNome == false || ValidoCPF == false) return;
-
-
-            inicial1.Adicionar_Cliente(Nome, Nascimento.ToString("dd/MM/yyyy"), Cpf);
+            foreach (Produto produto in inicial1.produtos)
+            {
+                descricao.Add(produto.Descricao);
+                comboBox1.Items.Add(produto.Descricao);
+            }
         }
+
+
+
+
+
+
+        //private void APSvendas_Load(object sender, EventArgs e)
+        //{
+        //    //listadepesquisa();
+        //}
+
+        //private void txtChanged_ComBox(object sender, EventArgs e)
+        //{
+        //    //foreach (Produto produto in inicial1.produtos)
+        //    //{
+        //    //    if(produto.Descricao.Contains(comboBox1.Text))
+        //    //        comboBox1.Items.Add(produto.Descricao);
+        //    //}
+        //}
+
+        //private void KeyPress_ProcuraDeItem(object sender, KeyPressEventArgs e)
+        //{
+        //    string sPattern = comboBox1.Text;
+        //    comboBox1.Items.Add(inicial1.produtos.Find(x => x.Descricao.Contains(sPattern)));
+        //}
+
+        //private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        //{
+
+        //}
+
+
+
+        private void btnAdicionar_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+
+        }
+
+
+
 
 
         //------------------------------end: Codigo ativação Cliente------------------------------------

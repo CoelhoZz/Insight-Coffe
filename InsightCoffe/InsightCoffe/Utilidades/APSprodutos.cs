@@ -106,7 +106,7 @@ namespace InsightCoffe.Utilidades
         }
 
         //--------------------------------------------------------Adicionar
-        private void button1_Click(object sender, EventArgs e)
+        private void btnAdicionar_Click(object sender, EventArgs e)
         {
             //Habilitando Botão
             btnCancelar.Enabled = true;
@@ -119,7 +119,7 @@ namespace InsightCoffe.Utilidades
             txbCodigo.Enabled = false;
 
             int i = 1;
-            foreach(Produto produto in Start.produtos)
+            foreach (Produto produto in Start.produtos)
             {
                 if (i == produto.ID)
                     i++;
@@ -247,11 +247,23 @@ namespace InsightCoffe.Utilidades
             dtGridView.DataSource = Start.produtos;
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void btnAtualizar_Click(object sender, EventArgs e)
         {
             dtGridView.DataSource = null;
             dtGridView.DataSource = Start.produtos;
         }
+
         //---------------------------------------------end Exibição de Produtos------------------------------------------
+        //---------------------------------------------Start:Animação----------------------------------------------------
+
+        //Botao adicionar------------------------------------------------------------------------------------------------
+        private void MouseHover_Add(object sender, EventArgs e)
+        {
+            btnAdicionar.FlatAppearance.BorderColor = Color.Gainsboro;
+        }
+
+
+        //-----------------------------------------------end:Animação----------------------------------------------------
+
     }
 }

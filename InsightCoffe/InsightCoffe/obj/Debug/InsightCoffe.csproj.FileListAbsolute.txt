@@ -83,3 +83,4 @@ C:\Users\T-Gamer\Desktop\Insight-Coffe-master\InsightCoffe\InsightCoffe\obj\Debu
 C:\Users\T-Gamer\Desktop\Insight-Coffe-master\InsightCoffe\InsightCoffe\obj\Debug\InsightCoffe.pdb
 C:\InsightCoffeVersions\InsightCoffe\InsightCoffe\obj\Debug\InsightCoffe.Utilidades.Consultas.RegClientes.resources
 C:\InsightCoffeVersions\InsightCoffe\InsightCoffe\obj\Debug\InsightCoffe.Utilidades.Consultas.RegProdutos.resources
+C:\InsightCoffeVersions\InsightCoffe\InsightCoffe\obj\Debug\InsightCoffe.Utilidades.NotePad.resources

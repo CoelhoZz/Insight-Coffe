@@ -40,7 +40,7 @@
             this.label5 = new System.Windows.Forms.Label();
             this.btnAdicionar = new System.Windows.Forms.Button();
             this.btnEditar = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.btnAtualizar = new System.Windows.Forms.Button();
             this.dtGridView = new System.Windows.Forms.DataGridView();
             this.btnPesquisar = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
@@ -55,6 +55,8 @@
             // 
             // bntCadastrar
             // 
+            this.bntCadastrar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(223)))), ((int)(((byte)(150)))), ((int)(((byte)(64)))));
+            this.bntCadastrar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.bntCadastrar.Enabled = false;
             this.bntCadastrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.bntCadastrar.Font = new System.Drawing.Font("Rockwell", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -63,7 +65,7 @@
             this.bntCadastrar.Size = new System.Drawing.Size(86, 32);
             this.bntCadastrar.TabIndex = 0;
             this.bntCadastrar.Text = "Salvar";
-            this.bntCadastrar.UseVisualStyleBackColor = true;
+            this.bntCadastrar.UseVisualStyleBackColor = false;
             this.bntCadastrar.Click += new System.EventHandler(this.bntCadastrar_Click);
             // 
             // txbCodigo
@@ -71,32 +73,32 @@
             this.txbCodigo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txbCodigo.Location = new System.Drawing.Point(73, 60);
             this.txbCodigo.Name = "txbCodigo";
-            this.txbCodigo.Size = new System.Drawing.Size(103, 26);
+            this.txbCodigo.Size = new System.Drawing.Size(125, 26);
             this.txbCodigo.TabIndex = 1;
             // 
             // txbDescricao
             // 
             this.txbDescricao.Enabled = false;
             this.txbDescricao.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txbDescricao.Location = new System.Drawing.Point(313, 60);
+            this.txbDescricao.Location = new System.Drawing.Point(346, 60);
             this.txbDescricao.Name = "txbDescricao";
-            this.txbDescricao.Size = new System.Drawing.Size(222, 26);
+            this.txbDescricao.Size = new System.Drawing.Size(189, 26);
             this.txbDescricao.TabIndex = 3;
             // 
             // txbQuantidade
             // 
             this.txbQuantidade.Enabled = false;
             this.txbQuantidade.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txbQuantidade.Location = new System.Drawing.Point(387, 105);
+            this.txbQuantidade.Location = new System.Drawing.Point(348, 104);
             this.txbQuantidade.Name = "txbQuantidade";
-            this.txbQuantidade.Size = new System.Drawing.Size(148, 26);
+            this.txbQuantidade.Size = new System.Drawing.Size(187, 26);
             this.txbQuantidade.TabIndex = 5;
             // 
             // txbValor
             // 
             this.txbValor.Enabled = false;
             this.txbValor.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txbValor.Location = new System.Drawing.Point(106, 104);
+            this.txbValor.Location = new System.Drawing.Point(73, 104);
             this.txbValor.Name = "txbValor";
             this.txbValor.Size = new System.Drawing.Size(125, 26);
             this.txbValor.TabIndex = 7;
@@ -115,7 +117,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(191, 60);
+            this.label1.Location = new System.Drawing.Point(216, 60);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(124, 24);
             this.label1.TabIndex = 38;
@@ -125,7 +127,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(251, 104);
+            this.label2.Location = new System.Drawing.Point(204, 104);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(138, 24);
             this.label2.TabIndex = 39;
@@ -135,7 +137,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(36, 103);
+            this.label5.Location = new System.Drawing.Point(3, 104);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(72, 24);
             this.label5.TabIndex = 40;
@@ -143,18 +145,24 @@
             // 
             // btnAdicionar
             // 
+            this.btnAdicionar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(223)))), ((int)(((byte)(150)))), ((int)(((byte)(64)))));
+            this.btnAdicionar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnAdicionar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAdicionar.Font = new System.Drawing.Font("Rockwell", 15.75F);
+            this.btnAdicionar.ForeColor = System.Drawing.Color.Black;
             this.btnAdicionar.Location = new System.Drawing.Point(9, 368);
             this.btnAdicionar.Name = "btnAdicionar";
             this.btnAdicionar.Size = new System.Drawing.Size(120, 30);
             this.btnAdicionar.TabIndex = 44;
             this.btnAdicionar.Text = "Adicionar";
-            this.btnAdicionar.UseVisualStyleBackColor = true;
-            this.btnAdicionar.Click += new System.EventHandler(this.button1_Click);
+            this.btnAdicionar.UseVisualStyleBackColor = false;
+            this.btnAdicionar.Click += new System.EventHandler(this.btnAdicionar_Click);
+            this.btnAdicionar.MouseHover += new System.EventHandler(this.MouseHover_Add);
             // 
             // btnEditar
             // 
+            this.btnEditar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(223)))), ((int)(((byte)(150)))), ((int)(((byte)(64)))));
+            this.btnEditar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnEditar.Enabled = false;
             this.btnEditar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEditar.Font = new System.Drawing.Font("Rockwell", 15.75F);
@@ -163,20 +171,20 @@
             this.btnEditar.Size = new System.Drawing.Size(92, 30);
             this.btnEditar.TabIndex = 45;
             this.btnEditar.Text = "Editar";
-            this.btnEditar.UseVisualStyleBackColor = true;
+            this.btnEditar.UseVisualStyleBackColor = false;
             this.btnEditar.Click += new System.EventHandler(this.btnEditar_Click);
             // 
-            // button3
+            // btnAtualizar
             // 
-            this.button3.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button3.BackgroundImage")));
-            this.button3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button3.Location = new System.Drawing.Point(534, 155);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(28, 23);
-            this.button3.TabIndex = 46;
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            this.btnAtualizar.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnAtualizar.BackgroundImage")));
+            this.btnAtualizar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnAtualizar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAtualizar.Location = new System.Drawing.Point(534, 155);
+            this.btnAtualizar.Name = "btnAtualizar";
+            this.btnAtualizar.Size = new System.Drawing.Size(28, 23);
+            this.btnAtualizar.TabIndex = 46;
+            this.btnAtualizar.UseVisualStyleBackColor = true;
+            this.btnAtualizar.Click += new System.EventHandler(this.btnAtualizar_Click);
             // 
             // dtGridView
             // 
@@ -188,6 +196,8 @@
             // 
             // btnPesquisar
             // 
+            this.btnPesquisar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(223)))), ((int)(((byte)(150)))), ((int)(((byte)(64)))));
+            this.btnPesquisar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnPesquisar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnPesquisar.Font = new System.Drawing.Font("Rockwell", 15.75F);
             this.btnPesquisar.Location = new System.Drawing.Point(135, 368);
@@ -195,11 +205,13 @@
             this.btnPesquisar.Size = new System.Drawing.Size(127, 30);
             this.btnPesquisar.TabIndex = 49;
             this.btnPesquisar.Text = "Pesquisar";
-            this.btnPesquisar.UseVisualStyleBackColor = true;
+            this.btnPesquisar.UseVisualStyleBackColor = false;
             this.btnPesquisar.Click += new System.EventHandler(this.btnPesquisar_Click);
             // 
             // btnCancelar
             // 
+            this.btnCancelar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(223)))), ((int)(((byte)(150)))), ((int)(((byte)(64)))));
+            this.btnCancelar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnCancelar.Enabled = false;
             this.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCancelar.Font = new System.Drawing.Font("Rockwell", 15.75F);
@@ -208,7 +220,7 @@
             this.btnCancelar.Size = new System.Drawing.Size(98, 32);
             this.btnCancelar.TabIndex = 50;
             this.btnCancelar.Text = "Cancelar";
-            this.btnCancelar.UseVisualStyleBackColor = true;
+            this.btnCancelar.UseVisualStyleBackColor = false;
             this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
             // pictureBox1
@@ -239,11 +251,11 @@
             // 
             this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.AutoSize = true;
-            this.panel1.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(223)))), ((int)(((byte)(150)))), ((int)(((byte)(64)))));
             this.panel1.Enabled = false;
             this.panel1.Location = new System.Drawing.Point(0, 360);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(567, 54);
+            this.panel1.Size = new System.Drawing.Size(567, 50);
             this.panel1.TabIndex = 57;
             // 
             // btnFechar
@@ -279,7 +291,7 @@
             this.btnMinimizar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gainsboro;
             this.btnMinimizar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnMinimizar.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnMinimizar.Location = new System.Drawing.Point(518, 0);
+            this.btnMinimizar.Location = new System.Drawing.Point(515, 0);
             this.btnMinimizar.Name = "btnMinimizar";
             this.btnMinimizar.Size = new System.Drawing.Size(24, 25);
             this.btnMinimizar.TabIndex = 62;
@@ -296,7 +308,7 @@
             this.ClientSize = new System.Drawing.Size(567, 409);
             this.Controls.Add(this.btnFechar);
             this.Controls.Add(this.btnMinimizar);
-            this.Controls.Add(this.button3);
+            this.Controls.Add(this.btnAtualizar);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.btnCancelar);
@@ -340,7 +352,7 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button btnAdicionar;
         private System.Windows.Forms.Button btnEditar;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button btnAtualizar;
         private System.Windows.Forms.DataGridView dtGridView;
         private System.Windows.Forms.Button btnPesquisar;
         private System.Windows.Forms.Button btnCancelar;

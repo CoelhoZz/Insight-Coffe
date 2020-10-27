@@ -48,12 +48,37 @@ namespace InsightCoffe.Utilidades
 
         }
 
-        private void picBExit_Click(object sender, EventArgs e)
+        private void button3_Click(object sender, EventArgs e)
         {
+
+        }
+
+        private void btnFechar_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Tem certeza de que quer fechar a janela atual?", "Atenção", MessageBoxButtons.YesNo) == DialogResult.No) return;
             this.Close();
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void btnNormal_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Normal;
+            btnMaximizar.Visible = true;
+            btnNormal.Visible = false;
+        }
+
+        private void btnMaximizar_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Maximized;
+            btnMaximizar.Visible = false;
+            btnNormal.Visible = true;
+        }
+
+        private void btnMinimizar_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
+        }
+
+        private void label3_Click(object sender, EventArgs e)
         {
 
         }

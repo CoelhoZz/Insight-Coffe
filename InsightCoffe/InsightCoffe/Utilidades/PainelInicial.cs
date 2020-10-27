@@ -36,6 +36,8 @@ namespace InsightCoffe.Utilidades
         }
         //-------------------------------------Banco de Dados interno--------------------------------------
 
+
+
         /// Produtos
         /// Lista de Produtos
         /// Metodo VOID
@@ -254,6 +256,7 @@ namespace InsightCoffe.Utilidades
             pedido.Add(new Pedido()
             {
                 CodigoDeBarras = (UInt64)1679435689426
+
             });            
             pedido.Add(new Pedido()
             {
@@ -300,7 +303,7 @@ namespace InsightCoffe.Utilidades
             toolStrip_lblusuario.Text = "Usuario logado: " + user;
             if (Form1.acess != "Total")
             {
-                bntProdutos.Visible = false;
+                btnProdutos.Visible = false;
             }
         }
         // Descrição de botões
@@ -460,7 +463,9 @@ namespace InsightCoffe.Utilidades
         //Bloco de Notas
         private void BlocoAnotaçõestoolStripMenuItem4_Click(object sender, EventArgs e)
         {
-
+            NotePad notePad = new NotePad();
+            notePad.MdiParent = this;
+            notePad.Show();
         }
         //
         //Fechar todas as Abas
@@ -630,6 +635,12 @@ namespace InsightCoffe.Utilidades
             id = i++;
             return id;
             
+        }
+
+        public void atualidaDataGrid()
+        {
+            //dataGridView1.DataSource = null;
+            //dataGridView1.DataSource = clientes;
         }
         //--------------------------------end APSvendas LISTA de PEDIDOS-----------------------------------
 

@@ -33,15 +33,13 @@
             this.tbPassword = new System.Windows.Forms.TextBox();
             this.tbUsername = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.picBMinimize = new System.Windows.Forms.PictureBox();
-            this.picBExit = new System.Windows.Forms.PictureBox();
             this.picBBarra = new System.Windows.Forms.PictureBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.chkMostrar = new System.Windows.Forms.CheckBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            ((System.ComponentModel.ISupportInitialize)(this.picBMinimize)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picBExit)).BeginInit();
+            this.btnFechar = new System.Windows.Forms.Button();
+            this.btnMinimizar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.picBBarra)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -54,7 +52,7 @@
             this.btnConectar.Location = new System.Drawing.Point(22, 196);
             this.btnConectar.Name = "btnConectar";
             this.btnConectar.Size = new System.Drawing.Size(184, 59);
-            this.btnConectar.TabIndex = 3;
+            this.btnConectar.TabIndex = 5;
             this.btnConectar.Text = "Entrar";
             this.btnConectar.UseVisualStyleBackColor = false;
             this.btnConectar.Click += new System.EventHandler(this.btnConectar_Click);
@@ -68,11 +66,10 @@
             this.tbPassword.Location = new System.Drawing.Point(33, 136);
             this.tbPassword.Name = "tbPassword";
             this.tbPassword.Size = new System.Drawing.Size(160, 25);
-            this.tbPassword.TabIndex = 5;
+            this.tbPassword.TabIndex = 3;
             this.tbPassword.Text = "Password";
             this.tbPassword.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.tbPassword.Click += new System.EventHandler(this.Click_pass);
-            this.tbPassword.TextChanged += new System.EventHandler(this.TxtChanged);
+            this.tbPassword.Enter += new System.EventHandler(this.Enter_pass);
             this.tbPassword.Leave += new System.EventHandler(this.Leave_pass);
             // 
             // tbUsername
@@ -84,10 +81,10 @@
             this.tbUsername.Location = new System.Drawing.Point(33, 88);
             this.tbUsername.Name = "tbUsername";
             this.tbUsername.Size = new System.Drawing.Size(160, 25);
-            this.tbUsername.TabIndex = 4;
+            this.tbUsername.TabIndex = 2;
             this.tbUsername.Text = "Username";
             this.tbUsername.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.tbUsername.Click += new System.EventHandler(this.Click_user);
+            this.tbUsername.Enter += new System.EventHandler(this.Enter_user);
             this.tbUsername.Leave += new System.EventHandler(this.Leave_user);
             // 
             // label1
@@ -99,37 +96,11 @@
             this.label1.Location = new System.Drawing.Point(11, 11);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(85, 35);
-            this.label1.TabIndex = 10;
+            this.label1.TabIndex = 6;
             this.label1.Text = "Login";
             this.label1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Form_MouseDown);
             this.label1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Form_MouseMove);
             this.label1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Form_MouseUp);
-            // 
-            // picBMinimize
-            // 
-            this.picBMinimize.BackColor = System.Drawing.Color.SaddleBrown;
-            this.picBMinimize.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.picBMinimize.Image = ((System.Drawing.Image)(resources.GetObject("picBMinimize.Image")));
-            this.picBMinimize.Location = new System.Drawing.Point(179, 2);
-            this.picBMinimize.Name = "picBMinimize";
-            this.picBMinimize.Size = new System.Drawing.Size(20, 22);
-            this.picBMinimize.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.picBMinimize.TabIndex = 9;
-            this.picBMinimize.TabStop = false;
-            this.picBMinimize.Click += new System.EventHandler(this.picBMinimize_Click);
-            // 
-            // picBExit
-            // 
-            this.picBExit.BackColor = System.Drawing.Color.SaddleBrown;
-            this.picBExit.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.picBExit.Image = ((System.Drawing.Image)(resources.GetObject("picBExit.Image")));
-            this.picBExit.Location = new System.Drawing.Point(203, 2);
-            this.picBExit.Name = "picBExit";
-            this.picBExit.Size = new System.Drawing.Size(20, 22);
-            this.picBExit.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.picBExit.TabIndex = 7;
-            this.picBExit.TabStop = false;
-            this.picBExit.Click += new System.EventHandler(this.picBExit_Click);
             // 
             // picBBarra
             // 
@@ -147,7 +118,7 @@
             this.label2.Location = new System.Drawing.Point(32, 103);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(163, 13);
-            this.label2.TabIndex = 11;
+            this.label2.TabIndex = 7;
             this.label2.Text = "__________________________";
             // 
             // label3
@@ -156,7 +127,7 @@
             this.label3.Location = new System.Drawing.Point(32, 151);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(163, 13);
-            this.label3.TabIndex = 12;
+            this.label3.TabIndex = 8;
             this.label3.Text = "__________________________";
             // 
             // chkMostrar
@@ -166,7 +137,7 @@
             this.chkMostrar.Location = new System.Drawing.Point(145, 167);
             this.chkMostrar.Name = "chkMostrar";
             this.chkMostrar.Size = new System.Drawing.Size(61, 17);
-            this.chkMostrar.TabIndex = 6;
+            this.chkMostrar.TabIndex = 4;
             this.chkMostrar.Text = "Mostrar";
             this.chkMostrar.UseVisualStyleBackColor = true;
             this.chkMostrar.Click += new System.EventHandler(this.Click_mostar);
@@ -184,15 +155,57 @@
             this.pictureBox1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Form_MouseMove);
             this.pictureBox1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Form_MouseUp);
             // 
+            // btnFechar
+            // 
+            this.btnFechar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnFechar.BackColor = System.Drawing.Color.SaddleBrown;
+            this.btnFechar.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnFechar.BackgroundImage")));
+            this.btnFechar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnFechar.FlatAppearance.BorderColor = System.Drawing.Color.SaddleBrown;
+            this.btnFechar.FlatAppearance.BorderSize = 5;
+            this.btnFechar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Red;
+            this.btnFechar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Red;
+            this.btnFechar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnFechar.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnFechar.Location = new System.Drawing.Point(206, -2);
+            this.btnFechar.Name = "btnFechar";
+            this.btnFechar.Size = new System.Drawing.Size(22, 26);
+            this.btnFechar.TabIndex = 1;
+            this.btnFechar.UseVisualStyleBackColor = false;
+            this.btnFechar.Click += new System.EventHandler(this.btnFechar_Click);
+            this.btnFechar.MouseLeave += new System.EventHandler(this.LeaveFechar);
+            this.btnFechar.MouseMove += new System.Windows.Forms.MouseEventHandler(this.controlFechar);
+            // 
+            // btnMinimizar
+            // 
+            this.btnMinimizar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnMinimizar.BackColor = System.Drawing.Color.SaddleBrown;
+            this.btnMinimizar.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnMinimizar.BackgroundImage")));
+            this.btnMinimizar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnMinimizar.FlatAppearance.BorderColor = System.Drawing.Color.SaddleBrown;
+            this.btnMinimizar.FlatAppearance.BorderSize = 5;
+            this.btnMinimizar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Gainsboro;
+            this.btnMinimizar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gainsboro;
+            this.btnMinimizar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnMinimizar.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnMinimizar.Location = new System.Drawing.Point(183, -1);
+            this.btnMinimizar.Name = "btnMinimizar";
+            this.btnMinimizar.Size = new System.Drawing.Size(24, 25);
+            this.btnMinimizar.TabIndex = 0;
+            this.btnMinimizar.UseVisualStyleBackColor = false;
+            this.btnMinimizar.Click += new System.EventHandler(this.btnMinimizar_Click);
+            this.btnMinimizar.MouseLeave += new System.EventHandler(this.LeaveMinimizar);
+            this.btnMinimizar.MouseMove += new System.Windows.Forms.MouseEventHandler(this.controlMinimizar);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(228, 271);
+            this.Controls.Add(this.btnFechar);
+            this.Controls.Add(this.btnMinimizar);
             this.Controls.Add(this.chkMostrar);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.picBMinimize);
-            this.Controls.Add(this.picBExit);
             this.Controls.Add(this.picBBarra);
             this.Controls.Add(this.btnConectar);
             this.Controls.Add(this.tbPassword);
@@ -205,8 +218,6 @@
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
-            ((System.ComponentModel.ISupportInitialize)(this.picBMinimize)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picBExit)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picBBarra)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
@@ -220,13 +231,13 @@
         private System.Windows.Forms.TextBox tbPassword;
         private System.Windows.Forms.TextBox tbUsername;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.PictureBox picBMinimize;
-        private System.Windows.Forms.PictureBox picBExit;
         private System.Windows.Forms.PictureBox picBBarra;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.CheckBox chkMostrar;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Button btnFechar;
+        private System.Windows.Forms.Button btnMinimizar;
     }
 }
 

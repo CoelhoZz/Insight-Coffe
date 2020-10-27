@@ -53,19 +53,37 @@ namespace InsightCoffe
         }
         //------------------------------------------end-Mover formulario----------------------------------
 
-        //-------------------------------------------Fechar aplicação-------------------------------------
-        private void picBExit_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-        //------------------------------------------------------------------------------------------------
+        //-------------------------------------------Minimizar, Maximizar e Fechar aplicação--------------
 
-        //-----------------------------------------Minimizar aplicação------------------------------------
-        private void picBMinimize_Click(object sender, EventArgs e)
+        private void btnFechar_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void btnMinimizar_Click(object sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Minimized;
         }
-        //------------------------------------------------------------------------------------------------
+
+        //Leave
+        private void LeaveMinimizar(object sender, EventArgs e)
+        {
+            btnMinimizar.FlatAppearance.BorderColor = Color.SaddleBrown;
+        }
+        private void LeaveFechar(object sender, EventArgs e)
+        {
+            btnFechar.FlatAppearance.BorderColor = Color.SaddleBrown;
+        }
+        //Mouse move em cima
+        private void controlFechar(object sender, MouseEventArgs e)
+        {
+            btnFechar.FlatAppearance.BorderColor = Color.Red;
+        }
+        private void controlMinimizar(object sender, MouseEventArgs e)
+        {
+            btnMinimizar.FlatAppearance.BorderColor = Color.Gainsboro;
+        }
+        //-----------------------------------------------------------------------------------------------
 
         //---------------------------------------Conectar ao SISTEMA--------------------------------------
         public string user, acess;
@@ -103,36 +121,33 @@ namespace InsightCoffe
         //-------------------------------------end Conectar ao Sistema-------------------------------------
 
         //--------------------------Start atualiza campos USUARIO, SENHA e MOSTRAR-------------------------
-        private void Click_user(object sender, EventArgs e)
+        
+        //----------------------user
+        private void Enter_user(object sender, EventArgs e)
         {
-            tbUsername.ForeColor = Color.Black;
             if (tbUsername.Text != "" && tbUsername.Text != "Username")
                 return;
+            tbUsername.ForeColor = Color.Black;
             tbUsername.Text = "";
         }
 
         private void Leave_user(object sender, EventArgs e)
         {
-            if (tbUsername.Text == "" || tbUsername.Text == "Username")
+            if (tbUsername.Text == "")
             {
                 tbUsername.Text = "Username";
                 tbUsername.ForeColor = Color.SandyBrown;
             }
         }
 
-        private void Click_pass(object sender, EventArgs e)
+        //-----------------------passs
+        private void Enter_pass(object sender, EventArgs e)
         {
-            tbPassword.ForeColor = Color.Black;
             if (tbPassword.Text != "" && tbPassword.Text != "Password")
                 return;
+            tbPassword.ForeColor = Color.Black;
             tbPassword.Text = "";
             tbPassword.PasswordChar = Convert.ToChar("*");
-        }
-
-        private void TxtChanged(object sender, EventArgs e)
-        {
-             tbPassword.PasswordChar = Convert.ToChar("*");
-             tbPassword.ForeColor = Color.Black;
         }
 
         private void Leave_pass(object sender, EventArgs e)
@@ -164,6 +179,8 @@ namespace InsightCoffe
             Iniciar_aplicação.SetApartmentState(ApartmentState.STA);
             Iniciar_aplicação.Start();
         }
+
+
 
         private void Aplicativo()
         {

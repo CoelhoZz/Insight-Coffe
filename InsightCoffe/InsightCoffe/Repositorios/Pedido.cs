@@ -11,7 +11,7 @@ namespace InsightCoffe.Repositorios
     {
         public UInt64 CodigoDeBarras { get; set; }
         
-        public List<Cliente> NewCliente { get; set; }
+        public List<Cliente> Cliente { get; set; }
 
         public List<Produto> Carinho { get; set; }
     }
