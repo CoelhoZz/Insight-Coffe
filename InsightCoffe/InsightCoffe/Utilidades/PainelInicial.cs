@@ -17,7 +17,6 @@ namespace InsightCoffe.Utilidades
 {
     public partial class PainelInicial : Form
     {
-        private int childFormNumber = 0;
 
         public List<Produto> produtos = new List<Produto>();
         public List<Pedido> pedido = new List<Pedido>(3);
@@ -637,11 +636,7 @@ namespace InsightCoffe.Utilidades
             
         }
 
-        public void atualidaDataGrid()
-        {
-            //dataGridView1.DataSource = null;
-            //dataGridView1.DataSource = clientes;
-        }
+
         //--------------------------------end APSvendas LISTA de PEDIDOS-----------------------------------
 
         //---------------------------------start Tool Strip EVENTOS----------------------------------------
@@ -657,12 +652,6 @@ namespace InsightCoffe.Utilidades
             {
                 string FileName = openFileDialog.FileName;
             }
-        }
-
-        string AreaDeTrabalho;
-        private void copyToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Clipboard.SetText(string.Empty);
         }
 
         private void SaveAsToolStripMenuItem_Click(object sender, EventArgs e)

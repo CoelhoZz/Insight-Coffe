@@ -223,7 +223,7 @@ namespace InsightCoffe.Utilidades
         
         private void habilitarCarrinho()
         {
-            mskBRetirarItem.Enabled = true;
+            mskRetirarItem.Enabled = true;
             numUDQtdItemRetirar.Enabled = true;
             mskBValorItemRetirado.Enabled = true;
             numUDQtdItemAdicionar.Enabled = true;
@@ -399,46 +399,119 @@ namespace InsightCoffe.Utilidades
         //---------------------------------End: Codigo ativação Cliente----------------------------------
 
         //------------------------------Start: Codigo ativação Carrinho----------------------------------
-        List<string> descricao = new List<string>();
-        private void listadepesquisa()
+
+        private void TextChanged_ComboBox(object sender, EventArgs e)
         {
-            foreach (Produto produto in inicial1.produtos)
+            string item = mskAdcionarItem.Text;
+            comboBox1.Items.Clear();
+            Pesquisa_De_Item_ComboBox();
+        }
+
+        //private void KeyPress_CombBox(object sender, KeyPressEventArgs e)
+        //{
+        //    if (char.IsControl(e.KeyChar))
+        //        return;
+        //    if (char.IsLetter(e.KeyChar))
+        //    {
+        //        string item = comboBox1.Text;
+        //        comboBox1.Items.Clear();
+        //        Pesquisa_De_Item(item);
+        //    }
+        //}
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            mskAdcionarItem.Text = comboBox1.Text;
+            comboBox1.DroppedDown = false;
+        }
+
+        public void Pesquisa_De_Item_ComboBox()
+        {
+            comboBox1.Items.Clear();
+            if(mskAdcionarItem.Text == "")
             {
-                descricao.Add(produto.Descricao);
-                comboBox1.Items.Add(produto.Descricao);
+                foreach (Produto produto in inicial1.produtos)
+                {
+                    comboBox1.Items.Add(produto.Descricao + " " + produto.Quantidade);
+                }
+            }
+            else
+            {
+                try
+                {
+                    foreach (Produto produto in inicial1.produtos)
+                    {
+                        if (produto.ID.Equals(Convert.ToInt32(mskAdcionarItem.Text)))
+                        {
+                            comboBox1.Items.Add(produto.Descricao + " " + produto.Quantidade);
+                        }
+                    }
+                }
+                catch (Exception)
+                {
+                    foreach (Produto produto in inicial1.produtos)
+                    {
+                        if (produto.Descricao.StartsWith(mskAdcionarItem.Text))
+                        {
+                            comboBox1.Items.Add(produto.Descricao + " " + produto.Quantidade);
+                        }
+                    }
+                }
+            }
+            comboBox1.DroppedDown = true;
+        }
+
+        public string valor;
+        public void Puxar_item()
+        {
+            string index = mskAdcionarItem.Text;
+
+            if (index == "")
+            {
+                MessageBox.Show("Insira um codigo ou iniciais do produto, atente-se de olhar a quatidade", "Atenção");
+            }
+            else
+            {
+                try
+                {
+                    foreach (Produto produto in inicial1.produtos)
+                    {
+                        if (produto.ID.Equals(Convert.ToInt32(index)))
+                        {
+                            mskAdcionarItem.Text = produto.Descricao + " " + produto.Quantidade;
+                            mskBValorAdicionar.Text = valor = produto.Valor.ToString("C2");
+                            return;
+                        }
+                    }
+                }
+                catch (Exception)
+                {
+                    foreach (Produto produto in inicial1.produtos)
+                    {
+                        if ((produto.Descricao + " " + produto.Quantidade) == index)
+                        {
+                            mskAdcionarItem.Text = produto.Descricao + " " + produto.Quantidade;
+                            mskBValorAdicionar.Text = produto.Valor.ToString("C2");
+                            return;
+                        }
+                    }
+                }
+                comboBox1.DroppedDown = false;
             }
         }
 
-
-
-
-
-
-        //private void APSvendas_Load(object sender, EventArgs e)
-        //{
-        //    //listadepesquisa();
-        //}
-
-        //private void txtChanged_ComBox(object sender, EventArgs e)
-        //{
-        //    //foreach (Produto produto in inicial1.produtos)
-        //    //{
-        //    //    if(produto.Descricao.Contains(comboBox1.Text))
-        //    //        comboBox1.Items.Add(produto.Descricao);
-        //    //}
-        //}
-
-        //private void KeyPress_ProcuraDeItem(object sender, KeyPressEventArgs e)
-        //{
-        //    string sPattern = comboBox1.Text;
-        //    comboBox1.Items.Add(inicial1.produtos.Find(x => x.Descricao.Contains(sPattern)));
-        //}
-
-        //private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
-        //{
-
-        //}
-
+        public int identifyCarrinho()
+        {
+            int i = 1;
+            foreach (Produto produto in carrinho)
+            {
+                if (i != produto.ID)
+                {
+                    return i;
+                }
+                i++;
+            }
+            return i++;
+        }
 
 
         private void btnAdicionar_Click(object sender, EventArgs e)
@@ -446,15 +519,28 @@ namespace InsightCoffe.Utilidades
 
         }
 
-        private void button7_Click(object sender, EventArgs e)
+        private void KeyPress_MskAdicionar(object sender, KeyPressEventArgs e)
         {
-
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                Puxar_item();
+                comboBox1.DroppedDown = false;
+            }
         }
 
+        private void TextChanged_mskBox(object sender, EventArgs e)
+        {
+            Pesquisa_De_Item_ComboBox();
+        }
 
+        private void ValueChanged_QtdAdicionar(object sender, EventArgs e)
+        {
+            double multiplicacao;
+            double qtd = (double)numUDQtdItemAdicionar.Value;
+            multiplicacao = Convert.ToDouble(valor) * qtd;
+            mskBValorAdicionar.Text = multiplicacao.ToString("C2");
+        }
 
-
-
-        //------------------------------end: Codigo ativação Cliente------------------------------------
+        //------------------------------end: Codigo ativação Carrinhot------------------------------------
     }
 }
