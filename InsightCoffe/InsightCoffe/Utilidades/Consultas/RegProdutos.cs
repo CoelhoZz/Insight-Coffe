@@ -84,7 +84,6 @@ namespace InsightCoffe.Utilidades.Consultas
         private void RegProdutos_Load(object sender, EventArgs e)
         {
             Mostrar_lista();
-
         }
 
         private void Mostrar_lista()

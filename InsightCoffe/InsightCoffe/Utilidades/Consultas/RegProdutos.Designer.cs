@@ -76,7 +76,7 @@
             // 
             this.Quantidade.Text = "QUANTIDADE";
             this.Quantidade.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.Quantidade.Width = 107;
+            this.Quantidade.Width = 80;
             // 
             // Valor
             // 

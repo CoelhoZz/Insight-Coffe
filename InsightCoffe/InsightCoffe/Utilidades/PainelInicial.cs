@@ -17,9 +17,9 @@ namespace InsightCoffe.Utilidades
 {
     public partial class PainelInicial : Form
     {
-
         public List<Produto> produtos = new List<Produto>();
         public List<Pedido> pedido = new List<Pedido>(3);
+        public List<PedidoPago> armazenaPedido = new List<PedidoPago>();
         public List<Cliente> clientes = new List<Cliente>();
 
         private Form1 Form1;
@@ -31,7 +31,7 @@ namespace InsightCoffe.Utilidades
             MetodosProdutos();
             MetodosPedidos();
             MetodosCliente();
-
+            MetodosArmazenaPedidos();
         }
         //-------------------------------------Banco de Dados interno--------------------------------------
 
@@ -266,6 +266,24 @@ namespace InsightCoffe.Utilidades
                 CodigoDeBarras = (UInt64)1
             });
             //1679435689433
+        }
+
+        /// Armazena Pedidos
+        /// Lista de Pedidos
+        /// Metodo VOID
+        void MetodosArmazenaPedidos()
+        {
+            armazenaPedido.Add(new PedidoPago()
+            {
+                ID = 1,
+                CodigoUsado = (UInt64)1,
+                Cliente = "Pedro devolve o macaco",
+                DataeHora = DateTime.Now.ToShortTimeString(),
+                Situacao = "Em aberto",
+                Valor = (double) 100
+
+                //pedido pago n tem uma definição para codigoDeBarras
+            }) ;
         }
 
         /// Clientes
@@ -607,41 +625,75 @@ namespace InsightCoffe.Utilidades
         //-------------------------------start APSvendas LISTA de PEDIDOS----------------------------------       
         public void Adicionar_Cliente(string nome, string datadenascimento, string cpf)
         {
-            int Id = 0; 
             
             clientes.Add(new Cliente()
             { 
-                ID = identify(Id),
+                ID = identifyClient(),
                 Nome = nome,
                 DataNascimento = datadenascimento,
                 CPF = cpf
             });
         }
 
-        public int identify(int id)
+        public int identifyClient()
         {
-            id = 0;
             int i = 1;
             foreach (Cliente cliente in clientes)
             {
                 if (i != cliente.ID)
                 {
-                    id = i;
-                    return id;
+                    return i;
                 }
                 i++;
             }
-            id = i++;
-            return id;
+            return i++;
             
         }
+        
+        public void salvaPedido(UInt64 codeBar, string clientName, string clientCPF, double valorTotal, List<Produto> carrinho)
+        {
+            pedido.Add(new Pedido()
+            {
+                ID = identifyPedido(),
+                CodigoDeBarras = codeBar,
+                DataEHora = DateTime.Now.ToString("g"),
+                ClientName = clientName,
+                ClientCPF = clientCPF,
+                Carrinho = carrinho,
+                Situacao = "Em aberto",
+                ValorTotal = valorTotal
+            });
 
+        }
+        //tem tudo isso de atributo pra salvar
+        //os que estão prontos são ID, CodeBar, DataeHora, ClientName, ClientCPF
+        //falta o carrinho situação(gera automatico então é suave) e valor
+        //olha teu disc
 
+        public int identifyPedido()
+        {
+            int i = 1;
+            foreach (Pedido pedido in pedido)
+            {
+                if (i != pedido.ID)
+                {
+                    return i;
+                }
+                i++;
+            }
+            return i++;
+        }
+
+        public void atualidaDataGrid()
+        {
+            //dataGridView1.DataSource = null;
+            //dataGridView1.DataSource = clientes;
+        }
         //--------------------------------end APSvendas LISTA de PEDIDOS-----------------------------------
 
         //---------------------------------start Tool Strip EVENTOS----------------------------------------
-         
-        
+
+
 
         private void OpenFile(object sender, EventArgs e)
         {
@@ -652,6 +704,11 @@ namespace InsightCoffe.Utilidades
             {
                 string FileName = openFileDialog.FileName;
             }
+        }
+
+        private void copyToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Clipboard.SetText(string.Empty);
         }
 
         private void SaveAsToolStripMenuItem_Click(object sender, EventArgs e)

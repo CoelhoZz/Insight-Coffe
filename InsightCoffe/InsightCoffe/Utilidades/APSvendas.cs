@@ -5,8 +5,10 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.Common;
 using System.Drawing;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -223,11 +225,14 @@ namespace InsightCoffe.Utilidades
         
         private void habilitarCarrinho()
         {
-            mskRetirarItem.Enabled = true;
+            mskBRetirarItem.Enabled = true;
             numUDQtdItemRetirar.Enabled = true;
             mskBValorItemRetirado.Enabled = true;
             numUDQtdItemAdicionar.Enabled = true;
             mskBValorAdicionar.Enabled = true;
+
+            btnAdicionar.Enabled = true;
+            btnLimparAdicionar.Enabled = true;
         }
 
 
@@ -303,6 +308,29 @@ namespace InsightCoffe.Utilidades
                 CPF = Cpf
 
             });
+        }
+
+        public void whenSalvarPedido_LockAll()
+        {
+            mskBCodeBar.ResetText();
+            mskBNome.ResetText();
+            mskBCPF.ResetText();
+            mskBRetirarItem.ResetText();
+            mskBValortotal.ResetText();
+            mskBValorAdicionar.ResetText();
+            mskBValorItemRetirado.ResetText();
+
+            numUDQtdItemRetirar.ResetText();
+            numUDQtdItemAdicionar.ResetText();
+
+            comboBoxCodProd.ResetText();
+
+            panelNCN.Enabled = false;
+            btnIncluirCampoCliente.Enabled = false;
+            btnPular.Enabled = false;
+            btnSalvar.Enabled = false;
+            btnLimparClient.Enabled = false;
+            btnProcurar.Enabled = false;
         }
 
         //------------------------------end: Methods ---------------------------------------------------
@@ -399,148 +427,166 @@ namespace InsightCoffe.Utilidades
         //---------------------------------End: Codigo ativação Cliente----------------------------------
 
         //------------------------------Start: Codigo ativação Carrinho----------------------------------
-
-        private void TextChanged_ComboBox(object sender, EventArgs e)
-        {
-            string item = mskAdcionarItem.Text;
-            comboBox1.Items.Clear();
-            Pesquisa_De_Item_ComboBox();
-        }
-
-        //private void KeyPress_CombBox(object sender, KeyPressEventArgs e)
-        //{
-        //    if (char.IsControl(e.KeyChar))
-        //        return;
-        //    if (char.IsLetter(e.KeyChar))
-        //    {
-        //        string item = comboBox1.Text;
-        //        comboBox1.Items.Clear();
-        //        Pesquisa_De_Item(item);
-        //    }
-        //}
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            mskAdcionarItem.Text = comboBox1.Text;
-            comboBox1.DroppedDown = false;
-        }
-
-        public void Pesquisa_De_Item_ComboBox()
-        {
-            comboBox1.Items.Clear();
-            if(mskAdcionarItem.Text == "")
-            {
-                foreach (Produto produto in inicial1.produtos)
-                {
-                    comboBox1.Items.Add(produto.Descricao + " " + produto.Quantidade);
-                }
-            }
-            else
-            {
-                try
-                {
-                    foreach (Produto produto in inicial1.produtos)
-                    {
-                        if (produto.ID.Equals(Convert.ToInt32(mskAdcionarItem.Text)))
-                        {
-                            comboBox1.Items.Add(produto.Descricao + " " + produto.Quantidade);
-                        }
-                    }
-                }
-                catch (Exception)
-                {
-                    foreach (Produto produto in inicial1.produtos)
-                    {
-                        if (produto.Descricao.StartsWith(mskAdcionarItem.Text))
-                        {
-                            comboBox1.Items.Add(produto.Descricao + " " + produto.Quantidade);
-                        }
-                    }
-                }
-            }
-            comboBox1.DroppedDown = true;
-        }
-
-        public string valor;
-        public void Puxar_item()
-        {
-            string index = mskAdcionarItem.Text;
-
-            if (index == "")
-            {
-                MessageBox.Show("Insira um codigo ou iniciais do produto, atente-se de olhar a quatidade", "Atenção");
-            }
-            else
-            {
-                try
-                {
-                    foreach (Produto produto in inicial1.produtos)
-                    {
-                        if (produto.ID.Equals(Convert.ToInt32(index)))
-                        {
-                            mskAdcionarItem.Text = produto.Descricao + " " + produto.Quantidade;
-                            mskBValorAdicionar.Text = valor = produto.Valor.ToString("C2");
-                            return;
-                        }
-                    }
-                }
-                catch (Exception)
-                {
-                    foreach (Produto produto in inicial1.produtos)
-                    {
-                        if ((produto.Descricao + " " + produto.Quantidade) == index)
-                        {
-                            mskAdcionarItem.Text = produto.Descricao + " " + produto.Quantidade;
-                            mskBValorAdicionar.Text = produto.Valor.ToString("C2");
-                            return;
-                        }
-                    }
-                }
-                comboBox1.DroppedDown = false;
-            }
-        }
-
-        public int identifyCarrinho()
-        {
-            int i = 1;
-            foreach (Produto produto in carrinho)
-            {
-                if (i != produto.ID)
-                {
-                    return i;
-                }
-                i++;
-            }
-            return i++;
-        }
-
-
+        bool limpa_tudo = false;
         private void btnAdicionar_Click(object sender, EventArgs e)
         {
 
         }
 
-        private void KeyPress_MskAdicionar(object sender, KeyPressEventArgs e)
+        private void btnLimparAdicionar_Click(object sender, EventArgs e)
+        {
+            comboBoxCodProd.Text = "";
+            comboBoxCodProd.Items.Clear();
+            mskAdicionarItem.Clear();
+            numUDQtdItemAdicionar.ResetText();
+            numUDQtdItemAdicionar.Value = 1;
+            mskBValorAdicionar.Clear();
+        }
+
+        private void SelectItem_cbBox(object sender, EventArgs e)
+        {
+            try
+            {
+                mskAdicionarItem.Text = comboBoxCodProd.Text;
+                Puxar_item(mskAdicionarItem.Text);
+                comboBoxCodProd.Enabled = false;
+                comboBoxCodProd.DropDownStyle = ComboBoxStyle.Simple;
+            }
+            catch (Exception)
+            {
+                return;
+            }
+        
+        }
+
+        private void KeyPress_mskAdicionar(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == (char)Keys.Enter)
             {
-                Puxar_item();
-                comboBox1.DroppedDown = false;
+                try
+                {
+                    comboBoxCodProd.Enabled = false;
+                    comboBoxCodProd.DropDownStyle = ComboBoxStyle.Simple;
+                    Puxar_item(mskAdicionarItem.Text);
+                    //mskAdicionarItem.Text = comboBoxCodProd.Text;
+                }
+                catch (Exception)
+                {
+                    return;
+                }
             }
         }
 
-        private void TextChanged_mskBox(object sender, EventArgs e)
+        private void Puxar_item(string itemPesc)
         {
-            Pesquisa_De_Item_ComboBox();
+            if(itemPesc == "" || itemPesc == "0")
+            {
+                MessageBox.Show("Digite algo valido para chamar um produto");
+                return;
+            }
+            else
+            {
+                try
+                {
+                    foreach (Produto list in inicial1.produtos)
+                    {
+                        if (Convert.ToInt32(itemPesc) == list.ID)
+                        {
+                            mskAdicionarItem.Text = (list.Descricao + " " + list.Quantidade);
+                            mskBValorAdicionar.Text = list.Valor.ToString("C2");
+                            return;
+                        }
+                    }
+                }
+                catch (Exception)
+                {
+                    foreach (Produto list in inicial1.produtos)
+                    {
+                        if (itemPesc == (list.Descricao + " " + list.Quantidade) || list.Descricao.StartsWith(itemPesc))
+                        {
+                            mskAdicionarItem.Text = (list.Descricao + " " + list.Quantidade);
+                            mskBValorAdicionar.Text = list.Valor.ToString("C2");
+                            return;
+                        }
+                    }
+                }
+            }
         }
 
-        private void ValueChanged_QtdAdicionar(object sender, EventArgs e)
+        private void TextChanged_mskAdicionar(object sender, EventArgs e)
         {
-            double multiplicacao;
-            double qtd = (double)numUDQtdItemAdicionar.Value;
-            multiplicacao = Convert.ToDouble(valor) * qtd;
-            mskBValorAdicionar.Text = multiplicacao.ToString("C2");
+            if (mskAdicionarItem.Text == "" || mskAdicionarItem.Text == "0" )
+            {
+                MessageBox.Show("Valor inserido é invalido");
+                return;
+            }
+            else if(limpa_tudo == true)
+            {
+                return;
+            }
+            else
+            {
+                try
+                {
+                    comboBoxCodProd.Text = mskAdicionarItem.Text;
+                    comboBoxCodProd.Enabled = true;
+                    comboBoxCodProd.DropDownStyle = ComboBoxStyle.DropDownList;
+                    Adcionar_items_CombBox();
+                    return;
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Valor inserido é invalido");
+                    return;
+                }
+            }
         }
 
-        //------------------------------end: Codigo ativação Carrinhot------------------------------------
+        private void Adcionar_items_CombBox()
+        {
+            comboBoxCodProd.Text = mskAdicionarItem.Text;
+            try
+            {
+                comboBoxCodProd.Items.Clear();
+                foreach (Produto list in inicial1.produtos)
+                {
+                    if(Convert.ToInt32(mskAdicionarItem.Text) == list.ID)
+                    {
+                        comboBoxCodProd.Items.Add(list.Descricao + " " + list.Quantidade);
+                        comboBoxCodProd.DroppedDown = true;
+                        return;
+                    }
+                }
+            }
+            catch(Exception)
+            {
+                foreach (Produto list in inicial1.produtos)
+                {
+                    if (list.Descricao.StartsWith(mskAdicionarItem.Text))
+                    {
+                        comboBoxCodProd.Items.Add(list.Descricao + " " + list.Quantidade);
+                        comboBoxCodProd.DroppedDown = true;
+                    }
+                }
+            }
+        }
+
+
+        //-------------------------------end: Codigo ativação Carrinho-----------------------------------
+
+
+
+        //---------------------------------Start: Finalização Pedido-------------------------------------
+
+        private void btnSalvarPedido_Click(object sender, EventArgs e)
+        {
+            whenSalvarPedido_LockAll();
+
+            inicial1.salvaPedido(Convert.ToUInt64(mskBCodeBar.Text), mskBNome.Text, mskBCPF.Text, 100, carrinho);
+            carrinho = new List<Produto>();
+        }
+
+        //----------------------------------end: Finalização Pedido---------------------------------------
+
     }
 }

@@ -47,7 +47,7 @@ namespace InsightCoffe.Utilidades
 
         private void btnFechar_Click(object sender, EventArgs e)
         {
-
+            this.Close();
         }
 
         private void btnMinimizar_Click(object sender, EventArgs e)
