@@ -42,17 +42,16 @@
             this.mskBNascimento = new System.Windows.Forms.MaskedTextBox();
             this.lsViewCarrinho = new System.Windows.Forms.ListView();
             this.label9 = new System.Windows.Forms.Label();
-            this.mskBRetirarItem = new System.Windows.Forms.MaskedTextBox();
             this.panelNCN = new System.Windows.Forms.Panel();
             this.mskBNome = new System.Windows.Forms.TextBox();
             this.btnLimparClient = new System.Windows.Forms.Button();
             this.btnProcurar = new System.Windows.Forms.Button();
             this.btnSalvar = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.mskBRetirarItem = new System.Windows.Forms.MaskedTextBox();
             this.mskAdicionarItem = new System.Windows.Forms.MaskedTextBox();
-            this.listBox1 = new System.Windows.Forms.ListBox();
             this.btnPular = new System.Windows.Forms.Button();
-            this.comboBoxCodProd = new System.Windows.Forms.ComboBox();
+            this.comboBoxAdicionar = new System.Windows.Forms.ComboBox();
             this.btnLimparRetirar = new System.Windows.Forms.Button();
             this.label11 = new System.Windows.Forms.Label();
             this.mskBValorItemRetirado = new System.Windows.Forms.MaskedTextBox();
@@ -68,6 +67,7 @@
             this.numUDQtdItemAdicionar = new System.Windows.Forms.NumericUpDown();
             this.mskBValorAdicionar = new System.Windows.Forms.MaskedTextBox();
             this.btnIncluirCampoCliente = new System.Windows.Forms.Button();
+            this.comboBoxRetirar = new System.Windows.Forms.ComboBox();
             this.barraFormulario = new System.Windows.Forms.PictureBox();
             this.btnFechar = new System.Windows.Forms.Button();
             this.btnMinimizar = new System.Windows.Forms.Button();
@@ -132,7 +132,6 @@
             // mskBValortotal
             // 
             this.mskBValortotal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.mskBValortotal.Enabled = false;
             this.mskBValortotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.mskBValortotal.Location = new System.Drawing.Point(482, 431);
             this.mskBValortotal.Mask = "$";
@@ -232,21 +231,11 @@
             this.label9.Enabled = false;
             this.label9.Font = new System.Drawing.Font("MS UI Gothic", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.ForeColor = System.Drawing.Color.Snow;
-            this.label9.Location = new System.Drawing.Point(562, 174);
+            this.label9.Location = new System.Drawing.Point(529, 174);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(75, 13);
             this.label9.TabIndex = 50;
             this.label9.Text = "Retirar item";
-            // 
-            // mskBRetirarItem
-            // 
-            this.mskBRetirarItem.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.mskBRetirarItem.Enabled = false;
-            this.mskBRetirarItem.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.mskBRetirarItem.Location = new System.Drawing.Point(503, 190);
-            this.mskBRetirarItem.Name = "mskBRetirarItem";
-            this.mskBRetirarItem.Size = new System.Drawing.Size(181, 35);
-            this.mskBRetirarItem.TabIndex = 9;
             // 
             // panelNCN
             // 
@@ -323,10 +312,10 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel2.BackColor = System.Drawing.Color.Chocolate;
+            this.panel2.Controls.Add(this.mskBRetirarItem);
             this.panel2.Controls.Add(this.mskAdicionarItem);
-            this.panel2.Controls.Add(this.listBox1);
             this.panel2.Controls.Add(this.btnPular);
-            this.panel2.Controls.Add(this.comboBoxCodProd);
+            this.panel2.Controls.Add(this.comboBoxAdicionar);
             this.panel2.Controls.Add(this.btnLimparRetirar);
             this.panel2.Controls.Add(this.label11);
             this.panel2.Controls.Add(this.mskBValorItemRetirado);
@@ -343,16 +332,27 @@
             this.panel2.Controls.Add(this.mskBValorAdicionar);
             this.panel2.Controls.Add(this.btnIncluirCampoCliente);
             this.panel2.Controls.Add(this.lsViewCarrinho);
-            this.panel2.Controls.Add(this.mskBRetirarItem);
             this.panel2.Controls.Add(this.label9);
             this.panel2.Controls.Add(this.label3);
             this.panel2.Controls.Add(this.mskBValortotal);
             this.panel2.Controls.Add(this.label4);
             this.panel2.Controls.Add(this.panelNCN);
+            this.panel2.Controls.Add(this.comboBoxRetirar);
             this.panel2.Location = new System.Drawing.Point(19, 92);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(963, 545);
             this.panel2.TabIndex = 2;
+            // 
+            // mskBRetirarItem
+            // 
+            this.mskBRetirarItem.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.mskBRetirarItem.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.mskBRetirarItem.Font = new System.Drawing.Font("Swis721 Cn BT", 21F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.mskBRetirarItem.Location = new System.Drawing.Point(466, 190);
+            this.mskBRetirarItem.Name = "mskBRetirarItem";
+            this.mskBRetirarItem.Size = new System.Drawing.Size(230, 34);
+            this.mskBRetirarItem.TabIndex = 76;
+            this.mskBRetirarItem.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.KeyPress_mskRetirar);
             // 
             // mskAdicionarItem
             // 
@@ -365,14 +365,6 @@
             this.mskAdicionarItem.TabIndex = 4;
             this.mskAdicionarItem.TextChanged += new System.EventHandler(this.TextChanged_mskAdicionar);
             this.mskAdicionarItem.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.KeyPress_mskAdicionar);
-            // 
-            // listBox1
-            // 
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.Location = new System.Drawing.Point(723, 386);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(120, 95);
-            this.listBox1.TabIndex = 75;
             // 
             // btnPular
             // 
@@ -387,30 +379,31 @@
             this.btnPular.UseVisualStyleBackColor = true;
             this.btnPular.Click += new System.EventHandler(this.btnPular_Click);
             // 
-            // comboBoxCodProd
+            // comboBoxAdicionar
             // 
-            this.comboBoxCodProd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.comboBoxCodProd.DropDownStyle = System.Windows.Forms.ComboBoxStyle.Simple;
-            this.comboBoxCodProd.Enabled = false;
-            this.comboBoxCodProd.Font = new System.Drawing.Font("Microsoft Sans Serif", 17.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBoxCodProd.FormattingEnabled = true;
-            this.comboBoxCodProd.Location = new System.Drawing.Point(466, 300);
-            this.comboBoxCodProd.Name = "comboBoxCodProd";
-            this.comboBoxCodProd.Size = new System.Drawing.Size(255, 37);
-            this.comboBoxCodProd.TabIndex = 4;
-            this.comboBoxCodProd.SelectionChangeCommitted += new System.EventHandler(this.SelectItem_cbBox);
+            this.comboBoxAdicionar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.comboBoxAdicionar.DropDownStyle = System.Windows.Forms.ComboBoxStyle.Simple;
+            this.comboBoxAdicionar.Enabled = false;
+            this.comboBoxAdicionar.Font = new System.Drawing.Font("Microsoft Sans Serif", 17.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboBoxAdicionar.FormattingEnabled = true;
+            this.comboBoxAdicionar.Location = new System.Drawing.Point(466, 300);
+            this.comboBoxAdicionar.Name = "comboBoxAdicionar";
+            this.comboBoxAdicionar.Size = new System.Drawing.Size(255, 37);
+            this.comboBoxAdicionar.TabIndex = 4;
+            this.comboBoxAdicionar.SelectionChangeCommitted += new System.EventHandler(this.SelectItem_cbBox);
             // 
             // btnLimparRetirar
             // 
             this.btnLimparRetirar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnLimparRetirar.Enabled = false;
             this.btnLimparRetirar.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLimparRetirar.Location = new System.Drawing.Point(766, 230);
+            this.btnLimparRetirar.Location = new System.Drawing.Point(803, 230);
             this.btnLimparRetirar.Name = "btnLimparRetirar";
             this.btnLimparRetirar.Size = new System.Drawing.Size(132, 29);
             this.btnLimparRetirar.TabIndex = 13;
             this.btnLimparRetirar.Text = "Limpar";
             this.btnLimparRetirar.UseVisualStyleBackColor = true;
+            this.btnLimparRetirar.Click += new System.EventHandler(this.btnLimparRetirar_Click);
             // 
             // label11
             // 
@@ -419,7 +412,7 @@
             this.label11.Enabled = false;
             this.label11.Font = new System.Drawing.Font("MS UI Gothic", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label11.ForeColor = System.Drawing.Color.Snow;
-            this.label11.Location = new System.Drawing.Point(809, 173);
+            this.label11.Location = new System.Drawing.Point(846, 173);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(36, 13);
             this.label11.TabIndex = 74;
@@ -430,7 +423,7 @@
             this.mskBValorItemRetirado.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.mskBValorItemRetirado.Enabled = false;
             this.mskBValorItemRetirado.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.mskBValorItemRetirado.Location = new System.Drawing.Point(766, 189);
+            this.mskBValorItemRetirado.Location = new System.Drawing.Point(803, 189);
             this.mskBValorItemRetirado.Mask = "$";
             this.mskBValorItemRetirado.Name = "mskBValorItemRetirado";
             this.mskBValorItemRetirado.Size = new System.Drawing.Size(132, 35);
@@ -492,12 +485,13 @@
             this.btnRetirar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnRetirar.Enabled = false;
             this.btnRetirar.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRetirar.Location = new System.Drawing.Point(503, 230);
+            this.btnRetirar.Location = new System.Drawing.Point(466, 230);
             this.btnRetirar.Name = "btnRetirar";
-            this.btnRetirar.Size = new System.Drawing.Size(257, 29);
+            this.btnRetirar.Size = new System.Drawing.Size(331, 29);
             this.btnRetirar.TabIndex = 12;
             this.btnRetirar.Text = "Retirar";
             this.btnRetirar.UseVisualStyleBackColor = true;
+            this.btnRetirar.Click += new System.EventHandler(this.btnRetirar_Click);
             // 
             // label12
             // 
@@ -506,7 +500,7 @@
             this.label12.Enabled = false;
             this.label12.Font = new System.Drawing.Font("MS UI Gothic", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label12.ForeColor = System.Drawing.Color.Snow;
-            this.label12.Location = new System.Drawing.Point(704, 174);
+            this.label12.Location = new System.Drawing.Point(739, 174);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(30, 13);
             this.label12.TabIndex = 70;
@@ -518,7 +512,7 @@
             this.numUDQtdItemRetirar.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.numUDQtdItemRetirar.Enabled = false;
             this.numUDQtdItemRetirar.Font = new System.Drawing.Font("Microsoft Sans Serif", 17.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numUDQtdItemRetirar.Location = new System.Drawing.Point(690, 190);
+            this.numUDQtdItemRetirar.Location = new System.Drawing.Point(725, 190);
             this.numUDQtdItemRetirar.Minimum = new decimal(new int[] {
             1,
             0,
@@ -603,6 +597,18 @@
             this.btnIncluirCampoCliente.Text = "Incluir";
             this.btnIncluirCampoCliente.UseVisualStyleBackColor = true;
             this.btnIncluirCampoCliente.Click += new System.EventHandler(this.btnIncluirPedido_Click);
+            // 
+            // comboBoxRetirar
+            // 
+            this.comboBoxRetirar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.comboBoxRetirar.DropDownStyle = System.Windows.Forms.ComboBoxStyle.Simple;
+            this.comboBoxRetirar.Enabled = false;
+            this.comboBoxRetirar.Font = new System.Drawing.Font("Microsoft Sans Serif", 17.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboBoxRetirar.FormattingEnabled = true;
+            this.comboBoxRetirar.Location = new System.Drawing.Point(466, 189);
+            this.comboBoxRetirar.Name = "comboBoxRetirar";
+            this.comboBoxRetirar.Size = new System.Drawing.Size(251, 37);
+            this.comboBoxRetirar.TabIndex = 75;
             // 
             // barraFormulario
             // 
@@ -747,7 +753,6 @@
         private System.Windows.Forms.MaskedTextBox mskBNascimento;
         private System.Windows.Forms.ListView lsViewCarrinho;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.MaskedTextBox mskBRetirarItem;
         private System.Windows.Forms.Panel panelNCN;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Button btnSalvarPedido;
@@ -772,11 +777,12 @@
         private System.Windows.Forms.Button btnNormal;
         private System.Windows.Forms.Button btnProcurar;
         private System.Windows.Forms.Button btnSalvar;
-        private System.Windows.Forms.ComboBox comboBoxCodProd;
+        private System.Windows.Forms.ComboBox comboBoxAdicionar;
         private System.Windows.Forms.Button btnPular;
         private System.Windows.Forms.Button btnLimparClient;
         private System.Windows.Forms.TextBox mskBNome;
         private System.Windows.Forms.MaskedTextBox mskAdicionarItem;
-        private System.Windows.Forms.ListBox listBox1;
+        private System.Windows.Forms.MaskedTextBox mskBRetirarItem;
+        private System.Windows.Forms.ComboBox comboBoxRetirar;
     }
 }
