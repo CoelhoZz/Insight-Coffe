@@ -139,6 +139,9 @@ namespace InsightCoffe.Utilidades
             {
                 adicionarPedido();
                 mskBCodeBar.Enabled = false;
+
+                btnSalvarPedido.Enabled = true;
+                btnCancelarPedido.Enabled = true;
             }
         }
         //------------------------------end: Codigos de ativação de pedido------------------------------
@@ -235,6 +238,23 @@ namespace InsightCoffe.Utilidades
             btnLimparAdicionar.Enabled = true;
         }
 
+        private void desabilitarCarrinho()
+        {
+            mskBRetirarItem.Enabled = false;
+            numUDQtdItemRetirar.Enabled = false;
+            mskBValorItemRetirado.Enabled = false;
+            numUDQtdItemAdicionar.Enabled = false;
+            mskBValorAdicionar.Enabled = false;
+
+            btnAdicionar.Enabled = false;
+            btnLimparAdicionar.Enabled = false;
+        }
+
+        private void SalvarPed()
+        {
+            
+        }
+
 
         //--------------------------------------Client
         private void habilitar_BotõesCliente()
@@ -258,6 +278,7 @@ namespace InsightCoffe.Utilidades
             mskBNome.Enabled = true;
             mskBNascimento.Enabled = true;
             mskBCPF.Enabled = true;
+
         }        
         
         private void desabilita_CamposCliente()
@@ -310,9 +331,11 @@ namespace InsightCoffe.Utilidades
             });
         }
 
-        public void whenSalvarPedido_LockAll()
+        public void salvarEcancelar_Pedido()
         {
             mskBCodeBar.ResetText();
+            mskBCodeBar.Enabled = true;
+
             mskBNome.ResetText();
             mskBCPF.ResetText();
             mskBRetirarItem.ResetText();
@@ -324,13 +347,6 @@ namespace InsightCoffe.Utilidades
             numUDQtdItemAdicionar.ResetText();
 
             comboBoxAdicionar.ResetText();
-
-            panelNCN.Enabled = false;
-            btnIncluirCampoCliente.Enabled = false;
-            btnPular.Enabled = false;
-            btnSalvar.Enabled = false;
-            btnLimparClient.Enabled = false;
-            btnProcurar.Enabled = false;
         }
 
         //------------------------------end: Methods ---------------------------------------------------
@@ -340,7 +356,7 @@ namespace InsightCoffe.Utilidades
         public string Cpf;
         public DateTime Nascimento;
 
-        private void btnIncluirPedido_Click(object sender, EventArgs e)
+        private void btnIncluirCliente_Click(object sender, EventArgs e)
         {
             desabilitar_BotõesCliente();
             habilita_CamposCliente();
@@ -626,7 +642,7 @@ namespace InsightCoffe.Utilidades
                 lsViewCarrinho.Items.Add(list.ID + ": " + list.Descricao + " " + list.Quantidade + " " + list.Valor);
             }
 
-            mskBValortotal.Text.Replace("R$", " ");
+            mskBValortotal.Mask = null;
             mskBValortotal.Text = CalculoPreco().ToString("C2");
         }
 
@@ -689,14 +705,37 @@ namespace InsightCoffe.Utilidades
             
         }
 
+        public bool ExisteItem()
+        {
+            if (carrinho.Count == 0)
+                return false;
+            else
+                return true;
+        }
+
         //---------------------------------Start: Finalização Pedido-------------------------------------
 
         private void btnSalvarPedido_Click(object sender, EventArgs e)
         {
-            whenSalvarPedido_LockAll();
+            if(ExisteItem() == true)
+            {
+                salvarEcancelar_Pedido();
+                inicial1.salvaPedido(Convert.ToUInt64(mskBCodeBar.Text), mskBNome.Text, mskBCPF.Text, 100, carrinho);
+                carrinho = new List<Produto>();
+            }
+            else
+            {
+                MessageBox.Show("Carrinho vazio");
+            }
+        }
 
-            inicial1.salvaPedido(Convert.ToUInt64(mskBCodeBar.Text), mskBNome.Text, mskBCPF.Text, 100, carrinho);
-            carrinho = new List<Produto>();
+        private void btnCancelarPedido_Click(object sender, EventArgs e)
+        {
+            desabilita_CamposCliente();
+            desabilitar_BotõesCliente();
+            desabilitarCarrinho();
+            salvarEcancelar_Pedido();
+            
         }
 
 

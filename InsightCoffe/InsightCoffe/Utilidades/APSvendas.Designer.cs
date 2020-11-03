@@ -479,6 +479,7 @@
             this.btnCancelarPedido.TabIndex = 15;
             this.btnCancelarPedido.Text = "Cancelar";
             this.btnCancelarPedido.UseVisualStyleBackColor = true;
+            this.btnCancelarPedido.Click += new System.EventHandler(this.btnCancelarPedido_Click);
             // 
             // btnRetirar
             // 
@@ -596,7 +597,7 @@
             this.btnIncluirCampoCliente.TabIndex = 1;
             this.btnIncluirCampoCliente.Text = "Incluir";
             this.btnIncluirCampoCliente.UseVisualStyleBackColor = true;
-            this.btnIncluirCampoCliente.Click += new System.EventHandler(this.btnIncluirPedido_Click);
+            this.btnIncluirCampoCliente.Click += new System.EventHandler(this.btnIncluirCliente_Click);
             // 
             // comboBoxRetirar
             // 
