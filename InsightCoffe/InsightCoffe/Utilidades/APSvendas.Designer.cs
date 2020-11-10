@@ -73,6 +73,7 @@
             this.btnMinimizar = new System.Windows.Forms.Button();
             this.bntMaximizar = new System.Windows.Forms.Button();
             this.btnNormal = new System.Windows.Forms.Button();
+            this.lblDesconto = new System.Windows.Forms.Label();
             this.panelNCN.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numUDQtdItemRetirar)).BeginInit();
@@ -214,6 +215,8 @@
             // 
             // lsViewCarrinho
             // 
+            this.lsViewCarrinho.Alignment = System.Windows.Forms.ListViewAlignment.Default;
+            this.lsViewCarrinho.AllowColumnReorder = true;
             this.lsViewCarrinho.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -242,6 +245,7 @@
             this.panelNCN.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.panelNCN.AutoSize = true;
             this.panelNCN.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.panelNCN.Controls.Add(this.lblDesconto);
             this.panelNCN.Controls.Add(this.mskBNome);
             this.panelNCN.Controls.Add(this.btnLimparClient);
             this.panelNCN.Controls.Add(this.mskBNascimento);
@@ -707,6 +711,18 @@
             this.btnNormal.MouseLeave += new System.EventHandler(this.LeaveNormal);
             this.btnNormal.MouseMove += new System.Windows.Forms.MouseEventHandler(this.controlNormal);
             // 
+            // lblDesconto
+            // 
+            this.lblDesconto.AutoSize = true;
+            this.lblDesconto.Font = new System.Drawing.Font("Microsoft YaHei UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDesconto.ForeColor = System.Drawing.Color.Red;
+            this.lblDesconto.Location = new System.Drawing.Point(3, 95);
+            this.lblDesconto.Name = "lblDesconto";
+            this.lblDesconto.Size = new System.Drawing.Size(232, 20);
+            this.lblDesconto.TabIndex = 77;
+            this.lblDesconto.Text = "Você Ganhou um cappuchino!!";
+            this.lblDesconto.Visible = false;
+            // 
             // APSvendas
             // 
             this.AllowDrop = true;
@@ -785,5 +801,6 @@
         private System.Windows.Forms.MaskedTextBox mskAdicionarItem;
         private System.Windows.Forms.MaskedTextBox mskBRetirarItem;
         private System.Windows.Forms.ComboBox comboBoxRetirar;
+        private System.Windows.Forms.Label lblDesconto;
     }
 }

@@ -24,7 +24,7 @@ namespace InsightCoffe
             usuarios.Add(new Usuarios() { ID = 0, Usuario = "q", Senha = "q", Acesso = "Total"});
             usuarios.Add(new Usuarios() { ID = 1, Usuario = "Gerente", Senha = "Gerente", Acesso = "Total"});
             usuarios.Add(new Usuarios() { ID = 2, Usuario = "Thyago", Senha = "Thyago", Acesso = "Parcial" });
-            usuarios.Add(new Usuarios() { ID = 3, Usuario = "Leonam", Senha = "Leonam", Acesso = "Parcial" });
+            usuarios.Add(new Usuarios() { ID = 3, Usuario = "Leonam", Senha = "Leonam", Acesso = "Pequeno" });
         }
 
         //----------------------------------Mover formulario-----------------------------------------------

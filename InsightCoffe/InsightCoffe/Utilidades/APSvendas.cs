@@ -393,6 +393,19 @@ namespace InsightCoffe.Utilidades
             }
         }
 
+        private void GetDescontos()
+        {
+            foreach(Produto produto in inicial1.produtos)
+            {
+                if(produto.ID == 8)
+                {
+                    produto.Valor = 0;
+                    lblDesconto.Visible = true;
+                    carrinho.Add(produto);
+                    return;
+                }
+            }
+        } 
         private void btnSalvar_Click(object sender, EventArgs e)
         {
             //Checagem de campos preenchidos corretamente
@@ -405,7 +418,9 @@ namespace InsightCoffe.Utilidades
                 mskBCPF.Clear();
                 return;
             }
-
+            //Conceder Desconto
+            GetDescontos();
+            AddProdutoToDList();
             //Adicionando as Listas nescessarias
             inicial1.Adicionar_Cliente(Nome, Nascimento.ToString("dd/MM/yyyy"), Cpf);
             confirmarCliente();

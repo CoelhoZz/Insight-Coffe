@@ -309,6 +309,29 @@ namespace InsightCoffe.Utilidades
         public string acesso;
         public string time;
 
+        private void Load_Acess()
+        {
+            if (Form1.acess == "Total")
+            {
+                return;
+            }
+            else if(Form1.acess == "Parcial")
+            {
+                btnProdutos.Visible = false;
+                produtosToolStripMenuItem.Visible = false;
+                editMenu.Visible = false;
+            }
+            else
+            {
+                btnProdutos.Visible = false;
+                btnPagamento.Visible = false;
+                btnVendas.Visible = false;
+                ferramentasMenu.Visible = false;
+                editMenu.Visible = false;
+                viewMenu.Visible = false;
+                helpMenu.Visible = false;
+            }
+        }
         private void PainelInicial_Load(object sender, EventArgs e)
         {
             //-------------------------------------Salvando o acesso-----------------------------------------
@@ -318,10 +341,7 @@ namespace InsightCoffe.Utilidades
             //-----------------------------------Codigo de acesso restrito------------------------------------
             lblUsuarioLogado.Text = Form1.user;
             toolStrip_lblusuario.Text = "Usuario logado: " + user;
-            if (Form1.acess != "Total")
-            {
-                btnProdutos.Visible = false;
-            }
+            Load_Acess();
         }
         // Descrição de botões
         //private void timerTempoReal_Tick(object sender, EventArgs e)
