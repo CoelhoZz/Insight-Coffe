@@ -556,7 +556,7 @@ namespace InsightCoffe.Utilidades
                     TelaRegPagamento = false, TelaRegPedidos = false, TelaRegProdutos = false,
                     TelaRegClientes = false;
 
-        private void Tela_de_Vendas()
+        public void Tela_de_Vendas()
         {
             APSvendas apsVendas = new APSvendas(this, produtos, pedido, clientes);
             apsVendas.inicial1 = this;
@@ -651,7 +651,8 @@ namespace InsightCoffe.Utilidades
                 ID = identifyClient(),
                 Nome = nome,
                 DataNascimento = datadenascimento,
-                CPF = cpf
+                CPF = cpf,
+                Compras = 1
             });
         }
 
@@ -729,6 +730,11 @@ namespace InsightCoffe.Utilidades
         private void copyToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Clipboard.SetText(string.Empty);
+        }
+
+        private void btnSair_Click(object sender, EventArgs e)
+        {
+            Application.Restart();
         }
 
         private void SaveAsToolStripMenuItem_Click(object sender, EventArgs e)

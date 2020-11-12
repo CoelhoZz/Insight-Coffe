@@ -16,6 +16,8 @@ namespace InsightCoffe.Entity
 
         public string CPF { get; set; }
 
+        public int Compras { get; set; }
+
         public override int GetHashCode()
         {
             return ID;

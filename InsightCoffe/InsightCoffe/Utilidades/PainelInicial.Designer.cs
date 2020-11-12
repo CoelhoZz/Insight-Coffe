@@ -89,6 +89,7 @@
             this.btnProdutos = new XanderUI.XUIButton();
             this.btnVendas = new XanderUI.XUIButton();
             this.btnPagamento = new XanderUI.XUIButton();
+            this.btnSair = new System.Windows.Forms.Button();
             this.menuStrip.SuspendLayout();
             this.statusBarra.SuspendLayout();
             this.panelCabecalho.SuspendLayout();
@@ -113,7 +114,7 @@
             this.helpMenu});
             this.menuStrip.Location = new System.Drawing.Point(199, 97);
             this.menuStrip.Name = "menuStrip";
-            this.menuStrip.Size = new System.Drawing.Size(584, 33);
+            this.menuStrip.Size = new System.Drawing.Size(464, 33);
             this.menuStrip.TabIndex = 2;
             this.menuStrip.Text = "MenuStrip";
             this.menuStrip.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.menuStrip_ItemClicked);
@@ -459,6 +460,7 @@
             // panelCabecalho
             // 
             this.panelCabecalho.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(223)))), ((int)(((byte)(150)))), ((int)(((byte)(64)))));
+            this.panelCabecalho.Controls.Add(this.btnSair);
             this.panelCabecalho.Controls.Add(this.btnMostrarAplicações);
             this.panelCabecalho.Controls.Add(this.picFotoUsuario);
             this.panelCabecalho.Controls.Add(this.btnFechar);
@@ -492,7 +494,7 @@
             // 
             this.picFotoUsuario.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.picFotoUsuario.Image = ((System.Drawing.Image)(resources.GetObject("picFotoUsuario.Image")));
-            this.picFotoUsuario.Location = new System.Drawing.Point(1165, 44);
+            this.picFotoUsuario.Location = new System.Drawing.Point(1176, 56);
             this.picFotoUsuario.Name = "picFotoUsuario";
             this.picFotoUsuario.Size = new System.Drawing.Size(64, 50);
             this.picFotoUsuario.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -546,7 +548,7 @@
             this.lblUsuarioLogado.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblUsuarioLogado.AutoSize = true;
             this.lblUsuarioLogado.Font = new System.Drawing.Font("MS Reference Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblUsuarioLogado.Location = new System.Drawing.Point(1161, 97);
+            this.lblUsuarioLogado.Location = new System.Drawing.Point(1172, 107);
             this.lblUsuarioLogado.Name = "lblUsuarioLogado";
             this.lblUsuarioLogado.Size = new System.Drawing.Size(74, 20);
             this.lblUsuarioLogado.TabIndex = 3;
@@ -729,6 +731,21 @@
             this.btnPagamento.Vertical_Alignment = System.Drawing.StringAlignment.Center;
             this.btnPagamento.Click += new System.EventHandler(this.bntPagamento_Click_1);
             // 
+            // btnSair
+            // 
+            this.btnSair.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSair.FlatAppearance.BorderSize = 0;
+            this.btnSair.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSair.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSair.Location = new System.Drawing.Point(1208, 26);
+            this.btnSair.Name = "btnSair";
+            this.btnSair.Size = new System.Drawing.Size(44, 24);
+            this.btnSair.TabIndex = 60;
+            this.btnSair.Text = "&Sair";
+            this.btnSair.TextAlign = System.Drawing.ContentAlignment.BottomRight;
+            this.btnSair.UseVisualStyleBackColor = true;
+            this.btnSair.Click += new System.EventHandler(this.btnSair_Click);
+            // 
             // PainelInicial
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -828,6 +845,7 @@
         private System.Windows.Forms.ToolStripMenuItem RegPedidosToolStripMenuItem2;
         private System.Windows.Forms.ToolStripMenuItem RegProdutosToolStripMenuItem1;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator9;
+        private System.Windows.Forms.Button btnSair;
     }
 }
 

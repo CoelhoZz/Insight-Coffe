@@ -292,6 +292,7 @@ namespace InsightCoffe.Utilidades
             mskBCPF.Enabled = false;
         }
 
+        public bool NaoEncontrou = false;
         private void clienteSearch()
         {
             try
@@ -305,9 +306,15 @@ namespace InsightCoffe.Utilidades
                         mskBNome.Text = cliente.Nome;
                         mskBCPF.Text = cliente.CPF;
                         mskBNascimento.Text = cliente.DataNascimento;
+                        if (cliente.Compras == 1)
+                        {
+                            GetDescontos();
+                            AddProdutoToDList();
+                        }   
                         return;
                     }
                 }
+                NaoEncontrou = true;
             }
             catch (Exception)
             {
@@ -379,7 +386,7 @@ namespace InsightCoffe.Utilidades
         {
             clienteSearch();
 
-            if (mskBNome.Text != "" && mskBNascimento.Text != "  /  /")
+            if (mskBNome.Text != "" && mskBNascimento.Text != "  /  /" && NaoEncontrou == false)
             {
                 desabilitar_BotõesCliente();
                 desabilita_CamposCliente();
@@ -389,6 +396,7 @@ namespace InsightCoffe.Utilidades
             }
             else
             {
+                MessageBox.Show("Cliente não encontrado, certifique-se que pesquisou corrtamente. Pesquisas são feitas aparir do \"Nome\" ou \"Cpf\" ", "Atenção!");
                 return;
             }
         }
@@ -746,11 +754,8 @@ namespace InsightCoffe.Utilidades
 
         private void btnCancelarPedido_Click(object sender, EventArgs e)
         {
-            desabilita_CamposCliente();
-            desabilitar_BotõesCliente();
-            desabilitarCarrinho();
-            salvarEcancelar_Pedido();
-            
+            inicial1.Tela_de_Vendas();
+            this.Close();
         }
 
 
