@@ -46,7 +46,7 @@
             // 
             // btnConectar
             // 
-            this.btnConectar.BackColor = System.Drawing.Color.Sienna;
+            this.btnConectar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(203)))), ((int)(((byte)(119)))), ((int)(((byte)(35)))));
             this.btnConectar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnConectar.Font = new System.Drawing.Font("MS Reference Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnConectar.Location = new System.Drawing.Point(22, 196);
@@ -59,10 +59,10 @@
             // 
             // tbPassword
             // 
-            this.tbPassword.BackColor = System.Drawing.SystemColors.Control;
+            this.tbPassword.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(216)))), ((int)(((byte)(177)))));
             this.tbPassword.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.tbPassword.Font = new System.Drawing.Font("Microsoft Yi Baiti", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbPassword.ForeColor = System.Drawing.Color.SandyBrown;
+            this.tbPassword.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(203)))), ((int)(((byte)(119)))), ((int)(((byte)(35)))));
             this.tbPassword.Location = new System.Drawing.Point(33, 136);
             this.tbPassword.Name = "tbPassword";
             this.tbPassword.Size = new System.Drawing.Size(160, 25);
@@ -74,10 +74,10 @@
             // 
             // tbUsername
             // 
-            this.tbUsername.BackColor = System.Drawing.SystemColors.Control;
+            this.tbUsername.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(216)))), ((int)(((byte)(177)))));
             this.tbUsername.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.tbUsername.Font = new System.Drawing.Font("Microsoft Yi Baiti", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbUsername.ForeColor = System.Drawing.Color.SandyBrown;
+            this.tbUsername.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(203)))), ((int)(((byte)(119)))), ((int)(((byte)(35)))));
             this.tbUsername.Location = new System.Drawing.Point(33, 88);
             this.tbUsername.Name = "tbUsername";
             this.tbUsername.Size = new System.Drawing.Size(160, 25);
@@ -90,7 +90,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.Color.Sienna;
+            this.label1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(203)))), ((int)(((byte)(119)))), ((int)(((byte)(35)))));
             this.label1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.label1.Font = new System.Drawing.Font("Palatino Linotype", 20.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(11, 11);
@@ -104,7 +104,7 @@
             // 
             // picBBarra
             // 
-            this.picBBarra.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(223)))), ((int)(((byte)(150)))), ((int)(((byte)(64)))));
+            this.picBBarra.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(119)))), ((int)(((byte)(1)))));
             this.picBBarra.Dock = System.Windows.Forms.DockStyle.Top;
             this.picBBarra.Location = new System.Drawing.Point(0, 24);
             this.picBBarra.Name = "picBBarra";
@@ -133,13 +133,14 @@
             // chkMostrar
             // 
             this.chkMostrar.AutoSize = true;
-            this.chkMostrar.ForeColor = System.Drawing.Color.SandyBrown;
+            this.chkMostrar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(216)))), ((int)(((byte)(177)))));
+            this.chkMostrar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(203)))), ((int)(((byte)(119)))), ((int)(((byte)(35)))));
             this.chkMostrar.Location = new System.Drawing.Point(145, 167);
             this.chkMostrar.Name = "chkMostrar";
             this.chkMostrar.Size = new System.Drawing.Size(61, 17);
             this.chkMostrar.TabIndex = 4;
             this.chkMostrar.Text = "Mostrar";
-            this.chkMostrar.UseVisualStyleBackColor = true;
+            this.chkMostrar.UseVisualStyleBackColor = false;
             this.chkMostrar.Click += new System.EventHandler(this.Click_mostar);
             // 
             // pictureBox1
@@ -201,6 +202,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(216)))), ((int)(((byte)(177)))));
             this.ClientSize = new System.Drawing.Size(228, 271);
             this.Controls.Add(this.btnFechar);
             this.Controls.Add(this.btnMinimizar);

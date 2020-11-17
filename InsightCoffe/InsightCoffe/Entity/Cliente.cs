@@ -18,6 +18,44 @@ namespace InsightCoffe.Entity
 
         public int Compras { get; set; }
 
+        public static int identifyClient(List<Cliente> clientes)
+        {
+            int i = 1;
+            foreach (Cliente cliente in clientes)
+            {
+                if (i != cliente.ID)
+                {
+                    return i;
+                }
+                i++;
+            }
+            return i++;
+        }
+
+        public static bool checkCliente(List<Cliente> clientes, string cpf)
+        {
+            foreach (Cliente cliente in clientes)
+            {
+                if (cpf == cliente.CPF)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        public static void adiconaCliente(List<Cliente> clientePedido, int id, string nome, string nascimento, string cpf)
+        {
+            clientePedido.Add(new Cliente()
+            {
+                ID = id,
+                Nome = nome,
+                DataNascimento = nascimento,
+                CPF = cpf,
+                Compras = 0
+            });
+        }
+
         public override int GetHashCode()
         {
             return ID;

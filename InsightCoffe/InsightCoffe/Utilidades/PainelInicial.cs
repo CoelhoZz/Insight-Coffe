@@ -1,6 +1,7 @@
 ﻿using InsightCoffe.Entity;
 using InsightCoffe.Repositorios;
 using InsightCoffe.Utilidades.Consultas;
+using InsightCoffe.Utilidades.Edições;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -26,6 +27,16 @@ namespace InsightCoffe.Utilidades
         public PainelInicial(Form1 form1, List<Usuarios> usuarios)
         {
             InitializeComponent();
+            foreach(Control c in this.Controls)
+            {
+                if(c is Control)
+                {
+                    c.BackColor = Color.FromArgb(255, 216, 177);
+                }
+            }
+            panelCabecalho.BackColor = Color.FromArgb(225, 119,1);
+            panelAplicações.BackColor = Color.FromArgb(253, 171, 72);
+
             this.Form1 = form1;
 
             MetodosProdutos();
@@ -34,7 +45,11 @@ namespace InsightCoffe.Utilidades
             MetodosArmazenaPedidos();
         }
         //-------------------------------------Banco de Dados interno--------------------------------------
-
+        public void Atualizagrid()
+        {
+            dataGridView1.DataSource = null;
+            dataGridView1.DataSource = pedido;
+        }
 
 
         /// Produtos
@@ -254,17 +269,31 @@ namespace InsightCoffe.Utilidades
         {
             pedido.Add(new Pedido()
             {
-                CodigoDeBarras = (UInt64)1679435689426
-
+                ID = 0,
+                CodigoDeBarras = (UInt64)1,
+                DataEHora = "00/00/0000",
+                Situacao = "Comanda vazia",
+                Carrinho = null,
+                ValorTotal = 0
             });            
             pedido.Add(new Pedido()
             {
-                CodigoDeBarras = (UInt64)1679435689440
-            });            
-            pedido.Add(new Pedido()
-            {
-                CodigoDeBarras = (UInt64)1
+                ID = 1,
+                CodigoDeBarras = (UInt64)2,
+                DataEHora = "00/00/0000",
+                Situacao = "Comanda vazia",
+                Carrinho = null,
+                ValorTotal = 12
             });
+            pedido.Add(new Pedido()
+            {
+                ID = 2,
+                CodigoDeBarras = (UInt64)3,
+                DataEHora = "00/00/0000",
+                Situacao = "Comanda vazia",
+                Carrinho = null,
+                ValorTotal = 0
+            }) ;
             //1679435689433
         }
 
@@ -311,6 +340,10 @@ namespace InsightCoffe.Utilidades
 
         private void Load_Acess()
         {
+            this.WindowState = FormWindowState.Maximized;
+            bntMaximizar.Visible = false;
+            btnNormal.Visible = true;
+
             if (Form1.acess == "Total")
             {
                 return;
@@ -339,7 +372,7 @@ namespace InsightCoffe.Utilidades
             acesso = Form1.acess;
             lblRelogio.Text = DateTime.Now.ToShortTimeString();
             //-----------------------------------Codigo de acesso restrito------------------------------------
-            lblUsuarioLogado.Text = Form1.user;
+            xuiBusuario.ButtonText = "Usuario: " + Form1.user;
             toolStrip_lblusuario.Text = "Usuario logado: " + user;
             Load_Acess();
         }
@@ -554,7 +587,7 @@ namespace InsightCoffe.Utilidades
         //---------------------------start Sequencia de EVENTOS abertura das outras Telas-----------------
         public bool TelaVend = false, TelaPag = false, TelaProd = false,
                     TelaRegPagamento = false, TelaRegPedidos = false, TelaRegProdutos = false,
-                    TelaRegClientes = false;
+                    TelaRegClientes = false, TelaEdtCliente = false;
 
         public void Tela_de_Vendas()
         {
@@ -580,6 +613,15 @@ namespace InsightCoffe.Utilidades
             apsProdutos.Start = this;
             apsProdutos.Show();
             TelaProd = true;
+        }
+
+        private void btnEdiçãoCliente_Click(object sender, EventArgs e)
+        {
+            EdicaoCliente editar = new EdicaoCliente(this, clientes);
+            editar.MdiParent = this;
+            editar.inicial1 = this;
+            editar.Show();
+            TelaEdtCliente = true;
         }
 
         //private void Tela_de_RegistrosPagamentos()
@@ -643,53 +685,23 @@ namespace InsightCoffe.Utilidades
         //------------------------------end APSprodutos LISTA de PRODUTOS----------------------------------
 
         //-------------------------------start APSvendas LISTA de PEDIDOS----------------------------------       
-        public void Adicionar_Cliente(string nome, string datadenascimento, string cpf)
-        {
-            
-            clientes.Add(new Cliente()
-            { 
-                ID = identifyClient(),
-                Nome = nome,
-                DataNascimento = datadenascimento,
-                CPF = cpf,
-                Compras = 1
-            });
-        }
-
-        public int identifyClient()
-        {
-            int i = 1;
-            foreach (Cliente cliente in clientes)
-            {
-                if (i != cliente.ID)
-                {
-                    return i;
-                }
-                i++;
-            }
-            return i++;
-            
-        }
         
-        public void salvaPedido(UInt64 codeBar, string clientName, string clientCPF, double valorTotal, List<Produto> carrinho)
+        public void salvaPedido(UInt32 codeBar, string clientName, string clientCPF, double valorTotal, List<Produto> carrinho)
         {
-            pedido.Add(new Pedido()
+            foreach(Pedido pedido in pedido)
             {
-                ID = identifyPedido(),
-                CodigoDeBarras = codeBar,
-                DataEHora = DateTime.Now.ToString("g"),
-                ClientName = clientName,
-                ClientCPF = clientCPF,
-                Carrinho = carrinho,
-                Situacao = "Em aberto",
-                ValorTotal = valorTotal
-            });
-
+                if(pedido.CodigoDeBarras == codeBar)
+                {
+                    pedido.CodigoDeBarras = codeBar;
+                    pedido.DataEHora = DateTime.Now.ToString("g");
+                    pedido.ClientName = clientName;
+                    pedido.ClientCPF = clientCPF;
+                    pedido.Carrinho = carrinho;
+                    pedido.Situacao = "Em aberto";
+                    pedido.ValorTotal = valorTotal;
+                };
+            }
         }
-        //tem tudo isso de atributo pra salvar
-        //os que estão prontos são ID, CodeBar, DataeHora, ClientName, ClientCPF
-        //falta o carrinho situação(gera automatico então é suave) e valor
-        //olha teu disc
 
         public int identifyPedido()
         {
@@ -703,12 +715,6 @@ namespace InsightCoffe.Utilidades
                 i++;
             }
             return i++;
-        }
-
-        public void atualidaDataGrid()
-        {
-            //dataGridView1.DataSource = null;
-            //dataGridView1.DataSource = clientes;
         }
         //--------------------------------end APSvendas LISTA de PEDIDOS-----------------------------------
 
@@ -734,7 +740,15 @@ namespace InsightCoffe.Utilidades
 
         private void btnSair_Click(object sender, EventArgs e)
         {
-            Application.Restart();
+            
+        }
+
+        private void xuiBusuario_Click(object sender, EventArgs e)
+        {
+            if(MessageBox.Show("Deseja trocar de usuario??", "Atenção", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            {
+                Application.Restart();
+            }
         }
 
         private void SaveAsToolStripMenuItem_Click(object sender, EventArgs e)

@@ -73,15 +73,13 @@
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
             this.panelCabecalho = new System.Windows.Forms.Panel();
+            this.xuiBusuario = new XanderUI.XUIButton();
             this.btnMostrarAplicações = new System.Windows.Forms.Button();
-            this.picFotoUsuario = new System.Windows.Forms.PictureBox();
             this.btnFechar = new System.Windows.Forms.Button();
             this.btnMinimizar = new System.Windows.Forms.Button();
-            this.lblUsuarioLogado = new System.Windows.Forms.Label();
-            this.btnNormal = new System.Windows.Forms.Button();
             this.bntMaximizar = new System.Windows.Forms.Button();
+            this.btnNormal = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.panelTempo = new System.Windows.Forms.Panel();
             this.picIconeRelogio = new System.Windows.Forms.PictureBox();
             this.lblRelogio = new System.Windows.Forms.Label();
             this.timerTempoReal = new System.Windows.Forms.Timer(this.components);
@@ -89,20 +87,22 @@
             this.btnProdutos = new XanderUI.XUIButton();
             this.btnVendas = new XanderUI.XUIButton();
             this.btnPagamento = new XanderUI.XUIButton();
-            this.btnSair = new System.Windows.Forms.Button();
+            this.xuiCustomPictureBox1 = new XanderUI.XUICustomPictureBox();
+            this.xuiObjectEllipse1 = new XanderUI.XUIObjectEllipse();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.btnEdiçãoCliente = new XanderUI.XUIButton();
             this.menuStrip.SuspendLayout();
             this.statusBarra.SuspendLayout();
             this.panelCabecalho.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.picFotoUsuario)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            this.panelTempo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picIconeRelogio)).BeginInit();
             this.panelAplicações.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip
             // 
-            this.menuStrip.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(223)))), ((int)(((byte)(150)))), ((int)(((byte)(64)))));
+            this.menuStrip.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(119)))), ((int)(((byte)(1)))));
             this.menuStrip.Dock = System.Windows.Forms.DockStyle.None;
             this.menuStrip.Font = new System.Drawing.Font("Malgun Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.menuStrip.GripMargin = new System.Windows.Forms.Padding(2, 50, 0, 2);
@@ -459,13 +459,12 @@
             // 
             // panelCabecalho
             // 
-            this.panelCabecalho.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(223)))), ((int)(((byte)(150)))), ((int)(((byte)(64)))));
-            this.panelCabecalho.Controls.Add(this.btnSair);
+            this.panelCabecalho.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(119)))), ((int)(((byte)(1)))));
+            this.panelCabecalho.Controls.Add(this.dataGridView1);
+            this.panelCabecalho.Controls.Add(this.xuiBusuario);
             this.panelCabecalho.Controls.Add(this.btnMostrarAplicações);
-            this.panelCabecalho.Controls.Add(this.picFotoUsuario);
             this.panelCabecalho.Controls.Add(this.btnFechar);
             this.panelCabecalho.Controls.Add(this.btnMinimizar);
-            this.panelCabecalho.Controls.Add(this.lblUsuarioLogado);
             this.panelCabecalho.Controls.Add(this.menuStrip);
             this.panelCabecalho.Controls.Add(this.btnNormal);
             this.panelCabecalho.Controls.Add(this.bntMaximizar);
@@ -476,9 +475,32 @@
             this.panelCabecalho.Size = new System.Drawing.Size(1252, 140);
             this.panelCabecalho.TabIndex = 0;
             // 
+            // xuiBusuario
+            // 
+            this.xuiBusuario.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.xuiBusuario.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(119)))), ((int)(((byte)(1)))));
+            this.xuiBusuario.ButtonImage = ((System.Drawing.Image)(resources.GetObject("xuiBusuario.ButtonImage")));
+            this.xuiBusuario.ButtonStyle = XanderUI.XUIButton.Style.MaterialRounded;
+            this.xuiBusuario.ButtonText = "Usuario:";
+            this.xuiBusuario.ClickBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(139)))), ((int)(((byte)(21)))));
+            this.xuiBusuario.ClickTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(130)))), ((int)(((byte)(140)))));
+            this.xuiBusuario.CornerRadius = 5;
+            this.xuiBusuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.xuiBusuario.Horizontal_Alignment = System.Drawing.StringAlignment.Center;
+            this.xuiBusuario.HoverBackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(149)))), ((int)(((byte)(31)))));
+            this.xuiBusuario.HoverTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(200)))), ((int)(((byte)(185)))));
+            this.xuiBusuario.ImagePosition = XanderUI.XUIButton.imgPosition.Right;
+            this.xuiBusuario.Location = new System.Drawing.Point(1020, 34);
+            this.xuiBusuario.Name = "xuiBusuario";
+            this.xuiBusuario.Size = new System.Drawing.Size(220, 42);
+            this.xuiBusuario.TabIndex = 63;
+            this.xuiBusuario.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(235)))), ((int)(((byte)(215)))));
+            this.xuiBusuario.Vertical_Alignment = System.Drawing.StringAlignment.Center;
+            this.xuiBusuario.Click += new System.EventHandler(this.xuiBusuario_Click);
+            // 
             // btnMostrarAplicações
             // 
-            this.btnMostrarAplicações.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(223)))), ((int)(((byte)(150)))), ((int)(((byte)(64)))));
+            this.btnMostrarAplicações.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(119)))), ((int)(((byte)(1)))));
             this.btnMostrarAplicações.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnMostrarAplicações.BackgroundImage")));
             this.btnMostrarAplicações.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.btnMostrarAplicações.FlatAppearance.BorderSize = 0;
@@ -489,17 +511,6 @@
             this.btnMostrarAplicações.TabIndex = 1;
             this.btnMostrarAplicações.UseVisualStyleBackColor = false;
             this.btnMostrarAplicações.Click += new System.EventHandler(this.bntMostrarAplicações_Click);
-            // 
-            // picFotoUsuario
-            // 
-            this.picFotoUsuario.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.picFotoUsuario.Image = ((System.Drawing.Image)(resources.GetObject("picFotoUsuario.Image")));
-            this.picFotoUsuario.Location = new System.Drawing.Point(1176, 56);
-            this.picFotoUsuario.Name = "picFotoUsuario";
-            this.picFotoUsuario.Size = new System.Drawing.Size(64, 50);
-            this.picFotoUsuario.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.picFotoUsuario.TabIndex = 59;
-            this.picFotoUsuario.TabStop = false;
             // 
             // btnFechar
             // 
@@ -543,38 +554,6 @@
             this.btnMinimizar.MouseLeave += new System.EventHandler(this.LeaveMinimizar);
             this.btnMinimizar.MouseMove += new System.Windows.Forms.MouseEventHandler(this.controlMinimizar);
             // 
-            // lblUsuarioLogado
-            // 
-            this.lblUsuarioLogado.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblUsuarioLogado.AutoSize = true;
-            this.lblUsuarioLogado.Font = new System.Drawing.Font("MS Reference Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblUsuarioLogado.Location = new System.Drawing.Point(1172, 107);
-            this.lblUsuarioLogado.Name = "lblUsuarioLogado";
-            this.lblUsuarioLogado.Size = new System.Drawing.Size(74, 20);
-            this.lblUsuarioLogado.TabIndex = 3;
-            this.lblUsuarioLogado.Text = "Gerente";
-            this.lblUsuarioLogado.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // btnNormal
-            // 
-            this.btnNormal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnNormal.BackColor = System.Drawing.Color.SaddleBrown;
-            this.btnNormal.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnNormal.BackgroundImage")));
-            this.btnNormal.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnNormal.FlatAppearance.BorderColor = System.Drawing.Color.SaddleBrown;
-            this.btnNormal.FlatAppearance.BorderSize = 5;
-            this.btnNormal.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Gainsboro;
-            this.btnNormal.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gainsboro;
-            this.btnNormal.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnNormal.Location = new System.Drawing.Point(1205, 0);
-            this.btnNormal.Name = "btnNormal";
-            this.btnNormal.Size = new System.Drawing.Size(24, 25);
-            this.btnNormal.TabIndex = 5;
-            this.btnNormal.UseVisualStyleBackColor = false;
-            this.btnNormal.Click += new System.EventHandler(this.btnNormal_Click);
-            this.btnNormal.MouseLeave += new System.EventHandler(this.LeaveNormal);
-            this.btnNormal.MouseMove += new System.Windows.Forms.MouseEventHandler(this.controlNormal);
-            // 
             // bntMaximizar
             // 
             this.bntMaximizar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -596,6 +575,26 @@
             this.bntMaximizar.MouseLeave += new System.EventHandler(this.LeaveMaximizar);
             this.bntMaximizar.MouseMove += new System.Windows.Forms.MouseEventHandler(this.controlMaximizar);
             // 
+            // btnNormal
+            // 
+            this.btnNormal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnNormal.BackColor = System.Drawing.Color.SaddleBrown;
+            this.btnNormal.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnNormal.BackgroundImage")));
+            this.btnNormal.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnNormal.FlatAppearance.BorderColor = System.Drawing.Color.SaddleBrown;
+            this.btnNormal.FlatAppearance.BorderSize = 5;
+            this.btnNormal.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Gainsboro;
+            this.btnNormal.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gainsboro;
+            this.btnNormal.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnNormal.Location = new System.Drawing.Point(1205, 0);
+            this.btnNormal.Name = "btnNormal";
+            this.btnNormal.Size = new System.Drawing.Size(24, 25);
+            this.btnNormal.TabIndex = 5;
+            this.btnNormal.UseVisualStyleBackColor = false;
+            this.btnNormal.Click += new System.EventHandler(this.btnNormal_Click);
+            this.btnNormal.MouseLeave += new System.EventHandler(this.LeaveNormal);
+            this.btnNormal.MouseMove += new System.Windows.Forms.MouseEventHandler(this.controlNormal);
+            // 
             // pictureBox1
             // 
             this.pictureBox1.BackColor = System.Drawing.Color.SaddleBrown;
@@ -609,23 +608,12 @@
             this.pictureBox1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Form_MouseMove);
             this.pictureBox1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Form_MouseUp);
             // 
-            // panelTempo
-            // 
-            this.panelTempo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.panelTempo.BackColor = System.Drawing.Color.SaddleBrown;
-            this.panelTempo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panelTempo.Controls.Add(this.picIconeRelogio);
-            this.panelTempo.Controls.Add(this.lblRelogio);
-            this.panelTempo.Location = new System.Drawing.Point(31, 461);
-            this.panelTempo.Name = "panelTempo";
-            this.panelTempo.Size = new System.Drawing.Size(135, 55);
-            this.panelTempo.TabIndex = 1;
-            // 
             // picIconeRelogio
             // 
             this.picIconeRelogio.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.picIconeRelogio.BackColor = System.Drawing.Color.Transparent;
             this.picIconeRelogio.Image = ((System.Drawing.Image)(resources.GetObject("picIconeRelogio.Image")));
-            this.picIconeRelogio.Location = new System.Drawing.Point(83, 3);
+            this.picIconeRelogio.Location = new System.Drawing.Point(102, 472);
             this.picIconeRelogio.Name = "picIconeRelogio";
             this.picIconeRelogio.Size = new System.Drawing.Size(47, 42);
             this.picIconeRelogio.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -636,8 +624,9 @@
             // 
             this.lblRelogio.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblRelogio.AutoSize = true;
+            this.lblRelogio.BackColor = System.Drawing.Color.Transparent;
             this.lblRelogio.Font = new System.Drawing.Font("Agency FB", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblRelogio.Location = new System.Drawing.Point(15, 4);
+            this.lblRelogio.Location = new System.Drawing.Point(37, 472);
             this.lblRelogio.Name = "lblRelogio";
             this.lblRelogio.Size = new System.Drawing.Size(84, 42);
             this.lblRelogio.TabIndex = 0;
@@ -651,12 +640,14 @@
             // 
             // panelAplicações
             // 
-            this.panelAplicações.BackColor = System.Drawing.Color.DimGray;
-            this.panelAplicações.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelAplicações.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(171)))), ((int)(((byte)(72)))));
+            this.panelAplicações.Controls.Add(this.btnEdiçãoCliente);
+            this.panelAplicações.Controls.Add(this.picIconeRelogio);
+            this.panelAplicações.Controls.Add(this.lblRelogio);
             this.panelAplicações.Controls.Add(this.btnProdutos);
-            this.panelAplicações.Controls.Add(this.panelTempo);
             this.panelAplicações.Controls.Add(this.btnVendas);
             this.panelAplicações.Controls.Add(this.btnPagamento);
+            this.panelAplicações.Controls.Add(this.xuiCustomPictureBox1);
             this.panelAplicações.Dock = System.Windows.Forms.DockStyle.Left;
             this.panelAplicações.Location = new System.Drawing.Point(0, 140);
             this.panelAplicações.Name = "panelAplicações";
@@ -666,85 +657,123 @@
             // 
             // btnProdutos
             // 
-            this.btnProdutos.BackgroundColor = System.Drawing.Color.DimGray;
+            this.btnProdutos.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(171)))), ((int)(((byte)(72)))));
             this.btnProdutos.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.btnProdutos.ButtonImage = ((System.Drawing.Image)(resources.GetObject("btnProdutos.ButtonImage")));
             this.btnProdutos.ButtonStyle = XanderUI.XUIButton.Style.Material;
             this.btnProdutos.ButtonText = "Produtos";
-            this.btnProdutos.ClickBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(75)))), ((int)(((byte)(80)))));
-            this.btnProdutos.ClickTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(130)))), ((int)(((byte)(140)))));
+            this.btnProdutos.ClickBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(161)))), ((int)(((byte)(62)))));
+            this.btnProdutos.ClickTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(218)))), ((int)(((byte)(101)))), ((int)(((byte)(22)))));
             this.btnProdutos.CornerRadius = 5;
             this.btnProdutos.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
             this.btnProdutos.Horizontal_Alignment = System.Drawing.StringAlignment.Center;
-            this.btnProdutos.HoverBackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(80)))), ((int)(((byte)(90)))));
-            this.btnProdutos.HoverTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(235)))), ((int)(((byte)(215)))));
+            this.btnProdutos.HoverBackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(233)))), ((int)(((byte)(151)))), ((int)(((byte)(52)))));
+            this.btnProdutos.HoverTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(91)))), ((int)(((byte)(12)))));
             this.btnProdutos.ImagePosition = XanderUI.XUIButton.imgPosition.Left;
             this.btnProdutos.Location = new System.Drawing.Point(6, 182);
             this.btnProdutos.Name = "btnProdutos";
             this.btnProdutos.Size = new System.Drawing.Size(186, 69);
             this.btnProdutos.TabIndex = 3;
-            this.btnProdutos.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(200)))), ((int)(((byte)(185)))));
+            this.btnProdutos.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(198)))), ((int)(((byte)(81)))), ((int)(((byte)(2)))));
             this.btnProdutos.Vertical_Alignment = System.Drawing.StringAlignment.Center;
             this.btnProdutos.Click += new System.EventHandler(this.bntProdutos_Click);
             // 
             // btnVendas
             // 
-            this.btnVendas.BackgroundColor = System.Drawing.Color.DimGray;
+            this.btnVendas.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(171)))), ((int)(((byte)(72)))));
             this.btnVendas.ButtonImage = ((System.Drawing.Image)(resources.GetObject("btnVendas.ButtonImage")));
             this.btnVendas.ButtonStyle = XanderUI.XUIButton.Style.Material;
             this.btnVendas.ButtonText = "Pedidos";
-            this.btnVendas.ClickBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(200)))), ((int)(((byte)(185)))));
-            this.btnVendas.ClickTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(200)))), ((int)(((byte)(185)))));
+            this.btnVendas.ClickBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(161)))), ((int)(((byte)(62)))));
+            this.btnVendas.ClickTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(218)))), ((int)(((byte)(101)))), ((int)(((byte)(22)))));
             this.btnVendas.CornerRadius = 5;
             this.btnVendas.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
             this.btnVendas.Horizontal_Alignment = System.Drawing.StringAlignment.Center;
-            this.btnVendas.HoverBackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(200)))), ((int)(((byte)(185)))));
-            this.btnVendas.HoverTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(70)))), ((int)(((byte)(75)))));
+            this.btnVendas.HoverBackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(233)))), ((int)(((byte)(151)))), ((int)(((byte)(52)))));
+            this.btnVendas.HoverTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(91)))), ((int)(((byte)(12)))));
             this.btnVendas.ImagePosition = XanderUI.XUIButton.imgPosition.Left;
             this.btnVendas.Location = new System.Drawing.Point(6, 106);
             this.btnVendas.Name = "btnVendas";
             this.btnVendas.Size = new System.Drawing.Size(186, 69);
             this.btnVendas.TabIndex = 2;
-            this.btnVendas.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(200)))), ((int)(((byte)(185)))));
+            this.btnVendas.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(198)))), ((int)(((byte)(81)))), ((int)(((byte)(2)))));
             this.btnVendas.Vertical_Alignment = System.Drawing.StringAlignment.Center;
             this.btnVendas.Click += new System.EventHandler(this.bntVendas_Click_1);
             // 
             // btnPagamento
             // 
-            this.btnPagamento.BackgroundColor = System.Drawing.Color.DimGray;
+            this.btnPagamento.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(171)))), ((int)(((byte)(72)))));
             this.btnPagamento.ButtonImage = ((System.Drawing.Image)(resources.GetObject("btnPagamento.ButtonImage")));
             this.btnPagamento.ButtonStyle = XanderUI.XUIButton.Style.Material;
             this.btnPagamento.ButtonText = "Pagamentos";
-            this.btnPagamento.ClickBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(75)))), ((int)(((byte)(80)))));
-            this.btnPagamento.ClickTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(130)))), ((int)(((byte)(140)))));
+            this.btnPagamento.ClickBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(161)))), ((int)(((byte)(62)))));
+            this.btnPagamento.ClickTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(218)))), ((int)(((byte)(101)))), ((int)(((byte)(22)))));
             this.btnPagamento.CornerRadius = 5;
             this.btnPagamento.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
             this.btnPagamento.Horizontal_Alignment = System.Drawing.StringAlignment.Center;
-            this.btnPagamento.HoverBackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(80)))), ((int)(((byte)(90)))));
-            this.btnPagamento.HoverTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(235)))), ((int)(((byte)(215)))));
+            this.btnPagamento.HoverBackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(233)))), ((int)(((byte)(151)))), ((int)(((byte)(52)))));
+            this.btnPagamento.HoverTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(91)))), ((int)(((byte)(12)))));
             this.btnPagamento.ImagePosition = XanderUI.XUIButton.imgPosition.Left;
             this.btnPagamento.Location = new System.Drawing.Point(6, 29);
             this.btnPagamento.Name = "btnPagamento";
             this.btnPagamento.Size = new System.Drawing.Size(186, 69);
             this.btnPagamento.TabIndex = 1;
-            this.btnPagamento.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(200)))), ((int)(((byte)(185)))));
+            this.btnPagamento.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(198)))), ((int)(((byte)(81)))), ((int)(((byte)(2)))));
             this.btnPagamento.Vertical_Alignment = System.Drawing.StringAlignment.Center;
             this.btnPagamento.Click += new System.EventHandler(this.bntPagamento_Click_1);
             // 
-            // btnSair
+            // xuiCustomPictureBox1
             // 
-            this.btnSair.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSair.FlatAppearance.BorderSize = 0;
-            this.btnSair.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSair.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSair.Location = new System.Drawing.Point(1208, 26);
-            this.btnSair.Name = "btnSair";
-            this.btnSair.Size = new System.Drawing.Size(44, 24);
-            this.btnSair.TabIndex = 60;
-            this.btnSair.Text = "&Sair";
-            this.btnSair.TextAlign = System.Drawing.ContentAlignment.BottomRight;
-            this.btnSair.UseVisualStyleBackColor = true;
-            this.btnSair.Click += new System.EventHandler(this.btnSair_Click);
+            this.xuiCustomPictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.xuiCustomPictureBox1.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(171)))), ((int)(((byte)(72)))));
+            this.xuiCustomPictureBox1.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(119)))), ((int)(((byte)(1)))));
+            this.xuiCustomPictureBox1.FilterAlpha = 200;
+            this.xuiCustomPictureBox1.FilterEnabled = true;
+            this.xuiCustomPictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("xuiCustomPictureBox1.Image")));
+            this.xuiCustomPictureBox1.IsElipse = false;
+            this.xuiCustomPictureBox1.IsParallax = false;
+            this.xuiCustomPictureBox1.Location = new System.Drawing.Point(30, 467);
+            this.xuiCustomPictureBox1.Name = "xuiCustomPictureBox1";
+            this.xuiCustomPictureBox1.Size = new System.Drawing.Size(127, 52);
+            this.xuiCustomPictureBox1.TabIndex = 4;
+            this.xuiCustomPictureBox1.Text = "xuiCustomPictureBox1";
+            // 
+            // xuiObjectEllipse1
+            // 
+            this.xuiObjectEllipse1.CornerRadius = 5;
+            this.xuiObjectEllipse1.EffectedControl = this;
+            this.xuiObjectEllipse1.EffectedForm = this;
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(699, 26);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.Size = new System.Drawing.Size(283, 104);
+            this.dataGridView1.TabIndex = 64;
+            // 
+            // btnEdiçãoCliente
+            // 
+            this.btnEdiçãoCliente.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(171)))), ((int)(((byte)(72)))));
+            this.btnEdiçãoCliente.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnEdiçãoCliente.ButtonImage = ((System.Drawing.Image)(resources.GetObject("btnEdiçãoCliente.ButtonImage")));
+            this.btnEdiçãoCliente.ButtonStyle = XanderUI.XUIButton.Style.Material;
+            this.btnEdiçãoCliente.ButtonText = "Editar Cliente";
+            this.btnEdiçãoCliente.ClickBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(161)))), ((int)(((byte)(62)))));
+            this.btnEdiçãoCliente.ClickTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(218)))), ((int)(((byte)(101)))), ((int)(((byte)(22)))));
+            this.btnEdiçãoCliente.CornerRadius = 5;
+            this.btnEdiçãoCliente.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.btnEdiçãoCliente.Horizontal_Alignment = System.Drawing.StringAlignment.Center;
+            this.btnEdiçãoCliente.HoverBackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(233)))), ((int)(((byte)(151)))), ((int)(((byte)(52)))));
+            this.btnEdiçãoCliente.HoverTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(91)))), ((int)(((byte)(12)))));
+            this.btnEdiçãoCliente.ImagePosition = XanderUI.XUIButton.imgPosition.Left;
+            this.btnEdiçãoCliente.Location = new System.Drawing.Point(6, 257);
+            this.btnEdiçãoCliente.Name = "btnEdiçãoCliente";
+            this.btnEdiçãoCliente.Size = new System.Drawing.Size(186, 69);
+            this.btnEdiçãoCliente.TabIndex = 67;
+            this.btnEdiçãoCliente.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(198)))), ((int)(((byte)(81)))), ((int)(((byte)(2)))));
+            this.btnEdiçãoCliente.Vertical_Alignment = System.Drawing.StringAlignment.Center;
+            this.btnEdiçãoCliente.Click += new System.EventHandler(this.btnEdiçãoCliente_Click);
             // 
             // PainelInicial
             // 
@@ -752,6 +781,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.BackColor = System.Drawing.Color.White;
+            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.ClientSize = new System.Drawing.Size(1252, 692);
             this.Controls.Add(this.panelAplicações);
             this.Controls.Add(this.statusBarra);
@@ -764,7 +795,7 @@
             this.Name = "PainelInicial";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "PainelInicial";
-            this.TransparencyKey = System.Drawing.Color.Transparent;
+            this.TransparencyKey = System.Drawing.Color.Black;
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.PainelInicial_Load);
             this.menuStrip.ResumeLayout(false);
@@ -773,12 +804,11 @@
             this.statusBarra.PerformLayout();
             this.panelCabecalho.ResumeLayout(false);
             this.panelCabecalho.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.picFotoUsuario)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            this.panelTempo.ResumeLayout(false);
-            this.panelTempo.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picIconeRelogio)).EndInit();
             this.panelAplicações.ResumeLayout(false);
+            this.panelAplicações.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -819,14 +849,11 @@
         private System.Windows.Forms.ToolStripMenuItem indexToolStripMenuItem;
         private System.Windows.Forms.ToolTip toolTip;
         private System.Windows.Forms.Panel panelCabecalho;
-        private System.Windows.Forms.Label lblUsuarioLogado;
-        private System.Windows.Forms.Panel panelTempo;
         private System.Windows.Forms.ToolStripMenuItem pedidosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem produtosToolStripMenuItem;
         private System.Windows.Forms.Label lblRelogio;
         private System.Windows.Forms.PictureBox picIconeRelogio;
         private System.Windows.Forms.Timer timerTempoReal;
-        private System.Windows.Forms.PictureBox picFotoUsuario;
         private System.Windows.Forms.Panel panelAplicações;
         private System.Windows.Forms.Button btnFechar;
         private System.Windows.Forms.Button btnMinimizar;
@@ -845,7 +872,11 @@
         private System.Windows.Forms.ToolStripMenuItem RegPedidosToolStripMenuItem2;
         private System.Windows.Forms.ToolStripMenuItem RegProdutosToolStripMenuItem1;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator9;
-        private System.Windows.Forms.Button btnSair;
+        private XanderUI.XUIButton xuiBusuario;
+        private XanderUI.XUICustomPictureBox xuiCustomPictureBox1;
+        private XanderUI.XUIObjectEllipse xuiObjectEllipse1;
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private XanderUI.XUIButton btnEdiçãoCliente;
     }
 }
 

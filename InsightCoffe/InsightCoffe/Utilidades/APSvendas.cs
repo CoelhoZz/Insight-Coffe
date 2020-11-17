@@ -18,8 +18,6 @@ namespace InsightCoffe.Utilidades
     public partial class APSvendas : Form
     {
         List<Produto> carrinho = new List<Produto>();
-        List<Cliente> clientePedido = new List<Cliente>(1);
-
         
         public PainelInicial inicial1 { get; set; }
 
@@ -69,6 +67,7 @@ namespace InsightCoffe.Utilidades
         private void bntMaximizar_Click(object sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Maximized;
+                
             bntMaximizar.Visible = false;
             btnNormal.Visible = true;
         }
@@ -117,117 +116,71 @@ namespace InsightCoffe.Utilidades
             btnMinimizar.FlatAppearance.BorderColor = Color.Gainsboro;
 
         }
+        
         private void controlNormal(object sender, MouseEventArgs e)
         {
             btnNormal.FlatAppearance.BorderColor = Color.Gainsboro;
         }
 
-        //----------------------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------------------------
 
-        //----------------------------start: Codigos de ativação de pedido------------------------------
+        //---------------------------------------start: Variaveis--------------------------------------------
+        UInt32 codigoDBarra;
+        string nome, cpf;
+        double valorTotal;
+        //----------------------------------------end: Variaveis---------------------------------------------
+
+        //-------------------------------start: Codigos de ativação de pedido--------------------------------
+        private void enterPedido()
+        {
+            if (Pedido.codigoExistente(inicial1.pedido, mskBCodeBar.Text) == true)
+            
+            {
+                codigoDBarra = Convert.ToUInt32(mskBCodeBar.Text);
+                foreach (Pedido pedido in inicial1.pedido)
+                {
+                    if (Pedido.reativarPedido(inicial1.pedido, mskBCodeBar.Text) == true)
+                    {
+                        mskBCPF.Text = pedido.ClientCPF;
+                        clienteSearch();
+                        lsViewCarrinho.DataSource = pedido.Carrinho;
+                        habilitarCarrinho();
+                        return;
+                    }
+                }
+                habilitar_BotõesCliente();
+                mskBCodeBar.Enabled = false;
+                btnEnterPedido.Enabled = false;
+
+                btnSalvarPedido.Enabled = true;
+                btnCancelarPedido.Enabled = true;
+            }
+            else
+            {
+                MessageBox.Show("Insira um codigo de barras válido!!", "Atenção!");
+            }
+        }
+
+        private void btnEnterPedido_Click(object sender, EventArgs e)
+        {
+            enterPedido();
+        }
+
         private void KeyPress_CodigoBar(object sender, KeyPressEventArgs e)
         {
+            if(e.KeyChar == (char)Keys.Enter && mskBCodeBar.Text != "")
+            {
+                enterPedido();
+            }
             if (char.IsControl(e.KeyChar))
                 return;
             if (!char.IsDigit(e.KeyChar))
                 e.Handled = true;
         }
 
-        private void KeyDown_CodigoBar(object sender, KeyEventArgs e)
-        {
-            if(e.KeyCode == Keys.Enter)
-            {
-                adicionarPedido();
-                mskBCodeBar.Enabled = false;
-
-                btnSalvarPedido.Enabled = true;
-                btnCancelarPedido.Enabled = true;
-            }
-        }
-        //------------------------------end: Codigos de ativação de pedido------------------------------
-
-        //------------------------------Start: Classes -------------------------------------------------
-        private bool checkCliente(string cpf)
-        {
-            foreach (Cliente cliente in inicial1.clientes)
-            {
-                if (cpf == cliente.CPF)
-                {
-                    return true;
-                }
-            }
-
-            return false;
-        }
-
-        public bool filtroNascimento()
-        {
-            try
-            {
-                Nascimento = Convert.ToDateTime(mskBNascimento.Text);
-                return true;
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("Data de nascimento inválida!", "Atenção!");
-                return false;
-            }
-        }
-
-        public bool filtroCPF()
-        {
-            Cpf = mskBCPF.Text;
-            if (ValidaCPF.IsCpf(Cpf))
-            {
-                return true;
-            }
-            else
-            {
-                MessageBox.Show("CPF inválido!", "Atenção!");
-                return false;
-            }
-        }
-
-        public bool filtroNome()
-        {
-            if (mskBNome.Text == "")
-            {
-                MessageBox.Show("Nome inválido!", "Atenção!");
-                return false;
-            }
-            else
-            {
-                Nome = mskBNome.Text;
-                return true;
-
-            }
-
-        }
-        //------------------------------end: Classes -------------------------------------------------
-
-        //------------------------------Start: Methods -------------------------------------------------
-        private void adicionarPedido()
-        {
-            try
-            {
-                UInt64 codigoBarra = Convert.ToUInt64(mskBCodeBar.Text);
-                foreach (Pedido pedido in inicial1.pedido)
-                {
-                    if (codigoBarra == pedido.CodigoDeBarras)
-                    {
-                        habilitar_BotõesCliente();
-                        return;
-                    }
-                }
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("Insira um codigo de barras válido!!", "Atenção!");
-            }
-        }
-        
         private void habilitarCarrinho()
         {
+            mskAdicionarItem.Enabled = true;
             mskBRetirarItem.Enabled = true;
             numUDQtdItemRetirar.Enabled = true;
             mskBValorItemRetirado.Enabled = true;
@@ -236,27 +189,47 @@ namespace InsightCoffe.Utilidades
 
             btnAdicionar.Enabled = true;
             btnLimparAdicionar.Enabled = true;
+
         }
 
         private void desabilitarCarrinho()
         {
+            mskAdicionarItem.Enabled = false;
             mskBRetirarItem.Enabled = false;
             numUDQtdItemRetirar.Enabled = false;
             mskBValorItemRetirado.Enabled = false;
             numUDQtdItemAdicionar.Enabled = false;
             mskBValorAdicionar.Enabled = false;
 
+            btnRetirar.Enabled = false;
+            btnLimparRetirar.Enabled = false;
             btnAdicionar.Enabled = false;
             btnLimparAdicionar.Enabled = false;
         }
 
-        private void SalvarPed()
+        public void salvarEcancelar_Pedido()
         {
-            
+            mskBCodeBar.ResetText();
+            mskBCodeBar.Enabled = true;
+
+            mskBNome.ResetText();
+            mskBCPF.ResetText();
+            mskBRetirarItem.ResetText();
+            mskBValortotal.ResetText();
+            mskBValorAdicionar.ResetText();
+            mskBValorItemRetirado.ResetText();
+
+            numUDQtdItemRetirar.ResetText();
+            numUDQtdItemAdicionar.ResetText();
+
+            comboBoxAdicionar.ResetText();
+            lsViewCarrinho.DataSource = null;
+            btnSalvarPedido.Enabled = false;
+            btnCancelarPedido.Enabled = false;
         }
+        //-----------------------------------end: Codigos de ativação de pedido---------------------------------
 
-
-        //--------------------------------------Client
+        //---------------------------Start: Metodos Habilitar/Desabilitar de Clientes----------------------------
         private void habilitar_BotõesCliente()
         {
             btnIncluirCampoCliente.Enabled = true;
@@ -276,8 +249,11 @@ namespace InsightCoffe.Utilidades
             btnLimparClient .Enabled = true;
 
             mskBNome.Enabled = true;
+            mskBNome.BackColor = Color.White;
             mskBNascimento.Enabled = true;
+            mskBNascimento.BackColor = Color.White;
             mskBCPF.Enabled = true;
+            mskBCPF.BackColor = Color.White;
 
         }        
         
@@ -288,81 +264,46 @@ namespace InsightCoffe.Utilidades
             btnLimparClient.Enabled = false;
 
             mskBNome.Enabled = false;
+            mskBNome.BackColor = Color.LightGray;
             mskBNascimento.Enabled = false;
+            mskBNascimento.BackColor = Color.LightGray;
             mskBCPF.Enabled = false;
+            mskBCPF.BackColor = Color.LightGray;
         }
 
-        public bool NaoEncontrou = false;
-        private void clienteSearch()
+        public int ItemDesconto = 8;
+        private bool clienteSearch()
         {
             try
             {
-                string clienteCPF = (mskBCPF.Text).ToString();
-                string clienteNome = (mskBNome.Text).ToString();
+                //string clienteCPF = (mskBCPF.Text).ToString();
+                //string clienteNome = (mskBNome.Text).ToString();
                 foreach (Cliente cliente in inicial1.clientes)
                 {
-                    if (clienteCPF == cliente.CPF || clienteNome == cliente.Nome)
+                    if (mskBCPF.Text == cliente.CPF || mskBNome.Text == cliente.Nome)
                     {
-                        mskBNome.Text = cliente.Nome;
-                        mskBCPF.Text = cliente.CPF;
+                        nome = mskBNome.Text = cliente.Nome;
+                        cpf = mskBCPF.Text = cliente.CPF;
                         mskBNascimento.Text = cliente.DataNascimento;
-                        if (cliente.Compras == 1)
+                        if (cliente.Compras == 0)
                         {
-                            GetDescontos();
+                            lblDesconto.Text = Pedido.GetDescontos(inicial1.produtos, carrinho, ItemDesconto);
+                            lblDesconto.Visible = true;
                             AddProdutoToDList();
                         }   
-                        return;
+                        return true;
                     }
                 }
-                NaoEncontrou = true;
+                return false;
             }
             catch (Exception)
             {
-                MessageBox.Show("Cliente não encontrado, certifique-se que pesquisou corrtamente. Pesquisas são feitas aparir do \"Nome\" ou \"Cpf\" ", "Atenção!");
-                return;
+                return false;
             }
         }
-        
-        private void confirmarCliente()
-        {
-            Nome = mskBNome.Text;
-            Cpf = mskBCPF.Text;
-            Nascimento = Convert.ToDateTime(mskBNascimento.Text);
-
-            clientePedido.Add(new Cliente()
-            {
-                Nome = Nome,
-                DataNascimento = Nascimento.ToString("dd/MM/yyyy"),
-                CPF = Cpf
-
-            });
-        }
-
-        public void salvarEcancelar_Pedido()
-        {
-            mskBCodeBar.ResetText();
-            mskBCodeBar.Enabled = true;
-
-            mskBNome.ResetText();
-            mskBCPF.ResetText();
-            mskBRetirarItem.ResetText();
-            mskBValortotal.ResetText();
-            mskBValorAdicionar.ResetText();
-            mskBValorItemRetirado.ResetText();
-
-            numUDQtdItemRetirar.ResetText();
-            numUDQtdItemAdicionar.ResetText();
-
-            comboBoxAdicionar.ResetText();
-        }
-
-        //------------------------------end: Methods ---------------------------------------------------
+        //-------------------------end: Metodos Habilitar/Desabilitar de Clientes-----------------------
 
         //------------------------------Start: Codigo ativação Cliente----------------------------------
-        public string Nome;
-        public string Cpf;
-        public DateTime Nascimento;
-
         private void btnIncluirCliente_Click(object sender, EventArgs e)
         {
             desabilitar_BotõesCliente();
@@ -372,66 +313,36 @@ namespace InsightCoffe.Utilidades
         private void btnPular_Click(object sender, EventArgs e)
         {
             desabilitar_BotõesCliente();
-            clientePedido.Add(new Cliente()
-            {
-                Nome = "Desconhecido(a)",
-                DataNascimento = "Null",
-                CPF = "Null"
-            });
-
             habilitarCarrinho();
+            nome = "Cliente";
+            cpf = "null";
+            inicial1.clientes.Add(new Cliente()
+            {
+                Nome = "Cliente",
+                DataNascimento = "null",
+                CPF = "null"
+            });
         }
 
-        private void btnProcurar_Click(object sender, EventArgs e)
-        {
-            clienteSearch();
-
-            if (mskBNome.Text != "" && mskBNascimento.Text != "  /  /" && NaoEncontrou == false)
-            {
-                desabilitar_BotõesCliente();
-                desabilita_CamposCliente();
-
-                confirmarCliente();
-                habilitarCarrinho();
-            }
-            else
-            {
-                MessageBox.Show("Cliente não encontrado, certifique-se que pesquisou corrtamente. Pesquisas são feitas aparir do \"Nome\" ou \"Cpf\" ", "Atenção!");
-                return;
-            }
-        }
-
-        private void GetDescontos()
-        {
-            foreach(Produto produto in inicial1.produtos)
-            {
-                if(produto.ID == 8)
-                {
-                    produto.Valor = 0;
-                    lblDesconto.Visible = true;
-                    carrinho.Add(produto);
-                    return;
-                }
-            }
-        } 
         private void btnSalvar_Click(object sender, EventArgs e)
         {
-            //Checagem de campos preenchidos corretamente
-            if (filtroNascimento() == false || filtroNome() == false || filtroCPF() == false) return;
+            if (ValidaCliente.filtroNascimento(mskBNascimento.Text) == false || ValidaCliente.filtroNome(mskBNome.Text) == false || ValidaCliente.filtroCPF(mskBCPF.Text) == false) return;
 
-            //Checagem para Cpf ja salvo no sistema
-            if(checkCliente(Cpf) == true)
+            if(Cliente.checkCliente(inicial1.clientes, mskBCPF.Text) == true)
             {
                 MessageBox.Show("Cliente já esta registrado no sistema, tente outro CPF", "Alerta");
                 mskBCPF.Clear();
                 return;
             }
+            nome = mskBNome.Text;
+            cpf = mskBCPF.Text;
             //Conceder Desconto
-            GetDescontos();
+            lblDesconto.Text = Pedido.GetDescontos(inicial1.produtos, carrinho, ItemDesconto);
+            lblDesconto.Visible = true;
             AddProdutoToDList();
+
             //Adicionando as Listas nescessarias
-            inicial1.Adicionar_Cliente(Nome, Nascimento.ToString("dd/MM/yyyy"), Cpf);
-            confirmarCliente();
+            Cliente.adiconaCliente(inicial1.clientes, Cliente.identifyClient(inicial1.clientes), mskBNome.Text, mskBNascimento.Text, mskBCPF.Text);
 
             desabilitar_BotõesCliente();
             desabilita_CamposCliente();
@@ -444,6 +355,23 @@ namespace InsightCoffe.Utilidades
             mskBNome.Clear();
             mskBCPF.Clear();
             mskBNascimento.Clear();
+        }
+
+        private void btnProcurar_Click(object sender, EventArgs e)
+        {
+            if (clienteSearch() == false)
+            {
+                MessageBox.Show("Cliente não encontrado, certifique-se que pesquisou corrtamente. Pesquisas são feitas aparir do \"Nome\" ou \"Cpf\" ", "Atenção!");
+                return;
+            }
+            else
+            {
+                desabilitar_BotõesCliente();
+                desabilita_CamposCliente();
+
+                Cliente.adiconaCliente(inicial1.clientes, Cliente.identifyClient(inicial1.clientes), mskBNome.Text, mskBNascimento.Text, mskBCPF.Text);
+                habilitarCarrinho();
+            }
         }
 
         private void KeyPress_CPF(object sender, KeyPressEventArgs e)
@@ -462,30 +390,90 @@ namespace InsightCoffe.Utilidades
             if (!char.IsDigit(e.KeyChar))
                 e.Handled = true;
         }
-
         //---------------------------------End: Codigo ativação Cliente----------------------------------
 
-        //------------------------------Start: Codigo ativação Carrinho----------------------------------
-        private void KeyPress_mskRetirar(object sender, KeyPressEventArgs e)
+        //----------------------------------Start: Classes do Carrinho-----------------------------------
+        private void AddProdutoToDList()
         {
-            if (e.KeyChar == (char)Keys.Enter)
+            lsViewCarrinho.DataSource = null;
+            lsViewCarrinho.DataSource = carrinho;
+
+            mskBValortotal.Mask = null;
+            mskBValortotal.Text = Pedido.CalculoPreco(carrinho).ToString("C2");
+            valorTotal = Pedido.CalculoPreco(carrinho);
+            if (carrinho.Count() >= 1)
             {
-                try
+                btnLimparRetirar.Enabled = true;
+                btnRetirar.Enabled = true;
+            }
+            else
+            {
+                btnLimparRetirar.Enabled = false;
+                btnRetirar.Enabled = false;
+            }
+        }
+
+        //--Start Metodos:Retirar
+        public void cleanRet()
+        {
+            comboBoxRetirar.Text = "";
+            comboBoxRetirar.Items.Clear();
+            numUDQtdItemRetirar.Value = 1;
+            mskBRetirarItem.Clear();
+            mskBValorItemRetirado.Clear();
+            lblID.Text = "";
+        }
+
+        private void Retirar_items_CombBox()
+        {
+            comboBoxRetirar.Text = mskBRetirarItem.Text;
+            try
+            {
+                comboBoxRetirar.Items.Clear();
+                foreach (Produto list in carrinho)
                 {
-                    comboBoxRetirar.Enabled = false;
-                    comboBoxRetirar.DropDownStyle = ComboBoxStyle.Simple;
-                    Puxar_item(mskAdicionarItem.Text);
+                    if (Convert.ToInt32(mskBRetirarItem.Text) == list.ID)
+                    {
+                        comboBoxRetirar.Items.Add(list.Descricao);
+                        comboBoxRetirar.DroppedDown = true;
+                        return;
+                    }
                 }
-                catch (Exception)
+            }
+            catch (Exception)
+            {
+                foreach (Produto list in carrinho)
                 {
-                    return;
+                    if (list.Descricao.StartsWith(mskBRetirarItem.Text))
+                    {
+                        comboBoxRetirar.Items.Add(list.Descricao);
+                        comboBoxRetirar.DroppedDown = true;
+                    }
                 }
             }
         }
 
-        private void PuxarRetirar_item(string itemPesc)
+        private void TextChanged_mskRetirar(object sender, EventArgs e)
         {
-            if (itemPesc == "" || itemPesc == "0")
+            try
+            {
+                Retirar_items_CombBox();
+                comboBoxRetirar.Text = mskAdicionarItem.Text;
+                comboBoxRetirar.Enabled = true;
+                comboBoxRetirar.DropDownStyle = ComboBoxStyle.DropDownList;
+                return;
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Valor inserido é invalido");
+                comboBoxRetirar.DropDownStyle = ComboBoxStyle.Simple;
+                return;
+            }
+        }
+
+        private void Puxar_itemRetirar()
+        {
+            if (mskBRetirarItem.Text == "" || mskBRetirarItem.Text == "0")
             {
                 MessageBox.Show("Digite algo valido para chamar um produto");
                 return;
@@ -496,22 +484,28 @@ namespace InsightCoffe.Utilidades
                 {
                     foreach (Produto list in carrinho)
                     {
-                        if (Convert.ToInt32(itemPesc) == list.ID)
+                        if (Convert.ToInt32(mskBRetirarItem.Text) == list.ID)
                         {
-                            mskAdicionarItem.Text = (list.Descricao + " " + list.Quantidade);
-                            mskBValorAdicionar.Text = list.Valor.ToString("C2");
+                            lblID.Text = list.ID.ToString();
+                            mskBRetirarItem.Text = (list.Descricao);
+                            numUDQtdItemRetirar.Value = Convert.ToDecimal(list.Quantidade);
+                            numUDQtdItemRetirar.Maximum = Convert.ToDecimal(list.Quantidade);
+                            mskBValorItemRetirado.Text = list.Valor.ToString("C2");
                             return;
                         }
                     }
                 }
                 catch (Exception)
                 {
-                    foreach (Produto list in inicial1.produtos)
+                    foreach (Produto list in carrinho)
                     {
-                        if (itemPesc == (list.Descricao + " " + list.Quantidade) || list.Descricao.StartsWith(itemPesc))
+                        if (mskBRetirarItem.Text == list.Descricao || list.Descricao.StartsWith(mskBRetirarItem.Text))
                         {
-                            mskAdicionarItem.Text = (list.Descricao + " " + list.Quantidade);
-                            mskBValorAdicionar.Text = list.Valor.ToString("C2");
+                            lblID.Text = list.ID.ToString();
+                            mskBRetirarItem.Text = (list.Descricao);
+                            numUDQtdItemRetirar.Value = Convert.ToDecimal(list.Quantidade);
+                            numUDQtdItemRetirar.Maximum = Convert.ToDecimal(list.Quantidade);
+                            mskBValorItemRetirado.Text = list.Valor.ToString("C2");
                             return;
                         }
                     }
@@ -519,22 +513,74 @@ namespace InsightCoffe.Utilidades
             }
         }
 
-        private void KeyPress_mskAdicionar(object sender, KeyPressEventArgs e)
+        public void retirarItem()
         {
-            if (e.KeyChar == (char)Keys.Enter)
+            foreach (Produto produto in carrinho)
             {
-                try
+                if (produto.Descricao == mskBRetirarItem.Text)
                 {
-                    comboBoxAdicionar.Enabled = false;
-                    comboBoxAdicionar.DropDownStyle = ComboBoxStyle.Simple;
-                    Puxar_item(mskAdicionarItem.Text);
-                }
-                catch (Exception)
-                {
-                    return;
+                    if ((Convert.ToInt32(produto.Quantidade) - (int)numUDQtdItemRetirar.Value) == 0)
+                    {
+                        carrinho.Remove(new Produto
+                        {
+                            ID = Convert.ToInt32(lblID.Text),
+                            Descricao = mskBRetirarItem.Text,
+                            Quantidade = Convert.ToString((int)numUDQtdItemRetirar.Value),
+                            Valor = Convert.ToDouble((mskBValorItemRetirado.Text).Replace("R$", " "))
+                        });
+                        lblID.Text = "";
+                        return;
+                    }
+                    else
+                    {
+                        produto.Quantidade = (Convert.ToInt32(produto.Quantidade) - (int)numUDQtdItemRetirar.Value).ToString();
+                        produto.Valor = Convert.ToDouble((mskBValorItemRetirado.Text).Replace("R$", ""));
+                        return;
+                    }
                 }
             }
         }
+        //--End Metodos:Retirar
+
+        //--Start Metodos:Adicionar
+        public void cleanAdd()
+        {
+            comboBoxAdicionar.Text = "";
+            comboBoxAdicionar.Items.Clear();
+            mskAdicionarItem.Clear();
+            numUDQtdItemAdicionar.Value = 1;
+            mskBValorAdicionar.Clear();
+        }
+
+        private void Adcionar_items_CombBox()
+        {
+            comboBoxAdicionar.Text = mskAdicionarItem.Text;
+            try
+            {
+                comboBoxAdicionar.Items.Clear();
+                foreach (Produto list in inicial1.produtos)
+                {
+                    if (Convert.ToInt32(mskAdicionarItem.Text) == list.ID)
+                    {
+                        comboBoxAdicionar.Items.Add(list.Descricao + " " + list.Quantidade);
+                        comboBoxAdicionar.DroppedDown = true;
+                        return;
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                foreach (Produto list in inicial1.produtos)
+                {
+                    if (list.Descricao.StartsWith(mskAdicionarItem.Text))
+                    {
+                        comboBoxAdicionar.Items.Add(list.Descricao + " " + list.Quantidade);
+                        comboBoxAdicionar.DroppedDown = true;
+                    }
+                }
+            }
+        }
+
         private void TextChanged_mskAdicionar(object sender, EventArgs e)
         {
             try
@@ -553,91 +599,59 @@ namespace InsightCoffe.Utilidades
             }
         }
 
-        private void SelectItem_cbBox(object sender, EventArgs e)
+        private void Puxar_itemAdicionar()
         {
             try
             {
-                mskAdicionarItem.Text = comboBoxAdicionar.Text;
-                Puxar_item(mskAdicionarItem.Text);
-                comboBoxAdicionar.Enabled = false;
-                comboBoxAdicionar.DropDownStyle = ComboBoxStyle.Simple;
-            }
-            catch (Exception)
-            {
-                return;
-            }
-
-        }
-
-        private void Puxar_item(string itemPesc)
-        {
-            if(itemPesc == "" || itemPesc == "0")
-            {
-                MessageBox.Show("Digite algo valido para chamar um produto");
-                return;
-            }
-            else
-            {
-                try
-                {
-                    foreach (Produto list in inicial1.produtos)
-                    {
-                        if (Convert.ToInt32(itemPesc) == list.ID)
-                        {
-                            mskAdicionarItem.Text = (list.Descricao + " " + list.Quantidade);
-                            mskBValorAdicionar.Text = list.Valor.ToString("C2");
-                            return;
-                        }
-                    }
-                }
-                catch (Exception)
-                {
-                    foreach (Produto list in inicial1.produtos)
-                    {
-                        if (itemPesc == (list.Descricao + " " + list.Quantidade) || list.Descricao.StartsWith(itemPesc))
-                        {
-                            mskAdicionarItem.Text = (list.Descricao + " " + list.Quantidade);
-                            mskBValorAdicionar.Text = list.Valor.ToString("C2");
-                            return;
-                        }
-                    }
-                }
-            }
-        }
-
-        private void Adcionar_items_CombBox()
-        {
-            comboBoxAdicionar.Text = mskAdicionarItem.Text;
-            try
-            {
-                comboBoxAdicionar.Items.Clear();
                 foreach (Produto list in inicial1.produtos)
                 {
-                    if(Convert.ToInt32(mskAdicionarItem.Text) == list.ID)
+                    if (Convert.ToInt32(mskAdicionarItem.Text) == list.ID)
                     {
-                        comboBoxAdicionar.Items.Add(list.Descricao + " " + list.Quantidade);
-                        comboBoxAdicionar.DroppedDown = true;
+                        mskAdicionarItem.Text = (list.Descricao + " " + list.Quantidade);
+                        mskBValorAdicionar.Text = list.Valor.ToString("C2");
                         return;
                     }
                 }
             }
-            catch(Exception)
+            catch (Exception)
             {
                 foreach (Produto list in inicial1.produtos)
                 {
-                    if (list.Descricao.StartsWith(mskAdicionarItem.Text))
+                    if (mskAdicionarItem.Text == (list.Descricao + " " + list.Quantidade) || list.Descricao.StartsWith(mskAdicionarItem.Text))
                     {
-                        comboBoxAdicionar.Items.Add(list.Descricao + " " + list.Quantidade);
-                        comboBoxAdicionar.DroppedDown = true;
+                        mskAdicionarItem.Text = (list.Descricao + " " + list.Quantidade);
+                        mskBValorAdicionar.Text = list.Valor.ToString("C2");
+                        return;
                     }
                 }
             }
+            MessageBox.Show("Digite algo valido para chamar um produto");
+            return;
         }
 
-
-        //-------------------------------end: Codigo ativação Carrinho-----------------------------------
+        public bool adicionarItem()
+        {
+            foreach (Produto produto in carrinho)
+            {
+                if (produto.Descricao == mskAdicionarItem.Text)
+                {
+                    produto.Quantidade = (Convert.ToInt32(produto.Quantidade) + (int)numUDQtdItemAdicionar.Value).ToString();
+                    produto.Valor = produto.Valor + Convert.ToDouble(mskBValorAdicionar.Text.Replace("R$", " "));
+                    return true;
+                }
+            }
+            return false;
+        }
+        //--End: Metodos:Adicionar
+        //----------------------------------end: Classes do Carrinho-------------------------------------
 
         //--------------------------------Start: Adcionar/Limpar e Retirar/Limpar------------------------
+        //--Start: Adicionar Item
+        private void numUDQtdItemAdicionar_ValueChanged(object sender, EventArgs e)
+        {
+            mskBValorAdicionar.Text = Carrinho.valor_unidade(mskAdicionarItem.Text, (double)numUDQtdItemAdicionar.Value, inicial1.produtos);
+        }
+
         private void btnAdicionar_Click(object sender, EventArgs e)
         {
             if (mskAdicionarItem.Text == "" || numUDQtdItemAdicionar.Value == 0 || mskBValorAdicionar.Text == "0")
@@ -646,87 +660,114 @@ namespace InsightCoffe.Utilidades
             string descição = mskAdicionarItem.Text;
             string quantidade = Convert.ToString((int)numUDQtdItemAdicionar.Value);
             double valor = Convert.ToDouble((mskBValorAdicionar.Text).Replace("R$", " "));
-            carrinho.Add(new Produto
+            if(adicionarItem() == false)
             {
-                ID = CalculoId(),
-                Descricao = descição,
-                Quantidade = quantidade,
-                Valor = valor
-            });
-
+                carrinho.Add(new Produto
+                {
+                    ID = Produto.geradorId(carrinho),
+                    Descricao = descição,
+                    Quantidade = quantidade,
+                    Valor = valor
+                });
+            }
             AddProdutoToDList();
+            cleanAdd();
         }
 
-        private void AddProdutoToDList()
+        private void SelectItem_cbBox(object sender, EventArgs e)
         {
-            lsViewCarrinho.Items.Clear();
-            foreach(Produto list in carrinho)
+            try
             {
-                lsViewCarrinho.Items.Add(list.ID + ": " + list.Descricao + " " + list.Quantidade + " " + list.Valor);
+                if (mskAdicionarItem.Text == "")
+                    mskAdicionarItem.Text = comboBoxAdicionar.Text;
+                Puxar_itemAdicionar();
+                comboBoxAdicionar.Enabled = false;
+                comboBoxAdicionar.DropDownStyle = ComboBoxStyle.Simple;
             }
+            catch (Exception)
+            {
+                return;
+            }
+        }
 
-            mskBValortotal.Mask = null;
-            mskBValortotal.Text = CalculoPreco().ToString("C2");
+        private void KeyPress_mskAdicionar(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                try
+                {
+                    Puxar_itemAdicionar();
+                    comboBoxAdicionar.Enabled = false;
+                    comboBoxAdicionar.DropDownStyle = ComboBoxStyle.Simple;
+                }
+                catch (Exception)
+                {
+                    return;
+                }
+            }
         }
 
         private void btnLimparAdicionar_Click(object sender, EventArgs e)
         {
             cleanAdd();
         }
+        //--End: Adicionar Item
+
+        //--Start: Retirar Item
+        private void numUDQtdItemRetirar_ValueChanged(object sender, EventArgs e)
+        {
+            mskBValorItemRetirado.Text = Carrinho.valor_unidade(mskBRetirarItem.Text, (double)numUDQtdItemRetirar.Value, inicial1.produtos);
+        }
 
         private void btnRetirar_Click(object sender, EventArgs e)
         {
-            
+            if (mskBRetirarItem.Text == "" || numUDQtdItemRetirar.Value == 0 || mskBRetirarItem.Text == "0" || lblID.Text == "0")
+                return;
+
+            retirarItem();
+            AddProdutoToDList();
+            cleanRet();
+        }
+
+        private void SelectItemRetirar_cbBox(object sender, EventArgs e)
+        {
+            try
+            {
+                if (mskBRetirarItem.Text == "")
+                    mskBRetirarItem.Text = comboBoxRetirar.Text;
+                Puxar_itemRetirar();
+                comboBoxRetirar.Enabled = false;
+                comboBoxRetirar.DropDownStyle = ComboBoxStyle.Simple;
+            }
+            catch (Exception)
+            {
+                return;
+            }
+        }
+
+        private void KeyPress_mskRetirar(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                try
+                {
+                    comboBoxRetirar.Enabled = false;
+                    comboBoxRetirar.DropDownStyle = ComboBoxStyle.Simple;
+                    Puxar_itemRetirar();
+                }
+                catch (Exception)
+                {
+                    return;
+                }
+            }
         }
 
         private void btnLimparRetirar_Click(object sender, EventArgs e)
         {
             cleanRet();
         }
-
-        private int CalculoId()
-        {
-            int i = 1;
-            foreach (Produto list in carrinho)
-            {
-                if (i != list.ID)
-                {
-                    return i;
-                }
-                i++;
-            }
-            return i++;
-        }
-        private double CalculoPreco()
-        {
-            double valorTot = 0;
-            foreach(Produto list in carrinho)
-            {
-                valorTot = valorTot + list.Valor;
-            }
-            return valorTot;
-        }
-
-        public void cleanAdd()
-        {
-            comboBoxAdicionar.Text = "";
-            comboBoxAdicionar.Items.Clear();
-            mskAdicionarItem.Clear();
-            numUDQtdItemAdicionar.ResetText();
-            numUDQtdItemAdicionar.Value = 1;
-            mskBValorAdicionar.Clear();
-        }
-
-        public void cleanRet()
-        {
-            comboBoxRetirar.Text = "";
-            comboBoxRetirar.Items.Clear();
-            numUDQtdItemRetirar.ResetText();
-            numUDQtdItemRetirar.Value = 1;
-            mskBRetirarItem.Clear();
-            mskBValorItemRetirado.Clear();
-            
-        }
+        //--End: Retirar Item
+        //---------------------------------Start: Finalização Pedido-------------------------------------
 
         public bool ExisteItem()
         {
@@ -736,20 +777,29 @@ namespace InsightCoffe.Utilidades
                 return true;
         }
 
-        //---------------------------------Start: Finalização Pedido-------------------------------------
-
         private void btnSalvarPedido_Click(object sender, EventArgs e)
         {
+            
             if(ExisteItem() == true)
             {
-                salvarEcancelar_Pedido();
-                inicial1.salvaPedido(Convert.ToUInt64(mskBCodeBar.Text), mskBNome.Text, mskBCPF.Text, 100, carrinho);
-                carrinho = new List<Produto>();
+                try
+                {
+                    salvarEcancelar_Pedido();
+                    inicial1.salvaPedido(codigoDBarra, nome, cpf, valorTotal, carrinho);
+                    carrinho = new List<Produto>();
+                }
+                catch(Exception)
+                {
+                    MessageBox.Show("Ta errado pr-+");
+                }
             }
             else
             {
                 MessageBox.Show("Carrinho vazio");
             }
+            salvarEcancelar_Pedido();
+            desabilitarCarrinho();
+            inicial1.Atualizagrid();
         }
 
         private void btnCancelarPedido_Click(object sender, EventArgs e)
@@ -757,8 +807,6 @@ namespace InsightCoffe.Utilidades
             inicial1.Tela_de_Vendas();
             this.Close();
         }
-
-
         //----------------------------------end: Finalização Pedido---------------------------------------
 
     }

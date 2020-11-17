@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace InsightCoffe.Repositorios
 {
-    public class CadCodigoBarras
+    public class CodigoBarras
     {
         List<uint> CodeBar = new List<uint>();
 
-        public CadCodigoBarras(uint codigo)
+        public CodigoBarras(uint codigo)
         {
             CodeBar.Add(codigo);
         }

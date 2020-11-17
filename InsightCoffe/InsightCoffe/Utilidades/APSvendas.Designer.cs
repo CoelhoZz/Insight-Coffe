@@ -40,14 +40,15 @@
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.mskBNascimento = new System.Windows.Forms.MaskedTextBox();
-            this.lsViewCarrinho = new System.Windows.Forms.ListView();
             this.label9 = new System.Windows.Forms.Label();
             this.panelNCN = new System.Windows.Forms.Panel();
             this.mskBNome = new System.Windows.Forms.TextBox();
             this.btnLimparClient = new System.Windows.Forms.Button();
             this.btnProcurar = new System.Windows.Forms.Button();
             this.btnSalvar = new System.Windows.Forms.Button();
+            this.lblDesconto = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.btnEnterPedido = new System.Windows.Forms.Button();
             this.mskBRetirarItem = new System.Windows.Forms.MaskedTextBox();
             this.mskAdicionarItem = new System.Windows.Forms.MaskedTextBox();
             this.btnPular = new System.Windows.Forms.Button();
@@ -68,12 +69,13 @@
             this.mskBValorAdicionar = new System.Windows.Forms.MaskedTextBox();
             this.btnIncluirCampoCliente = new System.Windows.Forms.Button();
             this.comboBoxRetirar = new System.Windows.Forms.ComboBox();
+            this.lsViewCarrinho = new System.Windows.Forms.ListBox();
+            this.lblID = new System.Windows.Forms.Label();
             this.barraFormulario = new System.Windows.Forms.PictureBox();
             this.btnFechar = new System.Windows.Forms.Button();
             this.btnMinimizar = new System.Windows.Forms.Button();
             this.bntMaximizar = new System.Windows.Forms.Button();
             this.btnNormal = new System.Windows.Forms.Button();
-            this.lblDesconto = new System.Windows.Forms.Label();
             this.panelNCN.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numUDQtdItemRetirar)).BeginInit();
@@ -95,23 +97,21 @@
             // mskBCodeBar
             // 
             this.mskBCodeBar.AllowDrop = true;
-            this.mskBCodeBar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.mskBCodeBar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.mskBCodeBar.BackColor = System.Drawing.Color.White;
             this.mskBCodeBar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.mskBCodeBar.Location = new System.Drawing.Point(342, 53);
+            this.mskBCodeBar.Location = new System.Drawing.Point(468, 42);
             this.mskBCodeBar.Name = "mskBCodeBar";
-            this.mskBCodeBar.Size = new System.Drawing.Size(520, 26);
+            this.mskBCodeBar.Size = new System.Drawing.Size(445, 26);
             this.mskBCodeBar.TabIndex = 1;
-            this.mskBCodeBar.KeyDown += new System.Windows.Forms.KeyEventHandler(this.KeyDown_CodigoBar);
             this.mskBCodeBar.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.KeyPress_CodigoBar);
             // 
             // label2
             // 
-            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("MS UI Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(182, 58);
+            this.label2.Location = new System.Drawing.Point(465, 23);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(142, 16);
             this.label2.TabIndex = 6;
@@ -124,7 +124,7 @@
             this.label3.Enabled = false;
             this.label3.Font = new System.Drawing.Font("MS UI Gothic", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.Snow;
-            this.label3.Location = new System.Drawing.Point(540, 285);
+            this.label3.Location = new System.Drawing.Point(565, 440);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(111, 13);
             this.label3.TabIndex = 9;
@@ -133,8 +133,9 @@
             // mskBValortotal
             // 
             this.mskBValortotal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.mskBValortotal.BackColor = System.Drawing.Color.White;
             this.mskBValortotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.mskBValortotal.Location = new System.Drawing.Point(482, 431);
+            this.mskBValortotal.Location = new System.Drawing.Point(507, 565);
             this.mskBValortotal.Mask = "$";
             this.mskBValortotal.Name = "mskBValortotal";
             this.mskBValortotal.Size = new System.Drawing.Size(214, 35);
@@ -147,7 +148,7 @@
             this.label4.Enabled = false;
             this.label4.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.Snow;
-            this.label4.Location = new System.Drawing.Point(478, 404);
+            this.label4.Location = new System.Drawing.Point(503, 538);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(118, 24);
             this.label4.TabIndex = 11;
@@ -167,6 +168,7 @@
             // mskBCPF
             // 
             this.mskBCPF.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.mskBCPF.BackColor = System.Drawing.Color.LightGray;
             this.mskBCPF.Enabled = false;
             this.mskBCPF.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.mskBCPF.Location = new System.Drawing.Point(108, 54);
@@ -202,6 +204,7 @@
             // mskBNascimento
             // 
             this.mskBNascimento.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.mskBNascimento.BackColor = System.Drawing.Color.LightGray;
             this.mskBNascimento.Enabled = false;
             this.mskBNascimento.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.mskBNascimento.Location = new System.Drawing.Point(385, 54);
@@ -213,20 +216,6 @@
             this.mskBNascimento.ValidatingType = typeof(System.DateTime);
             this.mskBNascimento.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.KeyPress_Nascimeto);
             // 
-            // lsViewCarrinho
-            // 
-            this.lsViewCarrinho.Alignment = System.Windows.Forms.ListViewAlignment.Default;
-            this.lsViewCarrinho.AllowColumnReorder = true;
-            this.lsViewCarrinho.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.lsViewCarrinho.HideSelection = false;
-            this.lsViewCarrinho.Location = new System.Drawing.Point(11, 19);
-            this.lsViewCarrinho.Name = "lsViewCarrinho";
-            this.lsViewCarrinho.Size = new System.Drawing.Size(416, 508);
-            this.lsViewCarrinho.TabIndex = 48;
-            this.lsViewCarrinho.UseCompatibleStateImageBehavior = false;
-            // 
             // label9
             // 
             this.label9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -234,7 +223,7 @@
             this.label9.Enabled = false;
             this.label9.Font = new System.Drawing.Font("MS UI Gothic", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.ForeColor = System.Drawing.Color.Snow;
-            this.label9.Location = new System.Drawing.Point(529, 174);
+            this.label9.Location = new System.Drawing.Point(553, 259);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(75, 13);
             this.label9.TabIndex = 50;
@@ -245,7 +234,6 @@
             this.panelNCN.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.panelNCN.AutoSize = true;
             this.panelNCN.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.panelNCN.Controls.Add(this.lblDesconto);
             this.panelNCN.Controls.Add(this.mskBNome);
             this.panelNCN.Controls.Add(this.btnLimparClient);
             this.panelNCN.Controls.Add(this.mskBNascimento);
@@ -255,7 +243,7 @@
             this.panelNCN.Controls.Add(this.mskBCPF);
             this.panelNCN.Controls.Add(this.label5);
             this.panelNCN.Controls.Add(this.label7);
-            this.panelNCN.Location = new System.Drawing.Point(446, 27);
+            this.panelNCN.Location = new System.Drawing.Point(473, 87);
             this.panelNCN.Name = "panelNCN";
             this.panelNCN.Size = new System.Drawing.Size(501, 125);
             this.panelNCN.TabIndex = 3;
@@ -263,6 +251,7 @@
             // mskBNome
             // 
             this.mskBNome.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.mskBNome.BackColor = System.Drawing.Color.LightGray;
             this.mskBNome.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.mskBNome.Enabled = false;
             this.mskBNome.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F);
@@ -274,6 +263,7 @@
             // btnLimparClient
             // 
             this.btnLimparClient.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnLimparClient.BackColor = System.Drawing.Color.WhiteSmoke;
             this.btnLimparClient.Enabled = false;
             this.btnLimparClient.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnLimparClient.Location = new System.Drawing.Point(302, 93);
@@ -281,12 +271,13 @@
             this.btnLimparClient.Size = new System.Drawing.Size(84, 25);
             this.btnLimparClient.TabIndex = 5;
             this.btnLimparClient.Text = "Limpar";
-            this.btnLimparClient.UseVisualStyleBackColor = true;
+            this.btnLimparClient.UseVisualStyleBackColor = false;
             this.btnLimparClient.Click += new System.EventHandler(this.btnLimparClient_Click);
             // 
             // btnProcurar
             // 
             this.btnProcurar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnProcurar.BackColor = System.Drawing.Color.WhiteSmoke;
             this.btnProcurar.Enabled = false;
             this.btnProcurar.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnProcurar.Location = new System.Drawing.Point(411, 93);
@@ -294,12 +285,13 @@
             this.btnProcurar.Size = new System.Drawing.Size(84, 25);
             this.btnProcurar.TabIndex = 6;
             this.btnProcurar.Text = "Procurar";
-            this.btnProcurar.UseVisualStyleBackColor = true;
+            this.btnProcurar.UseVisualStyleBackColor = false;
             this.btnProcurar.Click += new System.EventHandler(this.btnProcurar_Click);
             // 
             // btnSalvar
             // 
             this.btnSalvar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSalvar.BackColor = System.Drawing.Color.WhiteSmoke;
             this.btnSalvar.Enabled = false;
             this.btnSalvar.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSalvar.Location = new System.Drawing.Point(234, 93);
@@ -307,19 +299,36 @@
             this.btnSalvar.Size = new System.Drawing.Size(67, 25);
             this.btnSalvar.TabIndex = 4;
             this.btnSalvar.Text = "Salvar";
-            this.btnSalvar.UseVisualStyleBackColor = true;
+            this.btnSalvar.UseVisualStyleBackColor = false;
             this.btnSalvar.Click += new System.EventHandler(this.btnSalvar_Click);
+            // 
+            // lblDesconto
+            // 
+            this.lblDesconto.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblDesconto.AutoSize = true;
+            this.lblDesconto.Font = new System.Drawing.Font("Microsoft YaHei UI", 11.25F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDesconto.ForeColor = System.Drawing.Color.White;
+            this.lblDesconto.Location = new System.Drawing.Point(587, 215);
+            this.lblDesconto.Name = "lblDesconto";
+            this.lblDesconto.Size = new System.Drawing.Size(232, 20);
+            this.lblDesconto.TabIndex = 77;
+            this.lblDesconto.Text = "Você Ganhou um cappuchino!!";
+            this.lblDesconto.Visible = false;
             // 
             // panel2
             // 
             this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel2.BackColor = System.Drawing.Color.Chocolate;
+            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(171)))), ((int)(((byte)(72)))));
+            this.panel2.Controls.Add(this.lblDesconto);
+            this.panel2.Controls.Add(this.btnEnterPedido);
             this.panel2.Controls.Add(this.mskBRetirarItem);
             this.panel2.Controls.Add(this.mskAdicionarItem);
+            this.panel2.Controls.Add(this.label2);
             this.panel2.Controls.Add(this.btnPular);
             this.panel2.Controls.Add(this.comboBoxAdicionar);
+            this.panel2.Controls.Add(this.mskBCodeBar);
             this.panel2.Controls.Add(this.btnLimparRetirar);
             this.panel2.Controls.Add(this.label11);
             this.panel2.Controls.Add(this.mskBValorItemRetirado);
@@ -335,35 +344,55 @@
             this.panel2.Controls.Add(this.numUDQtdItemAdicionar);
             this.panel2.Controls.Add(this.mskBValorAdicionar);
             this.panel2.Controls.Add(this.btnIncluirCampoCliente);
-            this.panel2.Controls.Add(this.lsViewCarrinho);
             this.panel2.Controls.Add(this.label9);
             this.panel2.Controls.Add(this.label3);
             this.panel2.Controls.Add(this.mskBValortotal);
             this.panel2.Controls.Add(this.label4);
             this.panel2.Controls.Add(this.panelNCN);
             this.panel2.Controls.Add(this.comboBoxRetirar);
-            this.panel2.Location = new System.Drawing.Point(19, 92);
+            this.panel2.Controls.Add(this.lsViewCarrinho);
+            this.panel2.Controls.Add(this.lblID);
+            this.panel2.Location = new System.Drawing.Point(6, 31);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(963, 545);
+            this.panel2.Size = new System.Drawing.Size(990, 679);
             this.panel2.TabIndex = 2;
+            // 
+            // btnEnterPedido
+            // 
+            this.btnEnterPedido.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnEnterPedido.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.btnEnterPedido.FlatAppearance.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnEnterPedido.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEnterPedido.Location = new System.Drawing.Point(919, 41);
+            this.btnEnterPedido.Name = "btnEnterPedido";
+            this.btnEnterPedido.Size = new System.Drawing.Size(60, 27);
+            this.btnEnterPedido.TabIndex = 78;
+            this.btnEnterPedido.Text = "Enter";
+            this.btnEnterPedido.UseVisualStyleBackColor = false;
+            this.btnEnterPedido.Click += new System.EventHandler(this.btnEnterPedido_Click);
             // 
             // mskBRetirarItem
             // 
             this.mskBRetirarItem.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.mskBRetirarItem.BackColor = System.Drawing.Color.White;
             this.mskBRetirarItem.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.mskBRetirarItem.Enabled = false;
             this.mskBRetirarItem.Font = new System.Drawing.Font("Swis721 Cn BT", 21F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.mskBRetirarItem.Location = new System.Drawing.Point(466, 190);
+            this.mskBRetirarItem.Location = new System.Drawing.Point(490, 276);
             this.mskBRetirarItem.Name = "mskBRetirarItem";
-            this.mskBRetirarItem.Size = new System.Drawing.Size(230, 34);
+            this.mskBRetirarItem.Size = new System.Drawing.Size(229, 34);
             this.mskBRetirarItem.TabIndex = 76;
+            this.mskBRetirarItem.TextChanged += new System.EventHandler(this.TextChanged_mskRetirar);
             this.mskBRetirarItem.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.KeyPress_mskRetirar);
             // 
             // mskAdicionarItem
             // 
-            this.mskAdicionarItem.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.mskAdicionarItem.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.mskAdicionarItem.BackColor = System.Drawing.Color.White;
             this.mskAdicionarItem.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.mskAdicionarItem.Enabled = false;
             this.mskAdicionarItem.Font = new System.Drawing.Font("Swis721 Cn BT", 21F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.mskAdicionarItem.Location = new System.Drawing.Point(467, 301);
+            this.mskAdicionarItem.Location = new System.Drawing.Point(490, 457);
             this.mskAdicionarItem.Name = "mskAdicionarItem";
             this.mskAdicionarItem.Size = new System.Drawing.Size(230, 34);
             this.mskAdicionarItem.TabIndex = 4;
@@ -373,24 +402,26 @@
             // btnPular
             // 
             this.btnPular.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnPular.BackColor = System.Drawing.Color.WhiteSmoke;
             this.btnPular.Enabled = false;
             this.btnPular.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPular.Location = new System.Drawing.Point(539, 12);
+            this.btnPular.Location = new System.Drawing.Point(566, 72);
             this.btnPular.Name = "btnPular";
             this.btnPular.Size = new System.Drawing.Size(67, 25);
             this.btnPular.TabIndex = 2;
             this.btnPular.Text = "Pular";
-            this.btnPular.UseVisualStyleBackColor = true;
+            this.btnPular.UseVisualStyleBackColor = false;
             this.btnPular.Click += new System.EventHandler(this.btnPular_Click);
             // 
             // comboBoxAdicionar
             // 
-            this.comboBoxAdicionar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.comboBoxAdicionar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.comboBoxAdicionar.BackColor = System.Drawing.Color.White;
             this.comboBoxAdicionar.DropDownStyle = System.Windows.Forms.ComboBoxStyle.Simple;
             this.comboBoxAdicionar.Enabled = false;
             this.comboBoxAdicionar.Font = new System.Drawing.Font("Microsoft Sans Serif", 17.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboBoxAdicionar.FormattingEnabled = true;
-            this.comboBoxAdicionar.Location = new System.Drawing.Point(466, 300);
+            this.comboBoxAdicionar.Location = new System.Drawing.Point(490, 455);
             this.comboBoxAdicionar.Name = "comboBoxAdicionar";
             this.comboBoxAdicionar.Size = new System.Drawing.Size(255, 37);
             this.comboBoxAdicionar.TabIndex = 4;
@@ -399,14 +430,16 @@
             // btnLimparRetirar
             // 
             this.btnLimparRetirar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnLimparRetirar.BackColor = System.Drawing.Color.WhiteSmoke;
             this.btnLimparRetirar.Enabled = false;
+            this.btnLimparRetirar.FlatAppearance.BorderColor = System.Drawing.Color.DarkGray;
             this.btnLimparRetirar.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLimparRetirar.Location = new System.Drawing.Point(803, 230);
+            this.btnLimparRetirar.Location = new System.Drawing.Point(827, 315);
             this.btnLimparRetirar.Name = "btnLimparRetirar";
             this.btnLimparRetirar.Size = new System.Drawing.Size(132, 29);
             this.btnLimparRetirar.TabIndex = 13;
             this.btnLimparRetirar.Text = "Limpar";
-            this.btnLimparRetirar.UseVisualStyleBackColor = true;
+            this.btnLimparRetirar.UseVisualStyleBackColor = false;
             this.btnLimparRetirar.Click += new System.EventHandler(this.btnLimparRetirar_Click);
             // 
             // label11
@@ -416,7 +449,7 @@
             this.label11.Enabled = false;
             this.label11.Font = new System.Drawing.Font("MS UI Gothic", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label11.ForeColor = System.Drawing.Color.Snow;
-            this.label11.Location = new System.Drawing.Point(846, 173);
+            this.label11.Location = new System.Drawing.Point(870, 258);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(36, 13);
             this.label11.TabIndex = 74;
@@ -425,10 +458,10 @@
             // mskBValorItemRetirado
             // 
             this.mskBValorItemRetirado.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.mskBValorItemRetirado.BackColor = System.Drawing.Color.White;
             this.mskBValorItemRetirado.Enabled = false;
             this.mskBValorItemRetirado.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.mskBValorItemRetirado.Location = new System.Drawing.Point(803, 189);
-            this.mskBValorItemRetirado.Mask = "$";
+            this.mskBValorItemRetirado.Location = new System.Drawing.Point(827, 274);
             this.mskBValorItemRetirado.Name = "mskBValorItemRetirado";
             this.mskBValorItemRetirado.Size = new System.Drawing.Size(132, 35);
             this.mskBValorItemRetirado.TabIndex = 11;
@@ -436,66 +469,76 @@
             // btnLimparAdicionar
             // 
             this.btnLimparAdicionar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnLimparAdicionar.BackColor = System.Drawing.Color.WhiteSmoke;
             this.btnLimparAdicionar.Enabled = false;
+            this.btnLimparAdicionar.FlatAppearance.BorderColor = System.Drawing.Color.DarkGray;
             this.btnLimparAdicionar.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLimparAdicionar.Location = new System.Drawing.Point(803, 341);
+            this.btnLimparAdicionar.Location = new System.Drawing.Point(828, 496);
             this.btnLimparAdicionar.Name = "btnLimparAdicionar";
             this.btnLimparAdicionar.Size = new System.Drawing.Size(132, 29);
             this.btnLimparAdicionar.TabIndex = 8;
             this.btnLimparAdicionar.Text = "Limpar";
-            this.btnLimparAdicionar.UseVisualStyleBackColor = true;
+            this.btnLimparAdicionar.UseVisualStyleBackColor = false;
             this.btnLimparAdicionar.Click += new System.EventHandler(this.btnLimparAdicionar_Click);
             // 
             // btnAdicionar
             // 
             this.btnAdicionar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnAdicionar.BackColor = System.Drawing.Color.WhiteSmoke;
             this.btnAdicionar.Enabled = false;
+            this.btnAdicionar.FlatAppearance.BorderColor = System.Drawing.Color.DarkGray;
             this.btnAdicionar.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAdicionar.Location = new System.Drawing.Point(466, 341);
+            this.btnAdicionar.Location = new System.Drawing.Point(490, 496);
             this.btnAdicionar.Name = "btnAdicionar";
-            this.btnAdicionar.Size = new System.Drawing.Size(331, 29);
+            this.btnAdicionar.Size = new System.Drawing.Size(332, 29);
             this.btnAdicionar.TabIndex = 7;
             this.btnAdicionar.Text = "Adicionar";
-            this.btnAdicionar.UseVisualStyleBackColor = true;
+            this.btnAdicionar.UseVisualStyleBackColor = false;
             this.btnAdicionar.Click += new System.EventHandler(this.btnAdicionar_Click);
             // 
             // btnSalvarPedido
             // 
             this.btnSalvarPedido.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSalvarPedido.BackColor = System.Drawing.Color.WhiteSmoke;
             this.btnSalvarPedido.Enabled = false;
+            this.btnSalvarPedido.FlatAppearance.BorderColor = System.Drawing.Color.DarkGray;
             this.btnSalvarPedido.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSalvarPedido.Location = new System.Drawing.Point(482, 487);
+            this.btnSalvarPedido.Location = new System.Drawing.Point(507, 621);
             this.btnSalvarPedido.Name = "btnSalvarPedido";
             this.btnSalvarPedido.Size = new System.Drawing.Size(214, 40);
             this.btnSalvarPedido.TabIndex = 14;
             this.btnSalvarPedido.Text = "Salvar Pedido";
-            this.btnSalvarPedido.UseVisualStyleBackColor = true;
+            this.btnSalvarPedido.UseVisualStyleBackColor = false;
             this.btnSalvarPedido.Click += new System.EventHandler(this.btnSalvarPedido_Click);
             // 
             // btnCancelarPedido
             // 
             this.btnCancelarPedido.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnCancelarPedido.BackColor = System.Drawing.Color.WhiteSmoke;
             this.btnCancelarPedido.Enabled = false;
+            this.btnCancelarPedido.FlatAppearance.BorderColor = System.Drawing.Color.DarkGray;
             this.btnCancelarPedido.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancelarPedido.Location = new System.Drawing.Point(701, 487);
+            this.btnCancelarPedido.Location = new System.Drawing.Point(726, 621);
             this.btnCancelarPedido.Name = "btnCancelarPedido";
             this.btnCancelarPedido.Size = new System.Drawing.Size(144, 40);
             this.btnCancelarPedido.TabIndex = 15;
             this.btnCancelarPedido.Text = "Cancelar";
-            this.btnCancelarPedido.UseVisualStyleBackColor = true;
+            this.btnCancelarPedido.UseVisualStyleBackColor = false;
             this.btnCancelarPedido.Click += new System.EventHandler(this.btnCancelarPedido_Click);
             // 
             // btnRetirar
             // 
             this.btnRetirar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnRetirar.BackColor = System.Drawing.Color.WhiteSmoke;
             this.btnRetirar.Enabled = false;
+            this.btnRetirar.FlatAppearance.BorderColor = System.Drawing.Color.DarkGray;
             this.btnRetirar.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRetirar.Location = new System.Drawing.Point(466, 230);
+            this.btnRetirar.Location = new System.Drawing.Point(490, 315);
             this.btnRetirar.Name = "btnRetirar";
             this.btnRetirar.Size = new System.Drawing.Size(331, 29);
             this.btnRetirar.TabIndex = 12;
             this.btnRetirar.Text = "Retirar";
-            this.btnRetirar.UseVisualStyleBackColor = true;
+            this.btnRetirar.UseVisualStyleBackColor = false;
             this.btnRetirar.Click += new System.EventHandler(this.btnRetirar_Click);
             // 
             // label12
@@ -505,7 +548,7 @@
             this.label12.Enabled = false;
             this.label12.Font = new System.Drawing.Font("MS UI Gothic", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label12.ForeColor = System.Drawing.Color.Snow;
-            this.label12.Location = new System.Drawing.Point(739, 174);
+            this.label12.Location = new System.Drawing.Point(763, 259);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(30, 13);
             this.label12.TabIndex = 70;
@@ -514,10 +557,11 @@
             // numUDQtdItemRetirar
             // 
             this.numUDQtdItemRetirar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.numUDQtdItemRetirar.BackColor = System.Drawing.Color.White;
             this.numUDQtdItemRetirar.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.numUDQtdItemRetirar.Enabled = false;
             this.numUDQtdItemRetirar.Font = new System.Drawing.Font("Microsoft Sans Serif", 17.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numUDQtdItemRetirar.Location = new System.Drawing.Point(725, 190);
+            this.numUDQtdItemRetirar.Location = new System.Drawing.Point(749, 275);
             this.numUDQtdItemRetirar.Minimum = new decimal(new int[] {
             1,
             0,
@@ -531,6 +575,7 @@
             0,
             0,
             0});
+            this.numUDQtdItemRetirar.ValueChanged += new System.EventHandler(this.numUDQtdItemRetirar_ValueChanged);
             // 
             // label10
             // 
@@ -539,7 +584,7 @@
             this.label10.Enabled = false;
             this.label10.Font = new System.Drawing.Font("MS UI Gothic", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label10.ForeColor = System.Drawing.Color.Snow;
-            this.label10.Location = new System.Drawing.Point(854, 285);
+            this.label10.Location = new System.Drawing.Point(879, 440);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(36, 13);
             this.label10.TabIndex = 67;
@@ -552,7 +597,7 @@
             this.label6.Enabled = false;
             this.label6.Font = new System.Drawing.Font("MS UI Gothic", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.Color.Snow;
-            this.label6.Location = new System.Drawing.Point(745, 285);
+            this.label6.Location = new System.Drawing.Point(770, 440);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(30, 13);
             this.label6.TabIndex = 66;
@@ -561,10 +606,11 @@
             // numUDQtdItemAdicionar
             // 
             this.numUDQtdItemAdicionar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.numUDQtdItemAdicionar.BackColor = System.Drawing.Color.White;
             this.numUDQtdItemAdicionar.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.numUDQtdItemAdicionar.Enabled = false;
             this.numUDQtdItemAdicionar.Font = new System.Drawing.Font("Microsoft Sans Serif", 17.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numUDQtdItemAdicionar.Location = new System.Drawing.Point(727, 301);
+            this.numUDQtdItemAdicionar.Location = new System.Drawing.Point(752, 456);
             this.numUDQtdItemAdicionar.Minimum = new decimal(new int[] {
             1,
             0,
@@ -578,14 +624,16 @@
             0,
             0,
             0});
+            this.numUDQtdItemAdicionar.ValueChanged += new System.EventHandler(this.numUDQtdItemAdicionar_ValueChanged);
             // 
             // mskBValorAdicionar
             // 
             this.mskBValorAdicionar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.mskBValorAdicionar.BackColor = System.Drawing.Color.White;
             this.mskBValorAdicionar.CutCopyMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
             this.mskBValorAdicionar.Enabled = false;
             this.mskBValorAdicionar.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.mskBValorAdicionar.Location = new System.Drawing.Point(803, 300);
+            this.mskBValorAdicionar.Location = new System.Drawing.Point(828, 455);
             this.mskBValorAdicionar.Name = "mskBValorAdicionar";
             this.mskBValorAdicionar.Size = new System.Drawing.Size(132, 35);
             this.mskBValorAdicionar.TabIndex = 6;
@@ -593,27 +641,55 @@
             // btnIncluirCampoCliente
             // 
             this.btnIncluirCampoCliente.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnIncluirCampoCliente.BackColor = System.Drawing.Color.WhiteSmoke;
             this.btnIncluirCampoCliente.Enabled = false;
             this.btnIncluirCampoCliente.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnIncluirCampoCliente.Location = new System.Drawing.Point(466, 12);
+            this.btnIncluirCampoCliente.Location = new System.Drawing.Point(493, 72);
             this.btnIncluirCampoCliente.Name = "btnIncluirCampoCliente";
             this.btnIncluirCampoCliente.Size = new System.Drawing.Size(67, 25);
             this.btnIncluirCampoCliente.TabIndex = 1;
             this.btnIncluirCampoCliente.Text = "Incluir";
-            this.btnIncluirCampoCliente.UseVisualStyleBackColor = true;
+            this.btnIncluirCampoCliente.UseVisualStyleBackColor = false;
             this.btnIncluirCampoCliente.Click += new System.EventHandler(this.btnIncluirCliente_Click);
             // 
             // comboBoxRetirar
             // 
             this.comboBoxRetirar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.comboBoxRetirar.BackColor = System.Drawing.Color.White;
             this.comboBoxRetirar.DropDownStyle = System.Windows.Forms.ComboBoxStyle.Simple;
             this.comboBoxRetirar.Enabled = false;
             this.comboBoxRetirar.Font = new System.Drawing.Font("Microsoft Sans Serif", 17.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboBoxRetirar.FormattingEnabled = true;
-            this.comboBoxRetirar.Location = new System.Drawing.Point(466, 189);
+            this.comboBoxRetirar.Location = new System.Drawing.Point(490, 274);
             this.comboBoxRetirar.Name = "comboBoxRetirar";
             this.comboBoxRetirar.Size = new System.Drawing.Size(251, 37);
             this.comboBoxRetirar.TabIndex = 75;
+            this.comboBoxRetirar.SelectionChangeCommitted += new System.EventHandler(this.SelectItemRetirar_cbBox);
+            // 
+            // lsViewCarrinho
+            // 
+            this.lsViewCarrinho.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lsViewCarrinho.BackColor = System.Drawing.Color.Moccasin;
+            this.lsViewCarrinho.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lsViewCarrinho.Font = new System.Drawing.Font("Tahoma", 17.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lsViewCarrinho.FormattingEnabled = true;
+            this.lsViewCarrinho.ItemHeight = 28;
+            this.lsViewCarrinho.Location = new System.Drawing.Point(14, 42);
+            this.lsViewCarrinho.Name = "lsViewCarrinho";
+            this.lsViewCarrinho.Size = new System.Drawing.Size(441, 562);
+            this.lsViewCarrinho.TabIndex = 77;
+            // 
+            // lblID
+            // 
+            this.lblID.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblID.AutoSize = true;
+            this.lblID.Location = new System.Drawing.Point(518, 289);
+            this.lblID.Name = "lblID";
+            this.lblID.Size = new System.Drawing.Size(13, 13);
+            this.lblID.TabIndex = 79;
+            this.lblID.Text = "0";
             // 
             // barraFormulario
             // 
@@ -711,31 +787,17 @@
             this.btnNormal.MouseLeave += new System.EventHandler(this.LeaveNormal);
             this.btnNormal.MouseMove += new System.Windows.Forms.MouseEventHandler(this.controlNormal);
             // 
-            // lblDesconto
-            // 
-            this.lblDesconto.AutoSize = true;
-            this.lblDesconto.Font = new System.Drawing.Font("Microsoft YaHei UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDesconto.ForeColor = System.Drawing.Color.Red;
-            this.lblDesconto.Location = new System.Drawing.Point(3, 95);
-            this.lblDesconto.Name = "lblDesconto";
-            this.lblDesconto.Size = new System.Drawing.Size(232, 20);
-            this.lblDesconto.TabIndex = 77;
-            this.lblDesconto.Text = "Você Ganhou um cappuchino!!";
-            this.lblDesconto.Visible = false;
-            // 
             // APSvendas
             // 
             this.AllowDrop = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(223)))), ((int)(((byte)(150)))), ((int)(((byte)(64)))));
-            this.ClientSize = new System.Drawing.Size(1002, 647);
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(119)))), ((int)(((byte)(1)))));
+            this.ClientSize = new System.Drawing.Size(1002, 716);
             this.Controls.Add(this.btnFechar);
             this.Controls.Add(this.btnMinimizar);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.mskBCodeBar);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.bntMaximizar);
             this.Controls.Add(this.btnNormal);
@@ -768,7 +830,6 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.MaskedTextBox mskBNascimento;
-        private System.Windows.Forms.ListView lsViewCarrinho;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Panel panelNCN;
         private System.Windows.Forms.Panel panel2;
@@ -802,5 +863,8 @@
         private System.Windows.Forms.MaskedTextBox mskBRetirarItem;
         private System.Windows.Forms.ComboBox comboBoxRetirar;
         private System.Windows.Forms.Label lblDesconto;
+        private System.Windows.Forms.ListBox lsViewCarrinho;
+        private System.Windows.Forms.Button btnEnterPedido;
+        private System.Windows.Forms.Label lblID;
     }
 }

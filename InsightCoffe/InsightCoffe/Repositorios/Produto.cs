@@ -13,11 +13,29 @@ namespace InsightCoffe.Repositorios
         public string Quantidade { get; set; }
         public double Valor { get; set; }
 
+        public static int geradorId(List<Produto> items)
+        {
+            int i = 1;
+            foreach (Produto item in items)
+            {
+                if (i != item.ID)
+                {
+                    return i;
+                }
+                i++;
+            }
+            return i++;
+        }
+
         public override int GetHashCode()
         {
             return ID;
         }
 
+        public override string ToString()
+        {
+            return ID.ToString() + ": " + Descricao + "  " + Quantidade + "   " + "R$" + Valor.ToString();
+        }
         public override bool Equals(object obj)
         {
             if (obj == null) return false;

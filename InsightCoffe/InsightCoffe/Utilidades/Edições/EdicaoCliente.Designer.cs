@@ -28,12 +28,34 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            this.maskedBId = new System.Windows.Forms.MaskedTextBox();
+            this.SuspendLayout();
+            // 
+            // maskedBId
+            // 
+            this.maskedBId.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.maskedBId.Location = new System.Drawing.Point(33, 28);
+            this.maskedBId.Mask = "000,000,000-00";
+            this.maskedBId.Name = "maskedBId";
+            this.maskedBId.Size = new System.Drawing.Size(139, 26);
+            this.maskedBId.TabIndex = 0;
+            this.maskedBId.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.maskedBCPF_KeyPress);
+            // 
+            // EdicaoCliente
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Text = "EdicaoCliente";
+            this.ClientSize = new System.Drawing.Size(204, 82);
+            this.Controls.Add(this.maskedBId);
+            this.Name = "EdicaoCliente";
+            this.Text = "Insira o CPF";
+            this.ResumeLayout(false);
+            this.PerformLayout();
+
         }
 
         #endregion
+
+        private System.Windows.Forms.MaskedTextBox maskedBId;
     }
 }
