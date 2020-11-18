@@ -506,6 +506,8 @@ namespace InsightCoffe.Utilidades
                 Tela_de_Produtos();
         }
 
+
+
         ////           Ferramentas
         /// Lista de feramentas do Tool Strip
         // 
@@ -615,7 +617,7 @@ namespace InsightCoffe.Utilidades
             TelaProd = true;
         }
 
-        private void btnEdiçãoCliente_Click(object sender, EventArgs e)
+        private void Tela_de_Clientes()
         {
             EdicaoCliente editar = new EdicaoCliente(this, clientes);
             editar.MdiParent = this;
