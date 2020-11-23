@@ -100,8 +100,18 @@ namespace InsightCoffe.Utilidades
                 descricao = txbDescricao.Text;
                 quantidade = txbQuantidade.Text;
                 valor = Convert.ToDouble(txbValor.Text);
-                Start.Adicionar_produto(valor, quantidade, descricao, codigo);
-                alterarCamposPara_origin();
+                if(Start.Editar_produto(valor, quantidade, descricao, codigo) == true)
+                {
+                    alterarCamposPara_origin();
+                    btnAdicionar_Click(sender, e);
+                    return;
+                }
+                else
+                {
+                    Start.Adicionar_produto(valor, quantidade, descricao, codigo);
+                    alterarCamposPara_origin();
+                    btnAdicionar_Click(sender, e);
+                }               
             }
         }
 
@@ -194,7 +204,6 @@ namespace InsightCoffe.Utilidades
             btnPesquisar.Enabled = true;
 
             //Desabilitando Botões
-            btnEditar.Enabled = false;
             bntCadastrar.Enabled = false;
             btnCancelar.Enabled = false;
 
@@ -216,7 +225,7 @@ namespace InsightCoffe.Utilidades
         void alterarCamposEmFunca_btnPesquisar()
         {
             //Habilita botão
-            btnEditar.Enabled = true;
+            bntCadastrar.Enabled = true;
             btnCancelar.Enabled = true;
 
             //Desabilita botão

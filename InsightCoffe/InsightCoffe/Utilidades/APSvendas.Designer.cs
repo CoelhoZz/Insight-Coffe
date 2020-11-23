@@ -138,6 +138,7 @@
             this.mskBValortotal.Location = new System.Drawing.Point(507, 565);
             this.mskBValortotal.Mask = "$";
             this.mskBValortotal.Name = "mskBValortotal";
+            this.mskBValortotal.ReadOnly = true;
             this.mskBValortotal.Size = new System.Drawing.Size(214, 35);
             this.mskBValortotal.TabIndex = 16;
             // 
@@ -757,7 +758,7 @@
             this.bntMaximizar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Gainsboro;
             this.bntMaximizar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gainsboro;
             this.bntMaximizar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.bntMaximizar.Location = new System.Drawing.Point(955, 0);
+            this.bntMaximizar.Location = new System.Drawing.Point(955, -1);
             this.bntMaximizar.Name = "bntMaximizar";
             this.bntMaximizar.Size = new System.Drawing.Size(24, 25);
             this.bntMaximizar.TabIndex = 58;

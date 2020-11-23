@@ -56,7 +56,6 @@ C:\InsightCoffeVersions\InsightCoffe\InsightCoffe\obj\Debug\InsightCoffe.csproj.
 C:\InsightCoffeVersions\InsightCoffe\InsightCoffe\obj\Debug\InsightCoffe.exe
 C:\InsightCoffeVersions\InsightCoffe\InsightCoffe\obj\Debug\InsightCoffe.pdb
 C:\InsightCoffeVersions\InsightCoffe\InsightCoffe\obj\Debug\InsightCoffe.Utilidades.PainelInicial.resources
-C:\InsightCoffeVersions\InsightCoffe\InsightCoffe\bin\Debug\XanderUI.dll
 C:\InsightCoffeVersions\InsightCoffe\InsightCoffe\obj\Debug\InsightCoffe.csprojAssemblyReference.cache
 C:\Users\T-Gamer\Desktop\Insight-Coffe-master\InsightCoffe\InsightCoffe\bin\Debug\InsightCoffe.exe.config
 C:\Users\T-Gamer\Desktop\Insight-Coffe-master\InsightCoffe\InsightCoffe\bin\Debug\InsightCoffe.exe

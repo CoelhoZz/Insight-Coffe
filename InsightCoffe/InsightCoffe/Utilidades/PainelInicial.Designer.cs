@@ -34,32 +34,27 @@
             this.ferramentasMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.pagamentoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pedidosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.produtosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.notepadStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.fecharTodosStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator9 = new System.Windows.Forms.ToolStripSeparator();
             this.consultasMenu = new System.Windows.Forms.ToolStripMenuItem();
-            this.RegPagamentosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.RegPedidosToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
-            this.RegProdutosToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+            this.RegProdutosToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.RegClientToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.printToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.printPreviewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.printSetupToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
             this.editMenu = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripEditarProduto = new System.Windows.Forms.ToolStripMenuItem();
+            this.copyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.undoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.redoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
             this.cutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.copyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pasteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator7 = new System.Windows.Forms.ToolStripSeparator();
-            this.editarPedidoToolBar = new System.Windows.Forms.ToolStripMenuItem();
             this.viewMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.toolBarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusBarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -73,7 +68,6 @@
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
             this.panelCabecalho = new System.Windows.Forms.Panel();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.xuiBusuario = new XanderUI.XUIButton();
             this.btnMostrarAplicações = new System.Windows.Forms.Button();
             this.btnFechar = new System.Windows.Forms.Button();
@@ -85,6 +79,7 @@
             this.lblRelogio = new System.Windows.Forms.Label();
             this.timerTempoReal = new System.Windows.Forms.Timer(this.components);
             this.panelAplicações = new System.Windows.Forms.Panel();
+            this.btnComandas = new XanderUI.XUIButton();
             this.btnEdiçãoCliente = new XanderUI.XUIButton();
             this.btnProdutos = new XanderUI.XUIButton();
             this.btnVendas = new XanderUI.XUIButton();
@@ -94,7 +89,6 @@
             this.menuStrip.SuspendLayout();
             this.statusBarra.SuspendLayout();
             this.panelCabecalho.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picIconeRelogio)).BeginInit();
             this.panelAplicações.SuspendLayout();
@@ -121,10 +115,10 @@
             // 
             // ferramentasMenu
             // 
+            this.ferramentasMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(119)))), ((int)(((byte)(1)))));
             this.ferramentasMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.pagamentoToolStripMenuItem,
             this.pedidosToolStripMenuItem,
-            this.produtosToolStripMenuItem,
             this.toolStripSeparator2,
             this.notepadStripMenuItem4,
             this.toolStripSeparator1,
@@ -136,6 +130,8 @@
             // 
             // pagamentoToolStripMenuItem
             // 
+            this.pagamentoToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(119)))), ((int)(((byte)(1)))));
+            this.pagamentoToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("pagamentoToolStripMenuItem.Image")));
             this.pagamentoToolStripMenuItem.Name = "pagamentoToolStripMenuItem";
             this.pagamentoToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F9;
             this.pagamentoToolStripMenuItem.Size = new System.Drawing.Size(248, 30);
@@ -144,19 +140,13 @@
             // 
             // pedidosToolStripMenuItem
             // 
+            this.pedidosToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(119)))), ((int)(((byte)(1)))));
+            this.pedidosToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("pedidosToolStripMenuItem.Image")));
             this.pedidosToolStripMenuItem.Name = "pedidosToolStripMenuItem";
             this.pedidosToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F8;
             this.pedidosToolStripMenuItem.Size = new System.Drawing.Size(248, 30);
             this.pedidosToolStripMenuItem.Text = "Pedido";
             this.pedidosToolStripMenuItem.Click += new System.EventHandler(this.pedidosToolStripMenuItem_Click);
-            // 
-            // produtosToolStripMenuItem
-            // 
-            this.produtosToolStripMenuItem.Name = "produtosToolStripMenuItem";
-            this.produtosToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F7;
-            this.produtosToolStripMenuItem.Size = new System.Drawing.Size(248, 30);
-            this.produtosToolStripMenuItem.Text = "Produto";
-            this.produtosToolStripMenuItem.Click += new System.EventHandler(this.produtosToolStripMenuItem_Click);
             // 
             // toolStripSeparator2
             // 
@@ -165,6 +155,8 @@
             // 
             // notepadStripMenuItem4
             // 
+            this.notepadStripMenuItem4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(119)))), ((int)(((byte)(1)))));
+            this.notepadStripMenuItem4.Image = ((System.Drawing.Image)(resources.GetObject("notepadStripMenuItem4.Image")));
             this.notepadStripMenuItem4.Name = "notepadStripMenuItem4";
             this.notepadStripMenuItem4.ShortcutKeys = System.Windows.Forms.Keys.F1;
             this.notepadStripMenuItem4.Size = new System.Drawing.Size(248, 30);
@@ -178,6 +170,7 @@
             // 
             // fecharTodosStripMenuItem3
             // 
+            this.fecharTodosStripMenuItem3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(119)))), ((int)(((byte)(1)))));
             this.fecharTodosStripMenuItem3.Name = "fecharTodosStripMenuItem3";
             this.fecharTodosStripMenuItem3.Size = new System.Drawing.Size(248, 30);
             this.fecharTodosStripMenuItem3.Text = "Fec&har todos";
@@ -190,184 +183,162 @@
             // 
             // consultasMenu
             // 
+            this.consultasMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(119)))), ((int)(((byte)(1)))));
             this.consultasMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.RegPagamentosToolStripMenuItem,
             this.RegPedidosToolStripMenuItem2,
-            this.RegProdutosToolStripMenuItem1,
             this.toolStripSeparator3,
+            this.RegProdutosToolStripMenuItem1,
             this.RegClientToolStripMenuItem,
             this.toolStripSeparator4,
             this.printToolStripMenuItem,
-            this.printPreviewToolStripMenuItem,
-            this.printSetupToolStripMenuItem,
             this.toolStripSeparator5});
             this.consultasMenu.ImageTransparentColor = System.Drawing.SystemColors.ActiveBorder;
             this.consultasMenu.Name = "consultasMenu";
             this.consultasMenu.Size = new System.Drawing.Size(107, 29);
             this.consultasMenu.Text = "&Consultas";
             // 
-            // RegPagamentosToolStripMenuItem
-            // 
-            this.RegPagamentosToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("RegPagamentosToolStripMenuItem.Image")));
-            this.RegPagamentosToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Black;
-            this.RegPagamentosToolStripMenuItem.Name = "RegPagamentosToolStripMenuItem";
-            this.RegPagamentosToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.F9)));
-            this.RegPagamentosToolStripMenuItem.Size = new System.Drawing.Size(371, 30);
-            this.RegPagamentosToolStripMenuItem.Text = "Registro de Pagamentos";
-            this.RegPagamentosToolStripMenuItem.Click += new System.EventHandler(this.RegPagamentosToolStripMenuItem_Click);
-            // 
             // RegPedidosToolStripMenuItem2
             // 
+            this.RegPedidosToolStripMenuItem2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(119)))), ((int)(((byte)(1)))));
             this.RegPedidosToolStripMenuItem2.Image = ((System.Drawing.Image)(resources.GetObject("RegPedidosToolStripMenuItem2.Image")));
             this.RegPedidosToolStripMenuItem2.ImageTransparentColor = System.Drawing.Color.Black;
             this.RegPedidosToolStripMenuItem2.Name = "RegPedidosToolStripMenuItem2";
             this.RegPedidosToolStripMenuItem2.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.F8)));
-            this.RegPedidosToolStripMenuItem2.Size = new System.Drawing.Size(371, 30);
-            this.RegPedidosToolStripMenuItem2.Text = "Registro de Pedidos";
+            this.RegPedidosToolStripMenuItem2.Size = new System.Drawing.Size(363, 30);
+            this.RegPedidosToolStripMenuItem2.Text = "Registro de Pedido";
             this.RegPedidosToolStripMenuItem2.Click += new System.EventHandler(this.RegPedidostoolStripMenuItem2_Click);
-            // 
-            // RegProdutosToolStripMenuItem1
-            // 
-            this.RegProdutosToolStripMenuItem1.Image = ((System.Drawing.Image)(resources.GetObject("RegProdutosToolStripMenuItem1.Image")));
-            this.RegProdutosToolStripMenuItem1.ImageTransparentColor = System.Drawing.Color.Black;
-            this.RegProdutosToolStripMenuItem1.Name = "RegProdutosToolStripMenuItem1";
-            this.RegProdutosToolStripMenuItem1.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.F7)));
-            this.RegProdutosToolStripMenuItem1.Size = new System.Drawing.Size(371, 30);
-            this.RegProdutosToolStripMenuItem1.Text = "Registro de Produtos";
-            this.RegProdutosToolStripMenuItem1.Click += new System.EventHandler(this.RegProdutostoolStripMenuItem1_Click);
             // 
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(368, 6);
+            this.toolStripSeparator3.Size = new System.Drawing.Size(360, 6);
+            // 
+            // RegProdutosToolStripMenuItem1
+            // 
+            this.RegProdutosToolStripMenuItem1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(119)))), ((int)(((byte)(1)))));
+            this.RegProdutosToolStripMenuItem1.Image = ((System.Drawing.Image)(resources.GetObject("RegProdutosToolStripMenuItem1.Image")));
+            this.RegProdutosToolStripMenuItem1.ImageTransparentColor = System.Drawing.Color.Black;
+            this.RegProdutosToolStripMenuItem1.Name = "RegProdutosToolStripMenuItem1";
+            this.RegProdutosToolStripMenuItem1.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.F7)));
+            this.RegProdutosToolStripMenuItem1.Size = new System.Drawing.Size(363, 30);
+            this.RegProdutosToolStripMenuItem1.Text = "Registro de Produtos";
+            this.RegProdutosToolStripMenuItem1.Click += new System.EventHandler(this.RegProdutostoolStripMenuItem1_Click);
             // 
             // RegClientToolStripMenuItem
             // 
+            this.RegClientToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(119)))), ((int)(((byte)(1)))));
             this.RegClientToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("RegClientToolStripMenuItem.Image")));
             this.RegClientToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Black;
             this.RegClientToolStripMenuItem.Name = "RegClientToolStripMenuItem";
-            this.RegClientToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F6;
-            this.RegClientToolStripMenuItem.Size = new System.Drawing.Size(371, 30);
+            this.RegClientToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.F6)));
+            this.RegClientToolStripMenuItem.Size = new System.Drawing.Size(363, 30);
             this.RegClientToolStripMenuItem.Text = "Registro de Clientes";
             this.RegClientToolStripMenuItem.Click += new System.EventHandler(this.RegClientestoolStripMenuItem1_Click);
             // 
             // toolStripSeparator4
             // 
             this.toolStripSeparator4.Name = "toolStripSeparator4";
-            this.toolStripSeparator4.Size = new System.Drawing.Size(368, 6);
+            this.toolStripSeparator4.Size = new System.Drawing.Size(360, 6);
             // 
             // printToolStripMenuItem
             // 
+            this.printToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(119)))), ((int)(((byte)(1)))));
             this.printToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("printToolStripMenuItem.Image")));
             this.printToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Black;
             this.printToolStripMenuItem.Name = "printToolStripMenuItem";
             this.printToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.P)));
-            this.printToolStripMenuItem.Size = new System.Drawing.Size(371, 30);
-            this.printToolStripMenuItem.Text = "Im&primir";
+            this.printToolStripMenuItem.Size = new System.Drawing.Size(363, 30);
+            this.printToolStripMenuItem.Text = "Registro de Pagamentos";
             this.printToolStripMenuItem.Visible = false;
-            // 
-            // printPreviewToolStripMenuItem
-            // 
-            this.printPreviewToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("printPreviewToolStripMenuItem.Image")));
-            this.printPreviewToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Black;
-            this.printPreviewToolStripMenuItem.Name = "printPreviewToolStripMenuItem";
-            this.printPreviewToolStripMenuItem.Size = new System.Drawing.Size(371, 30);
-            this.printPreviewToolStripMenuItem.Text = "&Vizualizar impressão";
-            this.printPreviewToolStripMenuItem.Visible = false;
-            // 
-            // printSetupToolStripMenuItem
-            // 
-            this.printSetupToolStripMenuItem.Name = "printSetupToolStripMenuItem";
-            this.printSetupToolStripMenuItem.Size = new System.Drawing.Size(371, 30);
-            this.printSetupToolStripMenuItem.Text = "Configurar Impressão";
-            this.printSetupToolStripMenuItem.Visible = false;
             // 
             // toolStripSeparator5
             // 
             this.toolStripSeparator5.Name = "toolStripSeparator5";
-            this.toolStripSeparator5.Size = new System.Drawing.Size(368, 6);
+            this.toolStripSeparator5.Size = new System.Drawing.Size(360, 6);
             this.toolStripSeparator5.Visible = false;
             // 
             // editMenu
             // 
+            this.editMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(119)))), ((int)(((byte)(1)))));
             this.editMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripEditarProduto,
+            this.copyToolStripMenuItem,
             this.undoToolStripMenuItem,
-            this.redoToolStripMenuItem,
             this.toolStripSeparator6,
             this.cutToolStripMenuItem,
-            this.copyToolStripMenuItem,
             this.pasteToolStripMenuItem,
-            this.toolStripSeparator7,
-            this.editarPedidoToolBar});
+            this.toolStripSeparator7});
             this.editMenu.Name = "editMenu";
             this.editMenu.Size = new System.Drawing.Size(74, 29);
             this.editMenu.Text = "&Editar";
             // 
+            // toolStripEditarProduto
+            // 
+            this.toolStripEditarProduto.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(119)))), ((int)(((byte)(1)))));
+            this.toolStripEditarProduto.Image = ((System.Drawing.Image)(resources.GetObject("toolStripEditarProduto.Image")));
+            this.toolStripEditarProduto.ImageTransparentColor = System.Drawing.Color.Black;
+            this.toolStripEditarProduto.Name = "toolStripEditarProduto";
+            this.toolStripEditarProduto.ShortcutKeys = System.Windows.Forms.Keys.F7;
+            this.toolStripEditarProduto.Size = new System.Drawing.Size(276, 30);
+            this.toolStripEditarProduto.Text = "&Produtos";
+            this.toolStripEditarProduto.Click += new System.EventHandler(this.toolStripEditarProduto_Click);
+            // 
+            // copyToolStripMenuItem
+            // 
+            this.copyToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(119)))), ((int)(((byte)(1)))));
+            this.copyToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("copyToolStripMenuItem.Image")));
+            this.copyToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Black;
+            this.copyToolStripMenuItem.Name = "copyToolStripMenuItem";
+            this.copyToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F6;
+            this.copyToolStripMenuItem.Size = new System.Drawing.Size(276, 30);
+            this.copyToolStripMenuItem.Text = "&Comandas";
+            this.copyToolStripMenuItem.Click += new System.EventHandler(this.ToolStripEditarComanda_Click);
+            // 
             // undoToolStripMenuItem
             // 
+            this.undoToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(119)))), ((int)(((byte)(1)))));
             this.undoToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("undoToolStripMenuItem.Image")));
             this.undoToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Black;
             this.undoToolStripMenuItem.Name = "undoToolStripMenuItem";
-            this.undoToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Z)));
-            this.undoToolStripMenuItem.Size = new System.Drawing.Size(291, 30);
-            this.undoToolStripMenuItem.Text = "&Desfazer";
-            // 
-            // redoToolStripMenuItem
-            // 
-            this.redoToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("redoToolStripMenuItem.Image")));
-            this.redoToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Black;
-            this.redoToolStripMenuItem.Name = "redoToolStripMenuItem";
-            this.redoToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Y)));
-            this.redoToolStripMenuItem.Size = new System.Drawing.Size(291, 30);
-            this.redoToolStripMenuItem.Text = "&Refazer";
+            this.undoToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F5;
+            this.undoToolStripMenuItem.Size = new System.Drawing.Size(276, 30);
+            this.undoToolStripMenuItem.Text = "&Clientes";
+            this.undoToolStripMenuItem.Click += new System.EventHandler(this.undoToolStripMenuItem_Click);
             // 
             // toolStripSeparator6
             // 
             this.toolStripSeparator6.Name = "toolStripSeparator6";
-            this.toolStripSeparator6.Size = new System.Drawing.Size(288, 6);
+            this.toolStripSeparator6.Size = new System.Drawing.Size(273, 6);
             // 
             // cutToolStripMenuItem
             // 
+            this.cutToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(119)))), ((int)(((byte)(1)))));
             this.cutToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("cutToolStripMenuItem.Image")));
             this.cutToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Black;
             this.cutToolStripMenuItem.Name = "cutToolStripMenuItem";
-            this.cutToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.X)));
-            this.cutToolStripMenuItem.Size = new System.Drawing.Size(291, 30);
-            this.cutToolStripMenuItem.Text = "&Recortar";
-            // 
-            // copyToolStripMenuItem
-            // 
-            this.copyToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("copyToolStripMenuItem.Image")));
-            this.copyToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Black;
-            this.copyToolStripMenuItem.Name = "copyToolStripMenuItem";
-            this.copyToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.C)));
-            this.copyToolStripMenuItem.Size = new System.Drawing.Size(291, 30);
-            this.copyToolStripMenuItem.Text = "&Copiar";
-            this.copyToolStripMenuItem.Click += new System.EventHandler(this.copyToolStripMenuItem_Click);
+            this.cutToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F4;
+            this.cutToolStripMenuItem.Size = new System.Drawing.Size(276, 30);
+            this.cutToolStripMenuItem.Text = "&Limpar Comanda";
+            this.cutToolStripMenuItem.Click += new System.EventHandler(this.ToolStripLimparComanda_Click);
             // 
             // pasteToolStripMenuItem
             // 
+            this.pasteToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(119)))), ((int)(((byte)(1)))));
             this.pasteToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("pasteToolStripMenuItem.Image")));
             this.pasteToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Black;
             this.pasteToolStripMenuItem.Name = "pasteToolStripMenuItem";
-            this.pasteToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.V)));
-            this.pasteToolStripMenuItem.Size = new System.Drawing.Size(291, 30);
-            this.pasteToolStripMenuItem.Text = "&Colar";
+            this.pasteToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F3;
+            this.pasteToolStripMenuItem.Size = new System.Drawing.Size(276, 30);
+            this.pasteToolStripMenuItem.Text = "&Excluir Pagamento";
             // 
             // toolStripSeparator7
             // 
             this.toolStripSeparator7.Name = "toolStripSeparator7";
-            this.toolStripSeparator7.Size = new System.Drawing.Size(288, 6);
-            // 
-            // editarPedidoToolBar
-            // 
-            this.editarPedidoToolBar.Name = "editarPedidoToolBar";
-            this.editarPedidoToolBar.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.A)));
-            this.editarPedidoToolBar.Size = new System.Drawing.Size(291, 30);
-            this.editarPedidoToolBar.Text = "Selecion&ar Tudo";
+            this.toolStripSeparator7.Size = new System.Drawing.Size(273, 6);
             // 
             // viewMenu
             // 
+            this.viewMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(119)))), ((int)(((byte)(1)))));
             this.viewMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolBarToolStripMenuItem,
             this.statusBarToolStripMenuItem});
@@ -377,6 +348,7 @@
             // 
             // toolBarToolStripMenuItem
             // 
+            this.toolBarToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(119)))), ((int)(((byte)(1)))));
             this.toolBarToolStripMenuItem.Checked = true;
             this.toolBarToolStripMenuItem.CheckOnClick = true;
             this.toolBarToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
@@ -387,6 +359,7 @@
             // 
             // statusBarToolStripMenuItem
             // 
+            this.statusBarToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(119)))), ((int)(((byte)(1)))));
             this.statusBarToolStripMenuItem.Checked = true;
             this.statusBarToolStripMenuItem.CheckOnClick = true;
             this.statusBarToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
@@ -397,6 +370,7 @@
             // 
             // helpMenu
             // 
+            this.helpMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(119)))), ((int)(((byte)(1)))));
             this.helpMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.contentsToolStripMenuItem,
             this.indexToolStripMenuItem,
@@ -408,6 +382,7 @@
             // 
             // contentsToolStripMenuItem
             // 
+            this.contentsToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(119)))), ((int)(((byte)(1)))));
             this.contentsToolStripMenuItem.Name = "contentsToolStripMenuItem";
             this.contentsToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.F1)));
             this.contentsToolStripMenuItem.Size = new System.Drawing.Size(243, 30);
@@ -415,6 +390,7 @@
             // 
             // indexToolStripMenuItem
             // 
+            this.indexToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(119)))), ((int)(((byte)(1)))));
             this.indexToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("indexToolStripMenuItem.Image")));
             this.indexToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Black;
             this.indexToolStripMenuItem.Name = "indexToolStripMenuItem";
@@ -428,6 +404,7 @@
             // 
             // aboutToolStripMenuItem
             // 
+            this.aboutToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(119)))), ((int)(((byte)(1)))));
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
             this.aboutToolStripMenuItem.Size = new System.Drawing.Size(243, 30);
             this.aboutToolStripMenuItem.Text = "&Sobre ... ...";
@@ -438,9 +415,9 @@
             this.statusBarra.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStrip_lblusuario,
             this.toolStripStatusLabel1});
-            this.statusBarra.Location = new System.Drawing.Point(0, 670);
+            this.statusBarra.Location = new System.Drawing.Point(0, 698);
             this.statusBarra.Name = "statusBarra";
-            this.statusBarra.Size = new System.Drawing.Size(1252, 22);
+            this.statusBarra.Size = new System.Drawing.Size(1186, 22);
             this.statusBarra.TabIndex = 2;
             this.statusBarra.Text = "StatusStrip";
             // 
@@ -460,7 +437,6 @@
             // panelCabecalho
             // 
             this.panelCabecalho.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(119)))), ((int)(((byte)(1)))));
-            this.panelCabecalho.Controls.Add(this.dataGridView1);
             this.panelCabecalho.Controls.Add(this.xuiBusuario);
             this.panelCabecalho.Controls.Add(this.btnMostrarAplicações);
             this.panelCabecalho.Controls.Add(this.btnFechar);
@@ -472,16 +448,8 @@
             this.panelCabecalho.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelCabecalho.Location = new System.Drawing.Point(0, 0);
             this.panelCabecalho.Name = "panelCabecalho";
-            this.panelCabecalho.Size = new System.Drawing.Size(1252, 140);
+            this.panelCabecalho.Size = new System.Drawing.Size(1186, 140);
             this.panelCabecalho.TabIndex = 0;
-            // 
-            // dataGridView1
-            // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(699, 26);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(283, 104);
-            this.dataGridView1.TabIndex = 64;
             // 
             // xuiBusuario
             // 
@@ -498,7 +466,7 @@
             this.xuiBusuario.HoverBackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(149)))), ((int)(((byte)(31)))));
             this.xuiBusuario.HoverTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(200)))), ((int)(((byte)(185)))));
             this.xuiBusuario.ImagePosition = XanderUI.XUIButton.imgPosition.Right;
-            this.xuiBusuario.Location = new System.Drawing.Point(1020, 34);
+            this.xuiBusuario.Location = new System.Drawing.Point(954, 34);
             this.xuiBusuario.Name = "xuiBusuario";
             this.xuiBusuario.Size = new System.Drawing.Size(220, 42);
             this.xuiBusuario.TabIndex = 63;
@@ -532,7 +500,7 @@
             this.btnFechar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Red;
             this.btnFechar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnFechar.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnFechar.Location = new System.Drawing.Point(1230, -1);
+            this.btnFechar.Location = new System.Drawing.Point(1164, -1);
             this.btnFechar.Name = "btnFechar";
             this.btnFechar.Size = new System.Drawing.Size(22, 26);
             this.btnFechar.TabIndex = 6;
@@ -553,7 +521,7 @@
             this.btnMinimizar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gainsboro;
             this.btnMinimizar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnMinimizar.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnMinimizar.Location = new System.Drawing.Point(1180, 0);
+            this.btnMinimizar.Location = new System.Drawing.Point(1114, 0);
             this.btnMinimizar.Name = "btnMinimizar";
             this.btnMinimizar.Size = new System.Drawing.Size(24, 25);
             this.btnMinimizar.TabIndex = 4;
@@ -573,7 +541,7 @@
             this.btnNormal.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Gainsboro;
             this.btnNormal.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gainsboro;
             this.btnNormal.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnNormal.Location = new System.Drawing.Point(1205, 0);
+            this.btnNormal.Location = new System.Drawing.Point(1139, 0);
             this.btnNormal.Name = "btnNormal";
             this.btnNormal.Size = new System.Drawing.Size(24, 25);
             this.btnNormal.TabIndex = 5;
@@ -593,7 +561,7 @@
             this.bntMaximizar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Gainsboro;
             this.bntMaximizar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gainsboro;
             this.bntMaximizar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.bntMaximizar.Location = new System.Drawing.Point(1205, 0);
+            this.bntMaximizar.Location = new System.Drawing.Point(1139, 0);
             this.bntMaximizar.Name = "bntMaximizar";
             this.bntMaximizar.Size = new System.Drawing.Size(24, 25);
             this.bntMaximizar.TabIndex = 55;
@@ -609,7 +577,7 @@
             this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Top;
             this.pictureBox1.Location = new System.Drawing.Point(0, 0);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(1252, 25);
+            this.pictureBox1.Size = new System.Drawing.Size(1186, 25);
             this.pictureBox1.TabIndex = 46;
             this.pictureBox1.TabStop = false;
             this.pictureBox1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Form_MouseDown);
@@ -618,10 +586,10 @@
             // 
             // picIconeRelogio
             // 
-            this.picIconeRelogio.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.picIconeRelogio.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.picIconeRelogio.BackColor = System.Drawing.Color.Transparent;
             this.picIconeRelogio.Image = ((System.Drawing.Image)(resources.GetObject("picIconeRelogio.Image")));
-            this.picIconeRelogio.Location = new System.Drawing.Point(102, 472);
+            this.picIconeRelogio.Location = new System.Drawing.Point(102, 500);
             this.picIconeRelogio.Name = "picIconeRelogio";
             this.picIconeRelogio.Size = new System.Drawing.Size(47, 42);
             this.picIconeRelogio.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -630,11 +598,11 @@
             // 
             // lblRelogio
             // 
-            this.lblRelogio.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblRelogio.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.lblRelogio.AutoSize = true;
             this.lblRelogio.BackColor = System.Drawing.Color.Transparent;
             this.lblRelogio.Font = new System.Drawing.Font("Agency FB", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblRelogio.Location = new System.Drawing.Point(37, 472);
+            this.lblRelogio.Location = new System.Drawing.Point(37, 500);
             this.lblRelogio.Name = "lblRelogio";
             this.lblRelogio.Size = new System.Drawing.Size(84, 42);
             this.lblRelogio.TabIndex = 0;
@@ -649,6 +617,7 @@
             // panelAplicações
             // 
             this.panelAplicações.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(171)))), ((int)(((byte)(72)))));
+            this.panelAplicações.Controls.Add(this.btnComandas);
             this.panelAplicações.Controls.Add(this.btnEdiçãoCliente);
             this.panelAplicações.Controls.Add(this.picIconeRelogio);
             this.panelAplicações.Controls.Add(this.lblRelogio);
@@ -659,9 +628,32 @@
             this.panelAplicações.Dock = System.Windows.Forms.DockStyle.Left;
             this.panelAplicações.Location = new System.Drawing.Point(0, 140);
             this.panelAplicações.Name = "panelAplicações";
-            this.panelAplicações.Size = new System.Drawing.Size(204, 530);
+            this.panelAplicações.Size = new System.Drawing.Size(204, 558);
             this.panelAplicações.TabIndex = 1;
             this.panelAplicações.Visible = false;
+            // 
+            // btnComandas
+            // 
+            this.btnComandas.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(171)))), ((int)(((byte)(72)))));
+            this.btnComandas.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnComandas.ButtonImage = ((System.Drawing.Image)(resources.GetObject("btnComandas.ButtonImage")));
+            this.btnComandas.ButtonStyle = XanderUI.XUIButton.Style.Material;
+            this.btnComandas.ButtonText = "Comandas";
+            this.btnComandas.ClickBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(161)))), ((int)(((byte)(62)))));
+            this.btnComandas.ClickTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(218)))), ((int)(((byte)(101)))), ((int)(((byte)(22)))));
+            this.btnComandas.CornerRadius = 5;
+            this.btnComandas.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.btnComandas.Horizontal_Alignment = System.Drawing.StringAlignment.Center;
+            this.btnComandas.HoverBackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(233)))), ((int)(((byte)(151)))), ((int)(((byte)(52)))));
+            this.btnComandas.HoverTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(91)))), ((int)(((byte)(12)))));
+            this.btnComandas.ImagePosition = XanderUI.XUIButton.imgPosition.Left;
+            this.btnComandas.Location = new System.Drawing.Point(6, 257);
+            this.btnComandas.Name = "btnComandas";
+            this.btnComandas.Size = new System.Drawing.Size(186, 69);
+            this.btnComandas.TabIndex = 68;
+            this.btnComandas.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(198)))), ((int)(((byte)(81)))), ((int)(((byte)(2)))));
+            this.btnComandas.Vertical_Alignment = System.Drawing.StringAlignment.Center;
+            this.btnComandas.Click += new System.EventHandler(this.btnComandas_Click);
             // 
             // btnEdiçãoCliente
             // 
@@ -678,7 +670,7 @@
             this.btnEdiçãoCliente.HoverBackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(233)))), ((int)(((byte)(151)))), ((int)(((byte)(52)))));
             this.btnEdiçãoCliente.HoverTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(91)))), ((int)(((byte)(12)))));
             this.btnEdiçãoCliente.ImagePosition = XanderUI.XUIButton.imgPosition.Left;
-            this.btnEdiçãoCliente.Location = new System.Drawing.Point(6, 257);
+            this.btnEdiçãoCliente.Location = new System.Drawing.Point(6, 332);
             this.btnEdiçãoCliente.Name = "btnEdiçãoCliente";
             this.btnEdiçãoCliente.Size = new System.Drawing.Size(186, 69);
             this.btnEdiçãoCliente.TabIndex = 67;
@@ -755,6 +747,7 @@
             // 
             // xuiCustomPictureBox1
             // 
+            this.xuiCustomPictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.xuiCustomPictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.xuiCustomPictureBox1.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(171)))), ((int)(((byte)(72)))));
             this.xuiCustomPictureBox1.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(119)))), ((int)(((byte)(1)))));
@@ -763,7 +756,7 @@
             this.xuiCustomPictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("xuiCustomPictureBox1.Image")));
             this.xuiCustomPictureBox1.IsElipse = false;
             this.xuiCustomPictureBox1.IsParallax = false;
-            this.xuiCustomPictureBox1.Location = new System.Drawing.Point(30, 467);
+            this.xuiCustomPictureBox1.Location = new System.Drawing.Point(30, 495);
             this.xuiCustomPictureBox1.Name = "xuiCustomPictureBox1";
             this.xuiCustomPictureBox1.Size = new System.Drawing.Size(127, 52);
             this.xuiCustomPictureBox1.TabIndex = 4;
@@ -783,7 +776,7 @@
             this.BackColor = System.Drawing.Color.White;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.ClientSize = new System.Drawing.Size(1252, 692);
+            this.ClientSize = new System.Drawing.Size(1186, 720);
             this.Controls.Add(this.panelAplicações);
             this.Controls.Add(this.statusBarra);
             this.Controls.Add(this.panelCabecalho);
@@ -804,7 +797,6 @@
             this.statusBarra.PerformLayout();
             this.panelCabecalho.ResumeLayout(false);
             this.panelCabecalho.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picIconeRelogio)).EndInit();
             this.panelAplicações.ResumeLayout(false);
@@ -822,23 +814,18 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator6;
-        private System.Windows.Forms.ToolStripMenuItem printSetupToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator7;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator8;
         private System.Windows.Forms.ToolStripStatusLabel toolStrip_lblusuario;
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem consultasMenu;
         private System.Windows.Forms.ToolStripMenuItem RegClientToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem RegPagamentosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem printToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem printPreviewToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem editMenu;
         private System.Windows.Forms.ToolStripMenuItem undoToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem redoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem cutToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem copyToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem pasteToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem editarPedidoToolBar;
         private System.Windows.Forms.ToolStripMenuItem viewMenu;
         private System.Windows.Forms.ToolStripMenuItem toolBarToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem statusBarToolStripMenuItem;
@@ -850,7 +837,6 @@
         private System.Windows.Forms.ToolTip toolTip;
         private System.Windows.Forms.Panel panelCabecalho;
         private System.Windows.Forms.ToolStripMenuItem pedidosToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem produtosToolStripMenuItem;
         private System.Windows.Forms.Label lblRelogio;
         private System.Windows.Forms.PictureBox picIconeRelogio;
         private System.Windows.Forms.Timer timerTempoReal;
@@ -875,8 +861,9 @@
         private XanderUI.XUIButton xuiBusuario;
         private XanderUI.XUICustomPictureBox xuiCustomPictureBox1;
         private XanderUI.XUIObjectEllipse xuiObjectEllipse1;
-        private System.Windows.Forms.DataGridView dataGridView1;
         private XanderUI.XUIButton btnEdiçãoCliente;
+        private System.Windows.Forms.ToolStripMenuItem toolStripEditarProduto;
+        private XanderUI.XUIButton btnComandas;
     }
 }
 

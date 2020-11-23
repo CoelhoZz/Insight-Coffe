@@ -11,7 +11,7 @@ namespace InsightCoffe.Repositorios
     {
         public int ID { get; set; }
 
-        public UInt64 CodigoDeBarras { get; set; }
+        public UInt32 CodigoDeBarras { get; set; }
         
         public string DataEHora { get; set; }
 
@@ -24,6 +24,26 @@ namespace InsightCoffe.Repositorios
         public string Situacao { get; set; }
 
         public double ValorTotal { get; set; }
+
+        public static bool removerPedido(List<Pedido> pedidos, UInt32 codeBarr)
+        {
+
+            foreach (Pedido pedido in pedidos)
+            {
+                if (codeBarr == pedido.CodigoDeBarras)
+                {
+                    pedido.DataEHora = "00/00/0000";
+                    pedido.ClientName = "";
+                    pedido.ClientCPF = "";
+                    pedido.Carrinho = null;
+                    pedido.Situacao = "Comanda vazia";
+                    pedido.ValorTotal = 0;
+
+                    return true;
+                }
+            }
+            return false;
+        }
 
         public static int geradorId(List<Pedido> items)
         {
@@ -72,7 +92,7 @@ namespace InsightCoffe.Repositorios
 
         public static bool codigoExistente(List<Pedido> pedidos, string codigo)
         {
-            UInt64 codigoBarra = Convert.ToUInt64(codigo);
+            Int32 codigoBarra = Convert.ToInt32(codigo);
             foreach (Pedido pedido in pedidos)
             {
                 if (pedido.CodigoDeBarras == codigoBarra)
@@ -85,7 +105,7 @@ namespace InsightCoffe.Repositorios
 
         public static bool reativarPedido(List<Pedido> pedidos, string codigo)
         {
-            UInt64 codigoBarra = Convert.ToUInt64(codigo);
+            Int32 codigoBarra = Convert.ToInt32(codigo);
             foreach (Pedido pedido in pedidos)
             {
                 if (pedido.CodigoDeBarras == codigoBarra && pedido.Situacao == "Em aberto")

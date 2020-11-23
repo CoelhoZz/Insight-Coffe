@@ -19,9 +19,11 @@ namespace InsightCoffe.Utilidades
     public partial class PainelInicial : Form
     {
         public List<Produto> produtos = new List<Produto>();
-        public List<Pedido> pedido = new List<Pedido>(3);
-        public List<PedidoPago> armazenaPedido = new List<PedidoPago>();
+        public List<Pedido> pedido = new List<Pedido>();
+        public List<Pagamentos> armazenaPedido = new List<Pagamentos>();
         public List<Cliente> clientes = new List<Cliente>();
+
+        public List<Produto> carrinhoteste = new List<Produto>();
 
         private Form1 Form1;
         public PainelInicial(Form1 form1, List<Usuarios> usuarios)
@@ -39,18 +41,29 @@ namespace InsightCoffe.Utilidades
 
             this.Form1 = form1;
 
+            //carrinhoteste.Add(new Produto()
+            //{
+            //    ID = 1,
+            //    Descricao = "Café 250ml",
+            //    Quantidade = "1",
+            //    Valor = 2.5
+            //});
+            //ID = 0,
+            //    CodigoDeBarras = (Int32)1,
+            //    ClientName = "THY",
+            //    ClientCPF = "129.063.549-88",
+            //    DataEHora = "21/11/2020 05:37",
+            //    Situacao = "Em aberto",
+            //    Carrinho = carrinhoteste,
+            //    ValorTotal = 2.5
+
             MetodosProdutos();
             MetodosPedidos();
             MetodosCliente();
             MetodosArmazenaPedidos();
+
         }
         //-------------------------------------Banco de Dados interno--------------------------------------
-        public void Atualizagrid()
-        {
-            dataGridView1.DataSource = null;
-            dataGridView1.DataSource = pedido;
-        }
-
 
         /// Produtos
         /// Lista de Produtos
@@ -270,25 +283,25 @@ namespace InsightCoffe.Utilidades
             pedido.Add(new Pedido()
             {
                 ID = 0,
-                CodigoDeBarras = (UInt64)1,
+                CodigoDeBarras = (Int32)1,
+                DataEHora = "00/00/0000",
+                Situacao = "Comanda vazia",
+                Carrinho = carrinhoteste,
+                ValorTotal = 0
+            }) ;            
+            pedido.Add(new Pedido()
+            {
+                ID = 1,
+                CodigoDeBarras = (Int32)2,
                 DataEHora = "00/00/0000",
                 Situacao = "Comanda vazia",
                 Carrinho = null,
                 ValorTotal = 0
-            });            
-            pedido.Add(new Pedido()
-            {
-                ID = 1,
-                CodigoDeBarras = (UInt64)2,
-                DataEHora = "00/00/0000",
-                Situacao = "Comanda vazia",
-                Carrinho = null,
-                ValorTotal = 12
             });
             pedido.Add(new Pedido()
             {
                 ID = 2,
-                CodigoDeBarras = (UInt64)3,
+                CodigoDeBarras = (Int32)3,
                 DataEHora = "00/00/0000",
                 Situacao = "Comanda vazia",
                 Carrinho = null,
@@ -302,7 +315,7 @@ namespace InsightCoffe.Utilidades
         /// Metodo VOID
         void MetodosArmazenaPedidos()
         {
-            armazenaPedido.Add(new PedidoPago()
+            armazenaPedido.Add(new Pagamentos()
             {
                 ID = 1,
                 CodigoUsado = (UInt64)1,
@@ -351,7 +364,6 @@ namespace InsightCoffe.Utilidades
             else if(Form1.acess == "Parcial")
             {
                 btnProdutos.Visible = false;
-                produtosToolStripMenuItem.Visible = false;
                 editMenu.Visible = false;
             }
             else
@@ -506,7 +518,17 @@ namespace InsightCoffe.Utilidades
                 Tela_de_Produtos();
         }
 
+        private void btnEdiçãoCliente_Click(object sender, EventArgs e)
+        {
+            if (TelaEdtCliente == false)
+                Tela_de_Clientes();
+        }
 
+        private void btnComandas_Click(object sender, EventArgs e)
+        {
+            if (TelaEditComandas == false)
+                Tela_de_Comandas();
+        }
 
         ////           Ferramentas
         /// Lista de feramentas do Tool Strip
@@ -514,22 +536,19 @@ namespace InsightCoffe.Utilidades
         // Pagamento
         private void pagamentosToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (TelaPag == false)
-                Tela_de_Pagamentos();
+            bntPagamento_Click_1(sender, e);
         }
         //
         //Pedidos
         private void pedidosToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (TelaVend == false)
-                Tela_de_Vendas();
+            bntVendas_Click_1(sender, e);
         }
         //
         //Produtos
         private void produtosToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (TelaProd == false)
-                Tela_de_Produtos();
+            bntProdutos_Click(sender, e);
         }
         //
         //Bloco de Notas
@@ -568,7 +587,8 @@ namespace InsightCoffe.Utilidades
         //Registro de Pedidos 
         private void RegPedidostoolStripMenuItem2_Click(object sender, EventArgs e)
         {
-
+            if (TelaRegPedidos == false)
+                Tela_de_RegistrosPedidos();
         }
         //
         //Registros de Produtos 
@@ -584,12 +604,41 @@ namespace InsightCoffe.Utilidades
             if (TelaRegClientes == false)
                 Tela_de_RegistrosClientes();
         }
+
+        ////            Editar
+        /// Lista de feramentas para edição
+        //
+        //Edição de Produtos
+        private void toolStripEditarProduto_Click(object sender, EventArgs e)
+        {
+            bntProdutos_Click(sender, e);
+        }
+        //
+        //Edição de Comanda
+        private void ToolStripEditarComanda_Click(object sender, EventArgs e)
+        {
+            btnComandas_Click(sender, e);
+        }
+        //
+        //Editar de Clientes
+        private void undoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            btnEdiçãoCliente_Click(sender, e);
+        }
+        //
+        //Limpar Comanda
+        private void ToolStripLimparComanda_Click(object sender, EventArgs e)
+        {
+            if(TelaLimparComanda == false)
+                Limpar_Comanda();
+        }
         //-------------------------End Sequencia de EVENTOS abertura das outras Telas---------------------
 
         //---------------------------start Sequencia de EVENTOS abertura das outras Telas-----------------
         public bool TelaVend = false, TelaPag = false, TelaProd = false,
                     TelaRegPagamento = false, TelaRegPedidos = false, TelaRegProdutos = false,
-                    TelaRegClientes = false, TelaEdtCliente = false;
+                    TelaRegClientes = false, TelaEdtCliente = false, TelaRegPedido = false, 
+                    TelaEditComandas = false, TelaLimparComanda = false;
 
         public void Tela_de_Vendas()
         {
@@ -602,7 +651,7 @@ namespace InsightCoffe.Utilidades
 
         private void Tela_de_Pagamentos()
         {
-            APSpagamento apsPagamento = new APSpagamento();
+            APSpagamento apsPagamento = new APSpagamento(this);
             apsPagamento.MdiParent = this;
             apsPagamento.Show();
             TelaPag = true;
@@ -624,6 +673,24 @@ namespace InsightCoffe.Utilidades
             editar.inicial1 = this;
             editar.Show();
             TelaEdtCliente = true;
+        }        
+        
+        private void Tela_de_Comandas()
+        {
+            EditarComanda editar = new EditarComanda(this, pedido);
+            editar.MdiParent = this;
+            editar.inicial1 = this;
+            editar.Show();
+            TelaEditComandas = true;
+        }
+
+        private void Limpar_Comanda()
+        {
+            LimparComanda limpar = new LimparComanda(this, pedido);
+            limpar.MdiParent = this;
+            limpar.inicial1 = this;
+            limpar.Show();
+            TelaLimparComanda = true;
         }
 
         //private void Tela_de_RegistrosPagamentos()
@@ -634,13 +701,13 @@ namespace InsightCoffe.Utilidades
         //    TelaRegPagamento = true;
         //}
 
-        //private void Tela_de_RegistrosPedidos()
-        //{
-        //    RegClientes registro = new RegClientes(this, clientes);
-        //    registro.MdiParent = this;
-        //    registro.Show();
-        //    TelaRegPedidos= true;
-        //}
+        private void Tela_de_RegistrosPedidos()
+        {
+            RegPedidos registro = new RegPedidos(this, pedido);
+            registro.MdiParent = this;
+            registro.Show();
+            TelaRegPedidos = true;
+        }
 
         private void Tela_de_RegistrosProdutos()
         {
@@ -672,7 +739,7 @@ namespace InsightCoffe.Utilidades
             });
         }
 
-        public void Editar_produto(double valor, string quantidade, string descricao, int codigo)
+        public bool Editar_produto(double valor, string quantidade, string descricao, int codigo)
         {
             foreach (Produto produto in produtos)
             {
@@ -681,20 +748,22 @@ namespace InsightCoffe.Utilidades
                     produto.Descricao = descricao;
                     produto.Quantidade = quantidade;
                     produto.Valor = valor;
+                    return true;
                 }
             }
+            return false;
         }
         //------------------------------end APSprodutos LISTA de PRODUTOS----------------------------------
 
         //-------------------------------start APSvendas LISTA de PEDIDOS----------------------------------       
         
-        public void salvaPedido(UInt32 codeBar, string clientName, string clientCPF, double valorTotal, List<Produto> carrinho)
+        public void salvaPedido(Int32 codeBar, string clientName, string clientCPF, double valorTotal, List<Produto> carrinho)
         {
             foreach(Pedido pedido in pedido)
             {
                 if(pedido.CodigoDeBarras == codeBar)
                 {
-                    pedido.CodigoDeBarras = codeBar;
+                    pedido.CodigoDeBarras = (uint)codeBar;
                     pedido.DataEHora = DateTime.Now.ToString("g");
                     pedido.ClientName = clientName;
                     pedido.ClientCPF = clientCPF;
@@ -718,6 +787,9 @@ namespace InsightCoffe.Utilidades
             }
             return i++;
         }
+
+
+
         //--------------------------------end APSvendas LISTA de PEDIDOS-----------------------------------
 
         //---------------------------------start Tool Strip EVENTOS----------------------------------------
@@ -733,16 +805,6 @@ namespace InsightCoffe.Utilidades
             {
                 string FileName = openFileDialog.FileName;
             }
-        }
-
-        private void copyToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Clipboard.SetText(string.Empty);
-        }
-
-        private void btnSair_Click(object sender, EventArgs e)
-        {
-            
         }
 
         private void xuiBusuario_Click(object sender, EventArgs e)

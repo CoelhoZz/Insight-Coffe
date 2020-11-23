@@ -57,7 +57,7 @@ namespace InsightCoffe.Utilidades
         //------------------------------Minimizar, Maximizar e Fechar aplicação---------------------------
         private void btnFechar_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Certifique-se de que salvou o pedido" + "\n" + "Deseja fechar a janela atual?", "Atenção", MessageBoxButtons.YesNo) == DialogResult.No)
+            if (MessageBox.Show("Certifique-se de que salvou o pedido. Deseja fechar a janela atual?", "Atenção", MessageBoxButtons.YesNo) == DialogResult.No)
                 return;
 
             this.Close();
@@ -109,14 +109,11 @@ namespace InsightCoffe.Utilidades
         private void controlMaximizar(object sender, MouseEventArgs e)
         {
             bntMaximizar.FlatAppearance.BorderColor = Color.Gainsboro;
-
         }
         private void controlMinimizar(object sender, MouseEventArgs e)
         {
             btnMinimizar.FlatAppearance.BorderColor = Color.Gainsboro;
-
         }
-        
         private void controlNormal(object sender, MouseEventArgs e)
         {
             btnNormal.FlatAppearance.BorderColor = Color.Gainsboro;
@@ -125,7 +122,7 @@ namespace InsightCoffe.Utilidades
         //---------------------------------------------------------------------------------------------------
 
         //---------------------------------------start: Variaveis--------------------------------------------
-        UInt32 codigoDBarra;
+        Int32 codigoDBarra;
         string nome, cpf;
         double valorTotal;
         //----------------------------------------end: Variaveis---------------------------------------------
@@ -136,14 +133,14 @@ namespace InsightCoffe.Utilidades
             if (Pedido.codigoExistente(inicial1.pedido, mskBCodeBar.Text) == true)
             
             {
-                codigoDBarra = Convert.ToUInt32(mskBCodeBar.Text);
+                codigoDBarra = Convert.ToInt32(mskBCodeBar.Text);
                 foreach (Pedido pedido in inicial1.pedido)
                 {
                     if (Pedido.reativarPedido(inicial1.pedido, mskBCodeBar.Text) == true)
                     {
                         mskBCPF.Text = pedido.ClientCPF;
                         clienteSearch();
-                        lsViewCarrinho.DataSource = pedido.Carrinho;
+                        lsViewCarrinho.DataSource = carrinho = pedido.Carrinho;
                         habilitarCarrinho();
                         return;
                     }
@@ -190,10 +187,13 @@ namespace InsightCoffe.Utilidades
             btnAdicionar.Enabled = true;
             btnLimparAdicionar.Enabled = true;
 
+            btnSalvarPedido.Enabled = true;
+            btnCancelarPedido.Enabled = true;
         }
 
         private void desabilitarCarrinho()
         {
+            lblDesconto.Visible = false; 
             mskAdicionarItem.Enabled = false;
             mskBRetirarItem.Enabled = false;
             numUDQtdItemRetirar.Enabled = false;
@@ -214,6 +214,7 @@ namespace InsightCoffe.Utilidades
 
             mskBNome.ResetText();
             mskBCPF.ResetText();
+            mskBNascimento.ResetText();
             mskBRetirarItem.ResetText();
             mskBValortotal.ResetText();
             mskBValorAdicionar.ResetText();
@@ -488,8 +489,8 @@ namespace InsightCoffe.Utilidades
                         {
                             lblID.Text = list.ID.ToString();
                             mskBRetirarItem.Text = (list.Descricao);
-                            numUDQtdItemRetirar.Value = Convert.ToDecimal(list.Quantidade);
                             numUDQtdItemRetirar.Maximum = Convert.ToDecimal(list.Quantidade);
+                            numUDQtdItemRetirar.Value = Convert.ToDecimal(list.Quantidade);
                             mskBValorItemRetirado.Text = list.Valor.ToString("C2");
                             return;
                         }
@@ -797,9 +798,7 @@ namespace InsightCoffe.Utilidades
             {
                 MessageBox.Show("Carrinho vazio");
             }
-            salvarEcancelar_Pedido();
             desabilitarCarrinho();
-            inicial1.Atualizagrid();
         }
 
         private void btnCancelarPedido_Click(object sender, EventArgs e)

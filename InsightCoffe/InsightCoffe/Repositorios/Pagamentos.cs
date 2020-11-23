@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace InsightCoffe.Repositorios
 {
-    public class PedidoPago //nha
+    public class Pagamentos
     {
         public int ID { get; set; }
 
@@ -18,7 +18,23 @@ namespace InsightCoffe.Repositorios
 
         public string Situacao { get; set; }
 
+        public List<Produto> Carrinho { get; set; }
+
         public double Valor { get; set; }
 
+
+        public static int geradorId(List<Pagamentos> items)
+        {
+            int i = 1;
+            foreach (Pagamentos item in items)
+            {
+                if (i != item.ID)
+                {
+                    return i;
+                }
+                i++;
+            }
+            return i++;
+        }
     }
 }

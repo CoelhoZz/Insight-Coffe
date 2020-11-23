@@ -9,21 +9,24 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace InsightCoffe.Utilidades.Consultas
+namespace InsightCoffe.Utilidades.Edições
 {
-    public partial class RegPedidos : Form
+    public partial class LimparComanda : Form
     {
-        PainelInicial Inicial1;
-        public RegPedidos(PainelInicial Inicial, List<Pedido> pedidos)
+        public PainelInicial inicial1;
+
+        public LimparComanda(PainelInicial inicial, List<Pedido> pedido)
         {
             InitializeComponent();
-            this.Inicial1 = Inicial;
+
+            this.inicial1 = inicial;
         }
 
         //--------------------------------------Mover formulario--------------------------------------------
         Point DragCursor;
         Point DragForm;
         bool Dragging;
+
         private void Form_MouseUp(object sender, MouseEventArgs e)
         {
             Dragging = false;
@@ -46,28 +49,28 @@ namespace InsightCoffe.Utilidades.Consultas
         }
         //-------------------------------------end-Mover formulario---------------------------------------
 
-        //-------------------------------------------Minimizar, Maximizar e Fechar aplicação--------------
+        //------------------------------Minimizar, Maximizar e Fechar aplicação---------------------------
         private void btnFechar_Click(object sender, EventArgs e)
         {
-            Inicial1.TelaRegPedido = false;
             this.Close();
+            inicial1.TelaLimparComanda = false;
         }
 
-        private void btnMinimizar_Click(object sender, EventArgs e)
+        private void btnMinimizar_Click_1(object sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Minimized;
         }
 
         //Leave
-        private void LeaveMinimizar(object sender, EventArgs e)
-        {
-            btnMinimizar.FlatAppearance.BorderColor = Color.SaddleBrown;
-        }
         private void LeaveFechar(object sender, EventArgs e)
         {
             btnFechar.FlatAppearance.BorderColor = Color.SaddleBrown;
         }
-        //Mouse move em cima
+        private void LeaveMinimizar(object sender, EventArgs e)
+        {
+            btnMinimizar.FlatAppearance.BorderColor = Color.SaddleBrown;
+        }
+        //Control
         private void controlFechar(object sender, MouseEventArgs e)
         {
             btnFechar.FlatAppearance.BorderColor = Color.Red;
@@ -77,20 +80,12 @@ namespace InsightCoffe.Utilidades.Consultas
             btnMinimizar.FlatAppearance.BorderColor = Color.Gainsboro;
 
         }
-        //-----------------------------------------------------------------------------------------------
+        //----------------------------------------------------------------------------------------------
 
-        private void RegPedidos_Load(object sender, EventArgs e)
+        private void btnLimpar_Click(object sender, EventArgs e)
         {
-            Mostrar_lista();
+
         }
 
-        private void Mostrar_lista()
-        {
-            foreach (var item in Inicial1.pedido)
-            {
-                listVRegistroCliente.Items.Add(new ListViewItem(new string[] { item.ID.ToString(), item.CodigoDeBarras.ToString(), item.DataEHora, item.ClientCPF, item.ClientName, item.Situacao, item.ValorTotal.ToString() }));
-            }
-
-        }
     }
 }

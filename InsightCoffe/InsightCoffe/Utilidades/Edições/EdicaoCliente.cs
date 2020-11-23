@@ -66,7 +66,7 @@ namespace InsightCoffe.Utilidades.Edições
                 MessageBoxButtons buttons = MessageBoxButtons.YesNo;
 
                 DialogResult result = MessageBox.Show(message, title, buttons);
-                foreach (Cliente cliente in cliente)
+                foreach (Cliente cliente in inicial1.clientes)
                 {
                     if (Cpf == cliente.CPF)
                     {

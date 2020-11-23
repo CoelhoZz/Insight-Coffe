@@ -56,6 +56,19 @@ namespace InsightCoffe.Entity
             });
         }
 
+        public static bool atualizaCompra(List<Cliente> clientes, string cpf)
+        {
+            foreach (Cliente cliente in clientes)
+            {
+                if (cpf == cliente.CPF || "CLIENTE" == cliente.Nome)
+                {
+                    cliente.Compras++;
+                    return true;
+                }
+            }
+            return false;
+        }
+
         public override int GetHashCode()
         {
             return ID;

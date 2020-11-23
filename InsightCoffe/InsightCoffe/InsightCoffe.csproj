@@ -140,6 +140,7 @@
     </Reference>
     <Reference Include="XanderUI">
       <HintPath>..\..\..\Users\Thyst\OneDrive\Documentos\XanderUI.dll</HintPath>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -150,7 +151,7 @@
     <Compile Include="Repositorios\CodigoBarras.cs" />
     <Compile Include="Repositorios\Carrinho.cs" />
     <Compile Include="Repositorios\Pedido.cs" />
-    <Compile Include="Repositorios\PedidoPago.cs" />
+    <Compile Include="Repositorios\Pagamentos.cs" />
     <Compile Include="Repositorios\Produto.cs" />
     <Compile Include="Utilidades\Consultas\RegClientes.cs">
       <SubType>Form</SubType>
@@ -184,6 +185,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utilidades\Consultas\RegPagamentos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Utilidades\Consultas\RegPagamentos.Designer.cs">
+      <DependentUpon>RegPagamentos.cs</DependentUpon>
+    </Compile>
     <Compile Include="Utilidades\Consultas\RegPedidos.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -207,6 +214,18 @@
     </Compile>
     <Compile Include="Utilidades\Edições\EdicaoPedido.Designer.cs">
       <DependentUpon>EdicaoPedido.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Utilidades\Edições\EditarComanda.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Utilidades\Edições\EditarComanda.Designer.cs">
+      <DependentUpon>EditarComanda.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Utilidades\Edições\LimparComanda.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Utilidades\Edições\LimparComanda.Designer.cs">
+      <DependentUpon>LimparComanda.cs</DependentUpon>
     </Compile>
     <Compile Include="Utilidades\NotePad.cs">
       <SubType>Form</SubType>
@@ -244,8 +263,20 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Utilidades\Consultas\RegPagamentos.resx">
+      <DependentUpon>RegPagamentos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Utilidades\Consultas\RegPedidos.resx">
+      <DependentUpon>RegPedidos.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Utilidades\Consultas\RegProdutos.resx">
       <DependentUpon>RegProdutos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Utilidades\Edições\EditarComanda.resx">
+      <DependentUpon>EditarComanda.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Utilidades\Edições\LimparComanda.resx">
+      <DependentUpon>LimparComanda.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Utilidades\NotePad.resx">
       <DependentUpon>NotePad.cs</DependentUpon>

@@ -1,4 +1,6 @@
-﻿using System;
+﻿using InsightCoffe.Entity;
+using InsightCoffe.Repositorios;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,15 +14,18 @@ namespace InsightCoffe.Utilidades
 {
     public partial class APSpagamento : Form
     {
-        public APSpagamento()
+        PainelInicial inicial1;
+        public APSpagamento(PainelInicial inicial)
         {
             InitializeComponent();
+            this.inicial1 = inicial;
         }
 
         //--------------------------------------Mover formulario--------------------------------------------
         Point DragCursor;
         Point DragForm;
         bool Dragging;
+
         private void Form_MouseUp(object sender, MouseEventArgs e)
         {
             Dragging = false;
@@ -43,6 +48,72 @@ namespace InsightCoffe.Utilidades
         }
         //-------------------------------------end-Mover formulario---------------------------------------
 
+        //------------------------------Minimizar, Maximizar e Fechar aplicação---------------------------
+        private void btnFechar_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Certifique-se de que salvou o pedido. Deseja fechar a janela atual?", "Atenção", MessageBoxButtons.YesNo) == DialogResult.No)
+                return;
+
+            this.Close();
+            inicial1.TelaPag = false;
+        }
+
+        private void bntMaximizar_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Maximized;
+
+            bntMaximizar.Visible = false;
+            btnNormal.Visible = true;
+        }
+
+        private void btnMinimizar_Click_1(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
+        }
+
+        private void btnNormal_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Normal;
+            bntMaximizar.Visible = true;
+            btnNormal.Visible = false;
+        }
+
+        //Leave
+        private void LeaveMinimizar(object sender, EventArgs e)
+        {
+            btnMinimizar.FlatAppearance.BorderColor = Color.SaddleBrown;
+        }
+        private void LeaveMaximizar(object sender, EventArgs e)
+        {
+            bntMaximizar.FlatAppearance.BorderColor = Color.SaddleBrown;
+        }
+        private void LeaveFechar(object sender, EventArgs e)
+        {
+            btnFechar.FlatAppearance.BorderColor = Color.SaddleBrown;
+        }
+        private void LeaveNormal(object sender, EventArgs e)
+        {
+            btnNormal.FlatAppearance.BorderColor = Color.SaddleBrown;
+        }
+        //Control
+        private void controlFechar(object sender, MouseEventArgs e)
+        {
+            btnFechar.FlatAppearance.BorderColor = Color.Red;
+        }
+        private void controlMaximizar(object sender, MouseEventArgs e)
+        {
+            bntMaximizar.FlatAppearance.BorderColor = Color.Gainsboro;
+        }
+        private void controlMinimizar(object sender, MouseEventArgs e)
+        {
+            btnMinimizar.FlatAppearance.BorderColor = Color.Gainsboro;
+        }
+        private void controlNormal(object sender, MouseEventArgs e)
+        {
+            btnNormal.FlatAppearance.BorderColor = Color.Gainsboro;
+        }
+
+        //---------------------------------------------------------------------------------------------------
         private void APSpagamento_Load(object sender, EventArgs e)
         {
 
@@ -53,34 +124,111 @@ namespace InsightCoffe.Utilidades
 
         }
 
-        private void btnFechar_Click(object sender, EventArgs e)
+        //--------------------------------------start:Cliente------------------------------------------------
+        //-------------------------------start: Codigos de ativação de pedido--------------------------------
+        uint codigoDBarra;
+        List<Produto> salvaCarrinho = new List<Produto>();
+
+        private void enterPedido()
         {
-            if (MessageBox.Show("Tem certeza de que quer fechar a janela atual?", "Atenção", MessageBoxButtons.YesNo) == DialogResult.No) return;
-            this.Close();
+            if (Pedido.reativarPedido(inicial1.pedido, mskBCodeBar.Text) == true)
+            {
+                codigoDBarra = Convert.ToUInt32(mskBCodeBar.Text);
+                foreach (Pedido pedido in inicial1.pedido)
+                {
+                    if (Pedido.codigoExistente(inicial1.pedido, mskBCodeBar.Text) == true)
+                    {
+                        lblID.Text = pedido.ID.ToString();
+                        mskBCPF.Text = pedido.ClientCPF;
+                        mskBNome.Text = pedido.ClientName;
+                        lblData.Text = pedido.DataEHora;
+                        lsViewCarrinho.DataSource = salvaCarrinho = pedido.Carrinho;
+
+                        mskValorTotal.Mask = null;
+                        mskValorTotal.Text = pedido.ValorTotal.ToString("C2");
+                        mskSituação.Text = pedido.Situacao;
+                        mskSituação.Enabled = false;
+                        if (mskSituação.Text == "Em aberto")
+                            btnEndSale.Enabled = true;
+                        else
+                            btnEndSale.Enabled = false;
+
+                        break;
+                    }
+                }
+
+                mskBCodeBar.Enabled = false;
+                btnEnterPedido.Enabled = false;
+            }
+            else
+            {
+                MessageBox.Show("Insira um codigo de barras válido!!", "Atenção!");
+            }
         }
 
-        private void btnNormal_Click(object sender, EventArgs e)
+        private void btnEnterPedido_Click(object sender, EventArgs e)
         {
-            this.WindowState = FormWindowState.Normal;
-            btnMaximizar.Visible = true;
-            btnNormal.Visible = false;
+            enterPedido();
         }
 
-        private void btnMaximizar_Click(object sender, EventArgs e)
+        private void KeyPress_CodigoBar(object sender, KeyPressEventArgs e)
         {
-            this.WindowState = FormWindowState.Maximized;
-            btnMaximizar.Visible = false;
-            btnNormal.Visible = true;
+            if (e.KeyChar == (char)Keys.Enter && mskBCodeBar.Text != "")
+            {
+                enterPedido();
+            }
+            if (char.IsControl(e.KeyChar))
+                return;
+            if (!char.IsDigit(e.KeyChar))
+                e.Handled = true;
         }
 
-        private void btnMinimizar_Click(object sender, EventArgs e)
+        public void Limpar_Pagamento()
         {
-            this.WindowState = FormWindowState.Minimized;
+            mskBCodeBar.ResetText();
+            mskBCodeBar.Enabled = true;
+
+            mskBNome.ResetText();
+            mskBCPF.ResetText();
+            mskValorTotal.ResetText();
+            mskSituação.ResetText();
+            lblData.Text = "00/00/0000 00:00";
+
+            lsViewCarrinho.DataSource = null;
+
+        }
+        //-----------------------------------end: Codigos de ativação de pedido-------------------------------
+
+        //--------------------------------------start:Cliente-------------------------------------------------
+
+
+        private void maskedValorCompra_MaskInputRejected(object sender, MaskInputRejectedEventArgs e)
+        {
+
         }
 
-        private void label3_Click(object sender, EventArgs e)
+        private void btnEndSale_Click(object sender, EventArgs e)
         {
+            if(MessageBox.Show("Deseja encerrar o pedido?", "Atenção", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            {
+                if ((Pedido.removerPedido(inicial1.pedido, codigoDBarra) && (Cliente.atualizaCompra(inicial1.clientes, mskBCPF.Text))) == true)
+                {
+                    inicial1.armazenaPedido.Add(new Pagamentos()
+                    {
+                        ID = Pagamentos.geradorId(inicial1.armazenaPedido),
+                        CodigoUsado = codigoDBarra,
+                        Cliente = mskBNome.Text + "  " + mskBCPF.Text,
+                        DataeHora = lblData.Text,
+                        Situacao = "Pedido finalizado",
+                        Carrinho = salvaCarrinho,
+                        Valor = Convert.ToDouble(mskValorTotal.Text.Replace("R$", ""))
+                    });
+                    Limpar_Pagamento();
+                }
+            }
 
         }
+        //----------------------------------------end:Cliente-------------------------------------------------
+
     }
 }
