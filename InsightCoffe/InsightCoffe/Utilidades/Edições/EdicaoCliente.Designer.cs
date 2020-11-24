@@ -31,8 +31,6 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EdicaoCliente));
             this.mskBCPF = new System.Windows.Forms.MaskedTextBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.btnMinimizar = new System.Windows.Forms.Button();
-            this.btnFechar = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.dtGridView = new System.Windows.Forms.DataGridView();
             this.label6 = new System.Windows.Forms.Label();
@@ -50,6 +48,8 @@
             this.btnSalvar = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.btnADD = new System.Windows.Forms.Button();
+            this.btnFechar = new System.Windows.Forms.Button();
+            this.btnMinimizar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtGridView)).BeginInit();
             this.panel2.SuspendLayout();
@@ -77,48 +77,6 @@
             this.pictureBox1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Form_MouseDown);
             this.pictureBox1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Form_MouseMove);
             this.pictureBox1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Form_MouseUp);
-            // 
-            // btnMinimizar
-            // 
-            this.btnMinimizar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnMinimizar.BackColor = System.Drawing.Color.SaddleBrown;
-            this.btnMinimizar.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnMinimizar.BackgroundImage")));
-            this.btnMinimizar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnMinimizar.FlatAppearance.BorderColor = System.Drawing.Color.SaddleBrown;
-            this.btnMinimizar.FlatAppearance.BorderSize = 5;
-            this.btnMinimizar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Gainsboro;
-            this.btnMinimizar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gainsboro;
-            this.btnMinimizar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnMinimizar.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnMinimizar.Location = new System.Drawing.Point(516, 1);
-            this.btnMinimizar.Name = "btnMinimizar";
-            this.btnMinimizar.Size = new System.Drawing.Size(24, 25);
-            this.btnMinimizar.TabIndex = 63;
-            this.btnMinimizar.UseVisualStyleBackColor = false;
-            this.btnMinimizar.Click += new System.EventHandler(this.btnMinimizar_Click_1);
-            this.btnMinimizar.MouseLeave += new System.EventHandler(this.LeaveMinimizar);
-            this.btnMinimizar.MouseMove += new System.Windows.Forms.MouseEventHandler(this.controlMinimizar);
-            // 
-            // btnFechar
-            // 
-            this.btnFechar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnFechar.BackColor = System.Drawing.Color.SaddleBrown;
-            this.btnFechar.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnFechar.BackgroundImage")));
-            this.btnFechar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btnFechar.FlatAppearance.BorderColor = System.Drawing.Color.SaddleBrown;
-            this.btnFechar.FlatAppearance.BorderSize = 5;
-            this.btnFechar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Red;
-            this.btnFechar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Red;
-            this.btnFechar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnFechar.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnFechar.Location = new System.Drawing.Point(544, 0);
-            this.btnFechar.Name = "btnFechar";
-            this.btnFechar.Size = new System.Drawing.Size(22, 26);
-            this.btnFechar.TabIndex = 64;
-            this.btnFechar.UseVisualStyleBackColor = false;
-            this.btnFechar.Click += new System.EventHandler(this.btnFechar_Click);
-            this.btnFechar.MouseLeave += new System.EventHandler(this.LeaveFechar);
-            this.btnFechar.MouseMove += new System.Windows.Forms.MouseEventHandler(this.controlFechar);
             // 
             // label3
             // 
@@ -315,12 +273,56 @@
             this.btnADD.UseVisualStyleBackColor = false;
             this.btnADD.Click += new System.EventHandler(this.btnADD_Click);
             // 
+            // btnFechar
+            // 
+            this.btnFechar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnFechar.BackColor = System.Drawing.Color.SaddleBrown;
+            this.btnFechar.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnFechar.BackgroundImage")));
+            this.btnFechar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnFechar.FlatAppearance.BorderColor = System.Drawing.Color.SaddleBrown;
+            this.btnFechar.FlatAppearance.BorderSize = 5;
+            this.btnFechar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Red;
+            this.btnFechar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Red;
+            this.btnFechar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnFechar.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnFechar.Location = new System.Drawing.Point(544, 0);
+            this.btnFechar.Name = "btnFechar";
+            this.btnFechar.Size = new System.Drawing.Size(22, 26);
+            this.btnFechar.TabIndex = 84;
+            this.btnFechar.UseVisualStyleBackColor = false;
+            this.btnFechar.Click += new System.EventHandler(this.btnFechar_Click);
+            this.btnFechar.MouseLeave += new System.EventHandler(this.LeaveFechar);
+            this.btnFechar.MouseMove += new System.Windows.Forms.MouseEventHandler(this.controlFechar);
+            // 
+            // btnMinimizar
+            // 
+            this.btnMinimizar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnMinimizar.BackColor = System.Drawing.Color.SaddleBrown;
+            this.btnMinimizar.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnMinimizar.BackgroundImage")));
+            this.btnMinimizar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnMinimizar.FlatAppearance.BorderColor = System.Drawing.Color.SaddleBrown;
+            this.btnMinimizar.FlatAppearance.BorderSize = 5;
+            this.btnMinimizar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Gainsboro;
+            this.btnMinimizar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gainsboro;
+            this.btnMinimizar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnMinimizar.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnMinimizar.Location = new System.Drawing.Point(520, 1);
+            this.btnMinimizar.Name = "btnMinimizar";
+            this.btnMinimizar.Size = new System.Drawing.Size(24, 25);
+            this.btnMinimizar.TabIndex = 83;
+            this.btnMinimizar.UseVisualStyleBackColor = false;
+            this.btnMinimizar.Click += new System.EventHandler(this.btnMinimizar_Click_1);
+            this.btnMinimizar.MouseLeave += new System.EventHandler(this.LeaveMinimizar);
+            this.btnMinimizar.MouseMove += new System.Windows.Forms.MouseEventHandler(this.controlMinimizar);
+            // 
             // EdicaoCliente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(223)))), ((int)(((byte)(150)))), ((int)(((byte)(64)))));
             this.ClientSize = new System.Drawing.Size(566, 395);
+            this.Controls.Add(this.btnFechar);
+            this.Controls.Add(this.btnMinimizar);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.lblCompras);
             this.Controls.Add(this.label5);
@@ -333,8 +335,6 @@
             this.Controls.Add(this.label6);
             this.Controls.Add(this.dtGridView);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.btnFechar);
-            this.Controls.Add(this.btnMinimizar);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.mskBCPF);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -352,8 +352,6 @@
 
         private System.Windows.Forms.MaskedTextBox mskBCPF;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Button btnMinimizar;
-        private System.Windows.Forms.Button btnFechar;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.DataGridView dtGridView;
         private System.Windows.Forms.Label label6;
@@ -371,5 +369,7 @@
         private System.Windows.Forms.Button btnSalvar;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Button btnADD;
+        private System.Windows.Forms.Button btnFechar;
+        private System.Windows.Forms.Button btnMinimizar;
     }
 }

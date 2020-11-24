@@ -141,7 +141,7 @@ namespace InsightCoffe.Utilidades.Edições
                         txbNome.ResetText();
                         txbID.ResetText();
                         mskBCPF.ResetText();
-                        mskBDate.ResetText()
+                        mskBDate.ResetText();
                         return;
                     }
                 }

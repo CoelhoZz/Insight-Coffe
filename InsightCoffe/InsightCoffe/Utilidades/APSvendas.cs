@@ -131,17 +131,28 @@ namespace InsightCoffe.Utilidades
         private void enterPedido()
         {
             if (Pedido.codigoExistente(inicial1.pedido, mskBCodeBar.Text) == true)
-            
             {
                 codigoDBarra = Convert.ToInt32(mskBCodeBar.Text);
                 foreach (Pedido pedido in inicial1.pedido)
                 {
-                    if (Pedido.reativarPedido(inicial1.pedido, mskBCodeBar.Text) == true)
+                    if (Pedido.reativarPedido(inicial1.pedido, mskBCodeBar.Text) == true && pedido.CodigoDeBarras == codigoDBarra)
                     {
-                        mskBCPF.Text = pedido.ClientCPF;
-                        clienteSearch();
+                        if(pedido.ClientName != "Cliente")
+                        {
+                            mskBCPF.Text = pedido.ClientCPF;
+                            clienteSearch();
+                        }
+
                         lsViewCarrinho.DataSource = carrinho = pedido.Carrinho;
+                        mskBValortotal.Mask = null;
+                        mskBValortotal.Text = pedido.ValorTotal.ToString("C2");
                         habilitarCarrinho();
+
+                        mskBCodeBar.Enabled = false;
+                        btnEnterPedido.Enabled = false;
+
+                        btnSalvarPedido.Enabled = true;
+                        btnCancelarPedido.Enabled = true;
                         return;
                     }
                 }
@@ -216,6 +227,8 @@ namespace InsightCoffe.Utilidades
             mskBCPF.ResetText();
             mskBNascimento.ResetText();
             mskBRetirarItem.ResetText();
+
+            mskBValortotal.Mask = "$";
             mskBValortotal.ResetText();
             mskBValorAdicionar.ResetText();
             mskBValorItemRetirado.ResetText();
@@ -317,12 +330,15 @@ namespace InsightCoffe.Utilidades
             habilitarCarrinho();
             nome = "Cliente";
             cpf = "null";
-            inicial1.clientes.Add(new Cliente()
-            {
-                Nome = "Cliente",
-                DataNascimento = "null",
-                CPF = "null"
-            });
+            if (Cliente.clientePadrao(inicial1.clientes) == false)
+                inicial1.clientes.Add(new Cliente()
+                {
+                    Nome = "Cliente",
+                    DataNascimento = "null",
+                    CPF = "null"
+                });
+            else
+                return;
         }
 
         private void btnSalvar_Click(object sender, EventArgs e)
@@ -343,7 +359,7 @@ namespace InsightCoffe.Utilidades
             AddProdutoToDList();
 
             //Adicionando as Listas nescessarias
-            Cliente.adiconaCliente(inicial1.clientes, Cliente.identifyClient(inicial1.clientes), mskBNome.Text, mskBNascimento.Text, mskBCPF.Text);
+            Cliente.adiconaCliente(inicial1.clientes, Cliente.identifyClient(inicial1.clientes), nome, mskBNascimento.Text, cpf);
 
             desabilitar_BotõesCliente();
             desabilita_CamposCliente();
@@ -370,7 +386,6 @@ namespace InsightCoffe.Utilidades
                 desabilitar_BotõesCliente();
                 desabilita_CamposCliente();
 
-                Cliente.adiconaCliente(inicial1.clientes, Cliente.identifyClient(inicial1.clientes), mskBNome.Text, mskBNascimento.Text, mskBCPF.Text);
                 habilitarCarrinho();
             }
         }

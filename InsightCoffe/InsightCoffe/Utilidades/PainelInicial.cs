@@ -25,7 +25,7 @@ namespace InsightCoffe.Utilidades
 
         public List<Produto> carrinhoteste = new List<Produto>();
 
-        private Form1 Form1;
+        public Form1 Form1;
         public PainelInicial(Form1 form1, List<Usuarios> usuarios)
         {
             InitializeComponent();
@@ -40,22 +40,6 @@ namespace InsightCoffe.Utilidades
             panelAplicações.BackColor = Color.FromArgb(253, 171, 72);
 
             this.Form1 = form1;
-
-            //carrinhoteste.Add(new Produto()
-            //{
-            //    ID = 1,
-            //    Descricao = "Café 250ml",
-            //    Quantidade = "1",
-            //    Valor = 2.5
-            //});
-            //ID = 0,
-            //    CodigoDeBarras = (Int32)1,
-            //    ClientName = "THY",
-            //    ClientCPF = "129.063.549-88",
-            //    DataEHora = "21/11/2020 05:37",
-            //    Situacao = "Em aberto",
-            //    Carrinho = carrinhoteste,
-            //    ValorTotal = 2.5
 
             MetodosProdutos();
             MetodosPedidos();
@@ -317,11 +301,11 @@ namespace InsightCoffe.Utilidades
         {
             armazenaPedido.Add(new Pagamentos()
             {
-                ID = 1,
+                ID = 0,
                 CodigoUsado = (UInt64)1,
                 Cliente = "Pedro devolve o macaco",
                 DataeHora = DateTime.Now.ToShortTimeString(),
-                Situacao = "Em aberto",
+                Situacao = "Pedido finalizado",
                 Valor = (double) 100
 
                 //pedido pago n tem uma definição para codigoDeBarras
@@ -359,24 +343,30 @@ namespace InsightCoffe.Utilidades
 
             if (Form1.acess == "Total")
             {
+                usuariosDoSistemaToolStripMenuItem.Visible = true;
                 return;
             }
             else if(Form1.acess == "Parcial")
             {
                 btnProdutos.Visible = false;
                 editMenu.Visible = false;
+                btnComandas.Visible = false;
+                btnEdiçãoCliente.Visible = false;
             }
             else
             {
                 btnProdutos.Visible = false;
                 btnPagamento.Visible = false;
                 btnVendas.Visible = false;
+                btnComandas.Visible = false;
+                btnEdiçãoCliente.Visible = false;
+
                 ferramentasMenu.Visible = false;
                 editMenu.Visible = false;
-                viewMenu.Visible = false;
                 helpMenu.Visible = false;
             }
         }
+
         private void PainelInicial_Load(object sender, EventArgs e)
         {
             //-------------------------------------Salvando o acesso-----------------------------------------
@@ -387,12 +377,16 @@ namespace InsightCoffe.Utilidades
             xuiBusuario.ButtonText = "Usuario: " + Form1.user;
             toolStrip_lblusuario.Text = "Usuario logado: " + user;
             Load_Acess();
+
+            bntMaximizar_Click(sender, e);
+            btnNormal_Click(sender, e);
+            bntMaximizar_Click(sender, e);
         }
         // Descrição de botões
-        //private void timerTempoReal_Tick(object sender, EventArgs e)
-        //{
-        //    lblRelogio.Text = (time = DateTime.Now.ToShortTimeString());
-        //}
+        private void timerTempoReal_Tick(object sender, EventArgs e)
+        {
+            lblRelogio.Text = (time = DateTime.Now.ToShortTimeString());
+        }
 
         //--------------------------------------Mover formulario--------------------------------------------
         Point DragCursor;
@@ -560,6 +554,11 @@ namespace InsightCoffe.Utilidades
         }
         //
         //Fechar todas as Abas
+        public bool TelaVend = false, TelaPag = false, TelaProd = false,
+            TelaRegPagamento = false, TelaRegPedidos = false, TelaRegProdutos = false,
+            TelaRegClientes = false, TelaEdtCliente = false, TelaRegPedido = false,
+            TelaEditComandas = false, TelaLimparComanda = false, TelaUsuarios = false, TelaExcluirPag = false;
+
         private void CloseAllToolStripMenuItem_Click(object sender, EventArgs e)
         {
             foreach (Form childForm in MdiChildren)
@@ -573,15 +572,12 @@ namespace InsightCoffe.Utilidades
             TelaRegPedidos = false;
             TelaRegProdutos = false;
             TelaRegClientes = false;
-        }
-
-        ////            Consultas
-        /// Lista de feramentas para consultas
-        //
-        //Registro de Pagamentos
-        private void RegPagamentosToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
+            TelaEdtCliente = false;
+            TelaRegPedido = false;
+            TelaEditComandas = false;
+            TelaLimparComanda = false;
+            TelaUsuarios = false;
+            TelaExcluirPag = false;
         }
         //
         //Registro de Pedidos 
@@ -604,6 +600,13 @@ namespace InsightCoffe.Utilidades
             if (TelaRegClientes == false)
                 Tela_de_RegistrosClientes();
         }
+        //
+        //Registro de Pagamento
+        private void toolStripRegPagamentos_Click(object sender, EventArgs e)
+        {
+            if (TelaRegPagamento == false)
+                Tela_de_RegistrosPagamentos();
+        }
 
         ////            Editar
         /// Lista de feramentas para edição
@@ -614,16 +617,16 @@ namespace InsightCoffe.Utilidades
             bntProdutos_Click(sender, e);
         }
         //
+        //Editar de Clientes
+        private void ToolStripEditarCliente_Click(object sender, EventArgs e)
+        {
+            btnEdiçãoCliente_Click(sender, e);
+        }
+        //
         //Edição de Comanda
         private void ToolStripEditarComanda_Click(object sender, EventArgs e)
         {
             btnComandas_Click(sender, e);
-        }
-        //
-        //Editar de Clientes
-        private void undoToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            btnEdiçãoCliente_Click(sender, e);
         }
         //
         //Limpar Comanda
@@ -632,14 +635,25 @@ namespace InsightCoffe.Utilidades
             if(TelaLimparComanda == false)
                 Limpar_Comanda();
         }
+        //
+        //Excluir Pagamento
+        private void excluirPagamento_Click(object sender, EventArgs e)
+        {
+            if (TelaExcluirPag == false)
+                Excluir_Pagamento();
+        }
+        //
+        //Usuarios
+        private void usuariosDoSistemaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            UsuariosSis usuarios = new UsuariosSis(this);
+            usuarios.MdiParent = this;
+            usuarios.Show();
+            TelaUsuarios = true;
+        }
         //-------------------------End Sequencia de EVENTOS abertura das outras Telas---------------------
 
         //---------------------------start Sequencia de EVENTOS abertura das outras Telas-----------------
-        public bool TelaVend = false, TelaPag = false, TelaProd = false,
-                    TelaRegPagamento = false, TelaRegPedidos = false, TelaRegProdutos = false,
-                    TelaRegClientes = false, TelaEdtCliente = false, TelaRegPedido = false, 
-                    TelaEditComandas = false, TelaLimparComanda = false;
-
         public void Tela_de_Vendas()
         {
             APSvendas apsVendas = new APSvendas(this, produtos, pedido, clientes);
@@ -693,18 +707,20 @@ namespace InsightCoffe.Utilidades
             TelaLimparComanda = true;
         }
 
-        //private void Tela_de_RegistrosPagamentos()
-        //{
-        //    RegClientes registro = new RegClientes(this, clientes);
-        //    registro.MdiParent = this;
-        //    registro.Show();
-        //    TelaRegPagamento = true;
-        //}
+        private void Excluir_Pagamento()
+        {
+            ExcluirPagamento excluir = new ExcluirPagamento(this, armazenaPedido);
+            excluir.MdiParent = this;
+            excluir.Show();
+            TelaExcluirPag = true;
+        }
+
 
         private void Tela_de_RegistrosPedidos()
         {
             RegPedidos registro = new RegPedidos(this, pedido);
             registro.MdiParent = this;
+            registro.Inicial1 = this;
             registro.Show();
             TelaRegPedidos = true;
         }
@@ -723,6 +739,14 @@ namespace InsightCoffe.Utilidades
             registro.MdiParent = this;
             registro.Show();
             TelaRegClientes = true;
+        }
+
+        private void Tela_de_RegistrosPagamentos()
+        {
+            RegPagamentos registro = new RegPagamentos(this, armazenaPedido);
+            registro.MdiParent = this;
+            registro.Show();
+            TelaRegPagamento = true;
         }
 
         //-------------------------End Sequencia de EVENTOS abertura das outras Telas---------------------
@@ -794,66 +818,14 @@ namespace InsightCoffe.Utilidades
 
         //---------------------------------start Tool Strip EVENTOS----------------------------------------
 
-
-
-        private void OpenFile(object sender, EventArgs e)
-        {
-            OpenFileDialog openFileDialog = new OpenFileDialog();
-            openFileDialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
-            openFileDialog.Filter = "Arquivos de texto (*.txt)|*.txt|Todos os arquivos (*.*)|*.*";
-            if (openFileDialog.ShowDialog(this) == DialogResult.OK)
-            {
-                string FileName = openFileDialog.FileName;
-            }
-        }
-
         private void xuiBusuario_Click(object sender, EventArgs e)
         {
             if(MessageBox.Show("Deseja trocar de usuario??", "Atenção", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
-                Application.Restart();
+                
             }
-        }
+        }        
 
-        private void SaveAsToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            SaveFileDialog saveFileDialog = new SaveFileDialog();
-            saveFileDialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
-            saveFileDialog.Filter = "Arquivos de texto (*.txt)|*.txt|Todos os arquivos (*.*)|*.*";
-            if (saveFileDialog.ShowDialog(this) == DialogResult.OK)
-            {
-                string FileName = saveFileDialog.FileName;
-            }
-        }
-
-        
-
-        private void ToolBarToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void StatusBarToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void ArrangeIconsToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            LayoutMdi(MdiLayout.ArrangeIcons);
-        }
-
-        private void toolStripMenuItem2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-
-
-        private void menuStrip_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
-        {
-
-        }
         //-----------------------------------end Tool Strip EVENTOS----------------------------------------
 
     }

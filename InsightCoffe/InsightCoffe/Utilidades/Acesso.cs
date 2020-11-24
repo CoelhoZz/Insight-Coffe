@@ -180,8 +180,6 @@ namespace InsightCoffe
             Iniciar_aplicação.Start();
         }
 
-
-
         private void Aplicativo()
         {
             Application.Run(new Utilidades.PainelInicial(this, usuarios));

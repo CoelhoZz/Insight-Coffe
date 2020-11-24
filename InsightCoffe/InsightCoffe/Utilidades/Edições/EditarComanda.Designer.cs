@@ -34,11 +34,8 @@ namespace InsightCoffe.Utilidades.Edições
             this.btnFechar = new System.Windows.Forms.Button();
             this.btnMinimizar = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.btnEnterPedido = new System.Windows.Forms.Button();
             this.mskBCodeBar = new System.Windows.Forms.MaskedTextBox();
-            this.btnCancelar = new System.Windows.Forms.Button();
             this.btnAdicionar = new System.Windows.Forms.Button();
-            this.bntCadastrar = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -114,44 +111,16 @@ namespace InsightCoffe.Utilidades.Edições
             this.pictureBox1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Form_MouseMove);
             this.pictureBox1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Form_MouseUp);
             // 
-            // btnEnterPedido
-            // 
-            this.btnEnterPedido.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnEnterPedido.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.btnEnterPedido.FlatAppearance.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnEnterPedido.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEnterPedido.Location = new System.Drawing.Point(383, 47);
-            this.btnEnterPedido.Name = "btnEnterPedido";
-            this.btnEnterPedido.Size = new System.Drawing.Size(60, 27);
-            this.btnEnterPedido.TabIndex = 81;
-            this.btnEnterPedido.Text = "Enter";
-            this.btnEnterPedido.UseVisualStyleBackColor = false;
-            // 
             // mskBCodeBar
             // 
             this.mskBCodeBar.AllowDrop = true;
             this.mskBCodeBar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.mskBCodeBar.BackColor = System.Drawing.Color.White;
             this.mskBCodeBar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.mskBCodeBar.Location = new System.Drawing.Point(24, 48);
+            this.mskBCodeBar.Location = new System.Drawing.Point(156, 20);
             this.mskBCodeBar.Name = "mskBCodeBar";
-            this.mskBCodeBar.Size = new System.Drawing.Size(353, 26);
+            this.mskBCodeBar.Size = new System.Drawing.Size(322, 26);
             this.mskBCodeBar.TabIndex = 79;
-            // 
-            // btnCancelar
-            // 
-            this.btnCancelar.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.btnCancelar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(223)))), ((int)(((byte)(150)))), ((int)(((byte)(64)))));
-            this.btnCancelar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnCancelar.Enabled = false;
-            this.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCancelar.Font = new System.Drawing.Font("Rockwell", 15.75F);
-            this.btnCancelar.Location = new System.Drawing.Point(372, 141);
-            this.btnCancelar.Name = "btnCancelar";
-            this.btnCancelar.Size = new System.Drawing.Size(110, 41);
-            this.btnCancelar.TabIndex = 84;
-            this.btnCancelar.Text = "Cancelar";
-            this.btnCancelar.UseVisualStyleBackColor = false;
             // 
             // btnAdicionar
             // 
@@ -161,27 +130,13 @@ namespace InsightCoffe.Utilidades.Edições
             this.btnAdicionar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAdicionar.Font = new System.Drawing.Font("Rockwell", 15.75F);
             this.btnAdicionar.ForeColor = System.Drawing.Color.Black;
-            this.btnAdicionar.Location = new System.Drawing.Point(28, 142);
+            this.btnAdicionar.Location = new System.Drawing.Point(142, 118);
             this.btnAdicionar.Name = "btnAdicionar";
             this.btnAdicionar.Size = new System.Drawing.Size(120, 30);
             this.btnAdicionar.TabIndex = 83;
             this.btnAdicionar.Text = "Adicionar";
             this.btnAdicionar.UseVisualStyleBackColor = false;
-            // 
-            // bntCadastrar
-            // 
-            this.bntCadastrar.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.bntCadastrar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(223)))), ((int)(((byte)(150)))), ((int)(((byte)(64)))));
-            this.bntCadastrar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.bntCadastrar.Enabled = false;
-            this.bntCadastrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.bntCadastrar.Font = new System.Drawing.Font("Rockwell", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bntCadastrar.Location = new System.Drawing.Point(286, 141);
-            this.bntCadastrar.Name = "bntCadastrar";
-            this.bntCadastrar.Size = new System.Drawing.Size(83, 41);
-            this.bntCadastrar.TabIndex = 82;
-            this.bntCadastrar.Text = "Salvar";
-            this.bntCadastrar.UseVisualStyleBackColor = false;
+            this.btnAdicionar.Click += new System.EventHandler(this.btnAdicionar_Click);
             // 
             // button1
             // 
@@ -191,19 +146,20 @@ namespace InsightCoffe.Utilidades.Edições
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Font = new System.Drawing.Font("Rockwell", 15.75F);
             this.button1.ForeColor = System.Drawing.Color.Black;
-            this.button1.Location = new System.Drawing.Point(151, 142);
+            this.button1.Location = new System.Drawing.Point(265, 118);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(120, 30);
             this.button1.TabIndex = 86;
             this.button1.Text = "Excluir";
             this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.btnExcluir_Click);
             // 
             // label2
             // 
             this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("MS UI Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(23, 18);
+            this.label2.Location = new System.Drawing.Point(13, 25);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(142, 16);
             this.label2.TabIndex = 80;
@@ -215,12 +171,10 @@ namespace InsightCoffe.Utilidades.Edições
             this.panel1.AutoSize = true;
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(223)))), ((int)(((byte)(150)))), ((int)(((byte)(64)))));
             this.panel1.Controls.Add(this.label2);
-            this.panel1.Controls.Add(this.btnEnterPedido);
             this.panel1.Controls.Add(this.mskBCodeBar);
-            this.panel1.Enabled = false;
-            this.panel1.Location = new System.Drawing.Point(17, 44);
+            this.panel1.Location = new System.Drawing.Point(8, 44);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(476, 92);
+            this.panel1.Size = new System.Drawing.Size(492, 67);
             this.panel1.TabIndex = 85;
             // 
             // EditarComanda
@@ -228,11 +182,9 @@ namespace InsightCoffe.Utilidades.Edições
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(171)))), ((int)(((byte)(72)))));
-            this.ClientSize = new System.Drawing.Size(509, 196);
+            this.ClientSize = new System.Drawing.Size(509, 160);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnAdicionar);
-            this.Controls.Add(this.bntCadastrar);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.btnFechar);
             this.Controls.Add(this.btnMinimizar);
@@ -255,11 +207,8 @@ namespace InsightCoffe.Utilidades.Edições
         private System.Windows.Forms.Button btnFechar;
         private System.Windows.Forms.Button btnMinimizar;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Button btnEnterPedido;
         private System.Windows.Forms.MaskedTextBox mskBCodeBar;
-        private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.Button btnAdicionar;
-        private System.Windows.Forms.Button bntCadastrar;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Panel panel1;

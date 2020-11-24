@@ -79,10 +79,82 @@ namespace InsightCoffe.Utilidades.Edições
             btnMinimizar.FlatAppearance.BorderColor = Color.Gainsboro;
 
         }
-
-        private void btnLimpar_Click(object sender, EventArgs e)
+        //---------------------------------------------------------------------------------------------
+        private void btnAdicionar_Click(object sender, EventArgs e)
         {
+            try
+            {
+                if (Pedido.codigoExistente(inicial1.pedido, mskBCodeBar.Text) == true)
+                {
+                    MessageBox.Show("Verifique se o codigo ja esta cadastrado!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+                else
+                {
+                    Pedido.adicionaComanda(inicial1.pedido, mskBCodeBar.Text);
+                    MessageBox.Show("Comanda salva com sucesso!", "Sucesso!", MessageBoxButtons.OK);
+                    mskBCodeBar.ResetText();
+                    return;
+                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Digite um numero para salvar a comanda!", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
 
+        }
+
+        private void reorganizarComandas()
+        {
+            int i = 0;
+            foreach(Pedido pedido in inicial1.pedido)
+            {
+                if(i != pedido.ID)
+                {
+                    pedido.ID = i;
+                }
+                i++;
+            }
+        }
+
+        private void btnExcluir_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (Pedido.codigoExistente(inicial1.pedido, mskBCodeBar.Text) == true)
+                {
+                    if (Pedido.reativarPedido(inicial1.pedido, mskBCodeBar.Text) == true)
+                    {
+                        if (MessageBox.Show("Situação da comanda  Nº " + mskBCodeBar.Text + " \"Em Aberto\"" + "\n" + "Deseja exclui-la mesmo assim?", "Atenção", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                        {
+                            if (Pedido.removerComanda(inicial1.pedido, Convert.ToUInt32(mskBCodeBar.Text)) == true)
+                            {
+                                mskBCodeBar.ResetText();
+                                reorganizarComandas();
+                                return;
+                            }
+                        }
+                        else
+                            return;
+                    }
+                    if (MessageBox.Show("Deseja excluir a comanda Nº " + mskBCodeBar.Text + " ?", "Atenção", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                        if (Pedido.removerComanda(inicial1.pedido, Convert.ToUInt32(mskBCodeBar.Text)) == true)
+                        {
+                            mskBCodeBar.ResetText();
+                            reorganizarComandas();
+                            return;
+                        }
+                    return;
+                }
+                else
+                {
+                    MessageBox.Show("Digite um numero de uma comanda existente!", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Digite um numero para excluir a comanda!", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
         //----------------------------------------------------------------------------------------------
 

@@ -25,7 +25,7 @@ namespace InsightCoffe.Repositorios
 
         public static int geradorId(List<Pagamentos> items)
         {
-            int i = 1;
+            int i = 0;
             foreach (Pagamentos item in items)
             {
                 if (i != item.ID)

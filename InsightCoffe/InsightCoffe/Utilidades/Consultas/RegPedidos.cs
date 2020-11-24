@@ -13,7 +13,7 @@ namespace InsightCoffe.Utilidades.Consultas
 {
     public partial class RegPedidos : Form
     {
-        PainelInicial Inicial1;
+        public PainelInicial Inicial1;
         public RegPedidos(PainelInicial Inicial, List<Pedido> pedidos)
         {
             InitializeComponent();
@@ -49,8 +49,8 @@ namespace InsightCoffe.Utilidades.Consultas
         //-------------------------------------------Minimizar, Maximizar e Fechar aplicação--------------
         private void btnFechar_Click(object sender, EventArgs e)
         {
-            Inicial1.TelaRegPedido = false;
             this.Close();
+            Inicial1.TelaRegPedidos = false;
         }
 
         private void btnMinimizar_Click(object sender, EventArgs e)

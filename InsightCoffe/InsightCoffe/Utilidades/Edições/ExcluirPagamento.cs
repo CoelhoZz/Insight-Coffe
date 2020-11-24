@@ -9,18 +9,20 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace InsightCoffe.Utilidades.Consultas
+namespace InsightCoffe.Utilidades.Edições
 {
-    public partial class RegPagamentos : Form
+    public partial class ExcluirPagamento : Form
     {
-        PainelInicial Inicial;
+        public PainelInicial inicial1;
 
-        public RegPagamentos(PainelInicial inicial, List<Pagamentos> pagamentos)
+        public ExcluirPagamento(PainelInicial inicial, List<Pagamentos> pagamento)
         {
             InitializeComponent();
-            this.Inicial = inicial;
+
+            this.inicial1 = inicial;
         }
-       //mover form
+
+        //----------------------------------Mover formulario-----------------------------------------------
         Point DragCursor;
         Point DragForm;
         bool Dragging;
@@ -44,37 +46,21 @@ namespace InsightCoffe.Utilidades.Consultas
             DragCursor = Cursor.Position;
             DragForm = this.Location;
         }
+        //------------------------------------------end-Mover formulario----------------------------------
 
-        //-------------------------------------------------------------------
-        //-------------------------------botao start ------------------------
+        //-------------------------------------------Minimizar, Maximizar e Fechar aplicação--------------
+
         private void btnFechar_Click(object sender, EventArgs e)
         {
-            Inicial.TelaRegPagamento = false;
             this.Close();
+            inicial1.TelaExcluirPag = false;
         }
 
         private void btnMinimizar_Click(object sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Minimized;
         }
-        //-------------------------------end---------------------------------
-        //-------------------------------method start------------------------
 
-        private void RegPagamentos_Load_1(object sender, EventArgs e)
-        {
-            Mostrar_lista();
-        }
-
-        private void Mostrar_lista()
-        {
-            foreach (var item in Inicial.armazenaPedido)
-            {
-                listVRegistroPagamento.Items.Add(new ListViewItem(new string[] { item.ID.ToString(), item.CodigoUsado.ToString(), item.Cliente, item.DataeHora, item.Situacao, item.Valor.ToString() }));
-            }
-
-        }
-
-        //-------------------------------end --------------------------------
         //Leave
         private void LeaveMinimizar(object sender, EventArgs e)
         {
@@ -93,5 +79,43 @@ namespace InsightCoffe.Utilidades.Consultas
         {
             btnMinimizar.FlatAppearance.BorderColor = Color.Gainsboro;
         }
+
+        int id;
+        public bool idPagamento()
+        {
+            if (mskBCodeBar.Text == "")
+                return false;
+            id = Convert.ToInt32(mskBCodeBar.Text);
+            foreach (Pagamentos pagamento in inicial1.armazenaPedido)
+            {
+                if (pagamento.ID == id)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        private void btnExcluirPag_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if(idPagamento() == true)
+                {
+                    if (MessageBox.Show("Deseja cancelar o registro de pagamento ID:" + mskBCodeBar.Text + " ??", "Atenção!", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                    {
+                        inicial1.armazenaPedido.RemoveAt(id);
+                    }
+                }
+                else
+                    MessageBox.Show("Digite um numero valido para excluir", "Erro", MessageBoxButtons.OK);
+
+            }
+            catch(Exception)
+            {
+                MessageBox.Show("Digite um numero valido para excluir", "Erro", MessageBoxButtons.OK);
+            }
+        }
+        //-----------------------------------------------------------------------------------------------
     }
 }

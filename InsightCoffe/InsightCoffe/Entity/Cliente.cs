@@ -44,6 +44,18 @@ namespace InsightCoffe.Entity
             return false;
         }
 
+        public static bool clientePadrao(List<Cliente> clientes)
+        {
+            foreach (Cliente cliente in clientes)
+            {
+                if ("null" == cliente.CPF)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
         public static void adiconaCliente(List<Cliente> clientePedido, int id, string nome, string nascimento, string cpf)
         {
             clientePedido.Add(new Cliente()
@@ -58,9 +70,11 @@ namespace InsightCoffe.Entity
 
         public static bool atualizaCompra(List<Cliente> clientes, string cpf)
         {
+            if (cpf == "")
+                return true;
             foreach (Cliente cliente in clientes)
             {
-                if (cpf == cliente.CPF || "CLIENTE" == cliente.Nome)
+                if (cpf == cliente.CPF)
                 {
                     cliente.Compras++;
                     return true;

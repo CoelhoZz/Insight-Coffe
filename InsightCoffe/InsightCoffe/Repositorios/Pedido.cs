@@ -25,7 +25,50 @@ namespace InsightCoffe.Repositorios
 
         public double ValorTotal { get; set; }
 
-        public static bool removerPedido(List<Pedido> pedidos, UInt32 codeBarr)
+        public static int geradorId(List<Pedido> items)
+        {
+            int i = 0;
+            foreach (Pedido item in items)
+            {
+                if (i != item.ID)
+                {
+                    return i;
+                }
+                i++;
+            }
+            return i++;
+        }
+
+        public static void adicionaComanda(List<Pedido> pedidos, string code)
+        {
+            pedidos.Add(new Pedido()
+            {
+                ID = Pedido.geradorId(pedidos),
+                CodigoDeBarras = Convert.ToUInt32(code),
+                DataEHora = "00/00/0000",
+                ClientName = "",
+                ClientCPF = "",
+                Carrinho = null,
+                Situacao = "Comanda vazia",
+                ValorTotal = 0,
+            });
+        }
+
+        public static bool removerComanda(List<Pedido> pedidos, UInt32 codeBarr)
+        {
+
+            foreach (var pedido in pedidos)
+            {
+                if (codeBarr == pedido.CodigoDeBarras)
+                {
+                    pedidos.RemoveAt(pedido.ID);
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        public static bool limparPedido(List<Pedido> pedidos, UInt32 codeBarr)
         {
 
             foreach (Pedido pedido in pedidos)
@@ -43,20 +86,6 @@ namespace InsightCoffe.Repositorios
                 }
             }
             return false;
-        }
-
-        public static int geradorId(List<Pedido> items)
-        {
-            int i = 1;
-            foreach (Pedido item in items)
-            {
-                if (i != item.ID)
-                {
-                    return i;
-                }
-                i++;
-            }
-            return i++;
         }
 
         public static double CalculoPreco(List<Produto> produtos)

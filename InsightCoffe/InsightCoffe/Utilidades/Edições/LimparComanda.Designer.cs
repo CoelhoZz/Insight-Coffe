@@ -37,13 +37,13 @@ namespace InsightCoffe.Utilidades.Edições
             this.btnMinimizar = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.maskedTextBox1 = new System.Windows.Forms.MaskedTextBox();
+            this.mskSituacao = new System.Windows.Forms.MaskedTextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.mskBValortotal = new System.Windows.Forms.MaskedTextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.lsViewCarrinho = new System.Windows.Forms.ListBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.btnAdicionar = new System.Windows.Forms.Button();
+            this.btnLimpar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -60,6 +60,7 @@ namespace InsightCoffe.Utilidades.Edições
             this.btnEnterPedido.TabIndex = 92;
             this.btnEnterPedido.Text = "Enter";
             this.btnEnterPedido.UseVisualStyleBackColor = false;
+            this.btnEnterPedido.Click += new System.EventHandler(this.btnEnterPedido_Click);
             // 
             // mskBCodeBar
             // 
@@ -71,6 +72,7 @@ namespace InsightCoffe.Utilidades.Edições
             this.mskBCodeBar.Name = "mskBCodeBar";
             this.mskBCodeBar.Size = new System.Drawing.Size(353, 26);
             this.mskBCodeBar.TabIndex = 91;
+            this.mskBCodeBar.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.KeyPress_CodigoBar);
             // 
             // label3
             // 
@@ -146,7 +148,7 @@ namespace InsightCoffe.Utilidades.Edições
             this.panel1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.panel1.AutoSize = true;
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(223)))), ((int)(((byte)(150)))), ((int)(((byte)(64)))));
-            this.panel1.Controls.Add(this.maskedTextBox1);
+            this.panel1.Controls.Add(this.mskSituacao);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.mskBValortotal);
             this.panel1.Controls.Add(this.label4);
@@ -154,22 +156,21 @@ namespace InsightCoffe.Utilidades.Edições
             this.panel1.Controls.Add(this.lsViewCarrinho);
             this.panel1.Controls.Add(this.mskBCodeBar);
             this.panel1.Controls.Add(this.label2);
-            this.panel1.Enabled = false;
             this.panel1.Location = new System.Drawing.Point(18, 43);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(476, 339);
             this.panel1.TabIndex = 96;
             // 
-            // maskedTextBox1
+            // mskSituacao
             // 
-            this.maskedTextBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.maskedTextBox1.BackColor = System.Drawing.Color.White;
-            this.maskedTextBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.maskedTextBox1.Location = new System.Drawing.Point(286, 123);
-            this.maskedTextBox1.Name = "maskedTextBox1";
-            this.maskedTextBox1.ReadOnly = true;
-            this.maskedTextBox1.Size = new System.Drawing.Size(159, 35);
-            this.maskedTextBox1.TabIndex = 85;
+            this.mskSituacao.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.mskSituacao.BackColor = System.Drawing.Color.White;
+            this.mskSituacao.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.mskSituacao.Location = new System.Drawing.Point(286, 123);
+            this.mskSituacao.Name = "mskSituacao";
+            this.mskSituacao.ReadOnly = true;
+            this.mskSituacao.Size = new System.Drawing.Size(159, 35);
+            this.mskSituacao.TabIndex = 85;
             // 
             // label1
             // 
@@ -233,20 +234,21 @@ namespace InsightCoffe.Utilidades.Edições
             this.label2.TabIndex = 80;
             this.label2.Text = "Codigo de barras:";
             // 
-            // btnAdicionar
+            // btnLimpar
             // 
-            this.btnAdicionar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(223)))), ((int)(((byte)(150)))), ((int)(((byte)(64)))));
-            this.btnAdicionar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnAdicionar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAdicionar.Font = new System.Drawing.Font("Rockwell", 15.75F);
-            this.btnAdicionar.ForeColor = System.Drawing.Color.Black;
-            this.btnAdicionar.Location = new System.Drawing.Point(33, 391);
-            this.btnAdicionar.Name = "btnAdicionar";
-            this.btnAdicionar.Size = new System.Drawing.Size(443, 36);
-            this.btnAdicionar.TabIndex = 94;
-            this.btnAdicionar.Text = "Limpar";
-            this.btnAdicionar.UseVisualStyleBackColor = false;
-            this.btnAdicionar.Click += new System.EventHandler(this.btnLimpar_Click);
+            this.btnLimpar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(223)))), ((int)(((byte)(150)))), ((int)(((byte)(64)))));
+            this.btnLimpar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnLimpar.Enabled = false;
+            this.btnLimpar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnLimpar.Font = new System.Drawing.Font("Rockwell", 15.75F);
+            this.btnLimpar.ForeColor = System.Drawing.Color.Black;
+            this.btnLimpar.Location = new System.Drawing.Point(33, 391);
+            this.btnLimpar.Name = "btnLimpar";
+            this.btnLimpar.Size = new System.Drawing.Size(443, 36);
+            this.btnLimpar.TabIndex = 94;
+            this.btnLimpar.Text = "Limpar";
+            this.btnLimpar.UseVisualStyleBackColor = false;
+            this.btnLimpar.Click += new System.EventHandler(this.btnLimpar_Click);
             // 
             // LimparComanda
             // 
@@ -254,7 +256,7 @@ namespace InsightCoffe.Utilidades.Edições
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(171)))), ((int)(((byte)(72)))));
             this.ClientSize = new System.Drawing.Size(510, 439);
-            this.Controls.Add(this.btnAdicionar);
+            this.Controls.Add(this.btnLimpar);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.btnFechar);
             this.Controls.Add(this.btnMinimizar);
@@ -280,12 +282,12 @@ namespace InsightCoffe.Utilidades.Edições
         private System.Windows.Forms.Button btnMinimizar;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.MaskedTextBox maskedTextBox1;
+        private System.Windows.Forms.MaskedTextBox mskSituacao;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.MaskedTextBox mskBValortotal;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ListBox lsViewCarrinho;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button btnAdicionar;
+        private System.Windows.Forms.Button btnLimpar;
     }
 }

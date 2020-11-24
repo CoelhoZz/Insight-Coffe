@@ -82,9 +82,63 @@ namespace InsightCoffe.Utilidades.Edições
         }
         //----------------------------------------------------------------------------------------------
 
+        //-------------------------------start: Codigos de ativação de pedido--------------------------------
+        uint codigoDBarra;
+        private void enterPedido()
+        {
+            if (Pedido.codigoExistente(inicial1.pedido, mskBCodeBar.Text) == true)
+            {
+                codigoDBarra = Convert.ToUInt16(mskBCodeBar.Text);
+                foreach (Pedido pedido in inicial1.pedido)
+                {
+                    if (Pedido.reativarPedido(inicial1.pedido, mskBCodeBar.Text) == true)
+                    {
+                        mskBValortotal.Mask = null;
+                        mskBValortotal.Text = pedido.ValorTotal.ToString("C2");
+                        mskSituacao.Text = pedido.Situacao;
+                        lsViewCarrinho.DataSource = pedido.Carrinho;
+
+                        btnLimpar.Enabled = true;
+                        return;
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("Insira um codigo de barras válido!!", "Atenção!");
+            }
+        }
+
+        private void btnEnterPedido_Click(object sender, EventArgs e)
+        {
+            enterPedido();
+        }
+
+        private void KeyPress_CodigoBar(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter && mskBCodeBar.Text != "")
+            {
+                enterPedido();
+            }
+            if (char.IsControl(e.KeyChar))
+                return;
+            if (!char.IsDigit(e.KeyChar))
+                e.Handled = true;
+        }
         private void btnLimpar_Click(object sender, EventArgs e)
         {
+            if (MessageBox.Show("Deseja limpar totalmente esta comanda?", "Atenção!", MessageBoxButtons.YesNo) == DialogResult.No)
+                return;
+            Pedido.limparPedido(inicial1.pedido, codigoDBarra);
+            
+            lsViewCarrinho.DataSource = null;
 
+            mskBCodeBar.ResetText();
+            mskSituacao.ResetText();
+            mskBValortotal.ResetText();
+            mskBValortotal.Mask = "$";
+
+            btnLimpar.Enabled = false;
         }
 
     }

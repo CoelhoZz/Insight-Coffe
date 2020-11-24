@@ -1,5 +1,4 @@
-﻿using InsightCoffe.Repositorios;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -11,16 +10,17 @@ using System.Windows.Forms;
 
 namespace InsightCoffe.Utilidades.Consultas
 {
-    public partial class RegPagamentos : Form
+    public partial class UsuariosSis : Form
     {
-        PainelInicial Inicial;
+        public PainelInicial inicial1;
 
-        public RegPagamentos(PainelInicial inicial, List<Pagamentos> pagamentos)
+        public UsuariosSis(PainelInicial inicial)
         {
             InitializeComponent();
-            this.Inicial = inicial;
+            this.inicial1 = inicial;
         }
-       //mover form
+
+        //--------------------------------------Mover formulario--------------------------------------------
         Point DragCursor;
         Point DragForm;
         bool Dragging;
@@ -44,37 +44,20 @@ namespace InsightCoffe.Utilidades.Consultas
             DragCursor = Cursor.Position;
             DragForm = this.Location;
         }
+        //-------------------------------------end-Mover formulario---------------------------------------
 
-        //-------------------------------------------------------------------
-        //-------------------------------botao start ------------------------
+        //-------------------------------------------Minimizar, Maximizar e Fechar aplicação--------------
         private void btnFechar_Click(object sender, EventArgs e)
         {
-            Inicial.TelaRegPagamento = false;
             this.Close();
+            inicial1.TelaUsuarios = false;
         }
 
         private void btnMinimizar_Click(object sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Minimized;
         }
-        //-------------------------------end---------------------------------
-        //-------------------------------method start------------------------
 
-        private void RegPagamentos_Load_1(object sender, EventArgs e)
-        {
-            Mostrar_lista();
-        }
-
-        private void Mostrar_lista()
-        {
-            foreach (var item in Inicial.armazenaPedido)
-            {
-                listVRegistroPagamento.Items.Add(new ListViewItem(new string[] { item.ID.ToString(), item.CodigoUsado.ToString(), item.Cliente, item.DataeHora, item.Situacao, item.Valor.ToString() }));
-            }
-
-        }
-
-        //-------------------------------end --------------------------------
         //Leave
         private void LeaveMinimizar(object sender, EventArgs e)
         {
@@ -92,6 +75,13 @@ namespace InsightCoffe.Utilidades.Consultas
         private void controlMinimizar(object sender, MouseEventArgs e)
         {
             btnMinimizar.FlatAppearance.BorderColor = Color.Gainsboro;
+
         }
+
+        private void UsuariosSis_Load(object sender, EventArgs e)
+        {
+            dtGridViewUser.DataSource = inicial1.Form1.usuarios;
+        }
+        //-----------------------------------------------------------------------------------------------
     }
 }

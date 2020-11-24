@@ -127,6 +127,7 @@ namespace InsightCoffe.Utilidades
         //--------------------------------------start:Cliente------------------------------------------------
         //-------------------------------start: Codigos de ativação de pedido--------------------------------
         uint codigoDBarra;
+        string cpf;
         List<Produto> salvaCarrinho = new List<Produto>();
 
         private void enterPedido()
@@ -136,10 +137,10 @@ namespace InsightCoffe.Utilidades
                 codigoDBarra = Convert.ToUInt32(mskBCodeBar.Text);
                 foreach (Pedido pedido in inicial1.pedido)
                 {
-                    if (Pedido.codigoExistente(inicial1.pedido, mskBCodeBar.Text) == true)
+                    if (pedido.CodigoDeBarras == codigoDBarra)
                     {
                         lblID.Text = pedido.ID.ToString();
-                        mskBCPF.Text = pedido.ClientCPF;
+                        cpf = mskBCPF.Text = pedido.ClientCPF;
                         mskBNome.Text = pedido.ClientName;
                         lblData.Text = pedido.DataEHora;
                         lsViewCarrinho.DataSource = salvaCarrinho = pedido.Carrinho;
@@ -153,16 +154,18 @@ namespace InsightCoffe.Utilidades
                         else
                             btnEndSale.Enabled = false;
 
-                        break;
+                        mskBCodeBar.Enabled = false;
+                        btnEnterPedido.Enabled = false;
+
+                        return;
                     }
                 }
+                MessageBox.Show("Codigo não cadastrado!!", "Atenção!");
 
-                mskBCodeBar.Enabled = false;
-                btnEnterPedido.Enabled = false;
             }
             else
             {
-                MessageBox.Show("Insira um codigo de barras válido!!", "Atenção!");
+                MessageBox.Show("Pedido vazio!!", "Atenção!");
             }
         }
 
@@ -211,13 +214,19 @@ namespace InsightCoffe.Utilidades
         {
             if(MessageBox.Show("Deseja encerrar o pedido?", "Atenção", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
-                if ((Pedido.removerPedido(inicial1.pedido, codigoDBarra) && (Cliente.atualizaCompra(inicial1.clientes, mskBCPF.Text))) == true)
+                if ((Pedido.limparPedido(inicial1.pedido, codigoDBarra) && (Cliente.atualizaCompra(inicial1.clientes, cpf))) == true)
                 {
+                    string cliente;
+                    if (cpf != "null")
+                        cliente = mskBNome.Text + "  " + cpf;
+                    else
+                        cliente = mskBNome.Text;
+
                     inicial1.armazenaPedido.Add(new Pagamentos()
                     {
                         ID = Pagamentos.geradorId(inicial1.armazenaPedido),
                         CodigoUsado = codigoDBarra,
-                        Cliente = mskBNome.Text + "  " + mskBCPF.Text,
+                        Cliente = cliente,
                         DataeHora = lblData.Text,
                         Situacao = "Pedido finalizado",
                         Carrinho = salvaCarrinho,

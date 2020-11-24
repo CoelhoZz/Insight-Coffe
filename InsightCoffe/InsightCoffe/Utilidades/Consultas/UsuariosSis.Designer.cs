@@ -1,6 +1,7 @@
-﻿namespace InsightCoffe.Utilidades
+﻿
+namespace InsightCoffe.Utilidades.Consultas
 {
-    partial class NotePad
+    partial class UsuariosSis
     {
         /// <summary>
         /// Required designer variable.
@@ -28,27 +29,26 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(NotePad));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UsuariosSis));
             this.label3 = new System.Windows.Forms.Label();
             this.btnFechar = new System.Windows.Forms.Button();
             this.btnMinimizar = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.richTextBnotePad = new System.Windows.Forms.RichTextBox();
-            this.btnLimpar = new System.Windows.Forms.Button();
+            this.dtGridViewUser = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtGridViewUser)).BeginInit();
             this.SuspendLayout();
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.BackColor = System.Drawing.Color.SaddleBrown;
-            this.label3.Cursor = System.Windows.Forms.Cursors.SizeAll;
             this.label3.Font = new System.Drawing.Font("Palatino Linotype", 14.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(11, 0);
+            this.label3.Location = new System.Drawing.Point(33, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(191, 25);
-            this.label3.TabIndex = 82;
-            this.label3.Text = "Registro de Produtos";
+            this.label3.Size = new System.Drawing.Size(89, 25);
+            this.label3.TabIndex = 81;
+            this.label3.Text = "Usuarios";
             this.label3.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Form_MouseDown);
             this.label3.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Form_MouseMove);
             this.label3.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Form_MouseUp);
@@ -65,10 +65,10 @@
             this.btnFechar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Red;
             this.btnFechar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnFechar.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnFechar.Location = new System.Drawing.Point(393, -1);
+            this.btnFechar.Location = new System.Drawing.Point(233, -1);
             this.btnFechar.Name = "btnFechar";
             this.btnFechar.Size = new System.Drawing.Size(22, 26);
-            this.btnFechar.TabIndex = 81;
+            this.btnFechar.TabIndex = 80;
             this.btnFechar.UseVisualStyleBackColor = false;
             this.btnFechar.Click += new System.EventHandler(this.btnFechar_Click);
             this.btnFechar.MouseLeave += new System.EventHandler(this.LeaveFechar);
@@ -86,10 +86,10 @@
             this.btnMinimizar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gainsboro;
             this.btnMinimizar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnMinimizar.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnMinimizar.Location = new System.Drawing.Point(370, 0);
+            this.btnMinimizar.Location = new System.Drawing.Point(209, 0);
             this.btnMinimizar.Name = "btnMinimizar";
             this.btnMinimizar.Size = new System.Drawing.Size(24, 25);
-            this.btnMinimizar.TabIndex = 80;
+            this.btnMinimizar.TabIndex = 79;
             this.btnMinimizar.UseVisualStyleBackColor = false;
             this.btnMinimizar.Click += new System.EventHandler(this.btnMinimizar_Click);
             this.btnMinimizar.MouseLeave += new System.EventHandler(this.LeaveMinimizar);
@@ -98,76 +98,52 @@
             // pictureBox1
             // 
             this.pictureBox1.BackColor = System.Drawing.Color.SaddleBrown;
-            this.pictureBox1.Cursor = System.Windows.Forms.Cursors.SizeAll;
             this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Top;
             this.pictureBox1.Location = new System.Drawing.Point(0, 0);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(415, 25);
-            this.pictureBox1.TabIndex = 79;
+            this.pictureBox1.Size = new System.Drawing.Size(255, 25);
+            this.pictureBox1.TabIndex = 78;
             this.pictureBox1.TabStop = false;
             this.pictureBox1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Form_MouseDown);
             this.pictureBox1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Form_MouseMove);
             this.pictureBox1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Form_MouseUp);
             // 
-            // richTextBnotePad
+            // dtGridViewUser
             // 
-            this.richTextBnotePad.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.richTextBnotePad.Font = new System.Drawing.Font("Microsoft Tai Le", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.richTextBnotePad.ForeColor = System.Drawing.SystemColors.WindowFrame;
-            this.richTextBnotePad.Location = new System.Drawing.Point(0, 25);
-            this.richTextBnotePad.Name = "richTextBnotePad";
-            this.richTextBnotePad.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical;
-            this.richTextBnotePad.Size = new System.Drawing.Size(415, 425);
-            this.richTextBnotePad.TabIndex = 83;
-            this.richTextBnotePad.Text = "Utilize esse campo para Bloco de anotações momentaneas...";
-            this.richTextBnotePad.Click += new System.EventHandler(this.richTextBnotePad_Click);
-            this.richTextBnotePad.TextChanged += new System.EventHandler(this.textLimpar_changed);
+            this.dtGridViewUser.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dtGridViewUser.Location = new System.Drawing.Point(7, 31);
+            this.dtGridViewUser.Name = "dtGridViewUser";
+            this.dtGridViewUser.Size = new System.Drawing.Size(240, 150);
+            this.dtGridViewUser.TabIndex = 82;
             // 
-            // btnLimpar
-            // 
-            this.btnLimpar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnLimpar.Enabled = false;
-            this.btnLimpar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnLimpar.Font = new System.Drawing.Font("Microsoft Tai Le", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLimpar.Location = new System.Drawing.Point(276, 415);
-            this.btnLimpar.Name = "btnLimpar";
-            this.btnLimpar.Size = new System.Drawing.Size(132, 29);
-            this.btnLimpar.TabIndex = 84;
-            this.btnLimpar.Text = "Limpar";
-            this.btnLimpar.UseVisualStyleBackColor = true;
-            this.btnLimpar.Click += new System.EventHandler(this.btnLimpar_Click);
-            // 
-            // NotePad
+            // UsuariosSis
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(415, 450);
-            this.Controls.Add(this.btnLimpar);
-            this.Controls.Add(this.richTextBnotePad);
+            this.ClientSize = new System.Drawing.Size(255, 186);
+            this.Controls.Add(this.dtGridViewUser);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.btnFechar);
             this.Controls.Add(this.btnMinimizar);
             this.Controls.Add(this.pictureBox1);
-            this.Cursor = System.Windows.Forms.Cursors.SizeAll;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "NotePad";
+            this.Name = "UsuariosSis";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Bloco de Notas";
-            this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Form_MouseDown);
-            this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Form_MouseMove);
-            this.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Form_MouseUp);
+            this.Text = "Usuarios";
+            this.Load += new System.EventHandler(this.UsuariosSis_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtGridViewUser)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
+
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button btnFechar;
         private System.Windows.Forms.Button btnMinimizar;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.RichTextBox richTextBnotePad;
-        private System.Windows.Forms.Button btnLimpar;
+        private System.Windows.Forms.DataGridView dtGridViewUser;
     }
 }

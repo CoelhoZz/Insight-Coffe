@@ -74,20 +74,28 @@ namespace InsightCoffe.Utilidades
             btnMinimizar.FlatAppearance.BorderColor = Color.Gainsboro;
         }
 
-        private void LeaveRichTB(object sender, EventArgs e)
-        {
-            if (richTextBnotePad.Text == "")
-            {
-                richTextBnotePad.Text = "Utilize esse campo para Bloco de anotações momentaneas...";
-            }
-        }
 
-        private void richTextBnotePad_TextChanged(object sender, EventArgs e)
+        private void richTextBnotePad_Click(object sender, EventArgs e)
         {
-            if( richTextBnotePad.Text == "Utilize esse campo para Bloco de anotações momentaneas...")
+            if (richTextBnotePad.Text == "Utilize esse campo para Bloco de anotações momentaneas...")
             {
                 richTextBnotePad.Clear();
             }
+        }
+
+        private void textLimpar_changed(object sender, EventArgs e)
+        {
+            if(richTextBnotePad.Text != "")
+            {
+                btnLimpar.Enabled = true;
+                return;
+            }
+            btnLimpar.Enabled = false;
+        }
+
+        private void btnLimpar_Click(object sender, EventArgs e)
+        {
+            richTextBnotePad.Clear();
         }
         //-----------------------------------------------------------------------------------------------
     }

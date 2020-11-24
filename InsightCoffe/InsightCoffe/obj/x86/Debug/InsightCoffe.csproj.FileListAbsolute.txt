@@ -54,3 +54,6 @@ C:\InsightCoffeVersions\InsightCoffe\InsightCoffe\obj\x86\Debug\InsightCoffe.Uti
 C:\InsightCoffeVersions\InsightCoffe\InsightCoffe\obj\x86\Debug\InsightCoffe.Utilidades.Edições.EditarComanda.resources
 C:\InsightCoffeVersions\InsightCoffe\InsightCoffe\obj\x86\Debug\InsightCoffe.Utilidades.Consultas.RegPagamentos.resources
 C:\InsightCoffeVersions\InsightCoffe\InsightCoffe\obj\x86\Debug\InsightCoffe.Utilidades.Edições.LimparComanda.resources
+C:\InsightCoffeVersions\InsightCoffe\InsightCoffe\obj\x86\Debug\InsightCoffe.Utilidades.Edições.EdicaoCliente.resources
+C:\InsightCoffeVersions\InsightCoffe\InsightCoffe\obj\x86\Debug\InsightCoffe.Utilidades.Consultas.UsuariosSis.resources
+C:\InsightCoffeVersions\InsightCoffe\InsightCoffe\obj\x86\Debug\InsightCoffe.Utilidades.Edições.ExcluirPagamento.resources

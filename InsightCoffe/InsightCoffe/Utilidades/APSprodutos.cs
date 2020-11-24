@@ -89,6 +89,14 @@ namespace InsightCoffe.Utilidades
         public string descricao, quantidade;
         public double valor;
 
+        private void KeyPress_valor(object sender, KeyPressEventArgs e)
+        {
+            if (char.IsControl(e.KeyChar) || char.IsPunctuation(e.KeyChar))
+                return;
+            if (!char.IsDigit(e.KeyChar))
+                e.Handled = true;
+        }
+
         private void bntCadastrar_Click(object sender, EventArgs e)
         {
             
@@ -104,6 +112,7 @@ namespace InsightCoffe.Utilidades
                 {
                     alterarCamposPara_origin();
                     btnAdicionar_Click(sender, e);
+                    btnCancelar_Click(sender, e);
                     return;
                 }
                 else
@@ -111,6 +120,7 @@ namespace InsightCoffe.Utilidades
                     Start.Adicionar_produto(valor, quantidade, descricao, codigo);
                     alterarCamposPara_origin();
                     btnAdicionar_Click(sender, e);
+                    btnCancelar_Click(sender, e);
                 }               
             }
         }
